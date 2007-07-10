@@ -1,0 +1,174 @@
+global _line_end
+
+global ASDocParser
+
+global ASFormattingStyle
+global ASHTML
+global HTMLElement
+global PathAnalyzer
+global PathConverter
+global SimpleRD
+global TemplateProcessor
+global XFile
+global XList
+
+property _bookName : missing value
+property _appleTitle : ""
+property _use_appletitle : false
+property _defaultPageName : "reference.html"
+property _template_folder : "HelpBookTemplate"
+
+on initialize()
+	set _bookName to missing value
+	set _appleTitle to ""
+	set _use_appletitle to false
+	set _template_folder to "HelpBookTemplate"
+end initialize
+
+on set_template_folder(a_name)
+	set my _template_folder to a_name
+end set_template_folder
+
+on appletitle()
+	return _appleTitle
+end appletitle
+
+on bookname()
+	return _bookName
+end bookname
+
+on set_bookname(a_name)
+	set my _bookName to a_name
+end set_bookname
+
+on set_appletitle(a_name)
+	set my _appleTitle to a_name
+end set_appletitle
+
+on set_use_appletitle(a_flag)
+	set _use_appletitle to a_flag
+end set_use_appletitle
+
+--global doc_container
+on output_to_folder(root_ref, index_page, a_text, script_name)
+	if class of index_page is not script then
+		set index_page to XFile's make_with_item(index_page)
+	end if
+	
+	set book_folder to index_page's parent_folder()
+	
+	book_folder's make_path()
+	set temp_asset_folder to XFile's make_with(path to resource "assets" in directory _template_folder)
+	set assets_folder to temp_asset_folder's copy_to(book_folder)
+	
+	set pages_folder to book_folder's make_folder("pages")
+	set doc_title to ""
+	set index_contents to make XList
+	set style_formatter to make_from_plist() of ASFormattingStyle
+	set doc_container to ASDocParser's parse_list(every paragraph of a_text)
+	set a_link_manager to doc_container's link_manager()
+	set template_folder to XFile's make_with_item(path to resource _template_folder)
+	set handler_template to template_folder's child("pages:handler.html")
+	set rel_index_path to "../" & index_page's item_name()
+	
+	repeat with doc_element in elementList of doc_container
+		set a_kind to doc_element's get_kind()
+		if a_kind is "title" then
+			--log "start process title element"
+			index_contents's push(as_xhtml() of doc_element)
+			set doc_title to doc_element's get_contents()'s as_unicode()
+			if my _bookName is missing value then
+				--set my _bookName to doc_title
+				set my _bookName to script_name & " Help"
+			end if
+			
+			if _use_appletitle then
+				set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", _bookName}})
+				set my _appleTitle to my _appleTitle's as_html()
+			end if
+			--log "end process title element"
+			
+		else if a_kind is "handler" then
+			--log "start process handler element"
+			set handler_name to get_handler_name() of doc_element
+			set handler_heading to HTMLElement's make_with("h3", {})
+			set a_link to handler_heading's push_element_with("a", {{"href", "pages/" & handler_name & ".html"}})
+			a_link's push(handler_name)
+			index_contents's push(handler_heading's as_html())
+			a_link_manager's set_prefix("pages/")
+			set an_abstruct to doc_element's copy_abstruct()
+			an_abstruct's each(a_link_manager)
+			--log an_abstruct's dump()
+			set srd to SimpleRD's make_with_iterator(an_abstruct)
+			index_contents's push(srd's as_xhtml())
+			
+			set handler_page to pages_folder's child(handler_name & ".html")
+			set pathconv to PathConverter's make_with_path(handler_page's posix_path())
+			set rel_root to relative_path of pathconv for POSIX path of root_ref
+			
+			set template to TemplateProcessor's make_with_file(handler_template's as_alias())
+			tell template
+				insert_text("$DOC_TITLE", doc_title)
+				insert_text("$HANDLERNAME", handler_name)
+				insert_text("$BODY", doc_element's as_xhtml())
+				insert_text("$HELPBOOK_ROOT", HTMLElement's make_with("a", {{"href", rel_root}, {"id", "HelpBookRoot"}})'s as_html())
+				insert_text("$INDEX_PAGE", rel_index_path)
+				write_to(handler_page)
+			end tell
+			--log "end process handler element"
+			
+		else if a_kind is "paragraph" then
+			--log "start process paragraph element"
+			a_link_manager's set_prefix("pages/")
+			doc_element's each(a_link_manager)
+			index_contents's push(as_xhtml() of doc_element)
+			--log "end process paragraph element"
+			
+		else
+			--log "start process other element"
+			index_contents's push(as_xhtml() of doc_element)
+			--log "end process other element"
+		end if
+	end repeat
+	
+	set index_body to index_contents's as_unicode_with(_line_end)
+	
+	set pathconv to PathConverter's make_with_path(index_page's posix_path())
+	set rel_root to relative_path of pathconv for POSIX path of root_ref
+	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory _template_folder)
+	tell template
+		insert_text("$BODY", index_body)
+		insert_text("$APPLETITLE", my _appleTitle)
+		insert_text("$SCRIPTNAME", script_name)
+		--insert_text("$BOOKNAME", my _bookName)
+		insert_text("$BOOKNAME", doc_title)
+		insert_text("$HELPBOOK_ROOT", HTMLElement's make_with("a", {{"href", rel_root}, {"id", "HelpBookRoot"}})'s as_html())
+		--insert_text("$EDIT_SCRIPT", edit_scpt_path)
+		set index_page to write_to(index_page)
+	end tell
+	
+	set css_text to style_formatter's build_css()
+	set as_css_file to assets_folder's child("applescript.css")
+	as_css_file's write_as_utf8(css_text)
+	
+	return index_page
+end output_to_folder
+
+on process_file(a_file)
+	initialize()
+	set a_text to a_file's get_contents()
+	--set script_name to basename of PathAnalyzer's analyze_name({name:script_name})
+	set script_name to a_file's basename()
+	set a_root to choose folder with prompt "Choose a root folder of  the HelpBook"
+	--set a_result to choose folder with prompt "Choose a folder to ouput"
+	set page_name to contents of default entry "ExportFileName" of user defaults
+	set a_result to choose file name with prompt "Save AppleScriotDoc" default name page_name
+	
+	set index_page to output_to_folder(a_root, a_result, a_text, script_name)
+	set contents of default entry "ExportFileName" of user defaults to index_page's item_name()
+	index_page's set_types(missing value, missing value)
+	tell application "Finder"
+		open index_page's as_alias()
+	end tell
+	a_file's release()
+end process_file
