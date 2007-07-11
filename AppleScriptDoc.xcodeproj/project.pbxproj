@@ -20,6 +20,7 @@
 				2C4809400C3B7D94004E3217 /* setClipboard.scpt in AppleScript */,
 				2C4EFEA80C3BB03A003743D7 /* SetupHelpBook.applescript in AppleScript */,
 				2C2975080C3C8F82000CDBEF /* SaveToFile.applescript in AppleScript */,
+				2CF5BFEF0C43E6E600224B65 /* XFileExtend.applescript in AppleScript */,
 			);
 			isSharedContext = 0;
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,7 +59,9 @@
 		2C4EFF730C3C16B9003743D7 /* handler.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF610C3C1642003743D7 /* handler.html */; };
 		2C4EFF740C3C16C0003743D7 /* default.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5D0C3C1642003743D7 /* default.css */; };
 		2C4EFF750C3C16C0003743D7 /* handler_page.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5E0C3C1642003743D7 /* handler_page.css */; };
-		2CF5BE320C43AB3300224B65 /* History.rd in Resources */ = {isa = PBXBuildFile; fileRef = 2CF5BE310C43AB3300224B65 /* History.rd */; };
+		2CF5BF000C43CE9900224B65 /* NSURL+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BEEC0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.m */; };
+		2CF5BF010C43CE9900224B65 /* PathExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BEF00C43CD1D00224B65 /* PathExtra.m */; };
+		2CF5BFEF0C43E6E600224B65 /* XFileExtend.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -172,7 +175,20 @@
 		2C4EFF5E0C3C1642003743D7 /* handler_page.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handler_page.css; sourceTree = "<group>"; };
 		2C4EFF5F0C3C1642003743D7 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2C4EFF610C3C1642003743D7 /* handler.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = handler.html; sourceTree = "<group>"; };
-		2CF5BE310C43AB3300224B65 /* History.rd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = History.rd; path = "../../../../Factories/Script factory/ProjectsX/Scripts for Script Editor/AppleScriptDoc/History.rd"; sourceTree = SOURCE_ROOT; };
+		2CF5BE310C43AB3300224B65 /* History.rd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = History.rd; path = ../History.rd; sourceTree = SOURCE_ROOT; };
+		2CF5BEE90C43CD1D00224B65 /* NDAlias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAlias.h; sourceTree = "<group>"; };
+		2CF5BEEA0C43CD1D00224B65 /* NDAlias.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAlias.m; sourceTree = "<group>"; };
+		2CF5BEEB0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+NDCarbonUtilities.h"; sourceTree = "<group>"; };
+		2CF5BEEC0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+NDCarbonUtilities.m"; sourceTree = "<group>"; };
+		2CF5BEED0C43CD1D00224B65 /* PaletteWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaletteWindowController.h; sourceTree = "<group>"; };
+		2CF5BEEE0C43CD1D00224B65 /* PaletteWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaletteWindowController.m; sourceTree = "<group>"; };
+		2CF5BEEF0C43CD1D00224B65 /* PathExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathExtra.h; sourceTree = "<group>"; };
+		2CF5BEF00C43CD1D00224B65 /* PathExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathExtra.m; sourceTree = "<group>"; };
+		2CF5BEF10C43CD1D00224B65 /* StringExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringExtra.h; sourceTree = "<group>"; };
+		2CF5BEF20C43CD1D00224B65 /* StringExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringExtra.m; sourceTree = "<group>"; };
+		2CF5BEF30C43CD1D00224B65 /* WindowVisibilityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowVisibilityController.h; sourceTree = "<group>"; };
+		2CF5BEF40C43CD1D00224B65 /* WindowVisibilityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowVisibilityController.m; sourceTree = "<group>"; };
+		2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = XFileExtend.applescript; sourceTree = "<group>"; };
 		65359356078DD41800E8BB2F /* AppleScriptKit.sdef */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.sdef; name = AppleScriptKit.sdef; path = /System/Library/Frameworks/AppleScriptKit.framework/Versions/A/Resources/AppleScriptKit.sdef; sourceTree = "<absolute>"; };
 		DA206CF1015C4E2903C91932 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = /System/Library/Frameworks/AppleScriptKit.framework; sourceTree = "<absolute>"; };
 		DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; lineEnding = 0; path = AppleScriptDoc.applescript; sourceTree = "<group>"; };
@@ -201,6 +217,7 @@
 				2C0AD69F0C3B61AB00E2B397 /* ExportHelpBook.applescript */,
 				2C4EFEA70C3BB03A003743D7 /* SetupHelpBook.applescript */,
 				2C2975070C3C8F82000CDBEF /* SaveToFile.applescript */,
+				2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -236,6 +253,7 @@
 			children = (
 				2CF5BE310C43AB3300224B65 /* History.rd */,
 				080E96DDFE201D6D7F000001 /* Scripts */,
+				2CF5BEE80C43CD1D00224B65 /* CocoaLib */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -337,6 +355,25 @@
 			path = pages;
 			sourceTree = "<group>";
 		};
+		2CF5BEE80C43CD1D00224B65 /* CocoaLib */ = {
+			isa = PBXGroup;
+			children = (
+				2CF5BEE90C43CD1D00224B65 /* NDAlias.h */,
+				2CF5BEEA0C43CD1D00224B65 /* NDAlias.m */,
+				2CF5BEEB0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.h */,
+				2CF5BEEC0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.m */,
+				2CF5BEED0C43CD1D00224B65 /* PaletteWindowController.h */,
+				2CF5BEEE0C43CD1D00224B65 /* PaletteWindowController.m */,
+				2CF5BEEF0C43CD1D00224B65 /* PathExtra.h */,
+				2CF5BEF00C43CD1D00224B65 /* PathExtra.m */,
+				2CF5BEF10C43CD1D00224B65 /* StringExtra.h */,
+				2CF5BEF20C43CD1D00224B65 /* StringExtra.m */,
+				2CF5BEF30C43CD1D00224B65 /* WindowVisibilityController.h */,
+				2CF5BEF40C43CD1D00224B65 /* WindowVisibilityController.m */,
+			);
+			path = CocoaLib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -401,7 +438,6 @@
 				257572C7072881A4000BE9CA /* MainMenu.nib in Resources */,
 				257572C8072881A4000BE9CA /* InfoPlist.strings in Resources */,
 				2C4A6CBF0C3CE15F00DBBCD4 /* FactorySettings.plist in Resources */,
-				2CF5BE320C43AB3300224B65 /* History.rd in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +448,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CF5BF000C43CE9900224B65 /* NSURL+NDCarbonUtilities.m in Sources */,
+				2CF5BF010C43CE9900224B65 /* PathExtra.m in Sources */,
 				257572CA072881A4000BE9CA /* main.m in Sources */,
 				2C4A6CF00C3CE21B00DBBCD4 /* AppController.m in Sources */,
 			);

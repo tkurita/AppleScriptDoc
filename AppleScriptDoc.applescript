@@ -15,8 +15,9 @@ property XList : missing value
 property XText : missing value
 property PathAnalyzer : missing value
 property TemplateProcessor : missing value
-property XFile : missing value
+property XFileBase : missing value
 property PathConverter : missing value
+property XFile : missing value
 
 on __load__(loader)
 	tell loader
@@ -33,8 +34,8 @@ on __load__(loader)
 	set XText to ASHTML's XText
 	set ASFormattingStyle to ASHTML's ASFormattingStyle
 	set XDict to ASFormattingStyle's XDict
-	set XFile to TemplateProcessor's XFile
-	set PathAnalyzer to XFile's PathAnalyzer
+	set XFileBase to TemplateProcessor's XFile
+	set PathAnalyzer to XFileBase's PathAnalyzer
 	
 	return missing value
 end __load__
@@ -55,6 +56,11 @@ property _target_script : missing value
 (*== constants *)
 property _line_end : HTMLElement's line_end()
 
+on display_hello(msg)
+	log msg
+	display dialog msg
+end display_hello
+
 on import_script(script_name)
 	tell main bundle
 		set a_path to path for script script_name extension "scpt"
@@ -63,6 +69,8 @@ on import_script(script_name)
 end import_script
 
 on will finish launching theObject
+	set XFile to make (import_script("XFileExtend"))
+	
 	set DefaultsManager to import_script("DefaultsManager")
 	set ASDocParser to import_script("ASDocParser")
 	set ExportHelpBook to import_script("ExportHelpBook")
@@ -90,6 +98,20 @@ on setup_for_no_target()
 	set contents of default entry "TargetScript" of user defaults to a_path
 	set _target_script to missing value
 end setup_for_no_target
+
+on set_target_from_recent(a_path)
+	set a_file to XFile's make_with(POSIX file a_path)
+	if not a_file's item_exists() then
+		setup_for_no_target()
+		return
+	end if
+	set content of _target_script_field to a_path
+	set contents of default entry "TargetScript" of user defaults to a_path
+	set enabled of _setup_helpbook_button to a_file's is_package()
+	set enabled of _export_helpbook_button to true
+	set enabled of _save_button to true
+	set _target_script to a_file
+end set_target_from_recent
 
 on set_target_script(a_path)
 	--log "start set_target_script"

@@ -1,7 +1,10 @@
 #import "AppController.h"
 #import <DonationReminder/DonationReminder.h>
 
-#define useLog 0
+#define useLog 1
+
+@class ASKScriptCache;
+@class ASKScript;
 
 @implementation AppController
 
@@ -24,7 +27,11 @@
 
 - (IBAction)popUpRecents:(id)sender
 {
-	NSLog([[sender selectedItem] title]);
+	NSDictionary *errorInfo = nil;
+	ASKScript *a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
+	[a_script 
+		executeHandlerWithName:@"set_target_from_recent" arguments:[NSArray arrayWithObject:[[sender selectedItem] title]]
+			error:&errorInfo];
 }
 
 - (void)awakeFromNib {
