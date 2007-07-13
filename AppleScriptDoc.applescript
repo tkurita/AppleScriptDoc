@@ -18,12 +18,14 @@ property TemplateProcessor : missing value
 property XFileBase : missing value
 property PathConverter : missing value
 property XFile : missing value
+property OneShotScriptEditor : missing value
 
 on __load__(loader)
 	tell loader
 		set DocElements to load("DocElements")
 		set TemplateProcessor to load("TemplateProcessor")
 		set PathConverter to load("PathConverter")
+		set OneShotScriptEditor to load("OneShotScriptEditor")
 	end tell
 	set SimpleRD to DocElements's SimpleRD
 	set HTMLElement to SimpleRD's HTMLElement
@@ -44,11 +46,11 @@ property _ : __load__(proxy() of application (get "AppleScriptDocLib"))
 --property _ : __load__(application (get "AppleScriptDocLib"))
 
 (*== GUI elements *)
-property _target_script_field : missing value
 property _export_helpbook_button : missing value
 property _setup_helpbook_button : missing value
 property _save_button : missing value
 property _recent_popup : missing value
+property _indicator : missing value
 
 (*== variables *)
 property _target_script : missing value
@@ -56,10 +58,9 @@ property _target_script : missing value
 (*== constants *)
 property _line_end : HTMLElement's line_end()
 
-on display_hello(msg)
-	log msg
-	display dialog msg
-end display_hello
+on export_helpbook()
+	ExportHelpBook's process_file(OneShotScriptEditor's make_with_xfile(my _target_script))
+end export_helpbook
 
 on import_script(script_name)
 	tell main bundle
@@ -94,7 +95,6 @@ on setup_for_no_target()
 	set enabled of _export_helpbook_button to false
 	set enabled of _setup_helpbook_button to false
 	set enabled of _save_button to false
-	set content of _target_script_field to a_path
 	set contents of default entry "TargetScript" of user defaults to a_path
 	set _target_script to missing value
 end setup_for_no_target
@@ -105,7 +105,6 @@ on set_target_from_recent(a_path)
 		setup_for_no_target()
 		return
 	end if
-	set content of _target_script_field to a_path
 	set contents of default entry "TargetScript" of user defaults to a_path
 	set enabled of _setup_helpbook_button to a_file's is_package()
 	set enabled of _export_helpbook_button to true
@@ -141,7 +140,6 @@ on set_target_script(a_path)
 	end if
 	
 	set a_path to a_file's posix_path()
-	set content of _target_script_field to a_path
 	set contents of default entry "TargetScript" of user defaults to a_path
 	set recent_list to DefaultsManager's default_with_initialize("RecentScripts", {})
 	if recent_list does not contain a_path then
@@ -162,67 +160,28 @@ on set_target_script(a_path)
 	set _target_script to a_file
 end set_target_script
 
-on make_slave_doc(an_xfile)
-	script SlaveDoc
-		property parent : an_xfile
-		property _is_doc_opened : false
-		property _is_app_launched : false
-		property _doc_ref : missing value
-		
-		on check_status()
-			tell application "System Events"
-				set a_list to application processes whose name is "Script Editor"
-			end tell
-			set _is_app_launched to (length of a_list) > 0
-			set my _doc_ref to missing value
-			set _is_doc_opened to false
-			if _is_app_launched then
-				set a_path to posix_path()
-				tell application "Script Editor"
-					set a_list to documents whose path is a_path
-				end tell
-				if (length of a_list) > 0 then
-					set my _doc_ref to item 1 of a_list
-					set _is_doc_opened to true
-				end if
-			end if
-			
-			return my _doc_ref
-		end check_status
-		
-		on get_contents()
-			check_status()
-			if my _doc_ref is missing value then
-				tell application "Script Editor"
-					open my as_alias()
-					set _doc_ref to document 1
-				end tell
-			end if
-			tell application "Script Editor"
-				set a_text to contents of contents of my _doc_ref
-			end tell
-			return a_text
-		end get_contents
-		
-		on release()
-			if not _is_doc_opened then
-				tell application "Script Editor" to close contents of _doc_ref
-			end if
-		end release
-		
-	end script
-end make_slave_doc
+on start_indicator()
+	set visible of _indicator to true
+	start _indicator
+end start_indicator
+
+on stop_indicator()
+	stop _indicator
+	set visible of _indicator to false
+end stop_indicator
 
 on clicked theObject
 	set a_name to name of theObject
 	if a_name is "SelectTarget" then
 		display open panel attached to window "main" for file types {"scpt", "scptd"}
-	else if a_name is "ExportHelpBook" then
-		ExportHelpBook's process_file(make_slave_doc(my _target_script))
 	else if a_name is "SetupHelpBook" then
-		SetupHelpBook's process_file(make_slave_doc(my _target_script))
+		start_indicator()
+		SetupHelpBook's process_file(OneShotScriptEditor's make_with_xfile(my _target_script))
+		stop_indicator()
 	else if a_name is "SaveToFile" then
-		SaveToFile's process_file(make_slave_doc(my _target_script))
+		start_indicator()
+		SaveToFile's process_file(OneShotScriptEditor's make_with_xfile(my _target_script))
+		stop_indicator()
 	end if
 end clicked
 
@@ -252,9 +211,7 @@ end prepare drop
 
 on awake from nib theObject
 	set a_name to name of theObject
-	if a_name is "TargetScriptField" then
-		set _target_script_field to theObject
-	else if a_name is "TargetScriptBox" then
+	if a_name is "TargetScriptBox" then
 		tell theObject to register drag types {"string", "rich text", "file names"}
 	else if a_name is "SelectTarget" then
 		tell theObject to register drag types {"string", "rich text", "file names"}
@@ -269,6 +226,8 @@ on awake from nib theObject
 		call method "setFrameUsingName:" of theObject with parameter a_name
 	else if a_name is "RecentPopup" then
 		set _recent_popup to theObject
+	else if a_name is "ProgressIndicator" then
+		set _indicator to theObject
 	end if
 end awake from nib
 

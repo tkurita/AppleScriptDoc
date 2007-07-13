@@ -1,11 +1,17 @@
 {
     IBClasses = (
         {
-            ACTIONS = {makeDonation = id; popUpRecents = id; }; 
+            ACTIONS = {exportAction = id; makeDonation = id; popUpRecents = id; }; 
             CLASS = AppController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {recentScriptsButton = id; }; 
+            OUTLETS = {mainWindow = id; recentScriptsButton = id; }; 
             SUPERCLASS = NSObject; 
+        }, 
+        {
+            CLASS = DropBox; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = NSBox; 
         }, 
         {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }
     ); 

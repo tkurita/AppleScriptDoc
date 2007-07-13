@@ -62,6 +62,14 @@
 		2CF5BF000C43CE9900224B65 /* NSURL+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BEEC0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.m */; };
 		2CF5BF010C43CE9900224B65 /* PathExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BEF00C43CD1D00224B65 /* PathExtra.m */; };
 		2CF5BFEF0C43E6E600224B65 /* XFileExtend.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
+		2CFE960E0C4485DC00B0D2A6 /* PathSettingWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFE960D0C4485DC00B0D2A6 /* PathSettingWindow.nib */; };
+		2CFE961A0C44925A00B0D2A6 /* PathSettingWindowController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */; };
+		2CFE961B0C44925A00B0D2A6 /* PathSettingWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */; };
+		2CFE96260C4498FE00B0D2A6 /* DropBox.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CFE96240C4498FE00B0D2A6 /* DropBox.h */; };
+		2CFE96270C4498FE00B0D2A6 /* DropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE96250C4498FE00B0D2A6 /* DropBox.m */; };
+		2CFE966F0C44B2BF00B0D2A6 /* NDAlias.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CF5BEE90C43CD1D00224B65 /* NDAlias.h */; };
+		2CFE96700C44B2C300B0D2A6 /* NSURL+NDCarbonUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CF5BEEB0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.h */; };
+		2CFE96710C44B2C700B0D2A6 /* PathExtra.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CF5BEEF0C43CD1D00224B65 /* PathExtra.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -189,6 +197,11 @@
 		2CF5BEF30C43CD1D00224B65 /* WindowVisibilityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowVisibilityController.h; sourceTree = "<group>"; };
 		2CF5BEF40C43CD1D00224B65 /* WindowVisibilityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowVisibilityController.m; sourceTree = "<group>"; };
 		2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = XFileExtend.applescript; sourceTree = "<group>"; };
+		2CFE95FA0C4485B100B0D2A6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PathSettingWindow.nib; sourceTree = "<group>"; };
+		2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */ = {isa = PBXFileReference; fileEncoding = "-2147483647"; lastKnownFileType = sourcecode.c.h; path = PathSettingWindowController.h; sourceTree = "<group>"; };
+		2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */ = {isa = PBXFileReference; fileEncoding = "-2147483647"; lastKnownFileType = sourcecode.c.objc; path = PathSettingWindowController.m; sourceTree = "<group>"; };
+		2CFE96240C4498FE00B0D2A6 /* DropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBox.h; sourceTree = "<group>"; };
+		2CFE96250C4498FE00B0D2A6 /* DropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBox.m; sourceTree = "<group>"; };
 		65359356078DD41800E8BB2F /* AppleScriptKit.sdef */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.sdef; name = AppleScriptKit.sdef; path = /System/Library/Frameworks/AppleScriptKit.framework/Versions/A/Resources/AppleScriptKit.sdef; sourceTree = "<absolute>"; };
 		DA206CF1015C4E2903C91932 /* AppleScriptKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptKit.framework; path = /System/Library/Frameworks/AppleScriptKit.framework; sourceTree = "<absolute>"; };
 		DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; lineEnding = 0; path = AppleScriptDoc.applescript; sourceTree = "<group>"; };
@@ -251,6 +264,7 @@
 		29B97314FDCFA39411CA2CEA /* AppleScriptDoc */ = {
 			isa = PBXGroup;
 			children = (
+				2CFE96280C44991E00B0D2A6 /* Class */,
 				2CF5BE310C43AB3300224B65 /* History.rd */,
 				080E96DDFE201D6D7F000001 /* Scripts */,
 				2CF5BEE80C43CD1D00224B65 /* CocoaLib */,
@@ -266,8 +280,6 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				2C4A6CEE0C3CE21B00DBBCD4 /* AppController.m */,
-				2C4A6CEF0C3CE21B00DBBCD4 /* AppController.h */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
 			name = "Other Sources";
@@ -279,6 +291,7 @@
 				2C4A6CBE0C3CE15E00DBBCD4 /* FactorySettings.plist */,
 				2C4EFF5B0C3C1642003743D7 /* HTMLTemplate */,
 				2C48092F0C3B7D94004E3217 /* HelpBookTemplate */,
+				2CFE960D0C4485DC00B0D2A6 /* PathSettingWindow.nib */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				65359356078DD41800E8BB2F /* AppleScriptKit.sdef */,
@@ -358,6 +371,8 @@
 		2CF5BEE80C43CD1D00224B65 /* CocoaLib */ = {
 			isa = PBXGroup;
 			children = (
+				2CFE96240C4498FE00B0D2A6 /* DropBox.h */,
+				2CFE96250C4498FE00B0D2A6 /* DropBox.m */,
 				2CF5BEE90C43CD1D00224B65 /* NDAlias.h */,
 				2CF5BEEA0C43CD1D00224B65 /* NDAlias.m */,
 				2CF5BEEB0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.h */,
@@ -374,6 +389,17 @@
 			path = CocoaLib;
 			sourceTree = "<group>";
 		};
+		2CFE96280C44991E00B0D2A6 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				2C4A6CEE0C3CE21B00DBBCD4 /* AppController.m */,
+				2C4A6CEF0C3CE21B00DBBCD4 /* AppController.h */,
+				2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */,
+				2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */,
+			);
+			name = Class;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -381,7 +407,12 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CFE96710C44B2C700B0D2A6 /* PathExtra.h in Headers */,
+				2CFE96700C44B2C300B0D2A6 /* NSURL+NDCarbonUtilities.h in Headers */,
+				2CFE966F0C44B2BF00B0D2A6 /* NDAlias.h in Headers */,
 				2C4A6CF10C3CE21B00DBBCD4 /* AppController.h in Headers */,
+				2CFE961A0C44925A00B0D2A6 /* PathSettingWindowController.h in Headers */,
+				2CFE96260C4498FE00B0D2A6 /* DropBox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +469,7 @@
 				257572C7072881A4000BE9CA /* MainMenu.nib in Resources */,
 				257572C8072881A4000BE9CA /* InfoPlist.strings in Resources */,
 				2C4A6CBF0C3CE15F00DBBCD4 /* FactorySettings.plist in Resources */,
+				2CFE960E0C4485DC00B0D2A6 /* PathSettingWindow.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +484,8 @@
 				2CF5BF010C43CE9900224B65 /* PathExtra.m in Sources */,
 				257572CA072881A4000BE9CA /* main.m in Sources */,
 				2C4A6CF00C3CE21B00DBBCD4 /* AppController.m in Sources */,
+				2CFE961B0C44925A00B0D2A6 /* PathSettingWindowController.m in Sources */,
+				2CFE96270C4498FE00B0D2A6 /* DropBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,6 +506,14 @@
 				29B97319FDCFA39411CA2CEA /* English */,
 			);
 			name = MainMenu.nib;
+			sourceTree = "<group>";
+		};
+		2CFE960D0C4485DC00B0D2A6 /* PathSettingWindow.nib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2CFE95FA0C4485B100B0D2A6 /* English */,
+			);
+			name = PathSettingWindow.nib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

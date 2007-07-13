@@ -44,6 +44,6 @@ end process
 
 on process_file(a_bundle)
 	set a_text to a_bundle's get_contents()
-	process given bundle:a_bundle, text:a_text
+	process given bundle:a_bundle's xfile_ref(), text:a_text
 	a_bundle's release()
 end process_file

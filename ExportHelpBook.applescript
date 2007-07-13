@@ -11,6 +11,7 @@ global SimpleRD
 global TemplateProcessor
 global XFile
 global XList
+global OneShotScriptEditor
 
 property _bookName : missing value
 property _appleTitle : ""
@@ -71,6 +72,9 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set handler_template to template_folder's child("pages:handler.html")
 	set rel_index_path to "../" & index_page's item_name()
 	
+	set oneshot_doc to OneShotScriptEditor's make_with_name(ASHTML's temporary_doctitle())
+	oneshot_doc's check_status()
+	
 	repeat with doc_element in elementList of doc_container
 		set a_kind to doc_element's get_kind()
 		if a_kind is "title" then
@@ -130,7 +134,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log "end process other element"
 		end if
 	end repeat
-	
+	oneshot_doc's catch_doc()
+	oneshot_doc's release()
 	set index_body to index_contents's as_unicode_with(_line_end)
 	
 	set pathconv to PathConverter's make_with_path(index_page's posix_path())
@@ -158,14 +163,18 @@ on process_file(a_file)
 	initialize()
 	set a_text to a_file's get_contents()
 	--set script_name to basename of PathAnalyzer's analyze_name({name:script_name})
-	set script_name to a_file's basename()
+	set script_name to a_file's xfile_ref()'s basename()
+	(*
 	set a_root to choose folder with prompt "Choose a root folder of  the HelpBook"
 	--set a_result to choose folder with prompt "Choose a folder to ouput"
 	set page_name to contents of default entry "ExportFileName" of user defaults
-	set a_result to choose file name with prompt "Save AppleScriotDoc" default name page_name
+	set a_destination to choose file name with prompt "Save AppleScriotDoc" default name page_name
+	*)
+	set a_root to POSIX file (contents of default entry "HelpBookRootPath" of user defaults)
+	set a_destination to POSIX file (contents of default entry "ExportFilePath" of user defaults)
+	set index_page to output_to_folder(a_root, a_destination, a_text, script_name)
 	
-	set index_page to output_to_folder(a_root, a_result, a_text, script_name)
-	set contents of default entry "ExportFileName" of user defaults to index_page's item_name()
+	--set contents of default entry "ExportFileName" of user defaults to index_page's item_name()
 	index_page's set_types(missing value, missing value)
 	tell application "Finder"
 		open index_page's as_alias()
