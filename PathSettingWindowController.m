@@ -161,6 +161,16 @@ bail:
 {
 	item = [[item infoResolvingAliasFile] objectForKey:@"ResolvedPath"];
 	if (dbv == exportDestBox) {
+		if ([item isFolder]) {
+			NSString *current_path = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExportFilePath"];
+			NSString *a_name;
+			if (current_path) {
+				a_name = [current_path lastPathComponent];
+			} else {
+				a_name = @"reference.html";
+			}
+			item = [item stringByAppendingPathComponent:a_name];
+		}
 		[self setExportPath:item];
 	} else if (dbv == helpBookRootBox) {
 		[self setHelpBookRoot:item];
