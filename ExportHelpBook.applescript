@@ -53,7 +53,7 @@ end set_use_appletitle
 --global doc_container
 on output_to_folder(root_ref, index_page, a_text, script_name)
 	if class of index_page is not script then
-		set index_page to XFile's make_with_item(index_page)
+		set index_page to XFile's make_with(index_page)
 	end if
 	
 	set book_folder to index_page's parent_folder()
@@ -68,7 +68,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set style_formatter to make_from_plist() of ASFormattingStyle
 	set doc_container to ASDocParser's parse_list(every paragraph of a_text)
 	set a_link_manager to doc_container's link_manager()
-	set template_folder to XFile's make_with_item(path to resource _template_folder)
+	set template_folder to XFile's make_with(path to resource _template_folder)
 	set handler_template to template_folder's child("pages:handler.html")
 	set rel_index_path to "../" & index_page's item_name()
 	
@@ -108,7 +108,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			
 			set handler_page to pages_folder's child(handler_name & ".html")
 			set pathconv to PathConverter's make_with_path(handler_page's posix_path())
-			set rel_root to relative_path of pathconv for POSIX path of root_ref
+			set rel_root to relative_path of pathconv for ((POSIX path of root_ref) & "/")
 			
 			set template to TemplateProcessor's make_with_file(handler_template's as_alias())
 			tell template
@@ -139,7 +139,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set index_body to index_contents's as_unicode_with(_line_end)
 	
 	set pathconv to PathConverter's make_with_path(index_page's posix_path())
-	set rel_root to relative_path of pathconv for POSIX path of root_ref
+	set rel_root to relative_path of pathconv for ((POSIX path of root_ref) & "/")
+	
 	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory _template_folder)
 	tell template
 		insert_text("$BODY", index_body)
@@ -162,19 +163,12 @@ end output_to_folder
 on process_file(a_file)
 	initialize()
 	set a_text to a_file's get_contents()
-	--set script_name to basename of PathAnalyzer's analyze_name({name:script_name})
 	set script_name to a_file's xfile_ref()'s basename()
-	(*
-	set a_root to choose folder with prompt "Choose a root folder of  the HelpBook"
-	--set a_result to choose folder with prompt "Choose a folder to ouput"
-	set page_name to contents of default entry "ExportFileName" of user defaults
-	set a_destination to choose file name with prompt "Save AppleScriotDoc" default name page_name
-	*)
+	
 	set a_root to POSIX file (contents of default entry "HelpBookRootPath" of user defaults)
 	set a_destination to POSIX file (contents of default entry "ExportFilePath" of user defaults)
 	set index_page to output_to_folder(a_root, a_destination, a_text, script_name)
 	
-	--set contents of default entry "ExportFileName" of user defaults to index_page's item_name()
 	index_page's set_types(missing value, missing value)
 	tell application "Finder"
 		open index_page's as_alias()
