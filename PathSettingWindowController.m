@@ -91,11 +91,15 @@ bail:
 {
 	NSSavePanel *save_panel = [NSSavePanel savePanel];
 	[save_panel setRequiredFileType:@"html"];
-	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"ExportFilePath"];
-	NSString *a_name = @"reference.html";
+	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
+	NSString *a_path = [user_defaults stringForKey:@"ExportFilePath"];
+	NSString *a_name;
 	if (a_path) {
 		a_name = [a_path lastPathComponent];
+	} else {
+		a_name = [user_defaults stringForKey:@"ExportFileName"];
 	}
+	
 	[save_panel beginSheetForDirectory:nil file:a_name
 		modalForWindow:[self window] modalDelegate:self
 		didEndSelector:@selector(savePanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
@@ -162,12 +166,13 @@ bail:
 	item = [[item infoResolvingAliasFile] objectForKey:@"ResolvedPath"];
 	if (dbv == exportDestBox) {
 		if ([item isFolder]) {
-			NSString *current_path = [[NSUserDefaults standardUserDefaults] objectForKey:@"ExportFilePath"];
+			NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
+			NSString *current_path = [user_defaults objectForKey:@"ExportFilePath"];
 			NSString *a_name;
 			if (current_path) {
 				a_name = [current_path lastPathComponent];
 			} else {
-				a_name = @"reference.html";
+				a_name = [user_defaults stringForKey:@"ExportFileName"];
 			}
 			item = [item stringByAppendingPathComponent:a_name];
 		}
