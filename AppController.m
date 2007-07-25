@@ -1,7 +1,8 @@
 #import "AppController.h"
 #import <DonationReminder/DonationReminder.h>
+#import "PathSettingWindowController.h"
 
-#define useLog 1
+#define useLog 0
 
 @class ASKScriptCache;
 @class ASKScript;
@@ -29,13 +30,33 @@
 {
 	NSDictionary *errorInfo = nil;
 	ASKScript *a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
-	[a_script 
-		executeHandlerWithName:@"set_target_from_recent" arguments:[NSArray arrayWithObject:[[sender selectedItem] title]]
-			error:&errorInfo];
+	[a_script executeHandlerWithName:@"set_target_from_recent" 
+		arguments:[NSArray arrayWithObject:[[sender selectedItem] title]] error:&errorInfo];
 }
 
 - (void)awakeFromNib {
 	[recentScriptsButton setTitle:@""];
 }
+
+- (void)sheetDidEnd:(NSWindow*)sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo
+{
+	[sheet orderOut:self];
+}
+
+- (IBAction)exportAction:(id)sender
+{
+	if (!pathSettingWindowController) {
+		pathSettingWindowController = 
+			[[PathSettingWindowController alloc] initWithWindowNibName:@"PathSettingWindow"];
+	}
+
+	[[NSApplication sharedApplication] beginSheet:[pathSettingWindowController window] 
+							   modalForWindow:mainWindow 
+								modalDelegate:self 
+							   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
+								  contextInfo:nil];
+}
+
+
 
 @end
