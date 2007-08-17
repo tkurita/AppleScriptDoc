@@ -1,5 +1,7 @@
 global ExportHelpBook
 global XFile
+global _app_controller
+
 property InfoPlistArranger : missing value
 
 on _load(loader)
@@ -43,7 +45,6 @@ on process given bundle:a_bundle, text:a_text
 end process
 
 on process_file(a_bundle)
-	set a_text to a_bundle's get_contents()
-	process given bundle:a_bundle's xfile_ref(), text:a_text
-	a_bundle's release()
+	set a_text to call method "script_source:" of _app_controller with parameter (a_bundle's posix_path())
+	process given bundle:a_bundle, text:a_text
 end process_file

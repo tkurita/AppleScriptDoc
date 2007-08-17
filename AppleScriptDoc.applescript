@@ -43,7 +43,6 @@ on __load__(loader)
 end __load__
 
 property _ : __load__(proxy() of application (get "AppleScriptDocLib"))
---property _ : __load__(application (get "AppleScriptDocLib"))
 
 (*== GUI elements *)
 property _export_helpbook_button : missing value
@@ -52,6 +51,8 @@ property _save_button : missing value
 property _recent_popup : missing value
 property _indicator : missing value
 
+property _app_controller : missing value
+
 (*== variables *)
 property _target_script : missing value
 
@@ -59,7 +60,9 @@ property _target_script : missing value
 property _line_end : HTMLElement's line_end()
 
 on export_helpbook()
-	ExportHelpBook's process_file(OneShotScriptEditor's make_with_xfile(my _target_script))
+	--log "start export_helpbook"
+	--ExportHelpBook's process_file(OneShotScriptEditor's make_with_xfile(my _target_script))
+	ExportHelpBook's process_file(my _target_script)
 end export_helpbook
 
 on import_script(script_name)
@@ -77,6 +80,7 @@ on will finish launching theObject
 	set ExportHelpBook to import_script("ExportHelpBook")
 	set SetupHelpBook to import_script("SetupHelpBook")
 	set SaveToFile to import_script("SaveToFile")
+	set _app_controller to call method "delegate"
 end will finish launching
 
 on launched theObject
@@ -176,11 +180,11 @@ on clicked theObject
 		display open panel attached to window "main" for file types {"scpt", "scptd"}
 	else if a_name is "SetupHelpBook" then
 		start_indicator()
-		SetupHelpBook's process_file(OneShotScriptEditor's make_with_xfile(my _target_script))
+		SetupHelpBook's process_file(my _target_script)
 		stop_indicator()
 	else if a_name is "SaveToFile" then
 		start_indicator()
-		SaveToFile's process_file(OneShotScriptEditor's make_with_xfile(my _target_script))
+		SaveToFile's process_file(my _target_script)
 		stop_indicator()
 	end if
 end clicked

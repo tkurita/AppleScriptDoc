@@ -57,6 +57,15 @@
 								  contextInfo:nil];
 }
 
+- (NSString *)script_source:(NSString *)path
+{
+	NSDictionary *error_info;
+	NSAppleScript *a_script = [[[NSAppleScript alloc] initWithContentsOfURL:
+									[NSURL fileURLWithPath:path] error:&error_info] autorelease];
+									
+	return [a_script source];
+
+}
 
 
 @end
