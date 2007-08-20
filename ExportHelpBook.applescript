@@ -138,10 +138,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	oneshot_doc's catch_doc()
 	oneshot_doc's release()
 	set index_body to index_contents's as_unicode_with(_line_end)
-	
 	set pathconv to PathConverter's make_with_path(index_page's posix_path())
-	set rel_root to relative_path of pathconv for ((POSIX path of root_ref) & "/")
-	
+	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
 	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory _template_folder)
 	tell template
 		insert_text("$BODY", index_body)
@@ -168,7 +166,7 @@ on process_file(a_file)
 	set a_text to call method "script_source:" of _app_controller with parameter (a_file's posix_path())
 	set script_name to a_file's basename()
 	
-	set a_root to POSIX file (contents of default entry "HelpBookRootPath" of user defaults)
+	set a_root to (POSIX file (contents of default entry "HelpBookRootPath" of user defaults)) as alias
 	set a_destination to POSIX file (contents of default entry "ExportFilePath" of user defaults)
 	set index_page to output_to_folder(a_root, a_destination, a_text, script_name)
 	
