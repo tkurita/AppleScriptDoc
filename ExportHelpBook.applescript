@@ -133,7 +133,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			
 			set handler_page to pages_folder's child(handler_id & ".html")
 			set pathconv to PathConverter's make_with_path(handler_page's posix_path())
-			set rel_root to relative_path of pathconv for ((POSIX path of root_ref) & "/")
+			set rel_root to relative_path of pathconv for (POSIX path of root_ref)
 			
 			set template to TemplateProcessor's make_with_file(handler_template's as_alias())
 			tell template
