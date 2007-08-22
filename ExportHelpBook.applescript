@@ -76,6 +76,27 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set oneshot_doc to OneShotScriptEditor's make_with_name(ASHTML's temporary_doctitle())
 	oneshot_doc's check_status()
 	
+	script HandlerIDManager
+		property _handler_id : {}
+		on handler_id_for(handler_name)
+			if handler_name is not in _handler_id then
+				set end of _handler_id to handler_name
+				return handler_name
+			else
+				set n to 1
+				repeat
+					set new_handler_id to handler_name & "_" & n
+					if new_handler_id is not in _handler_id then
+						set end of _handler_id to new_handler_id
+						return new_handler_id
+					end if
+					set n to n + 1
+				end repeat
+			end if
+		end handler_id_for
+		
+	end script
+	
 	repeat with doc_element in elementList of doc_container
 		set a_kind to doc_element's get_kind()
 		if a_kind is "title" then
@@ -96,10 +117,13 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		else if a_kind is "handler" then
 			--log "start process handler element"
 			set handler_name to get_handler_name() of doc_element
+			set handler_id to HandlerIDManager's handler_id_for(handler_name)
+			
 			set handler_heading to HTMLElement's make_with("h3", {})
-			set a_link to handler_heading's push_element_with("a", {{"href", "pages/" & handler_name & ".html"}})
+			set a_link to handler_heading's push_element_with("a", {{"href", "pages/" & handler_id & ".html"}})
 			a_link's push(handler_name)
 			index_contents's push(handler_heading's as_html())
+			
 			a_link_manager's set_prefix("pages/")
 			set an_abstruct to doc_element's copy_abstruct()
 			an_abstruct's each(a_link_manager)
@@ -107,7 +131,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			set srd to SimpleRD's make_with_iterator(an_abstruct)
 			index_contents's push(srd's as_xhtml())
 			
-			set handler_page to pages_folder's child(handler_name & ".html")
+			set handler_page to pages_folder's child(handler_id & ".html")
 			set pathconv to PathConverter's make_with_path(handler_page's posix_path())
 			set rel_root to relative_path of pathconv for ((POSIX path of root_ref) & "/")
 			
