@@ -245,11 +245,6 @@ on panel ended theObject with result withResult
 	set_target_script(a_path)
 end panel ended
 
-on will close theObject
-	call method "saveFrameUsingName:" of theObject with parameter (name of theObject)
-	quit
-end will close
-
 on open theObject
 	activate
 	set a_class to class of theObject
@@ -267,3 +262,7 @@ on open theObject
 		end if
 	end if
 end open
+
+on will quit theObject
+	call method "saveFrameUsingName:" of window "Main" with parameter "Main"
+end will quit
