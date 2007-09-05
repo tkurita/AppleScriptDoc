@@ -1,0 +1,36 @@
+{
+    IBClasses = (
+        {
+            CLASS = DropBox; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {delegate = id; }; 
+            SUPERCLASS = NSBox; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {
+                cancelAction = id; 
+                chooseExportPath = id; 
+                chooseHBRoot = id; 
+                okAction = id; 
+                setExportPathFromRecents = id; 
+                setHelpBookRootFromRecents = id; 
+            }; 
+            CLASS = PathSettingWindowController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                exportDestBox = id; 
+                exportDestField = id; 
+                exportPathPopup = id; 
+                exportPathWarning = id; 
+                helpBookRootBox = id; 
+                helpBookRootField = id; 
+                helpBookRootPopup = id; 
+                okButton = id; 
+                progressIndicator = id; 
+            }; 
+            SUPERCLASS = NSWindowController; 
+        }
+    ); 
+    IBVersion = 1; 
+}
