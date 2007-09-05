@@ -7,6 +7,6 @@
 	<key>ExportFileName</key>
 	<string>reference.html</string>
 	<key>RecentsMax</key>
-	<string>6</string>
+	<integer>6</integer>
 </dict>
 </plist>

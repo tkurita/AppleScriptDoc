@@ -5,7 +5,7 @@ on make
 		property parent : XFileBase
 		
 		on resolve_alias()
-			set info_rec to resolve_info_record()
+			set info_rec to info()
 			if alias of info_rec then
 				set a_url to call method "fileURLWithPath:" of class "NSURL" with parameter my _itemRef
 				set a_url to call method "resolveAliasFile" of a_url
