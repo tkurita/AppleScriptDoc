@@ -10,7 +10,7 @@ global XText
 global _line_end
 
 on set_wrap_with_block(a_flag)
-	DocElements's ASHTML's set_wrap_with_block(a_flag)
+	ASHTML's set_wrap_with_block(a_flag)
 end set_wrap_with_block
 
 on extract_doc_region(line_list)

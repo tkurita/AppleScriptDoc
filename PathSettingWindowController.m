@@ -55,7 +55,10 @@ bail:
 		a_history = [NSMutableArray arrayWithObject:@""];
 	}
 	else {
-		if ([a_history containsObject:path]) return;
+		if ([a_history containsObject:path]) {
+			[self checkOKCondition];
+			return;
+		}
 		a_history = [a_history mutableCopy];
 	}
 

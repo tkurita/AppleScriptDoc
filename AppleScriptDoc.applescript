@@ -17,25 +17,26 @@ property PathAnalyzer : missing value
 property TemplateProcessor : missing value
 property XFileBase : missing value
 property PathConverter : missing value
+--property PathConverter : load("PathConverter") of application (get "AppleScriptDocLib")
 property XFile : missing value
 property OneShotScriptEditor : missing value
 
 on __load__(loader)
 	tell loader
-		set DocElements to load("DocElements")
+		set SimpleRD to load("SimpleRD")
+		set ASHTML to load("ASHTML")
+		--set DocElements to load("DocElements")
 		set TemplateProcessor to load("TemplateProcessor")
 		set PathConverter to load("PathConverter")
 		set OneShotScriptEditor to load("OneShotScriptEditor")
 	end tell
-	set SimpleRD to DocElements's SimpleRD
+	--set SimpleRD to DocElements's SimpleRD
 	set HTMLElement to SimpleRD's HTMLElement
+	set XDict to HTMLElement's XDict
 	set XList to SimpleRD's XList
 	set XText to XList's XText
-	
-	set ASHTML to DocElements's ASHTML
-	set XText to ASHTML's XText
+	--set ASHTML to DocElements's ASHTML
 	set ASFormattingStyle to ASHTML's ASFormattingStyle
-	set XDict to ASFormattingStyle's XDict
 	set XFileBase to TemplateProcessor's XFile
 	set PathAnalyzer to XFileBase's PathAnalyzer
 	
@@ -77,6 +78,8 @@ on will finish launching theObject
 	
 	set DefaultsManager to import_script("DefaultsManager")
 	set ASDocParser to import_script("ASDocParser")
+	ASDocParser's set_wrap_with_block(false)
+	set DocElements to import_script("DocElements")
 	set ExportHelpBook to import_script("ExportHelpBook")
 	set SetupHelpBook to import_script("SetupHelpBook")
 	set SaveToFile to import_script("SaveToFile")
