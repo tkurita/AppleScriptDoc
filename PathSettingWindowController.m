@@ -1,10 +1,13 @@
 #import "PathSettingWindowController.h"
 #import "PathExtra.h"
+#import "NSUserDefaultsExtensions.h"
 
 @implementation PathSettingWindowController
 
 @class ASKScriptCache;
 @class ASKScript;
+
+#define uselog 0
 
 - (IBAction)cancelAction:(id)sender
 {
@@ -45,43 +48,22 @@ bail:
 	[okButton setEnabled:is_ok];
 }
 
-- (void)addToHistory:(NSString *)path forKey:(NSString *)key
+- (void)addToRecents:(NSString *)path forKey:(NSString *)key
 {
-	if (!path) return;
-	
-	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
-	NSMutableArray *a_history = [user_defaults objectForKey:key];
-	if (a_history == nil) {
-		a_history = [NSMutableArray arrayWithObject:@""];
-	}
-	else {
-		if ([a_history containsObject:path]) {
-			[self checkOKCondition];
-			return;
-		}
-		a_history = [a_history mutableCopy];
-	}
-
-	[a_history insertObject:path atIndex:1];
-	unsigned int history_max = [user_defaults integerForKey:@"RecentsMax"];
-
-	if ([a_history count] > history_max) {
-		[a_history removeLastObject];
-	}
-	[user_defaults setObject:a_history forKey:key];
+	[[NSUserDefaults standardUserDefaults] addToHistory:path forKey:key];
 	[self checkOKCondition];
 }
 
 - (void)setHelpBookRoot:(NSString *)path
 {
 	[[NSUserDefaults standardUserDefaults] setObject:path forKey:@"HelpBookRootPath"];
-	[self addToHistory:path forKey:@"RecentHelpBookRoots"];
+	[self addToRecents:path forKey:@"RecentHelpBookRoots"];
 }
 
 - (void)setExportPath:(NSString *)path
 {
 	[[NSUserDefaults standardUserDefaults] setObject:path forKey:@"ExportFilePath"];
-	[self addToHistory:path forKey:@"RecentExportPathes"];
+	[self addToRecents:path forKey:@"RecentExportPathes"];
 }
 
 - (void)savePanelDidEnd:(NSSavePanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
@@ -126,14 +108,37 @@ bail:
 
 - (IBAction)okAction:(id)sender
 {
-	NSDictionary *errorInfo = nil;
+	NSDictionary *error_info = nil;
 	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
 	
 	[progressIndicator setHidden:NO];
 	[progressIndicator startAnimation:self];
-	[a_script executeHandlerWithName:@"export_helpbook" arguments:nil error:&errorInfo];
+	[a_script executeHandlerWithName:@"export_helpbook" arguments:nil error:&error_info];
+	if (error_info) {
+		[[NSAlert alertWithMessageText:@"AppleScript Error"
+			defaultButton:@"OK" alternateButton:nil otherButton:nil
+			informativeTextWithFormat:@"%@\nNumber: %@", 
+				[error_info objectForKey:@"OSAScriptErrorMessage"],
+				[error_info objectForKey:@"OSAScriptErrorNumber"]] runModal];
+		NSLog([error_info description]);
+	}
+	
 	[progressIndicator stopAnimation:self];
 	[progressIndicator setHidden:YES];
+	
+	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
+	NSArray *array = [pathRecordsController selectedObjects];
+	if (array) {
+		[pathRecordsController removeSelectedObjects:array];
+	} else {
+	
+	}
+
+	[pathRecordsController addObject:
+		[NSDictionary dictionaryWithObjectsAndKeys:
+			[user_defaults stringForKey:@"ExportFilePath"], @"ExportFilePath", 
+			[user_defaults stringForKey:@"HelpBookRootPath"], @"HelpBookRootPath", 
+			[user_defaults stringForKey:@"TargetScript"], @"ScriptPath", nil]];	
 	[[NSApplication sharedApplication] endSheet: [sender window] returnCode:128];
 }
 
@@ -153,15 +158,63 @@ bail:
 	}
 }
 
+- (void)updatePathesForTarget
+{
+	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
+	NSString *target_path = [user_defaults objectForKey:@"TargetScript"];
+	NSPredicate *predicate = [NSPredicate
+								predicateWithFormat:@"ScriptPath like[c] %@", target_path];
+	[pathRecordsController setFilterPredicate:predicate];
+	NSArray *array = [pathRecordsController arrangedObjects];
+	
+	if (array && [array count]) {
+		NSDictionary *path_dict = [array lastObject];
+		NSEnumerator *enumerator = [[NSArray arrayWithObjects:@"HelpBookRootPath", @"ExportFilePath", nil]
+										objectEnumerator];
+		NSString *a_key;
+		while (a_key = [enumerator nextObject]) {
+			NSString *a_path = [path_dict objectForKey:a_key];
+			if (a_path) {
+				[user_defaults setObject:a_path forKey:a_key];
+			}
+		}
+		[pathRecordsController setSelectedObjects:array];
+	} else {
+#if uselog	
+		NSLog(@"No content");
+#endif		
+	}
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                        change:(NSDictionary *)change context:(void *)context
+{
+#if uselog
+	NSLog(@"observeValueForKeyPath");
+#endif	
+	if ([keyPath isEqualToString:@"values.TargetScript"]) {
+		[self updatePathesForTarget];
+	}
+}
+
 - (void)windowDidLoad
 {
+#if uselog
+	NSLog(@"windowDidLoad");
+#endif
 	[helpBookRootBox setAcceptFileInfo:[NSArray arrayWithObject:
 		[NSDictionary dictionaryWithObject:NSFileTypeDirectory forKey:@"FileType"]]];
+	
 	[exportDestBox setAcceptFileInfo:[NSArray arrayWithObjects:
 		[NSDictionary dictionaryWithObject:NSFileTypeDirectory forKey:@"FileType"],
 		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeRegular, @"FileType",
 													@"html", @"PathExtension", nil], nil]];
+	[self updatePathesForTarget];
 	[self checkOKCondition];
+	 [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self
+             forKeyPath:@"values.TargetScript"
+                 options:(NSKeyValueObservingOptionNew)
+                    context:NULL];
 }
 
 - (BOOL)dropBox:(NSView *)dbv acceptDrop:(id <NSDraggingInfo>)info item:(id)item

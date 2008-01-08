@@ -58,6 +58,10 @@
 		2C4EFF740C3C16C0003743D7 /* default.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5D0C3C1642003743D7 /* default.css */; };
 		2C4EFF750C3C16C0003743D7 /* handler_page.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5E0C3C1642003743D7 /* handler_page.css */; };
 		2CE5F1620D321CE700EDC0FF /* DocElements.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CE5F1610D321CE700EDC0FF /* DocElements.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
+		2CE5F4220D328D7B00EDC0FF /* IsBundleTransformer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CE5F4200D328D7B00EDC0FF /* IsBundleTransformer.h */; };
+		2CE5F4230D328D7B00EDC0FF /* IsBundleTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */; };
+		2CE5F48B0D32EEE900EDC0FF /* NSUserDefaultsExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CE5F4890D32EEE900EDC0FF /* NSUserDefaultsExtensions.h */; };
+		2CE5F48C0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */; };
 		2CF5BF000C43CE9900224B65 /* NSURL+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BEEC0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.m */; };
 		2CF5BF010C43CE9900224B65 /* PathExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BEF00C43CD1D00224B65 /* PathExtra.m */; };
 		2CF5BFEF0C43E6E600224B65 /* XFileExtend.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
@@ -175,7 +179,7 @@
 		2C4809390C3B7D94004E3217 /* handler.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = handler.html; sourceTree = "<group>"; };
 		2C48093A0C3B7D94004E3217 /* reference.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = reference.html; sourceTree = "<group>"; };
 		2C4A6CBE0C3CE15E00DBBCD4 /* FactorySettings.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = FactorySettings.plist; sourceTree = "<group>"; };
-		2C4A6CEE0C3CE21B00DBBCD4 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; };
+		2C4A6CEE0C3CE21B00DBBCD4 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		2C4A6CEF0C3CE21B00DBBCD4 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
 		2C4A6CF50C3CE35F00DBBCD4 /* DonationReminder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationReminder.framework; path = ../DonationReminder.framework; sourceTree = SOURCE_ROOT; };
 		2C4EFEA70C3BB03A003743D7 /* SetupHelpBook.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetupHelpBook.applescript; sourceTree = "<group>"; };
@@ -184,6 +188,10 @@
 		2C4EFF5F0C3C1642003743D7 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2C4EFF610C3C1642003743D7 /* handler.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = handler.html; sourceTree = "<group>"; };
 		2CE5F1610D321CE700EDC0FF /* DocElements.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = DocElements.applescript; sourceTree = "<group>"; };
+		2CE5F4200D328D7B00EDC0FF /* IsBundleTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsBundleTransformer.h; sourceTree = "<group>"; };
+		2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsBundleTransformer.m; sourceTree = "<group>"; };
+		2CE5F4890D32EEE900EDC0FF /* NSUserDefaultsExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultsExtensions.h; sourceTree = "<group>"; };
+		2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsExtensions.m; sourceTree = "<group>"; };
 		2CF5BE310C43AB3300224B65 /* History.rd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = History.rd; path = ../History.rd; sourceTree = SOURCE_ROOT; wrapsLines = 1; };
 		2CF5BEE90C43CD1D00224B65 /* NDAlias.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDAlias.h; sourceTree = "<group>"; };
 		2CF5BEEA0C43CD1D00224B65 /* NDAlias.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDAlias.m; sourceTree = "<group>"; };
@@ -200,7 +208,7 @@
 		2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = XFileExtend.applescript; sourceTree = "<group>"; };
 		2CFE95FA0C4485B100B0D2A6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PathSettingWindow.nib; sourceTree = "<group>"; };
 		2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */ = {isa = PBXFileReference; fileEncoding = "-2147483647"; lastKnownFileType = sourcecode.c.h; path = PathSettingWindowController.h; sourceTree = "<group>"; };
-		2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */ = {isa = PBXFileReference; fileEncoding = "-2147483647"; lastKnownFileType = sourcecode.c.objc; path = PathSettingWindowController.m; sourceTree = "<group>"; };
+		2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */ = {isa = PBXFileReference; fileEncoding = "-2147483647"; lastKnownFileType = sourcecode.c.objc; path = PathSettingWindowController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		2CFE96240C4498FE00B0D2A6 /* DropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBox.h; sourceTree = "<group>"; };
 		2CFE96250C4498FE00B0D2A6 /* DropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBox.m; sourceTree = "<group>"; };
 		65359356078DD41800E8BB2F /* AppleScriptKit.sdef */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.sdef; name = AppleScriptKit.sdef; path = /System/Library/Frameworks/AppleScriptKit.framework/Versions/A/Resources/AppleScriptKit.sdef; sourceTree = "<absolute>"; };
@@ -399,6 +407,10 @@
 				2C4A6CEF0C3CE21B00DBBCD4 /* AppController.h */,
 				2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */,
 				2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */,
+				2CE5F4200D328D7B00EDC0FF /* IsBundleTransformer.h */,
+				2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */,
+				2CE5F4890D32EEE900EDC0FF /* NSUserDefaultsExtensions.h */,
+				2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -416,6 +428,8 @@
 				2C4A6CF10C3CE21B00DBBCD4 /* AppController.h in Headers */,
 				2CFE961A0C44925A00B0D2A6 /* PathSettingWindowController.h in Headers */,
 				2CFE96260C4498FE00B0D2A6 /* DropBox.h in Headers */,
+				2CE5F4220D328D7B00EDC0FF /* IsBundleTransformer.h in Headers */,
+				2CE5F48B0D32EEE900EDC0FF /* NSUserDefaultsExtensions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +504,8 @@
 				2C4A6CF00C3CE21B00DBBCD4 /* AppController.m in Sources */,
 				2CFE961B0C44925A00B0D2A6 /* PathSettingWindowController.m in Sources */,
 				2CFE96270C4498FE00B0D2A6 /* DropBox.m in Sources */,
+				2CE5F4230D328D7B00EDC0FF /* IsBundleTransformer.m in Sources */,
+				2CE5F48C0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

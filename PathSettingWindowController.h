@@ -14,6 +14,7 @@
 	IBOutlet id okButton;
 	IBOutlet id exportPathWarning;
 	IBOutlet id progressIndicator;
+	IBOutlet id pathRecordsController;
 }
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)chooseExportPath:(id)sender;

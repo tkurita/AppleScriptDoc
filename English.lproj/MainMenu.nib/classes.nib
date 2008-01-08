@@ -1,10 +1,10 @@
 {
     IBClasses = (
         {
-            ACTIONS = {exportAction = id; makeDonation = id; popUpRecents = id; }; 
+            ACTIONS = {exportAction = id; makeDonation = id; popUpRecents = id; selectTarget = id; }; 
             CLASS = AppController; 
             LANGUAGE = ObjC; 
-            OUTLETS = {mainWindow = id; recentScriptsButton = id; }; 
+            OUTLETS = {mainWindow = id; recentScriptsButton = id; targetScriptBox = id; }; 
             SUPERCLASS = NSObject; 
         }, 
         {

@@ -1,6 +1,9 @@
 #import "AppController.h"
 #import <DonationReminder/DonationReminder.h>
 #import "PathSettingWindowController.h"
+#import "PathExtra.h"
+#import "IsBundleTransformer.h"
+#import "NSUserDefaultsExtensions.h"
 
 #define useLog 0
 
@@ -8,6 +11,12 @@
 @class ASKScript;
 
 @implementation AppController
+
++ (void)initialize
+{	
+	NSValueTransformer *transformer = [[[IsBundleTransformer alloc] init] autorelease];
+	[NSValueTransformer setValueTransformer:transformer forName:@"IsBundleTransformer"];
+}
 
 - (IBAction)makeDonation:(id)sender
 {
@@ -26,16 +35,61 @@
 	[user_defaults registerDefaults:factory_defaults];
 }
 
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
+	[DonationReminder remindDonation];
+	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
+	if (a_path) {
+		if (![a_path fileExists]) {
+			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"TargetScript"];
+		}
+	}
+}
+
+- (void)setTargetScript:(NSString *)a_path
+{
+	[[NSUserDefaultsController sharedUserDefaultsController]
+					setValue:a_path forKeyPath:@"values.TargetScript"];
+	[[NSUserDefaults standardUserDefaults] addToHistory:a_path forKey:@"RecentScripts"];
+	[recentScriptsButton setTitle:@""];
+}
+
+- (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode 
+												contextInfo:(void  *)contextInfo
+{
+	if (returnCode == NSOKButton) {
+		[self setTargetScript:[panel filename]];
+	}
+}
+
+- (IBAction)selectTarget:(id)sender
+{
+	[[NSOpenPanel openPanel] beginSheetForDirectory:nil file:nil 
+		types:[NSArray arrayWithObjects:@"scpt", @"scptd", nil]
+		modalForWindow:mainWindow modalDelegate:self
+		didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) 
+		contextInfo:nil];
+}
+
 - (IBAction)popUpRecents:(id)sender
 {
-	NSDictionary *errorInfo = nil;
-	ASKScript *a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
-	[a_script executeHandlerWithName:@"set_target_from_recent" 
-		arguments:[NSArray arrayWithObject:[[sender selectedItem] title]] error:&errorInfo];
+	NSString *a_path = [[sender selectedItem] title];
+	if ([a_path fileExists]) {
+		[[NSUserDefaultsController sharedUserDefaultsController] 
+						setValue:a_path forKeyPath:@"values.TargetScript"];
+	} else {
+		[[NSUserDefaults standardUserDefaults] removeFromHistory:a_path
+												forKey:@"RecentScripts"];
+	}
 }
 
 - (void)awakeFromNib {
 	[recentScriptsButton setTitle:@""];
+	[targetScriptBox setAcceptFileInfo:[NSArray arrayWithObjects:
+		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeDirectory, @"FileType",
+													@"scptd", @"PathExtension", nil], 
+		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeRegular, @"FileType",
+													@"scpt", @"PathExtension", nil], nil]];
 }
 
 - (void)sheetDidEnd:(NSWindow*)sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo
@@ -72,5 +126,11 @@
 	return YES;
 }
 
+- (BOOL)dropBox:(NSView *)dbv acceptDrop:(id <NSDraggingInfo>)info item:(id)item
+{
+	item = [[item infoResolvingAliasFile] objectForKey:@"ResolvedPath"];
+	[self setTargetScript:item];
+	return YES;
+}
 
 @end

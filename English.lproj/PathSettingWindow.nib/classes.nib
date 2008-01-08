@@ -27,6 +27,7 @@
                 helpBookRootField = id; 
                 helpBookRootPopup = id; 
                 okButton = id; 
+                pathRecordsController = id; 
                 progressIndicator = id; 
             }; 
             SUPERCLASS = NSWindowController; 

@@ -62,8 +62,8 @@ property _line_end : HTMLElement's line_end()
 
 on export_helpbook()
 	--log "start export_helpbook"
-	--ExportHelpBook's process_file(OneShotScriptEditor's make_with_xfile(my _target_script))
-	ExportHelpBook's process_file(my _target_script)
+	set a_path to contents of default entry "TargetScript" of user defaults
+	ExportHelpBook's process_file(XFile's make_with(POSIX file a_path))
 end export_helpbook
 
 on import_script(script_name)
@@ -87,11 +87,12 @@ on will finish launching theObject
 end will finish launching
 
 on launched theObject
-	set_target_script(DefaultsManager's default_with_initialize("TargetScript", ""))
+	--set_target_script(DefaultsManager's default_with_initialize("TargetScript", ""))
 	show window "Main"
-	call method "remindDonation" of class "DonationReminder"
+	--call method "remindDonation" of class "DonationReminder"
 end launched
 
+(*
 on is_script_file(a_path)
 	set a_path to a_path as Unicode text
 	return ((a_path ends with ".scpt") or (a_path ends with ".scptd"))
@@ -166,6 +167,7 @@ on set_target_script(a_path)
 	set enabled of _save_button to true
 	set _target_script to a_file
 end set_target_script
+*)
 
 on start_indicator()
 	set visible of _indicator to true
@@ -179,19 +181,25 @@ end stop_indicator
 
 on clicked theObject
 	set a_name to name of theObject
+	(*
 	if a_name is "SelectTarget" then
 		display open panel attached to window "main" for file types {"scpt", "scptd"}
-	else if a_name is "SetupHelpBook" then
+	else 
+	*)
+	if a_name is "SetupHelpBook" then
 		start_indicator()
-		SetupHelpBook's process_file(my _target_script)
+		set a_path to contents of default entry "TargetScript" of user defaults
+		SetupHelpBook's process_file(XFile's make_with(POSIX file a_path))
 		stop_indicator()
 	else if a_name is "SaveToFile" then
 		start_indicator()
-		SaveToFile's process_file(my _target_script)
+		set a_path to contents of default entry "TargetScript" of user defaults
+		SaveToFile's process_file(XFile's make_with(POSIX file a_path))
 		stop_indicator()
 	end if
 end clicked
 
+(*
 on drop theObject drag info dragInfo
 	set data_types to types of pasteboard of dragInfo
 	if "file names" is in data_types then
@@ -215,14 +223,17 @@ on prepare drop theObject drag info dragInfo
 	end if
 	return is_acceptable
 end prepare drop
+*)
 
 on awake from nib theObject
 	set a_name to name of theObject
-	if a_name is "TargetScriptBox" then
+	(* if a_name is "TargetScriptBox" then
 		tell theObject to register drag types {"string", "rich text", "file names"}
 	else if a_name is "SelectTarget" then
 		tell theObject to register drag types {"string", "rich text", "file names"}
-	else if a_name is "ExportHelpBook" then
+	else
+	*)
+	if a_name is "ExportHelpBook" then
 		set _export_helpbook_button to theObject
 	else if a_name is "SetupHelpBook" then
 		set _setup_helpbook_button to theObject
