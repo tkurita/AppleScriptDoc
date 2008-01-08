@@ -85,12 +85,13 @@ on will finish launching theObject
 	set SaveToFile to import_script("SaveToFile")
 	set _app_controller to call method "delegate"
 end will finish launching
-
+(*
 on launched theObject
 	--set_target_script(DefaultsManager's default_with_initialize("TargetScript", ""))
-	show window "Main"
+	--show window "Main"
 	--call method "remindDonation" of class "DonationReminder"
 end launched
+*)
 
 (*
 on is_script_file(a_path)
@@ -239,9 +240,9 @@ on awake from nib theObject
 		set _setup_helpbook_button to theObject
 	else if a_name is "SaveToFile" then
 		set _save_button to theObject
-	else if a_name is "Main" then
+		(*else if a_name is "Main" then
 		center theObject
-		call method "setFrameUsingName:" of theObject with parameter a_name
+		call method "setFrameUsingName:" of theObject with parameter a_name*)
 	else if a_name is "RecentPopup" then
 		set _recent_popup to theObject
 	else if a_name is "ProgressIndicator" then
@@ -249,6 +250,7 @@ on awake from nib theObject
 	end if
 end awake from nib
 
+(*
 on panel ended theObject with result withResult
 	if withResult is not 1 then
 		return
@@ -258,6 +260,7 @@ on panel ended theObject with result withResult
 	set a_path to item 1 of a_list
 	set_target_script(a_path)
 end panel ended
+*)
 
 on open theObject
 	activate
@@ -272,11 +275,14 @@ on open theObject
 		set a_file to XFile's make_with(theObject)
 		set a_suffix to a_file's path_extension()
 		if a_suffix is in {".scpt", ".scptd"} then
-			set_target_script(a_file)
+			DefaultsManager's set_value("TargetScript", a_file's posix_path())
+			--set contents of default entry "TargetScript" of user defaults to a_file's posix_path()
 		end if
 	end if
 end open
 
+(*
 on will quit theObject
 	call method "saveFrameUsingName:" of window "Main" with parameter "Main"
 end will quit
+*)

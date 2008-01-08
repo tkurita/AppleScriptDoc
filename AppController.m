@@ -36,13 +36,19 @@
 }
 
 #pragma mark initilize
-- (void)awakeFromNib {
+- (void)awakeFromNib
+{
+#if useLog
+	NSLog(@"awakeFromNib");
+#endif
 	[recentScriptsButton setTitle:@""];
 	[targetScriptBox setAcceptFileInfo:[NSArray arrayWithObjects:
 		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeDirectory, @"FileType",
 													@"scptd", @"PathExtension", nil], 
 		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeRegular, @"FileType",
 													@"scpt", @"PathExtension", nil], nil]];
+	[mainWindow center];
+	[mainWindow setFrameAutosaveName:@"Main"];
 }
 
 #pragma mark delegate methods for somethings
@@ -57,7 +63,18 @@
 												contextInfo:(void  *)contextInfo
 {
 	if (returnCode == NSOKButton) {
-		[self setTargetScript:[panel filename]];
+		NSString *a_path = [panel filename];
+		NSDictionary *alias_info = [a_path infoResolvingAliasFile];
+		if (alias_info) {
+			[self setTargetScript:[alias_info objectForKey:@"ResolvedPath"] ];
+		} else {
+			[panel orderOut:self];
+			NSAlert *an_alert = [NSAlert alertWithMessageText:@"Can't resolving alias"
+							defaultButton:@"OK" alternateButton:nil otherButton:nil
+							informativeTextWithFormat:@"No original item of '%@'",a_path ];
+			[an_alert beginSheetModalForWindow:mainWindow modalDelegate:self
+														didEndSelector:nil contextInfo:nil];
+		}
 	}
 }
 
@@ -73,7 +90,8 @@
 #if useLog
 	NSLog(@"start applicationWillFinishLaunching");
 #endif
-	NSString *defaults_plist = [[NSBundle mainBundle] pathForResource:@"FactorySettings" ofType:@"plist"];
+	NSString *defaults_plist = [[NSBundle mainBundle] 
+						pathForResource:@"FactorySettings" ofType:@"plist"];
 	NSDictionary *factory_defaults = [NSDictionary dictionaryWithContentsOfFile:defaults_plist];
 	
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
@@ -89,6 +107,7 @@
 			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"TargetScript"];
 		}
 	}
+	[mainWindow orderFront:self];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
@@ -96,6 +115,10 @@
 	return YES;
 }
 
+- (void)applicationWillTerminate:(NSNotification *)aNotification
+{
+	[mainWindow saveFrameUsingName:@"Main"];
+}
 
 #pragma mark actions
 - (IBAction)makeDonation:(id)sender
@@ -105,11 +128,13 @@
 
 - (IBAction)selectTarget:(id)sender
 {
-	[[NSOpenPanel openPanel] beginSheetForDirectory:nil file:nil 
-		types:[NSArray arrayWithObjects:@"scpt", @"scptd", nil]
-		modalForWindow:mainWindow modalDelegate:self
-		didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) 
-		contextInfo:nil];
+	NSOpenPanel *a_panel = [NSOpenPanel openPanel];
+	[a_panel setResolvesAliases:NO];
+	[a_panel beginSheetForDirectory:nil file:nil 
+			types:[NSArray arrayWithObjects:@"scpt", @"scptd", nil]
+			modalForWindow:mainWindow modalDelegate:self
+			didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) 
+			contextInfo:nil];
 }
 
 - (IBAction)popUpRecents:(id)sender
@@ -122,6 +147,7 @@
 		[[NSUserDefaults standardUserDefaults] removeFromHistory:a_path
 												forKey:@"RecentScripts"];
 	}
+	[recentScriptsButton setTitle:@""];
 }
 
 - (IBAction)exportAction:(id)sender
