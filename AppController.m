@@ -7,9 +7,6 @@
 
 #define useLog 0
 
-@class ASKScriptCache;
-@class ASKScript;
-
 @implementation AppController
 
 + (void)initialize
@@ -18,11 +15,59 @@
 	[NSValueTransformer setValueTransformer:transformer forName:@"IsBundleTransformer"];
 }
 
-- (IBAction)makeDonation:(id)sender
+#pragma mark services for scripts
+- (NSString *)script_source:(NSString *)path
 {
-	[DonationReminder goToDonation];
+	NSDictionary *error_info;
+	NSAppleScript *a_script = [[[NSAppleScript alloc] initWithContentsOfURL:
+									[NSURL fileURLWithPath:path] error:&error_info] autorelease];
+									
+	return [a_script source];
+
 }
 
+#pragma mark private methods
+- (void)setTargetScript:(NSString *)a_path
+{
+	[[NSUserDefaultsController sharedUserDefaultsController]
+					setValue:a_path forKeyPath:@"values.TargetScript"];
+	[[NSUserDefaults standardUserDefaults] addToHistory:a_path forKey:@"RecentScripts"];
+	[recentScriptsButton setTitle:@""];
+}
+
+#pragma mark initilize
+- (void)awakeFromNib {
+	[recentScriptsButton setTitle:@""];
+	[targetScriptBox setAcceptFileInfo:[NSArray arrayWithObjects:
+		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeDirectory, @"FileType",
+													@"scptd", @"PathExtension", nil], 
+		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeRegular, @"FileType",
+													@"scpt", @"PathExtension", nil], nil]];
+}
+
+#pragma mark delegate methods for somethings
+- (BOOL)dropBox:(NSView *)dbv acceptDrop:(id <NSDraggingInfo>)info item:(id)item
+{
+	item = [[item infoResolvingAliasFile] objectForKey:@"ResolvedPath"];
+	[self setTargetScript:item];
+	return YES;
+}
+
+- (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode 
+												contextInfo:(void  *)contextInfo
+{
+	if (returnCode == NSOKButton) {
+		[self setTargetScript:[panel filename]];
+	}
+}
+
+- (void)sheetDidEnd:(NSWindow*)sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo
+{
+	[sheet orderOut:self];
+}
+
+
+#pragma mark delegate methods for NSApplication
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
 #if useLog
@@ -46,20 +91,16 @@
 	}
 }
 
-- (void)setTargetScript:(NSString *)a_path
+- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
 {
-	[[NSUserDefaultsController sharedUserDefaultsController]
-					setValue:a_path forKeyPath:@"values.TargetScript"];
-	[[NSUserDefaults standardUserDefaults] addToHistory:a_path forKey:@"RecentScripts"];
-	[recentScriptsButton setTitle:@""];
+	return YES;
 }
 
-- (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode 
-												contextInfo:(void  *)contextInfo
+
+#pragma mark actions
+- (IBAction)makeDonation:(id)sender
 {
-	if (returnCode == NSOKButton) {
-		[self setTargetScript:[panel filename]];
-	}
+	[DonationReminder goToDonation];
 }
 
 - (IBAction)selectTarget:(id)sender
@@ -83,20 +124,6 @@
 	}
 }
 
-- (void)awakeFromNib {
-	[recentScriptsButton setTitle:@""];
-	[targetScriptBox setAcceptFileInfo:[NSArray arrayWithObjects:
-		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeDirectory, @"FileType",
-													@"scptd", @"PathExtension", nil], 
-		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeRegular, @"FileType",
-													@"scpt", @"PathExtension", nil], nil]];
-}
-
-- (void)sheetDidEnd:(NSWindow*)sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo
-{
-	[sheet orderOut:self];
-}
-
 - (IBAction)exportAction:(id)sender
 {
 	if (!pathSettingWindowController) {
@@ -109,28 +136,6 @@
 								modalDelegate:self 
 							   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
 								  contextInfo:nil];
-}
-
-- (NSString *)script_source:(NSString *)path
-{
-	NSDictionary *error_info;
-	NSAppleScript *a_script = [[[NSAppleScript alloc] initWithContentsOfURL:
-									[NSURL fileURLWithPath:path] error:&error_info] autorelease];
-									
-	return [a_script source];
-
-}
-
-- (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
-{
-	return YES;
-}
-
-- (BOOL)dropBox:(NSView *)dbv acceptDrop:(id <NSDraggingInfo>)info item:(id)item
-{
-	item = [[item infoResolvingAliasFile] objectForKey:@"ResolvedPath"];
-	[self setTargetScript:item];
-	return YES;
 }
 
 @end
