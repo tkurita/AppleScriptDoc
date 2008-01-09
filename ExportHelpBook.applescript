@@ -132,7 +132,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			index_contents's push(srd's as_xhtml())
 			
 			set handler_page to pages_folder's child(handler_id & ".html")
-			set pathconv to PathConverter's make_with_path(handler_page's posix_path())
+			set pathconv to PathConverter's make_with(handler_page's posix_path())
 			set rel_root to relative_path of pathconv for (POSIX path of root_ref)
 			
 			set template to TemplateProcessor's make_with_file(handler_template's as_alias())
@@ -162,7 +162,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	oneshot_doc's catch_doc()
 	oneshot_doc's release()
 	set index_body to index_contents's as_unicode_with(_line_end)
-	set pathconv to PathConverter's make_with_path(index_page's posix_path())
+	set pathconv to PathConverter's make_with(index_page's posix_path())
 	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
 	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory _template_folder)
 	tell template
