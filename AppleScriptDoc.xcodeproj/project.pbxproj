@@ -295,7 +295,6 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				257572D5072881A4000BE9CA /* Info.plist */,
 			);
 			name = AppleScriptDoc;
 			sourceTree = "<group>";
@@ -311,6 +310,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				257572D5072881A4000BE9CA /* Info.plist */,
 				2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */,
 				2C2C1FEC0C8EED640094E73B /* InfoPlist.strings */,
 				2C2C1F840C8EEC5C0094E73B /* HelpSetup.plist */,
