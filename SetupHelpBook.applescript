@@ -1,17 +1,7 @@
 global ExportHelpBook
 global XFile
 global _app_controller
-
-property InfoPlistArranger : missing value
-
-on _load(loader)
-	tell loader
-		set InfoPlistArranger to load("InfoPlistArranger.scpt")
-	end tell
-	return missing value
-end _load
-
-property _ : _load(proxy() of application (get "AppleScriptDocLib"))
+global InfoPlistArranger
 
 property _template_folder : "HelpBookTemplate"
 
@@ -20,6 +10,7 @@ on write_handler(handler_elem)
 end write_handler
 
 on process given bundle:a_bundle, text:a_text
+	--log "start process in SetupHelpBook"
 	if a_bundle is missing value then return
 	if not InfoPlistArranger's check_target(a_bundle) then return
 	ExportHelpBook's initialize()

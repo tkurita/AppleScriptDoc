@@ -4,6 +4,7 @@ property ASDocParser : missing value
 property ExportHelpBook : missing value
 property SetupHelpBook : missing value
 property SaveToFile : missing value
+property InfoPlistArranger : missing value
 
 property ASFormattingStyle : missing value
 property ASHTML : missing value
@@ -82,6 +83,7 @@ on will finish launching theObject
 	set ExportHelpBook to import_script("ExportHelpBook")
 	set SetupHelpBook to import_script("SetupHelpBook")
 	set SaveToFile to import_script("SaveToFile")
+	set InfoPlistArranger to import_script("InfoPlistArranger")
 	set _app_controller to call method "delegate"
 end will finish launching
 
