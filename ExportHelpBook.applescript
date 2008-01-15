@@ -185,8 +185,6 @@ end output_to_folder
 
 on process_file(a_file)
 	initialize()
-	--set a_text to a_file's get_contents()
-	--set script_name to a_file's xfile_ref()'s basename()
 	set a_text to call method "script_source:" of _app_controller with parameter (a_file's posix_path())
 	set script_name to a_file's basename()
 	
@@ -198,5 +196,4 @@ on process_file(a_file)
 	tell application "Finder"
 		open index_page's as_alias()
 	end tell
-	--a_file's release()
 end process_file
