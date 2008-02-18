@@ -121,7 +121,7 @@ end is_heading_tag
 
 on is_handler_tag(a_line)
 	set a_tag to first word of a_line
-	return a_tag is in {"abstruct", "description", "param", "result"}
+	return a_tag is in {"abstruct", "description", "param", "result", "syntax"}
 end is_handler_tag
 
 on parse_heading_region(a_region, doc_container)
@@ -217,6 +217,7 @@ on parse_handler_region(a_region, doc_container)
 	set param_list to {}
 	set result_list to {}
 	set abstruct_list to {}
+	set syntax_list to {}
 	
 	set is_continued to false
 	set enumerator to lineEnum of a_region
@@ -233,6 +234,8 @@ on parse_handler_region(a_region, doc_container)
 				set end of param_list to tag_contents(enumerator)
 			else if the_tag is "result" then
 				set result_list to tag_contents(enumerator)
+			else if the_tag is "syntax" then
+				set syntax_list to tag_contents(enumerator)
 			else
 				set is_continued to true
 				enumerator's decrement_index()
@@ -245,14 +248,16 @@ on parse_handler_region(a_region, doc_container)
 			end if
 		end if
 	end repeat
-	
-	set syntax_text to DocElements's strip_tag(nextLine of a_region)
-	set comment_offset to syntax_text's offset_of("--")
-	if comment_offset > 0 then
-		--set syntax_text to text 1 thru (comment_offset - 1) of syntax_text
-		set syntax_text to syntax_text's text_in_range(1, (comment_offset - 1))
+	if syntax_list is {} then
+		set syntax_text to DocElements's strip_tag(nextLine of a_region)
+		set comment_offset to syntax_text's offset_of("--")
+		if comment_offset > 0 then
+			--set syntax_text to text 1 thru (comment_offset - 1) of syntax_text
+			set syntax_text to syntax_text's text_in_range(1, (comment_offset - 1))
+		end if
+	else
+		set syntax_text to item 1 of syntax_list
 	end if
-	
 	script HandlerProperties
 		property _abstruct : XList's make_with(abstruct_list)
 		property _description : XList's make_with(description_list)

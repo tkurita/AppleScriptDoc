@@ -279,8 +279,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>15</integer>
-									<integer>14</integer>
+									<integer>6</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -334,7 +334,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2C90E7D90D3D059A00E2D1B9</string>
+										<string>2C224F550D6961060075754E</string>
 										<key>history</key>
 										<array>
 											<string>2CF5C0B90C44594500224B65</string>
@@ -360,7 +360,7 @@
 											<string>2CE5F1D50D324FF100EDC0FF</string>
 											<string>2CE5F1D60D324FF100EDC0FF</string>
 											<string>2C72A8BE0D3CBAA700AECAF3</string>
-											<string>2C72A9030D3CC34200AECAF3</string>
+											<string>2C06C6470D459B570016572D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -443,9 +443,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2C90E7D00D3D044900E2D1B9</string>
+				<string>2C224F560D6961060075754E</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>2C90E7D10D3D044900E2D1B9</string>
+				<string>2C224F570D6961060075754E</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -579,11 +579,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>2C0CC6CF0C3AB743001C480E</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
-		<string>1CD10A99069EF8BA00B06720</string>
-		<string>2C90E7BA0D3D02FF00E2D1B9</string>
-		<string>1C0AD2B3069F1EA900FABCE6</string>
 		<string>/Users/tkurita/Dev/Projects/AppleScriptDoc/trunk/AppleScriptDoc.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -603,12 +598,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>PathSettingWindowController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -666,7 +663,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>2C0CC6CF0C3AB743001C480E</string>
-				<string>2C90E7C90D3D043C00E2D1B9</string>
+				<string>2C90E8000D3D073800E2D1B9</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -1030,9 +1027,9 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C0AD2B3069F1EA900FABCE6</string>
-				<string>2C90E7BE0D3D02FF00E2D1B9</string>
+				<string>2C90E86D0D3D07B700E2D1B9</string>
 				<string>1CD0528B0623707200166675</string>
-				<string>2C90E7BF0D3D02FF00E2D1B9</string>
+				<string>2C90E86E0D3D07B700E2D1B9</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.run</string>
@@ -1041,7 +1038,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C0AD2B3069F1EA900FABCE6</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
