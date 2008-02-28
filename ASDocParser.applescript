@@ -32,7 +32,11 @@ on extract_doc_region(line_list)
 		
 		on strip_indent(a_line)
 			if (_n_indent > 0) and (a_line's starts_with(_indent)) then
-				set a_line to a_line's text_in_range(_n_indent + 1, -1)
+				if a_line's is_equal(_indent) then
+					set a_line to XText's make_with("")
+				else
+					set a_line to a_line's text_in_range(_n_indent + 1, -1)
+				end if
 			end if
 			return a_line
 		end strip_indent
