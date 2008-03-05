@@ -182,6 +182,9 @@ on parse_glossary(a_region, doc_container)
 				enumerator's decrement_index()
 				exit repeat
 			end if
+		else if length of a_line < 4 then
+			set is_continued to true
+			exit repeat
 		else
 			set a_list to a_line's as_list_with("||")
 			set a_word to XText's make_with(item 1 of a_list)'s strip()'s as_unicode()
@@ -235,7 +238,7 @@ on parse_handler_region(a_region, doc_container)
 			else if the_tag is "description" then
 				set description_list to tag_contents(enumerator)
 			else if the_tag is "param" then
-				set end of param_list to tag_contents(enumerator)
+				set end of param_list to XList's make_with(tag_contents(enumerator))
 			else if the_tag is "result" then
 				set result_list to tag_contents(enumerator)
 			else if the_tag is "syntax" then
@@ -266,7 +269,7 @@ on parse_handler_region(a_region, doc_container)
 		property _abstruct : XList's make_with(abstruct_list)
 		property _description : XList's make_with(description_list)
 		property _result : XList's make_with(result_list)
-		property _parameters : param_list
+		property _parameters : XList's make_with(param_list)
 		property _syntax : syntax_text
 		property _handler_name : first word of syntax_text
 	end script
@@ -306,6 +309,40 @@ on make_doc_container()
 			set my _prefix to a_text
 		end set_prefix
 		
+		on is_url(a_word)
+			--log "start is_url"
+			set schemes to {"http:", "mailto:", "ftp:", "file:", "help:"}
+			repeat with a_scheme in schemes
+				if a_word's starts_with(contents of a_scheme) then
+					return true
+				end if
+			end repeat
+			return false
+		end is_url
+		
+		on process_autolink(a_text)
+			set start_pos to a_text's offset_of("((<")
+			if start_pos > 0 then
+				set end_pos to a_text's offset_of(">))")
+				if end_pos is 0 then
+					error "Link bracket is not closed in " & quoted form of (a_text's as_unicode()) number 1455
+				end if
+				set linked_word to a_text's text_in_range(start_pos + 3, end_pos - 1)
+				if is_url(linked_word) then
+					set a_link to HTMLElement's make_with("a", {{"href", linked_word}})
+					a_link's push(linked_word)
+				else if linked_word's include("@") then
+					set a_link to HTMLElement's make_with("a", {{"href", linked_word's prepend("mailto:")}})
+					a_link's push(linked_word)
+				else
+					error "The link location for " & quoted form of (linked_word's as_unicode()) & " is not specified." number 1460
+				end if
+				set a_text to a_text's replace_in_range(start_pos, end_pos + 2, a_link's as_html())
+				return process_autolink(a_text)
+			end if
+			return a_text
+		end process_autolink
+		
 		on do(a_text)
 			--repeat with a_word in my _anchor_words
 			my _anchor_words's reset()
@@ -325,10 +362,11 @@ on make_doc_container()
 				if (a_text's include(link_word)) and (not my _anchor_words's has_item(a_word)) then
 					set a_tag to HTMLElement's make_with("a", {{"href", a_href}})
 					a_tag's push(a_word)
-					set contents of a_text to a_text's replace(link_word, a_tag's as_html())
+					set contents of a_text to a_text's replace(link_word, a_tag's as_xhtml())
 				end if
 			end repeat
-			
+			set a_result to process_autolink(contents of a_text)
+			set contents of a_text to a_result
 			return true
 		end do
 	end script
@@ -406,4 +444,3 @@ on process_for_editor()
 	
 	return process_for_list(every paragraph of theText)
 end process_for_editor
-

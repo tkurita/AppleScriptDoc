@@ -14,7 +14,6 @@ property SimpleRD : missing value
 property XDict : missing value
 property XList : missing value
 property XText : missing value
-property PathAnalyzer : missing value
 property TemplateProcessor : missing value
 property XFileBase : missing value
 property PathConverter : missing value
@@ -38,7 +37,6 @@ on __load__(loader)
 	--set ASHTML to DocElements's ASHTML
 	set ASFormattingStyle to ASHTML's ASFormattingStyle
 	set XFileBase to TemplateProcessor's XFile
-	set PathAnalyzer to XFileBase's PathAnalyzer
 	
 	return missing value
 end __load__

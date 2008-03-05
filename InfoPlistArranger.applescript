@@ -41,7 +41,6 @@ on check_target(a_target_bundle)
 	try
 		set _book_folder_name to |CFBundleHelpBookFolder| of _target_plist
 	on error
-		--set book_folder_name to uTextReplace of StringEngine for book_name from space by ""
 		set _book_folder_name to missing value
 		set _need_setup to true
 	end try

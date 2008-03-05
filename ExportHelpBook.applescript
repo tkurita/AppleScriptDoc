@@ -5,7 +5,6 @@ global ASDocParser
 global ASFormattingStyle
 global ASHTML
 global HTMLElement
-global PathAnalyzer
 global PathConverter
 global SimpleRD
 global TemplateProcessor

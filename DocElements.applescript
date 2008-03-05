@@ -233,20 +233,24 @@ on make_handler_element(property_script)
 			end if
 			
 			--log "after convertToHTML"
-			if my _parameters is not {} then
+			if (my _parameters's count_items()) > 0 then
 				set a_div to output's push_element_with("div", {{"class", "subHeading"}})
 				a_div's push("Parameters")
 				set a_ul to output's push_element_with("ul", {})
-				repeat with param_descs in my _parameters
-					set a_li to a_ul's push_element_with("li", {})
-					script RowText
-						on do(a_text)
-							return a_text's as_unicode()
-						end do
-					end script
-					a_li's push(XList's make_with(param_descs)'s map(RowText)'s as_unicode_with(_line_end))
-				end repeat
-				
+				script ProcessParamDescription
+					on do(param_descs)
+						param_descs's each(_link_manager)
+						set a_li to a_ul's push_element_with("li", {})
+						script RowText
+							on do(a_text)
+								return a_text's as_unicode()
+							end do
+						end script
+						a_li's push(param_descs's map(RowText)'s as_unicode_with(_line_end))
+						return true
+					end do
+				end script
+				my _parameters's each(ProcessParamDescription)
 			end if
 			
 			--log "process result field"
