@@ -101,12 +101,20 @@ on clicked theObject
 	if a_name is "SetupHelpBook" then
 		start_indicator()
 		set a_path to contents of default entry "TargetScript" of user defaults
-		SetupHelpBook's process_file(XFile's make_with(POSIX file a_path))
+		try
+			SetupHelpBook's process_file(XFile's make_with(POSIX file a_path))
+		on error msg number errno
+			display alert "Error : " & errno message msg
+		end try
 		stop_indicator()
 	else if a_name is "SaveToFile" then
 		start_indicator()
 		set a_path to contents of default entry "TargetScript" of user defaults
-		SaveToFile's process_file(XFile's make_with(POSIX file a_path))
+		try
+			SaveToFile's process_file(XFile's make_with(POSIX file a_path))
+		on error msg number errno
+			display alert "Error : " & errno message msg
+		end try
 		stop_indicator()
 	end if
 end clicked

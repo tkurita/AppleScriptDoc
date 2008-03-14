@@ -194,13 +194,16 @@ on make_handler_element(property_script)
 				set end of output_list to HTMLUtils's comment_with_text(seg_keyword)
 				*)
 			end if
+			--log "elementTitle"
 			set title_div to output's push_element_with("div", {{"class", "elementTitle"}})
 			set an_anchor to title_div's push_anchor_with(my _handler_name)
 			an_anchor's push(my _handler_name)
 			
+			--log "sourceCode"
 			set syntax_p to output's push_element_with("p", {{"class", "sourceCode"}})
 			syntax_p's push(ASHTML's process_text(my _syntax's as_unicode()))
 			
+			--log "scriptSupport"
 			if _useScriptSupport then
 				set a_link to syntax_p's push_element_with("a", {{"href", "../assets/setClipboard.scpt"}, {"onclick", "return runHelpScriptWithInnerText(this)"}})
 				a_link's push_element_with("img", {{"src", "../assets/Clipboard24.png"}, {"alt", "copy to clipboard"}, {"align", "right"}})
@@ -219,12 +222,14 @@ on make_handler_element(property_script)
 			set end of output_list to "</p>"
 			*)
 			_link_manager's set_prefix("")
-			
+			--log "abstruct"
 			my _abstruct's each(_link_manager)
 			set srd to make_with_iterator(my _abstruct) of SimpleRD
 			
 			output's push(srd's perform_convert())
 			--set end of output_list to srd's perform_convert()
+			--log "description"
+			--log my _description
 			if (my _description's count_items()) > 0 then
 				my _description's each(_link_manager)
 				set srd to make_with_iterator(my _description) of SimpleRD
