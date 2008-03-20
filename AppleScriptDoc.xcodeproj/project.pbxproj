@@ -286,8 +286,8 @@
 		29B97314FDCFA39411CA2CEA /* AppleScriptDoc */ = {
 			isa = PBXGroup;
 			children = (
-				2CFE96280C44991E00B0D2A6 /* Class */,
 				2CF5BE310C43AB3300224B65 /* History.rd */,
+				2CFE96280C44991E00B0D2A6 /* Class */,
 				080E96DDFE201D6D7F000001 /* Scripts */,
 				2CA3B4700D335FEC00A8C813 /* ASStudioScriptLib */,
 				2CF5BEE80C43CD1D00224B65 /* CocoaLib */,

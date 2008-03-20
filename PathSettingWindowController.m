@@ -11,6 +11,21 @@
 
 - (IBAction)cancelAction:(id)sender
 {
+	[progressIndicator stopAnimation:self];
+	[progressIndicator setHidden:YES];
+
+	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];		
+	NSDictionary *error_info = nil;
+	[a_script executeHandlerWithName:@"cancel_export" arguments:nil error:&error_info];
+	if (error_info) {
+		[[NSAlert alertWithMessageText:@"AppleScript Error"
+			defaultButton:@"OK" alternateButton:nil otherButton:nil
+			informativeTextWithFormat:@"%@\nNumber: %@", 
+				[error_info objectForKey:@"OSAScriptErrorMessage"],
+				[error_info objectForKey:@"OSAScriptErrorNumber"]] runModal];
+		NSLog([error_info description]);
+	}
+		
 	[[NSApplication sharedApplication] endSheet:[sender window] returnCode:128];
 }
 
@@ -115,12 +130,15 @@ bail:
 	[progressIndicator startAnimation:self];
 	[a_script executeHandlerWithName:@"export_helpbook" arguments:nil error:&error_info];
 	if (error_info) {
-		[[NSAlert alertWithMessageText:@"AppleScript Error"
-			defaultButton:@"OK" alternateButton:nil otherButton:nil
-			informativeTextWithFormat:@"%@\nNumber: %@", 
-				[error_info objectForKey:@"OSAScriptErrorMessage"],
-				[error_info objectForKey:@"OSAScriptErrorNumber"]] runModal];
-		NSLog([error_info description]);
+		NSNumber *err_no = [error_info objectForKey:@"OSAScriptErrorNumber"];
+		if ([err_no intValue] != -128) {
+			[[NSAlert alertWithMessageText:@"AppleScript Error"
+				defaultButton:@"OK" alternateButton:nil otherButton:nil
+				informativeTextWithFormat:@"%@\nNumber: %@", 
+					[error_info objectForKey:@"OSAScriptErrorMessage"],
+					err_no] runModal];
+			NSLog([error_info description]);
+		}
 	}
 	
 	[progressIndicator stopAnimation:self];

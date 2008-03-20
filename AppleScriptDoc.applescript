@@ -64,6 +64,10 @@ on export_helpbook()
 	ExportHelpBook's process_file(XFile's make_with(POSIX file a_path))
 end export_helpbook
 
+on cancel_export()
+	ExportHelpBook's stop_processing()
+end cancel_export
+
 on import_script(script_name)
 	tell main bundle
 		set a_path to path for script script_name extension "scpt"
@@ -116,6 +120,8 @@ on clicked theObject
 			display alert "Error : " & errno message msg
 		end try
 		stop_indicator()
+	else if a_name is "CancelExport" then
+		log "CancelExport"
 	end if
 end clicked
 

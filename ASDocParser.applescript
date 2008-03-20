@@ -114,9 +114,9 @@ on extract_doc_region(line_list)
 	return doc_block_list
 end extract_doc_region
 
-on isHandler(aLine)
-	return (aLine starts with "on ") or (aLine starts with "to ")
-end isHandler
+on is_handler(a_line)
+	return (a_line starts with "on ") or (a_line starts with "to ")
+end is_handler
 
 on is_heading_tag(a_line)
 	set a_tag to first word of a_line
@@ -171,6 +171,7 @@ on parse_heading_region(a_region, doc_container)
 end parse_heading_region
 
 on parse_glossary(a_region, doc_container)
+	--log "start parse_glossary"
 	set enumerator to lineEnum of a_region
 	set is_continued to false
 	repeat while enumerator's has_next()
@@ -384,6 +385,7 @@ on make_doc_container()
 		end push
 		
 		on push_external_link(a_word, a_url)
+			--log "push_external_link"
 			my _link_manager's push_external(a_word, a_url)
 		end push_external_link
 		
@@ -399,10 +401,10 @@ end make_doc_container
 
 script SinglePageLayout
 	on layout(doc_container)
-		log "start layout"
+		--log "start layout"
 		set output to make XList
 		repeat with an_elem in elementList of doc_container
-			log "start output"
+			--log "start output"
 			output's push(an_elem's as_xhtml())
 		end repeat
 		

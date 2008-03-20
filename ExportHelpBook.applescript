@@ -18,12 +18,18 @@ property _appleTitle : ""
 property _use_appletitle : false
 property _defaultPageName : "reference.html"
 property _template_folder : "HelpBookTemplate"
+property _stop_processing : false
+
+on stop_processing()
+	set my _stop_processing to true
+end stop_processing
 
 on initialize()
 	set _bookName to missing value
 	set _appleTitle to ""
 	set _use_appletitle to false
 	set _template_folder to "HelpBookTemplate"
+	set _stop_processing to false
 end initialize
 
 on set_template_folder(a_name)
@@ -66,12 +72,14 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set doc_title to ""
 	set index_contents to make XList
 	set style_formatter to make_from_plist() of ASFormattingStyle
+	if my _stop_processing then error number -128
 	set doc_container to ASDocParser's parse_list(every paragraph of a_text)
 	set a_link_manager to doc_container's link_manager()
 	set template_folder to XFile's make_with(path to resource _template_folder)
 	set handler_template to template_folder's child("pages:handler.html")
 	set rel_index_path to "../" & index_page's item_name()
 	
+	if my _stop_processing then error number -128
 	set oneshot_doc to OneShotScriptEditor's make_with_name(ASHTML's temporary_doctitle())
 	oneshot_doc's check_status()
 	
@@ -97,6 +105,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	end script
 	
 	repeat with doc_element in elementList of doc_container
+		if my _stop_processing then error number -128
 		set a_kind to doc_element's get_kind()
 		if a_kind is "title" then
 			--log "start process title element"
@@ -158,12 +167,14 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log "end process other element"
 		end if
 	end repeat
+	
 	oneshot_doc's catch_doc()
 	oneshot_doc's release()
 	set index_body to index_contents's as_unicode_with(_line_end)
 	set pathconv to PathConverter's make_with(index_page's posix_path())
 	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
 	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory _template_folder)
+	if my _stop_processing then error number -128
 	tell template
 		insert_text("$BODY", index_body)
 		insert_text("$APPLETITLE", my _appleTitle)
@@ -175,6 +186,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		set index_page to write_to(index_page)
 	end tell
 	
+	if my _stop_processing then error number -128
 	set css_text to style_formatter's build_css()
 	set as_css_file to assets_folder's child("applescript.css")
 	as_css_file's write_as_utf8(css_text)
