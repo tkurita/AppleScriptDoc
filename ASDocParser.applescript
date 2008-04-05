@@ -128,6 +128,11 @@ on is_handler_tag(a_line)
 	return a_tag is in {"abstruct", "description", "param", "result", "syntax"}
 end is_handler_tag
 
+on is_referneces_tag(a_line)
+	set a_tag to first word of a_line
+	return a_tag is in {"references", "glossary"} -- "glossary is deprecated"
+end is_referneces_tag
+
 on parse_heading_region(a_region, doc_container)
 	local paragraph_list
 	set paragraph_list to {}
@@ -149,8 +154,8 @@ on parse_heading_region(a_region, doc_container)
 					enumerator's decrement_index()
 					parse_handler_region(a_region, doc_container)
 					exit repeat
-				else if a_line's starts_with("@glossary") then
-					parse_glossary(a_region, doc_container)
+				else if is_referneces_tag(a_line) then
+					parse_references(a_region, doc_container)
 					exit repeat
 				else
 					error (quoted form of a_line) & " have an unknown tag." number 1450
@@ -170,15 +175,14 @@ on parse_heading_region(a_region, doc_container)
 	end if
 end parse_heading_region
 
-on parse_glossary(a_region, doc_container)
-	--log "start parse_glossary"
+on parse_references(a_region, doc_container)
+	--log "start parse_references"
 	set enumerator to lineEnum of a_region
 	set is_continued to false
 	repeat while enumerator's has_next()
 		set a_line to next() of enumerator
 		if a_line's starts_with("@") then
-			set the_tag to first word of a_line
-			if the_tag is not "glossary" then
+			if not is_references_tag(a_line) then
 				set is_continued to true
 				enumerator's decrement_index()
 				exit repeat
@@ -197,7 +201,7 @@ on parse_glossary(a_region, doc_container)
 	if is_continued then
 		parse_heading_region(a_region, doc_container)
 	end if
-end parse_glossary
+end parse_references
 
 on tag_contents(enumerator)
 	set content_list to {}
