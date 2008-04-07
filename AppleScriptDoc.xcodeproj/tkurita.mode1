@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2C0CB6940DA9BCAA0044FD0D</string>
+										<string>2C33F9140DA9C43300C558E0</string>
 										<key>history</key>
 										<array>
 											<string>2CF5C0B90C44594500224B65</string>
@@ -355,7 +355,7 @@
 											<string>2C20263C0D76690600CF0DA9</string>
 											<string>2C0031AD0D7CE56000372D3E</string>
 											<string>2C0031AE0D7CE56000372D3E</string>
-											<string>2C619EB60DA9A4A100248CE0</string>
+											<string>2C0CB6950DA9BD1E0044FD0D</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -440,9 +440,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2C0CB6410DA9BAEE0044FD0D</string>
+				<string>2C33F9150DA9C43300C558E0</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>2C0CB6420DA9BAEE0044FD0D</string>
+				<string>2C33F9160DA9C43300C558E0</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -576,9 +576,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C0AD2B3069F1EA900FABCE6</string>
-		<string>2C0CC6CF0C3AB743001C480E</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>/Users/tkurita/Dev/Projects/AppleScriptDoc/trunk/AppleScriptDoc.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
