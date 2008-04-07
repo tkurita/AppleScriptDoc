@@ -56,7 +56,7 @@
 	<key>NSAppleScriptEnabled</key>
 	<string>YES</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>1.1.2 copyright 2007-2008, Tetsuro KURITA</string>
+	<string>Copyright 2007-2008, Tetsuro KURITA</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>

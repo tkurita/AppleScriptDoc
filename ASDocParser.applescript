@@ -128,10 +128,10 @@ on is_handler_tag(a_line)
 	return a_tag is in {"abstruct", "description", "param", "result", "syntax"}
 end is_handler_tag
 
-on is_referneces_tag(a_line)
+on is_references_tag(a_line)
 	set a_tag to first word of a_line
 	return a_tag is in {"references", "glossary"} -- "glossary is deprecated"
-end is_referneces_tag
+end is_references_tag
 
 on parse_heading_region(a_region, doc_container)
 	local paragraph_list
@@ -154,7 +154,7 @@ on parse_heading_region(a_region, doc_container)
 					enumerator's decrement_index()
 					parse_handler_region(a_region, doc_container)
 					exit repeat
-				else if is_referneces_tag(a_line) then
+				else if is_references_tag(a_line) then
 					parse_references(a_region, doc_container)
 					exit repeat
 				else
