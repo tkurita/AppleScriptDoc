@@ -107,6 +107,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	repeat with doc_element in elementList of doc_container
 		if my _stop_processing then error number -128
 		set a_kind to doc_element's get_kind()
+		--log a_kind
 		if a_kind is "title" then
 			--log "start process title element"
 			index_contents's push(as_xhtml() of doc_element)
@@ -155,19 +156,15 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log "end process handler element"
 			
 		else if a_kind is "paragraph" then
-			--log "start process paragraph element"
 			a_link_manager's set_prefix("pages/")
 			doc_element's each(a_link_manager)
-			index_contents's push(as_xhtml() of doc_element)
-			--log "end process paragraph element"
-			
+			index_contents's push(doc_element's as_xhtml())
 		else
 			--log "start process other element"
-			index_contents's push(as_xhtml() of doc_element)
+			index_contents's push(doc_element's as_xhtml())
 			--log "end process other element"
 		end if
 	end repeat
-	
 	oneshot_doc's catch_doc()
 	oneshot_doc's release()
 	set index_body to index_contents's as_unicode_with(_line_end)

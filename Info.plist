@@ -34,7 +34,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>1.1.2b copyright 2007-2008, Tetsuro KURITA</string>
+	<string>1.1.2 copyright 2007-2008, Tetsuro KURITA</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>AppleScriptDocHelp</string>
 	<key>CFBundleIconFile</key>

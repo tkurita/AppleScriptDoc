@@ -134,7 +134,6 @@ on make_paragraph_element(a_list)
 		
 		on convert()
 			if (count me) > 0 then
-				--set my _data to _link_manager's insert_to_list(my _data, "")
 				set srd to make_with_iterator(me) of SimpleRD
 				return srd's perform_convert()
 			else

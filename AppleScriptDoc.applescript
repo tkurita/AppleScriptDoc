@@ -121,7 +121,7 @@ on clicked theObject
 		end try
 		stop_indicator()
 	else if a_name is "CancelExport" then
-		log "CancelExport"
+		--log "CancelExport"
 	end if
 end clicked
 
