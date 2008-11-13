@@ -10,7 +10,7 @@ global SimpleRD
 global TemplateProcessor
 global XFile
 global XList
-global OneShotScriptEditor
+--global OneShotScriptEditor
 global _app_controller
 
 property _bookName : missing value
@@ -165,8 +165,10 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log "end process other element"
 		end if
 	end repeat
+	(*
 	oneshot_doc's catch_doc()
 	oneshot_doc's release()
+	*)
 	set index_body to index_contents's as_unicode_with(_line_end)
 	set pathconv to PathConverter's make_with(index_page's posix_path())
 	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
