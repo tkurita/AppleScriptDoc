@@ -71,7 +71,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set pages_folder to book_folder's make_folder("pages")
 	set doc_title to ""
 	set index_contents to make XList
-	set style_formatter to make_from_plist() of ASFormattingStyle
+	set style_formatter to make_from_setting() of ASFormattingStyle
 	if my _stop_processing then error number -128
 	set doc_container to ASDocParser's parse_list(every paragraph of a_text)
 	set a_link_manager to doc_container's link_manager()
@@ -80,8 +80,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set rel_index_path to "../" & index_page's item_name()
 	
 	if my _stop_processing then error number -128
-	set oneshot_doc to OneShotScriptEditor's make_with_name(ASHTML's temporary_doctitle())
-	oneshot_doc's check_status()
+	--set oneshot_doc to OneShotScriptEditor's make_with_name(ASHTML's temporary_doctitle())
+	--oneshot_doc's check_status()
 	
 	script HandlerIDManager
 		property _handler_id : {}

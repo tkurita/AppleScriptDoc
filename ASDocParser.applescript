@@ -1,4 +1,3 @@
-global ASFormattingStyle
 global ASHTML
 global DocElements
 global HTMLElement

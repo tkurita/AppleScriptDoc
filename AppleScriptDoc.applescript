@@ -19,23 +19,28 @@ property XFileBase : missing value
 property PathConverter : missing value
 property XFile : missing value
 property OneShotScriptEditor : missing value
+property XCharacterSet : missing value
+property CSSBuilder : missing value
+property RGBColor : missing value
 
 on __load__(loader)
 	tell loader
 		set SimpleRD to load("SimpleRD")
-		set ASHTML to load("ASHTML")
+		
 		--set DocElements to load("DocElements")
 		set TemplateProcessor to load("TemplateProcessor")
 		set PathConverter to load("PathConverter")
 		set OneShotScriptEditor to load("OneShotScriptEditor")
+		set RGBColor to load("RGBColor")
+		set CSSBuilder to load("CSSBuilder")
+		set XCharacterSet to load("XCharacterSet")
 	end tell
 	--set SimpleRD to DocElements's SimpleRD
 	set HTMLElement to SimpleRD's HTMLElement
 	set XDict to HTMLElement's XDict
 	set XList to SimpleRD's XList
 	set XText to XList's XText
-	--set ASHTML to DocElements's ASHTML
-	set ASFormattingStyle to ASHTML's ASFormattingStyle
+	
 	set XFileBase to TemplateProcessor's XFile
 	
 	return missing value
@@ -76,6 +81,8 @@ on import_script(script_name)
 end import_script
 
 on will finish launching theObject
+	set ASFormattingStyle to import_script("ASFormattingStyle")
+	set ASHTML to import_script("ASHTML")'s initialize()
 	set XFile to make (import_script("XFileExtend"))
 	
 	set DefaultsManager to import_script("DefaultsManager")

@@ -200,7 +200,7 @@ on make_handler_element(property_script)
 			
 			--log "sourceCode"
 			set syntax_p to output's push_element_with("p", {{"class", "sourceCode"}})
-			syntax_p's push(ASHTML's process_text(my _syntax's as_unicode()))
+			syntax_p's push(ASHTML's process_text(my _syntax's as_unicode(), true))
 			
 			--log "scriptSupport"
 			if _useScriptSupport then
