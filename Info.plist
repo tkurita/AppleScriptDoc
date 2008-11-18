@@ -9,26 +9,78 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>scpt</string>
+				<string>scptd</string>
 			</array>
+			<key>CFBundleTypeName</key>
+			<string>script bundle</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>XML</string>
+			<true/>
 		</dict>
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>scptd</string>
+				<string>scpt</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>script</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>osas</string>
 			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>XML</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>applescript</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>text</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>TEXT</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>app</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>application</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>APPL</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>app</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>application bundle</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>APPL</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSTypeIsPackage</key>
+			<true/>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>

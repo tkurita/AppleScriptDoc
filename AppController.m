@@ -27,12 +27,13 @@
 }
 
 #pragma mark private methods
-- (void)setTargetScript:(NSString *)a_path
+- (BOOL)setTargetScript:(NSString *)a_path
 {
 	[[NSUserDefaultsController sharedUserDefaultsController]
 					setValue:a_path forKeyPath:@"values.TargetScript"];
 	[[NSUserDefaults standardUserDefaults] addToHistory:a_path forKey:@"RecentScripts"];
 	[recentScriptsButton setTitle:@""];
+	return YES;
 }
 
 #pragma mark initilize
@@ -89,6 +90,14 @@
 
 
 #pragma mark delegate methods for NSApplication
+- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename
+{
+#if useLog
+	NSLog(filename);
+#endif
+	return [self setTargetScript:filename];
+}
+
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
 #if useLog
