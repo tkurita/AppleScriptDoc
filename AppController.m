@@ -42,6 +42,10 @@
 	NSLog(@"awakeFromNib");
 #endif
 	[recentScriptsButton setTitle:@""];
+	NSPopUpButtonCell *a_cell = [recentScriptsButton cell];
+	[a_cell setBezelStyle:NSSmallSquareBezelStyle];
+	[a_cell setArrowPosition:NSPopUpArrowAtCenter];
+
 	[targetScriptBox setAcceptFileInfo:[NSArray arrayWithObjects:
 		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeDirectory, @"FileType",
 													@"scptd", @"PathExtension", nil], 

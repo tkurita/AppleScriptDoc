@@ -227,6 +227,15 @@ bail:
 		[NSDictionary dictionaryWithObject:NSFileTypeDirectory forKey:@"FileType"],
 		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeRegular, @"FileType",
 													@"html", @"PathExtension", nil], nil]];
+	
+	NSPopUpButtonCell *a_cell = [helpBookRootPopup cell];
+	[a_cell setBezelStyle:NSSmallSquareBezelStyle];
+	[a_cell setArrowPosition:NSPopUpArrowAtCenter];
+
+	a_cell = [exportPathPopup cell];
+	[a_cell setBezelStyle:NSSmallSquareBezelStyle];
+	[a_cell setArrowPosition:NSPopUpArrowAtCenter];
+
 	[self updatePathesForTarget];
 	[self checkOKCondition];
 	 [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self
