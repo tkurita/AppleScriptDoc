@@ -69,7 +69,13 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set assets_folder to temp_asset_folder's copy_to(book_folder)
 	
 	set pages_folder to book_folder's make_folder("pages")
-	set doc_title to ""
+	if my _bookName is missing value then
+		set my _bookName to script_name & " Help"
+	end if
+	if _use_appletitle then
+		set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", my _bookName}})'s as_html()
+	end if
+	set doc_title to script_name & " Reference"
 	set index_contents to make XList
 	set style_formatter to make_from_setting() of ASFormattingStyle
 	if my _stop_processing then error number -128
@@ -112,15 +118,6 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log "start process title element"
 			index_contents's push(as_xhtml() of doc_element)
 			set doc_title to doc_element's get_contents()'s as_unicode()
-			if my _bookName is missing value then
-				--set my _bookName to doc_title
-				set my _bookName to script_name & " Help"
-			end if
-			
-			if _use_appletitle then
-				set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", _bookName}})
-				set my _appleTitle to my _appleTitle's as_html()
-			end if
 			--log "end process title element"
 			
 		else if a_kind is "handler" then
@@ -184,7 +181,6 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		--insert_text("$EDIT_SCRIPT", edit_scpt_path)
 		set index_page to write_to(index_page)
 	end tell
-	
 	if my _stop_processing then error number -128
 	set css_text to style_formatter's build_css()
 	set as_css_file to assets_folder's child("applescript.css")
