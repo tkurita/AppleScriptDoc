@@ -26,16 +26,12 @@ property RGBColor : missing value
 on __load__(loader)
 	tell loader
 		set SimpleRD to load("SimpleRD")
-		
-		--set DocElements to load("DocElements")
 		set TemplateProcessor to load("TemplateProcessor")
 		set PathConverter to load("PathConverter")
-		--set OneShotScriptEditor to load("OneShotScriptEditor")
 		set RGBColor to load("RGBColor")
 		set CSSBuilder to load("CSSBuilder")
 		set XCharacterSet to load("XCharacterSet")
 	end tell
-	--set SimpleRD to DocElements's SimpleRD
 	set HTMLElement to SimpleRD's HTMLElement
 	set XDict to HTMLElement's XDict
 	set XList to SimpleRD's XList

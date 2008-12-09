@@ -116,6 +116,7 @@ bail:
 	NSOpenPanel *open_panel = [NSOpenPanel openPanel];
 	[open_panel setCanChooseFiles:NO];
 	[open_panel setCanChooseDirectories:YES];
+	[open_panel setCanCreateDirectories:YES];
 	[open_panel beginSheetForDirectory:nil file:nil types:nil 
 		modalForWindow:[self window] modalDelegate:self 
 		didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
@@ -163,16 +164,30 @@ bail:
 - (IBAction)setExportPathFromRecents:(id)sender
 {
 	NSString *a_path = [[sender selectedItem] title];
-	[[NSUserDefaults standardUserDefaults] setObject:a_path forKey:@"ExportFilePath"];
-	[self checkOKCondition];
+	NSEvent *event = [[NSApplication sharedApplication] currentEvent];
+	// when popup menu is clicked pressing option key (not when a menu item is selected) , is_optkey will be true.
+	unsigned int is_optkey = [event modifierFlags] & NSAlternateKeyMask;
+	if (!is_optkey) {
+		[[NSUserDefaults standardUserDefaults] setObject:a_path forKey:@"ExportFilePath"];
+		[self checkOKCondition];
+	} else {
+		[[NSUserDefaults standardUserDefaults] removeFromHistory:a_path
+														  forKey:@"RecentExportPathes"];
+	}
 }
 
 - (IBAction)setHelpBookRootFromRecents:(id)sender
 {
 	NSString *a_path = [[sender selectedItem] title];
-	if ([a_path fileExists]) {
+	NSEvent *event = [[NSApplication sharedApplication] currentEvent];
+	// when popup menu is clicked pressing option key (not when a menu item is selected) , is_optkey will be true.
+	unsigned int is_optkey = [event modifierFlags] & NSAlternateKeyMask;
+	if ((!is_optkey) && [a_path fileExists]) {
 		[[NSUserDefaults standardUserDefaults] setObject:a_path forKey:@"HelpBookRootPath"];
 		[self checkOKCondition];
+	} else {
+		[[NSUserDefaults standardUserDefaults] removeFromHistory:a_path
+														  forKey:@"RecentHelpBookRoots"];
 	}
 }
 

@@ -1,7 +1,7 @@
 /* PathSettingWindowController */
 
 #import <Cocoa/Cocoa.h>
-#import "DropBox.h"
+#import "CocoaLib/DropBox.h"
 
 @interface PathSettingWindowController : NSWindowController <DropBoxDragAndDrop>
 {
