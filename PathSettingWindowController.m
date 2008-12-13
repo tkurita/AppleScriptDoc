@@ -1,3 +1,4 @@
+#import <Carbon/Carbon.h>
 #import "PathSettingWindowController.h"
 #import "PathExtra.h"
 #import "NSUserDefaultsExtensions.h"
@@ -164,9 +165,7 @@ bail:
 - (IBAction)setExportPathFromRecents:(id)sender
 {
 	NSString *a_path = [[sender selectedItem] title];
-	NSEvent *event = [[NSApplication sharedApplication] currentEvent];
-	// when popup menu is clicked pressing option key (not when a menu item is selected) , is_optkey will be true.
-	unsigned int is_optkey = [event modifierFlags] & NSAlternateKeyMask;
+	UInt32 is_optkey = GetCurrentEventKeyModifiers() & optionKey;
 	if (!is_optkey) {
 		[[NSUserDefaults standardUserDefaults] setObject:a_path forKey:@"ExportFilePath"];
 		[self checkOKCondition];
@@ -179,9 +178,7 @@ bail:
 - (IBAction)setHelpBookRootFromRecents:(id)sender
 {
 	NSString *a_path = [[sender selectedItem] title];
-	NSEvent *event = [[NSApplication sharedApplication] currentEvent];
-	// when popup menu is clicked pressing option key (not when a menu item is selected) , is_optkey will be true.
-	unsigned int is_optkey = [event modifierFlags] & NSAlternateKeyMask;
+	UInt32 is_optkey = GetCurrentEventKeyModifiers() & optionKey;
 	if ((!is_optkey) && [a_path fileExists]) {
 		[[NSUserDefaults standardUserDefaults] setObject:a_path forKey:@"HelpBookRootPath"];
 		[self checkOKCondition];

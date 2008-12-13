@@ -4,6 +4,7 @@
 #import "PathExtra.h"
 #import "IsBundleTransformer.h"
 #import "NSUserDefaultsExtensions.h"
+#import <Carbon/Carbon.h>
 
 #define useLog 0
 
@@ -153,10 +154,7 @@
 - (IBAction)popUpRecents:(id)sender
 {
 	NSString *a_path = [[sender selectedItem] title];
-	NSEvent *event = [[NSApplication sharedApplication] currentEvent];
-	// when popup menu is clicked pressing option key (not when a menu item is selected) , is_optkey will be true.
-	unsigned int is_optkey = [event modifierFlags] & NSAlternateKeyMask;
-	
+	UInt32 is_optkey = GetCurrentEventKeyModifiers() & optionKey;
 	if ((!is_optkey) && [a_path fileExists]) {
 		[[NSUserDefaultsController sharedUserDefaultsController] 
 						setValue:a_path forKeyPath:@"values.TargetScript"];
