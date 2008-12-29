@@ -81,6 +81,9 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	if my _stop_processing then error number -128
 	set doc_container to ASDocParser's parse_list(every paragraph of a_text)
 	set a_link_manager to doc_container's link_manager()
+	set root_page_path to index_page's posix_path()
+	a_link_manager's set_root_page(root_page_path)
+	a_link_manager's set_current_page(root_page_path)
 	set template_folder to XFile's make_with(path to resource _template_folder)
 	set handler_template to template_folder's child("pages:handler.html")
 	set rel_index_path to "../" & index_page's item_name()
@@ -138,7 +141,9 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			index_contents's push(srd's as_xhtml())
 			
 			set handler_page to pages_folder's child(handler_id & ".html")
-			set pathconv to PathConverter's make_with(handler_page's posix_path())
+			set hanlder_page_path to handler_page's posix_path()
+			a_link_manager's set_current_page(hanlder_page_path)
+			set pathconv to PathConverter's make_with(hanlder_page_path)
 			set rel_root to relative_path of pathconv for (POSIX path of root_ref)
 			
 			set template to TemplateProcessor's make_with_file(handler_template's as_alias())
@@ -150,6 +155,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 				insert_text("$INDEX_PAGE", rel_index_path)
 				write_to(handler_page)
 			end tell
+			a_link_manager's set_current_page(root_page_path)
 			--log "end process handler element"
 			
 		else if a_kind is "paragraph" then

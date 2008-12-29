@@ -5,6 +5,7 @@ global SimpleRD
 global XDict
 global XList
 global XText
+global PathConverter
 
 global _line_end
 
@@ -290,9 +291,16 @@ on make_doc_container()
 		property _anchor_words : make XList
 		property _prefix : ""
 		property _external_links : make XDict
+		property _root_page : missing value
+		property _current_page : missing value
 		
 		on push_external(a_word, a_url)
-			my _external_links's set_value(a_word, a_url)
+			set a_record to {original:a_url, link:missing value, has_scheme:false}
+			if has_scheme(XText's make_with(a_url)) then
+				set link of a_record to a_url
+				set has_scheme of a_record to true
+			end if
+			my _external_links's set_value(a_word, a_record)
 		end push_external
 		
 		on push_anchor(a_word)
@@ -309,12 +317,30 @@ on make_doc_container()
 			return a_link's as_html()
 		end link_tag
 		
+		on set_root_page(a_path)
+			set my _root_page to a_path
+		end set_root_page
+		
+		on set_current_page(a_path)
+			set my _current_page to a_path
+			set an_iterator to my _external_links's iterator()
+			set pathconv_root to PathConverter's make_with(my _root_page)
+			set pathconv_current to PathConverter's make_with(a_path)
+			repeat while an_iterator's has_next()
+				set {a_word, a_record} to an_iterator's next()
+				if not has_scheme of a_record then
+					set abs_path to absolute_path of pathconv_root for a_record's original
+					set link of a_record to relative_path of pathconv_current for abs_path
+				end if
+			end repeat
+		end set_current_page
+		
 		on set_prefix(a_text)
 			set my _prefix to a_text
 		end set_prefix
 		
-		on is_url(a_word)
-			--log "start is_url"
+		on has_scheme(a_word)
+			--log "start has_scheme"
 			set schemes to {"http:", "mailto:", "ftp:", "file:", "help:"}
 			repeat with a_scheme in schemes
 				if a_word's starts_with(contents of a_scheme) then
@@ -322,7 +348,7 @@ on make_doc_container()
 				end if
 			end repeat
 			return false
-		end is_url
+		end has_scheme
 		
 		on process_autolink(a_text)
 			set start_pos to a_text's offset_of("((<")
@@ -332,7 +358,7 @@ on make_doc_container()
 					error "Link bracket is not closed in " & quoted form of (a_text's as_unicode()) number 1455
 				end if
 				set linked_word to a_text's text_in_range(start_pos + 3, end_pos - 1)
-				if is_url(linked_word) then
+				if has_scheme(linked_word) then
 					set a_link to HTMLElement's make_with("a", {{"href", linked_word}})
 					a_link's push(linked_word)
 				else if linked_word's include("@") then
@@ -361,10 +387,10 @@ on make_doc_container()
 			
 			set an_iterator to my _external_links's iterator()
 			repeat while an_iterator's has_next()
-				set {a_word, a_href} to an_iterator's next()
+				set {a_word, a_record} to an_iterator's next()
 				set link_word to "((<" & a_word & ">))"
 				if (a_text's include(link_word)) and (not my _anchor_words's has_item(a_word)) then
-					set a_tag to HTMLElement's make_with("a", {{"href", a_href}})
+					set a_tag to HTMLElement's make_with("a", {{"href", a_record's link}})
 					a_tag's push(a_word)
 					set contents of a_text to a_text's replace(link_word, a_tag's as_xhtml())
 				end if
