@@ -268,9 +268,8 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>2CFE96280C44991E00B0D2A6</string>
+								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
-								<string>2CFE960D0C4485DC00B0D2A6</string>
-								<string>29B97318FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>1058C7A0FEA54F0111CA2CBB</string>
 								<string>2C499CA20F09262900FA540D</string>
@@ -282,13 +281,12 @@
 							<array>
 								<array>
 									<integer>27</integer>
-									<integer>26</integer>
-									<integer>15</integer>
+									<integer>23</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {268, 539}}</string>
+							<string>{{0, 110}, {268, 539}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -320,14 +318,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>PathSettingWindowController.m</string>
+								<string>DocElements.applescript</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -335,11 +331,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>PathSettingWindowController.m</string>
+										<string>DocElements.applescript</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2C8AA2190F1271B6007F2A73</string>
+										<string>2C8AA2210F127282007F2A73</string>
 										<key>history</key>
 										<array>
 											<string>2CF5C0B90C44594500224B65</string>
@@ -353,23 +349,15 @@
 											<string>2CCE5E030C7525950028D33A</string>
 											<string>2CCE5E040C7525950028D33A</string>
 											<string>2CCE5E050C7525950028D33A</string>
-											<string>2CE5F1D50D324FF100EDC0FF</string>
 											<string>2C72A8BE0D3CBAA700AECAF3</string>
 											<string>2C0031AD0D7CE56000372D3E</string>
 											<string>2C0031AE0D7CE56000372D3E</string>
 											<string>2C499C6D0F091FE300FA540D</string>
 											<string>2C499C910F0921F700FA540D</string>
-											<string>2C4BF1440F0E3C4B00F015E7</string>
-											<string>2C4BF1460F0E3C4B00F015E7</string>
-											<string>2C4BF1470F0E3C4B00F015E7</string>
-											<string>2C8AA1F90F126A42007F2A73</string>
-											<string>2C8AA2100F126DD9007F2A73</string>
-											<string>2C8AA2110F126DD9007F2A73</string>
-											<string>2C8AA2120F126DD9007F2A73</string>
+											<string>2CE5F1830D321DAD00EDC0FF</string>
 										</array>
 										<key>prevStack</key>
 										<array>
-											<string>2CFE99700C45298800B0D2A6</string>
 											<string>2CAE16680C46BDF60080A422</string>
 											<string>2CAE167B0C46C05F0080A422</string>
 											<string>2CAE17590C473AA40080A422</string>
@@ -384,18 +372,8 @@
 											<string>2CCE5E140C7525950028D33A</string>
 											<string>2CCE5E490C7528060028D33A</string>
 											<string>2CCE5E560C75287C0028D33A</string>
-											<string>2C2F248C0C8C902900E78CBE</string>
 											<string>2C2C1FE90C8EED030094E73B</string>
-											<string>2C2C20000C8EF4DF0094E73B</string>
 											<string>2CC38F7D0D31F60E00A02EB1</string>
-											<string>2CE5F1830D321DAD00EDC0FF</string>
-											<string>2C4BF14A0F0E3C4B00F015E7</string>
-											<string>2C4BF14B0F0E3C4B00F015E7</string>
-											<string>2C4BF14E0F0E3C4B00F015E7</string>
-											<string>2C8AA1D80F1267B7007F2A73</string>
-											<string>2C8AA1FA0F126A42007F2A73</string>
-											<string>2C8AA2130F126DD9007F2A73</string>
-											<string>2C8AA2140F126DD9007F2A73</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -828,14 +806,12 @@
 							<key>Dock</key>
 							<array>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>PathSettingWindowController.m</string>
+										<string>&lt;エディタがありません&gt;</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
