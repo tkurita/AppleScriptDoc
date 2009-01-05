@@ -149,9 +149,7 @@ bail:
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSArray *array = [pathRecordsController selectedObjects];
 	if (array) {
-		[pathRecordsController removeSelectedObjects:array];
-	} else {
-	
+		[pathRecordsController removeObjects:array];
 	}
 
 	[pathRecordsController addObject:
