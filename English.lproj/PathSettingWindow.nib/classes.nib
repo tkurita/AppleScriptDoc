@@ -1,37 +1,78 @@
-{
-    IBClasses = (
-        {
-            CLASS = DropBox; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {delegate = id; }; 
-            SUPERCLASS = NSBox; 
-        }, 
-        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
-        {
-            ACTIONS = {
-                cancelAction = id; 
-                chooseExportPath = id; 
-                chooseHBRoot = id; 
-                okAction = id; 
-                setExportPathFromRecents = id; 
-                setHelpBookRootFromRecents = id; 
-            }; 
-            CLASS = PathSettingWindowController; 
-            LANGUAGE = ObjC; 
-            OUTLETS = {
-                exportDestBox = id; 
-                exportDestField = id; 
-                exportPathPopup = id; 
-                exportPathWarning = id; 
-                helpBookRootBox = id; 
-                helpBookRootField = id; 
-                helpBookRootPopup = id; 
-                okButton = id; 
-                pathRecordsController = id; 
-                progressIndicator = id; 
-            }; 
-            SUPERCLASS = NSWindowController; 
-        }
-    ); 
-    IBVersion = 1; 
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IBClasses</key>
+	<array>
+		<dict>
+			<key>CLASS</key>
+			<string>DropBox</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>delegate</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSBox</string>
+		</dict>
+		<dict>
+			<key>CLASS</key>
+			<string>FirstResponder</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>SUPERCLASS</key>
+			<string>NSObject</string>
+		</dict>
+		<dict>
+			<key>ACTIONS</key>
+			<dict>
+				<key>cancelAction</key>
+				<string>id</string>
+				<key>chooseExportPath</key>
+				<string>id</string>
+				<key>chooseHBRoot</key>
+				<string>id</string>
+				<key>okAction</key>
+				<string>id</string>
+				<key>setExportPathFromRecents</key>
+				<string>id</string>
+				<key>setHelpBookRootFromRecents</key>
+				<string>id</string>
+			</dict>
+			<key>CLASS</key>
+			<string>PathSettingWindowController</string>
+			<key>LANGUAGE</key>
+			<string>ObjC</string>
+			<key>OUTLETS</key>
+			<dict>
+				<key>exportDestBox</key>
+				<string>id</string>
+				<key>exportDestField</key>
+				<string>id</string>
+				<key>exportPathPopup</key>
+				<string>id</string>
+				<key>exportPathWarning</key>
+				<string>id</string>
+				<key>helpBookRootBox</key>
+				<string>id</string>
+				<key>helpBookRootField</key>
+				<string>id</string>
+				<key>helpBookRootPopup</key>
+				<string>id</string>
+				<key>okButton</key>
+				<string>id</string>
+				<key>pathRecordsController</key>
+				<string>id</string>
+				<key>progressIndicator</key>
+				<string>id</string>
+			</dict>
+			<key>SUPERCLASS</key>
+			<string>NSWindowController</string>
+		</dict>
+	</array>
+	<key>IBVersion</key>
+	<string>1</string>
+</dict>
+</plist>
