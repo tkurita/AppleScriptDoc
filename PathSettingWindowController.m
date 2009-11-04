@@ -1,7 +1,9 @@
 #import <Carbon/Carbon.h>
+#import <OSAKit/OSAScript.h>
 #import "PathSettingWindowController.h"
 #import "PathExtra.h"
 #import "NSUserDefaultsExtensions.h"
+
 
 @implementation PathSettingWindowController
 

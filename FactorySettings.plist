@@ -10,5 +10,25 @@
 	<integer>20</integer>
 	<key>SUScheduledCheckInterval</key>
 	<integer>86400</integer>
+	<key>CSSClassNames</key>
+	<array>
+		<string>uncompiled</string>
+		<string>normal</string>
+		<string>langKeyword</string>
+		<string>appKeyword</string>
+		<string>comment</string>
+		<string>literal</string>
+		<string>userDefine</string>
+		<string>stringLiteral</string>
+		<string>commandName</string>
+		<string>parameterName</string>
+		<string>className</string>
+		<string>enumeratedValues</string>
+		<string>additionCommandName</string>
+		<string>additionParameterName</string>
+		<string>additionClass</string>
+		<string>additionProperty</string>
+		<string>additionEnumeratedValue</string>
+	</array>
 </dict>
 </plist>

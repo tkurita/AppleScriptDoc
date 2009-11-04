@@ -116,7 +116,6 @@ on make_title_element(parentElement)
 			set an_elem to HTMLElement's make_with("h1", {})
 			an_elem's push_content(my _data)
 			return an_elem's as_html()
-			--return HTMLUtils's markup(my _data, "h1")
 		end as_html
 		
 	end script
@@ -186,12 +185,6 @@ on make_handler_element(property_script)
 			if _useAppleSegment then
 				output's push_comment_with("", {{"AppleSegStart", my _handler_name}})
 				output's push_comment_with("", {{"AppleKeywords", my _handler_name}})
-				(*
-				set seg_start to HTMLUtils's build_option("AppleSegStart", my _handler_name)
-				set end of output_list to HTMLUtils's comment_with_text(seg_start)
-				set seg_keyword to HTMLUtils's build_option("AppleKeywords", my _handler_name)
-				set end of output_list to HTMLUtils's comment_with_text(seg_keyword)
-				*)
 			end if
 			--log "elementTitle"
 			set title_div to output's push_element_with("div", {{"class", "elementTitle"}})
@@ -208,18 +201,6 @@ on make_handler_element(property_script)
 				a_link's push_element_with("img", {{"src", "../assets/Clipboard24.png"}, {"alt", "copy to clipboard"}, {"align", "right"}})
 			end if
 			
-			(*
-			if _useScriptSupport then
-				tell HTMLUtils
-					set img_tag to empty_tag("img", {{"src", "../assets/Clipboard24.png"}, {"alt", "copy to clipboard"}, {"align", "right"}})
-					--set end of output_list to markup_with_link(img_tag, "help:runscript='assets/setClipboard.scpt' string='" & my syntax & "'")
-					--set end of output_list to markup_with_link(img_tag, "help:runscript='$CLIPBOAD_SCRIPT' string='" & my syntax & "'")
-					set end of output_list to markup_with_attrs(img_tag, "a", {{"href", "../assets/setClipboard.scpt"}, {"onclick", "return runHelpScriptWithInnerText(this)"}})
-				end tell
-			end if
-			
-			set end of output_list to "</p>"
-			*)
 			_link_manager's set_prefix("")
 			--log "abstruct"
 			my _abstruct's each(_link_manager)
@@ -266,7 +247,6 @@ on make_handler_element(property_script)
 			end if
 			
 			if _useAppleSegment then
-				--set end of output_list to HTMLUtils's comment_with_text("AppleSegEnd")
 				ouput's push_comment_with("AppleSegEnd", {})
 			end if
 			
