@@ -37,7 +37,6 @@
 		257572CD072881A4000BE9CA /* AppleScriptKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA206CF1015C4E2903C91932 /* AppleScriptKit.framework */; };
 		2C0AD6840C3B5FA500E2B397 /* ASDocParser.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C0AD6830C3B5FA500E2B397 /* ASDocParser.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C0AD6A00C3B61AB00E2B397 /* ExportHelpBook.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C0AD69F0C3B61AB00E2B397 /* ExportHelpBook.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
-		2C0CB67A0DA9BB300044FD0D /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = 2C0CB6790DA9BB300044FD0D /* Credits.html */; };
 		2C2975080C3C8F82000CDBEF /* SaveToFile.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C2975070C3C8F82000CDBEF /* SaveToFile.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C2C1F850C8EEC5C0094E73B /* HelpSetup.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C2C1F840C8EEC5C0094E73B /* HelpSetup.plist */; };
 		2C2C1FEE0C8EED650094E73B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C2C1FEC0C8EED640094E73B /* InfoPlist.strings */; };
@@ -54,6 +53,7 @@
 		2C46DB7310A19AE700501F03 /* NDProgrammerUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C46DB4510A1992B00501F03 /* NDProgrammerUtilities.m */; };
 		2C46DB8110A19B7300501F03 /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C46DB7F10A19B7300501F03 /* HFSTypeUtils.m */; };
 		2C46DB8210A19B7300501F03 /* HFSTypeUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 2C46DB8010A19B7300501F03 /* HFSTypeUtils.h */; };
+		2C46DBCA10A1A6BC00501F03 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2C46DBC910A1A6BC00501F03 /* Credits.rtf */; };
 		2C4809920C3B7ECC004E3217 /* reference.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C48093A0C3B7D94004E3217 /* reference.html */; };
 		2C4809A00C3B7F2A004E3217 /* index.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4809370C3B7D94004E3217 /* index.html */; };
 		2C4809A50C3B7F58004E3217 /* Clipboard24.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4809310C3B7D94004E3217 /* Clipboard24.png */; };
@@ -193,7 +193,6 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C0AD6830C3B5FA500E2B397 /* ASDocParser.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = ASDocParser.applescript; sourceTree = "<group>"; };
 		2C0AD69F0C3B61AB00E2B397 /* ExportHelpBook.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = ExportHelpBook.applescript; sourceTree = "<group>"; };
-		2C0CB6790DA9BB300044FD0D /* Credits.html */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = text.html; path = Credits.html; sourceTree = "<group>"; };
 		2C2975070C3C8F82000CDBEF /* SaveToFile.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SaveToFile.applescript; sourceTree = "<group>"; };
 		2C2C1F840C8EEC5C0094E73B /* HelpSetup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HelpSetup.plist; sourceTree = "<group>"; };
 		2C2C1FED0C8EED640094E73B /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -226,6 +225,7 @@
 		2C46DB5810A1992B00501F03 /* NSValue+NDFourCharCode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+NDFourCharCode.m"; sourceTree = "<group>"; };
 		2C46DB7F10A19B7300501F03 /* HFSTypeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFSTypeUtils.m; sourceTree = "<group>"; };
 		2C46DB8010A19B7300501F03 /* HFSTypeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSTypeUtils.h; sourceTree = "<group>"; };
+		2C46DBC910A1A6BC00501F03 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		2C4809310C3B7D94004E3217 /* Clipboard24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clipboard24.png; sourceTree = "<group>"; };
 		2C4809320C3B7D94004E3217 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = default.css; sourceTree = "<group>"; };
 		2C4809330C3B7D94004E3217 /* editScript.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = editScript.scpt; sourceTree = "<group>"; };
@@ -379,8 +379,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C46DBC910A1A6BC00501F03 /* Credits.rtf */,
 				2C4BF1050F09652600F015E7 /* dsa_pub.pem */,
-				2C0CB6790DA9BB300044FD0D /* Credits.html */,
 				257572D5072881A4000BE9CA /* Info.plist */,
 				2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */,
 				2C2C1FEC0C8EED640094E73B /* InfoPlist.strings */,
@@ -659,8 +659,8 @@
 				2C2C1F850C8EEC5C0094E73B /* HelpSetup.plist in Resources */,
 				2C2C1FEE0C8EED650094E73B /* InfoPlist.strings in Resources */,
 				2C72A8D70D3CBCDF00AECAF3 /* empty-Info.plist in Resources */,
-				2C0CB67A0DA9BB300044FD0D /* Credits.html in Resources */,
 				2C4BF1060F09652600F015E7 /* dsa_pub.pem in Resources */,
+				2C46DBCA10A1A6BC00501F03 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
