@@ -442,6 +442,7 @@
 			2C46DBD010A1A76900501F03 /* PBXTextBookmark */ = 2C46DBD010A1A76900501F03 /* PBXTextBookmark */;
 			2C46DBD110A1A76900501F03 /* PlistBookmark */ = 2C46DBD110A1A76900501F03 /* PlistBookmark */;
 			2C46DBD210A1A76900501F03 /* PBXTextBookmark */ = 2C46DBD210A1A76900501F03 /* PBXTextBookmark */;
+			2C46DBE510A1A7FC00501F03 /* PBXTextBookmark */ = 2C46DBE510A1A7FC00501F03 /* PBXTextBookmark */;
 			2C499C6D0F091FE300FA540D = 2C499C6D0F091FE300FA540D /* PBXTextBookmark */;
 			2C499C910F0921F700FA540D = 2C499C910F0921F700FA540D /* PBXTextBookmark */;
 			2C72A8BE0D3CBAA700AECAF3 = 2C72A8BE0D3CBAA700AECAF3 /* PBXTextBookmark */;
@@ -2363,9 +2364,10 @@
 	};
 	2C46DBC910A1A6BC00501F03 /* Credits.rtf */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {770, 398}}";
-			sepNavSelRange = "{395, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {770, 390}}";
+			sepNavSelRange = "{253, 0}";
 			sepNavVisRect = "{{0, 0}, {770, 373}}";
+			sepNavWindowFrame = "{{38, 186}, {659, 666}}";
 		};
 	};
 	2C46DBCF10A1A76900501F03 /* PlistBookmark */ = {
@@ -2408,6 +2410,16 @@
 		rLoc = 395;
 		rType = 0;
 		vrLen = 1082;
+		vrLoc = 0;
+	};
+	2C46DBE510A1A7FC00501F03 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2C46DBC910A1A6BC00501F03 /* Credits.rtf */;
+		name = "Credits.rtf: 10";
+		rLen = 0;
+		rLoc = 253;
+		rType = 0;
+		vrLen = 1081;
 		vrLoc = 0;
 	};
 	2C4808FE0C3B700E004E3217 /* DefaultsManager.applescript:36 */ = {
@@ -2934,9 +2946,9 @@
 	};
 	2CAEEB570ECC129E0068900A /* ASFormatting.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {782, 3948}}";
+			sepNavIntBoundsRect = "{{0, 0}, {782, 3976}}";
 			sepNavSelRange = "{6366, 66}";
-			sepNavVisRange = "{6208, 241}";
+			sepNavVisRange = "{6208, 224}";
 			sepNavVisRect = "{{0, 2097}, {802, 335}}";
 		};
 	};
