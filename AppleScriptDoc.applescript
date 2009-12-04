@@ -138,9 +138,9 @@ on open theObject
 	else
 		set a_file to XFile's make_with(theObject)
 		set a_suffix to a_file's path_extension()
-		if a_suffix is in {"scpt", "scptd"} then
-			DefaultsManager's set_value("TargetScript", a_file's posix_path())
-		end if
+		set app_controller to call method "delegate"
+		call method "setTargetScript:" of app_controller with parameter a_file's posix_path()
 	end if
+	return true
 end open
 
