@@ -3,6 +3,7 @@ global XFile
 property _target_bundle : missing value
 property _book_name : missing value
 property _book_folder_name : missing value
+property _bundle_identifier : missing value
 property _target_plist : missing value
 property _need_setup : false
 property _plist_file : missing value
@@ -42,6 +43,13 @@ on check_target(a_target_bundle)
 		set _book_folder_name to |CFBundleHelpBookFolder| of _target_plist
 	on error
 		set _book_folder_name to missing value
+		set _need_setup to true
+	end try
+	
+	try
+		set _bundle_identifier to |CFBundleIdentifier| of _target_plist
+	on error
+		set _bundle_identifier to missing value
 		set _need_setup to true
 	end try
 	
@@ -86,7 +94,11 @@ on setup_info_pllist()
 		set my _book_name to (_target_bundle's basename()) & " Reference"
 	end if
 	
-	set helpbook_rec to {|CFBundleHelpBookName|:my _book_name, |CFBundleHelpBookFolder|:_book_folder_name}
+	if my _bundle_identifier is missing value then
+		set my _bundle_identifier to ((system attribute "USER") & "." & (_target_bundle's basename()))
+	end if
+	set helpbook_rec to {|CFBundleHelpBookName|:my _book_name, |CFBundleHelpBookFolder|:_book_folder_name, |CFBundleIdentifier|:my _bundle_identifier}
+	
 	set new_rec to _target_plist & helpbook_rec
 	tell application "System Events"
 		set value of contents of property list file (_plist_file's hfs_path()) to new_rec
