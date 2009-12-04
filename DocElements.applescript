@@ -133,7 +133,7 @@ on make_paragraph_element(a_list)
 		
 		on convert()
 			if (count me) > 0 then
-				set srd to make_with_iterator(me) of SimpleRD
+				set srd to SimpleRD's make_with_iterator(me)
 				return srd's perform_convert()
 			else
 				return ""

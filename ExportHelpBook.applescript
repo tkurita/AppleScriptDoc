@@ -61,13 +61,10 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	if class of index_page is not script then
 		set index_page to XFile's make_with(index_page)
 	end if
-	
 	set book_folder to index_page's parent_folder()
-	
-	book_folder's make_path()
+	book_folder's make_path(missing value)
 	set temp_asset_folder to XFile's make_with(path to resource "assets" in directory _template_folder)
 	set assets_folder to temp_asset_folder's copy_to(book_folder)
-	
 	set pages_folder to book_folder's make_folder("pages")
 	if my _bookName is missing value then
 		set my _bookName to script_name & " Help"
@@ -85,7 +82,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	a_link_manager's set_root_page(root_page_path)
 	a_link_manager's set_current_page(root_page_path)
 	set template_folder to XFile's make_with(path to resource _template_folder)
-	set handler_template to template_folder's child("pages:handler.html")
+	set handler_template to template_folder's child("pages/handler.html")
 	set rel_index_path to "../" & index_page's item_name()
 	
 	if my _stop_processing then error number -128
@@ -139,13 +136,11 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log an_abstruct's dump()
 			set srd to SimpleRD's make_with_iterator(an_abstruct)
 			index_contents's push(srd's as_xhtml())
-			
 			set handler_page to pages_folder's child(handler_id & ".html")
 			set hanlder_page_path to handler_page's posix_path()
 			a_link_manager's set_current_page(hanlder_page_path)
 			set pathconv to PathConverter's make_with(hanlder_page_path)
 			set rel_root to relative_path of pathconv for (POSIX path of root_ref)
-			
 			set template to TemplateProcessor's make_with_file(handler_template's as_alias())
 			tell template
 				insert_text("$DOC_TITLE", doc_title)
@@ -159,15 +154,18 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log "end process handler element"
 			
 		else if a_kind is "paragraph" then
+			--log "kind is paragraph"
 			a_link_manager's set_prefix("pages/")
 			doc_element's each(a_link_manager)
 			index_contents's push(doc_element's as_xhtml())
+			--log "end kind is paragraph"
 		else
 			--log "start process other element"
 			index_contents's push(doc_element's as_xhtml())
 			--log "end process other element"
 		end if
 	end repeat
+	
 	(*
 	oneshot_doc's catch_doc()
 	oneshot_doc's release()
@@ -191,7 +189,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set css_text to style_formatter's build_css()
 	set as_css_file to assets_folder's child("applescript.css")
 	as_css_file's write_as_utf8(css_text)
-	
+	--log "end of output_to_folder"
 	return index_page
 end output_to_folder
 

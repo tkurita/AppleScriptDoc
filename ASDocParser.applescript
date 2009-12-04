@@ -1,7 +1,6 @@
 global ASHTML
 global DocElements
 global HTMLElement
-global SimpleRD
 global XDict
 global XList
 global XText

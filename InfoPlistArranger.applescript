@@ -15,7 +15,7 @@ on check_target(a_target_bundle)
 	set _need_setup to false
 	set _target_bundle to a_target_bundle
 	
-	set contents_folder to a_target_bundle's child("Contents:")
+	set contents_folder to a_target_bundle's child("Contents/")
 	set _plist_file to contents_folder's child("Info.plist")
 	if not (_plist_file's item_exists()) then
 		--log (_plist_file's unicode_value())
@@ -70,8 +70,7 @@ on setup_book_folder()
 end setup_book_folder
 
 on get_book_folder()
-	--set resources_folder to my _target_bundle's bundle_resources_folder()
-	--return resources_folder's child(my _book_folder_name)
+	
 	if my _book_folder is missing value then
 		setup_book_folder()
 	end if

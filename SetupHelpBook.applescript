@@ -22,12 +22,10 @@ on process given bundle:a_bundle, text:a_text
 	set index_page to book_folder's child("index.html")
 	ExportHelpBook's set_use_appletitle(true)
 	ExportHelpBook's output_to_folder(book_folder's as_alias(), index_page, a_text, a_bundle's basename())
-	
 	if book_name is missing value then
 		InfoPlistArranger's set_book_name(ExportHelpBook's bookname())
 	end if
-	setup_info_pllist() of InfoPlistArranger
-	
+	InfoPlistArranger's setup_info_pllist()
 	tell application "Help Indexer"
 		open (book_folder's as_alias())
 	end tell

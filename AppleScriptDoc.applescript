@@ -9,40 +9,23 @@ property InfoPlistArranger : missing value
 property ASFormattingStyle : missing value
 property ASHTML : missing value
 property DocElements : missing value
-property HTMLElement : missing value
-property SimpleRD : missing value
-property XDict : missing value
-property XList : missing value
-property XText : missing value
-property TemplateProcessor : missing value
-property XFileBase : missing value
-property PathConverter : missing value
 property XFile : missing value
 property OneShotScriptEditor : missing value
-property XCharacterSet : missing value
-property CSSBuilder : missing value
-property RGBColor : missing value
 
-on __load__(loader)
-	tell loader
-		set SimpleRD to load("SimpleRD")
-		set TemplateProcessor to load("TemplateProcessor")
-		set PathConverter to load("PathConverter")
-		set RGBColor to load("RGBColor")
-		set CSSBuilder to load("CSSBuilder")
-		set XCharacterSet to load("XCharacterSet")
-	end tell
-	set HTMLElement to SimpleRD's HTMLElement
-	set XDict to HTMLElement's XDict
-	set XList to SimpleRD's XList
-	set XText to XList's XText
-	
-	set XFileBase to TemplateProcessor's XFile
-	
-	return missing value
-end __load__
+-- modules loaded at compile time
+property HTMLElement : module
+property SimpleRD : module
+property XDict : module
+property XList : module
+property XText : module
+property TemplateProcessor : module
+property XFileBase : module "XFile"
+property PathConverter : module
+property XCharacterSet : module
+property CSSBuilder : module
+property RGBColor : module
 
-property _ : __load__(proxy() of application (get "AppleScriptDocLib"))
+property _ : boot (module loader application (get "AppleScriptDocLib")) for me
 
 (*== GUI elements *)
 property _export_helpbook_button : missing value
@@ -62,7 +45,7 @@ property _line_end : HTMLElement's line_end()
 on export_helpbook()
 	--log "start export_helpbook"
 	set a_path to contents of default entry "TargetScript" of user defaults
-	ExportHelpBook's process_file(XFile's make_with(POSIX file a_path))
+	ExportHelpBook's process_file(XFile's make_with(a_path))
 end export_helpbook
 
 on cancel_export()
