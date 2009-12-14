@@ -1,6 +1,7 @@
 global ExportHelpBook
 global XFile
 global _app_controller
+global DocElements
 
 on process_file(a_file)
 	try
@@ -15,6 +16,7 @@ on process_file(a_file)
 	
 	ExportHelpBook's initialize()
 	ExportHelpBook's set_template_folder("HTMLTemplate")
+	DocElements's set_script_support(false)
 	set index_page to ExportHelpBook's output_to_folder(a_result, index_page, a_text, script_name)
 	index_page's set_types(missing value, missing value)
 	tell application "Finder"

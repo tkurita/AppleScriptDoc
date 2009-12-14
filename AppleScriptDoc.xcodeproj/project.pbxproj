@@ -192,7 +192,7 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C0AD6830C3B5FA500E2B397 /* ASDocParser.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = ASDocParser.applescript; sourceTree = "<group>"; };
-		2C0AD69F0C3B61AB00E2B397 /* ExportHelpBook.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = ExportHelpBook.applescript; sourceTree = "<group>"; };
+		2C0AD69F0C3B61AB00E2B397 /* ExportHelpBook.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ExportHelpBook.applescript; sourceTree = "<group>"; };
 		2C2975070C3C8F82000CDBEF /* SaveToFile.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SaveToFile.applescript; sourceTree = "<group>"; };
 		2C2C1F840C8EEC5C0094E73B /* HelpSetup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HelpSetup.plist; sourceTree = "<group>"; };
 		2C2C1FED0C8EED640094E73B /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };

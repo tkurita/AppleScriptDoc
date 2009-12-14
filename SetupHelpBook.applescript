@@ -2,6 +2,7 @@ global ExportHelpBook
 global XFile
 global _app_controller
 global InfoPlistArranger
+global DocElements
 
 property _template_folder : "HelpBookTemplate"
 
@@ -14,6 +15,7 @@ on process given bundle:a_bundle, text:a_text
 	if a_bundle is missing value then return
 	if not InfoPlistArranger's check_target(a_bundle) then return
 	ExportHelpBook's initialize()
+	DocElements's set_script_support(true)
 	set book_name to get_book_name() of InfoPlistArranger
 	if book_name is not missing value then
 		ExportHelpBook's set_bookname(book_name)

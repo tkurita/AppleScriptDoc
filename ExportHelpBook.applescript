@@ -1,7 +1,7 @@
 global _line_end
 
 global ASDocParser
-
+global DocElements
 global ASFormattingStyle
 global ASHTML
 global HTMLElement
@@ -25,11 +25,11 @@ on stop_processing()
 end stop_processing
 
 on initialize()
-	set _bookName to missing value
-	set _appleTitle to ""
-	set _use_appletitle to false
-	set _template_folder to "HelpBookTemplate"
-	set _stop_processing to false
+	set my _bookName to missing value
+	set my _appleTitle to ""
+	set my _use_appletitle to false
+	set my _template_folder to "HelpBookTemplate"
+	set my _stop_processing to false
 end initialize
 
 on set_template_folder(a_name)
@@ -58,12 +58,13 @@ end set_use_appletitle
 
 --global doc_container
 on output_to_folder(root_ref, index_page, a_text, script_name)
+	--log "start output_to_folder"
 	if class of index_page is not script then
 		set index_page to XFile's make_with(index_page)
 	end if
 	set book_folder to index_page's parent_folder()
 	book_folder's make_path(missing value)
-	set temp_asset_folder to XFile's make_with(path to resource "assets" in directory _template_folder)
+	set temp_asset_folder to XFile's make_with(path to resource "assets" in directory my _template_folder)
 	set assets_folder to temp_asset_folder's copy_to(book_folder)
 	set pages_folder to book_folder's make_folder("pages")
 	if my _bookName is missing value then
@@ -81,13 +82,10 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set root_page_path to index_page's posix_path()
 	a_link_manager's set_root_page(root_page_path)
 	a_link_manager's set_current_page(root_page_path)
-	set template_folder to XFile's make_with(path to resource _template_folder)
+	set template_folder to XFile's make_with(path to resource my _template_folder)
 	set handler_template to template_folder's child("pages/handler.html")
 	set rel_index_path to "../" & index_page's item_name()
-	
 	if my _stop_processing then error number -128
-	--set oneshot_doc to OneShotScriptEditor's make_with_name(ASHTML's temporary_doctitle())
-	--oneshot_doc's check_status()
 	
 	script HandlerIDManager
 		property _handler_id : {}
@@ -165,7 +163,6 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log "end process other element"
 		end if
 	end repeat
-	
 	(*
 	oneshot_doc's catch_doc()
 	oneshot_doc's release()
@@ -173,7 +170,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set index_body to index_contents's as_unicode_with(_line_end)
 	set pathconv to PathConverter's make_with(index_page's posix_path())
 	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
-	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory _template_folder)
+	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory my _template_folder)
 	if my _stop_processing then error number -128
 	tell template
 		insert_text("$BODY", index_body)
@@ -195,6 +192,7 @@ end output_to_folder
 
 on process_file(a_file)
 	initialize()
+	DocElements's set_script_support(true)
 	set a_text to call method "script_source:" of _app_controller with parameter (a_file's posix_path())
 	set script_name to a_file's basename()
 	

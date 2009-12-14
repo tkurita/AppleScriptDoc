@@ -1,27 +1,8 @@
---property SimpleRD : missing value
 global SimpleRD
---property ASHTML : missing value
 global ASHTML
---property XList : missing value
 global XList
---property HTMLElement : missing value
 global HTMLElement
--- property _line_end : missing value
 global _line_end
-(*
-on __load__(loader)
-	tell loader
-		--set SimpleRD to load("SimpleRD")
-		--set HTMLElement to SimpleRD's HTMLElement
-		--set XList to SimpleRD's XList
-		--set ASHTML to load("ASHTML")
-		ASHTML's set_wrap_with_block(false)
-		set my _line_end to SimpleRD's _line_end
-	end tell
-	return missing value
-end __load__
-*)
---property _ : __load__(proxy() of application (get "AppleScriptDocLib"))
 
 property _useAppleSegment : false
 --property _useAppleSegment : true
@@ -33,11 +14,11 @@ on set_link_manager(an_link_manager)
 end set_link_manager
 
 on set_use_Apple_segment(a_flag)
-	set _useAppleSegment to a_flag
+	set my _useAppleSegment to a_flag
 end set_use_Apple_segment
 
 on set_script_support(a_flag)
-	set _useScriptSupport to a_flag
+	set my _useScriptSupport to a_flag
 end set_script_support
 
 on strip_tag(a_text)
@@ -78,6 +59,7 @@ on make_heading_element(a_line)
 		end get_contents
 		
 		on as_xhtml()
+			--log "as_ xthtml in handler_element in HeadingElement"
 			return as_html()
 		end as_xhtml
 	end script
@@ -123,7 +105,7 @@ on make_title_element(parentElement)
 end make_title_element
 
 on make_paragraph_element(a_list)
-	--log "start make_handler_element"
+	--log "start make_paragraph_element"
 	script ParagraphElement
 		property parent : XList's make_with(a_list)
 		
@@ -179,7 +161,7 @@ on make_handler_element(property_script)
 		end get_abstruct
 		
 		on convert()
-			--log "start convert"
+			--log "start convert　in HandlerElement"
 			--set output_list to {}
 			set output to make HTMLElement
 			if _useAppleSegment then
@@ -207,9 +189,7 @@ on make_handler_element(property_script)
 			set srd to make_with_iterator(my _abstruct) of SimpleRD
 			
 			output's push(srd's perform_convert())
-			--set end of output_list to srd's perform_convert()
-			--log "description"
-			--log my _description
+			
 			if (my _description's count_items()) > 0 then
 				my _description's each(_link_manager)
 				set srd to make_with_iterator(my _description) of SimpleRD
@@ -260,6 +240,7 @@ on make_handler_element(property_script)
 		end as_html
 		
 		on as_xhtml()
+			--log "as_ xthtml in handler_element"
 			SimpleRD's use_xhtml()
 			return convert()
 		end as_xhtml

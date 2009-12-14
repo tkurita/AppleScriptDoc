@@ -25,7 +25,8 @@ property XCharacterSet : module
 property CSSBuilder : module
 property RGBColor : module
 
-property _ : boot (module loader application (get "AppleScriptDocLib")) for me
+--property _ : boot (module loader) for me
+property _ : boot (module loader of application (get "AppleScriptDocLib")) for me
 
 (*== GUI elements *)
 property _export_helpbook_button : missing value
