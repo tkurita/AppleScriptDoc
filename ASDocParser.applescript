@@ -193,7 +193,12 @@ on parse_references(a_region, doc_container)
 			set a_list to a_line's as_list_with("||")
 			set a_word to XText's make_with(item 1 of a_list)'s strip()'s as_unicode()
 			set a_link to XText's make_with(item 2 of a_list)'s strip()'s as_unicode()
-			doc_container's push_external_link(a_word, a_link)
+			if (count a_list) > 2 then
+				set a_target to XText's make_with(item 3 of a_list)'s strip()'s as_unicode()
+			else
+				set a_target to missing value
+			end if
+			doc_container's push_external_link(a_word, a_link, a_target)
 		end if
 	end repeat
 	
@@ -293,8 +298,8 @@ on make_doc_container()
 		property _root_page : missing value
 		property _current_page : missing value
 		
-		on push_external(a_word, a_url)
-			set a_record to {original:a_url, link:missing value, has_scheme:false}
+		on push_external(a_word, a_url, a_target)
+			set a_record to {original:a_url, link:missing value, has_scheme:false, link_target:a_target}
 			if has_scheme(XText's make_with(a_url)) then
 				set link of a_record to a_url
 				set has_scheme of a_record to true
@@ -390,6 +395,9 @@ on make_doc_container()
 				set link_word to "((<" & a_word & ">))"
 				if (a_text's include(link_word)) and (not my _anchor_words's has_item(a_word)) then
 					set a_tag to HTMLElement's make_with("a", {{"href", a_record's link}})
+					if a_record's link_target is not missing value then
+						a_tag's set_attribute("target", a_record's link_target)
+					end if
 					a_tag's push(a_word)
 					set contents of a_text to a_text's replace(link_word, a_tag's as_xhtml())
 				end if
@@ -412,9 +420,9 @@ on make_doc_container()
 			end if
 		end push
 		
-		on push_external_link(a_word, a_url)
+		on push_external_link(a_word, a_url, a_target)
 			--log "push_external_link"
-			my _link_manager's push_external(a_word, a_url)
+			my _link_manager's push_external(a_word, a_url, a_target)
 		end push_external_link
 		
 		on link_manager()
@@ -468,7 +476,7 @@ on process_for_list(a_list)
 end process_for_list
 
 on process_for_editor()
-	tell application "Script Editor"
+	tell application id "com.apple.ScriptEditor2"
 		set theText to contents of document 1
 	end tell
 	

@@ -638,7 +638,14 @@
 			isa = PBXProject;
 			buildConfigurationList = 4E71A80908A2C90C0034BBD9 /* Build configuration list for PBXProject "AppleScriptDoc" */;
 			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* AppleScriptDoc */;
 			projectDirPath = "";
 			projectRoot = "";

@@ -25,8 +25,6 @@ property XCharacterSet : module
 property CSSBuilder : module
 property RGBColor : module
 
---property _ : boot (module loader) for me
-property _ : boot (module loader of application (get "AppleScriptDocLib")) for me
 
 (*== GUI elements *)
 property _export_helpbook_button : missing value
@@ -41,7 +39,14 @@ property _app_controller : missing value
 property _target_script : missing value
 
 (*== constants *)
-property _line_end : HTMLElement's line_end()
+property _line_end : missing value
+
+on boot
+	boot (module loader of application (get "AppleScriptDocLib")) for me
+	set my _line_end to HTMLElement's line_end()
+end boot
+
+property _ : boot
 
 on export_helpbook()
 	--log "start export_helpbook"
@@ -61,6 +66,7 @@ on import_script(script_name)
 end import_script
 
 on will finish launching theObject
+	--boot
 	set ASFormattingStyle to import_script("ASFormattingStyle")
 	set ASHTML to import_script("ASHTML")'s initialize()
 	set XFile to make (import_script("XFileExtend"))
