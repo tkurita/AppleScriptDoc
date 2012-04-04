@@ -71,7 +71,7 @@ end get_book_name
 
 on setup_book_folder()
 	if _book_folder_name is missing value then
-		set _book_folder_name to (_target_bundle's basename()) & "Help"
+		set _book_folder_name to (_target_bundle's basename()) & " Help"
 	end if
 	set resource_folder to my _target_bundle's bundle_resources_folder()
 	set _book_folder to resource_folder's make_folder(_book_folder_name)
@@ -91,7 +91,8 @@ on setup_info_pllist()
 	if not _need_setup then return
 	
 	if my _book_name is missing value then
-		set my _book_name to (_target_bundle's basename()) & " Reference"
+		--set my _book_name to (_target_bundle's basename()) & " Reference"
+		set my _book_name to my _book_folder_name
 	end if
 	
 	if my _bundle_identifier is missing value then
