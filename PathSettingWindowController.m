@@ -4,11 +4,17 @@
 #import "PathExtra.h"
 #import "NSUserDefaultsExtensions.h"
 
+@interface ASKScriptCache : NSObject
+{
+}
++ (ASKScriptCache *)sharedScriptCache;
+- (OSAScript *)scriptWithName:(NSString *)name;
+@end
 
 @implementation PathSettingWindowController
 
-@class ASKScriptCache;
-@class ASKScript;
+//@class ASKScriptCache;
+//@class ASKScript;
 
 #define uselog 0
 
@@ -26,7 +32,7 @@
 			informativeTextWithFormat:@"%@\nNumber: %@", 
 				[error_info objectForKey:@"OSAScriptErrorMessage"],
 				[error_info objectForKey:@"OSAScriptErrorNumber"]] runModal];
-		NSLog([error_info description]);
+		NSLog(@"%@", [error_info description]);
 	}
 		
 	[[NSApplication sharedApplication] endSheet:[sender window] returnCode:128];
@@ -141,7 +147,7 @@ bail:
 				informativeTextWithFormat:@"%@\nNumber: %@", 
 					[error_info objectForKey:@"OSAScriptErrorMessage"],
 					err_no] runModal];
-			NSLog([error_info description]);
+			NSLog(@"%@", [error_info description]);
 		}
 	}
 	
