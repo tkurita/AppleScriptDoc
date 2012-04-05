@@ -62,6 +62,8 @@
 		2C4A6CF60C3CE35F00DBBCD4 /* DonationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C4A6CF50C3CE35F00DBBCD4 /* DonationReminder.framework */; };
 		2C4A6D020C3CE38200DBBCD4 /* DonationReminder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4A6CF50C3CE35F00DBBCD4 /* DonationReminder.framework */; };
 		2C4BF1060F09652600F015E7 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = 2C4BF1050F09652600F015E7 /* dsa_pub.pem */; };
+		2C4EC729152D9F5C004167B9 /* MainMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C4EC725152D9F5C004167B9 /* MainMenu.strings */; };
+		2C4EC72A152D9F5C004167B9 /* PathSettingWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C4EC727152D9F5C004167B9 /* PathSettingWindow.strings */; };
 		2C4EFEA80C3BB03A003743D7 /* SetupHelpBook.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C4EFEA70C3BB03A003743D7 /* SetupHelpBook.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C4EFF6A0C3C1672003743D7 /* index.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5F0C3C1642003743D7 /* index.html */; };
 		2C4EFF730C3C16B9003743D7 /* handler.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF610C3C1642003743D7 /* handler.html */; };
@@ -236,6 +238,8 @@
 		2C4EC6BE152D94AB004167B9 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C4EC6BF152D94C3004167B9 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/PathSettingWindow.nib; sourceTree = "<group>"; };
 		2C4EC6C0152D94CF004167B9 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Japanese; path = Japanese.lproj/MainMenu.nib; sourceTree = "<group>"; };
+		2C4EC726152D9F5C004167B9 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/MainMenu.strings; sourceTree = "<group>"; };
+		2C4EC728152D9F5C004167B9 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/PathSettingWindow.strings; sourceTree = "<group>"; };
 		2C4EFEA70C3BB03A003743D7 /* SetupHelpBook.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetupHelpBook.applescript; sourceTree = "<group>"; };
 		2C4EFF5D0C3C1642003743D7 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = default.css; sourceTree = "<group>"; };
 		2C4EFF5E0C3C1642003743D7 /* handler_page.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handler_page.css; sourceTree = "<group>"; };
@@ -379,6 +383,8 @@
 				257572D5072881A4000BE9CA /* Info.plist */,
 				2C2C1FEC0C8EED640094E73B /* InfoPlist.strings */,
 				2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */,
+				2C4EC725152D9F5C004167B9 /* MainMenu.strings */,
+				2C4EC727152D9F5C004167B9 /* PathSettingWindow.strings */,
 				2C2C1F840C8EEC5C0094E73B /* HelpSetup.plist */,
 				2C4A6CBE0C3CE15E00DBBCD4 /* FactorySettings.plist */,
 				2C4EFF5B0C3C1642003743D7 /* HTMLTemplate */,
@@ -656,6 +662,8 @@
 				2C72A8D70D3CBCDF00AECAF3 /* empty-Info.plist in Resources */,
 				2C4BF1060F09652600F015E7 /* dsa_pub.pem in Resources */,
 				2C46DBCA10A1A6BC00501F03 /* Credits.rtf in Resources */,
+				2C4EC729152D9F5C004167B9 /* MainMenu.strings in Resources */,
+				2C4EC72A152D9F5C004167B9 /* PathSettingWindow.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,6 +731,22 @@
 				2C4EC6BE152D94AB004167B9 /* Japanese */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		2C4EC725152D9F5C004167B9 /* MainMenu.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C4EC726152D9F5C004167B9 /* Japanese */,
+			);
+			name = MainMenu.strings;
+			sourceTree = "<group>";
+		};
+		2C4EC727152D9F5C004167B9 /* PathSettingWindow.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2C4EC728152D9F5C004167B9 /* Japanese */,
+			);
+			name = PathSettingWindow.strings;
 			sourceTree = "<group>";
 		};
 		2CFE960D0C4485DC00B0D2A6 /* PathSettingWindow.nib */ = {

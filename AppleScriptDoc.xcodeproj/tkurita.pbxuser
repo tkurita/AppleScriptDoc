@@ -350,6 +350,7 @@
 			2C4EC707152D9698004167B9 /* PBXTextBookmark */ = 2C4EC707152D9698004167B9 /* PBXTextBookmark */;
 			2C4EC708152D9698004167B9 /* PBXTextBookmark */ = 2C4EC708152D9698004167B9 /* PBXTextBookmark */;
 			2C4EC709152D9698004167B9 /* PBXTextBookmark */ = 2C4EC709152D9698004167B9 /* PBXTextBookmark */;
+			2C4EC71E152D9EC8004167B9 /* PBXTextBookmark */ = 2C4EC71E152D9EC8004167B9 /* PBXTextBookmark */;
 			2C5E719010D67FCB0066E5BA = 2C5E719010D67FCB0066E5BA /* PBXTextBookmark */;
 			2C728E1D10C912180057BC51 = 2C728E1D10C912180057BC51 /* PBXBookmark */;
 			2C728E1F10C912180057BC51 = 2C728E1F10C912180057BC51 /* PBXTextBookmark */;
@@ -1420,6 +1421,16 @@
 		vrLen = 368;
 		vrLoc = 0;
 	};
+	2C4EC71E152D9EC8004167B9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CFE96240C4498FE00B0D2A6 /* DropBox.h */;
+		name = "DropBox.h: 4";
+		rLen = 0;
+		rLoc = 121;
+		rType = 0;
+		vrLen = 368;
+		vrLoc = 0;
+	};
 	2C4EFEA70C3BB03A003743D7 /* SetupHelpBook.applescript */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {755, 630}}";
@@ -2010,8 +2021,8 @@
 	};
 	2CFE96240C4498FE00B0D2A6 /* DropBox.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {665, 408}}";
-			sepNavSelRange = "{121, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {665, 431}}";
+			sepNavSelRange = "{368, 0}";
 			sepNavVisRange = "{0, 368}";
 			sepNavVisRect = "{{0, 0}, {0, 0}}";
 			sepNavWindowFrame = "{{14, 317}, {857, 616}}";
