@@ -10,15 +10,20 @@
 		<link href="assets/default.css" type="text/css" rel="stylesheet" media="all" />
 		<meta name="keywords" content="$SCRIPTNAME, AppleScript" />
 		<script type="text/javascript" src="assets/run_helpscript.js"></script>
+		<link href="$HELPBOOK_ROOT" id="HelpBookRoot" />
 	</head>
 
 	<body>
-		<div style="visibility:hidden">
-			$HELPBOOK_ROOT</div>
 		<div id="smartheader">
-			<table width="95%" border="0" cellspacing="2" cellpadding="0">
+			<table width="95%" border="0" cellspacing="2" cellpadding="0" align="center">
 				<tr>
-					<td align="right"><a onclick="return runHelpScriptWithBundleRoot(this)" href="assets/editScript.scpt">Edit Script</a></td>
+					<td align="left">
+					<!-- InstanceBeginEditable name="to-root" -->
+					<!-- InstanceEndEditable -->
+					</td>
+					<td align="right">
+					<a onclick="return runHelpScriptWithBundleRoot(this)" href="assets/editScript.scpt">Edit Script</a>
+					</td>
 				</tr>
 			</table>
 		</div>
