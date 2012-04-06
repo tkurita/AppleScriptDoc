@@ -227,6 +227,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -285,8 +287,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>34</integer>
-									<integer>33</integer>
+									<integer>27</integer>
+									<integer>26</integer>
 									<integer>16</integer>
 									<integer>0</integer>
 								</array>
@@ -324,14 +326,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>default.css</string>
+								<string>navgrad-normal.png</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -339,11 +339,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>default.css</string>
+										<string>navgrad-normal.png</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2C4D6CD8152EDEBA00C6DEF5</string>
+										<string>2C4D6CE1152EE8A200C6DEF5</string>
 										<key>history</key>
 										<array>
 											<string>2CF5C0B90C44594500224B65</string>
@@ -414,15 +414,15 @@
 											<string>2C4D6CA7152EBB2600C6DEF5</string>
 											<string>2C4D6CA9152EBB2600C6DEF5</string>
 											<string>2C4D6CAC152EBB2600C6DEF5</string>
-											<string>2C4D6CAD152EBB2600C6DEF5</string>
-											<string>2C4D6CB0152EBBCC00C6DEF5</string>
 											<string>2C4D6CB9152ECD9300C6DEF5</string>
 											<string>2C4D6CBA152ECD9300C6DEF5</string>
 											<string>2C4D6CBB152ECD9300C6DEF5</string>
 											<string>2C4D6CBC152ECD9300C6DEF5</string>
 											<string>2C4D6CCA152ED20F00C6DEF5</string>
 											<string>2C4D6CD7152EDEBA00C6DEF5</string>
-											<string>2C4D6CD2152EDDF900C6DEF5</string>
+											<string>2C4D6CDF152EE8A200C6DEF5</string>
+											<string>2C4D6CE0152EE8A200C6DEF5</string>
+											<string>2C4D6CAD152EBB2600C6DEF5</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

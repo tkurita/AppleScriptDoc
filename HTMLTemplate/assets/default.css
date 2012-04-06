@@ -6,7 +6,7 @@ a:visited {
 	color: #999966  }
 body {
 	color: black;
-	font-size: 11px;
+	font-size: 12px;
 	font-family: "Lucida Grande", Arial, sans-serif;
 	background-color: white   ; }
 h1 {
@@ -19,7 +19,6 @@ h1 {
 h2 {
 	font-weight: bold;
 	font-size: 130%;
-	font-family: Osaka, "Lucida Grande", Arial, sans-serif;
 	background-color: #f5f5f5;
 	margin-right: 0;
 	margin-left: 0;
@@ -41,9 +40,10 @@ pre  {	margin-right: 4ex;
 li  {	line-height: 150% }
 #smartheader {
 	background-image: url(navgrad-normal.png);
-	position: fixed; 
+	position: fixed;
 	top: 0;
 	left: 0;
-	width: 100%  ;
+	min-width: 100%;
+	min-height: 25px;
 	margin: 0;
-	padding: 0;}
+	padding: 0; }
