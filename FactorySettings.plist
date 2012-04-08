@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>DonationURL</key>
-	<string>http://homepage.mac.com/tkurita/scriptfactory/donationproxy.html</string>
 	<key>ExportFileName</key>
 	<string>reference.html</string>
 	<key>HistoryMax</key>
@@ -23,6 +21,7 @@
 		<string>commandName</string>
 		<string>parameterName</string>
 		<string>className</string>
+		<string>propertyName</string>
 		<string>enumeratedValues</string>
 		<string>additionCommandName</string>
 		<string>additionParameterName</string>

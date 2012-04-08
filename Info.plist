@@ -119,5 +119,7 @@
 	<string>http://www.script-factory.net/appcast/AppleScriptDoc.xml</string>
 	<key>SUCheckAtStartup</key>
 	<true/>
+	<key>DonationURL</key>
+	<string>http://www.script-factory.net/donationproxy.html</string>
 </dict>
 </plist>

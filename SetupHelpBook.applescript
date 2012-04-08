@@ -31,11 +31,11 @@ on process given bundle:a_bundle, text:a_text
 	tell application "Help Indexer"
 		open (book_folder's as_alias())
 	end tell
-	
-	show helpbook (a_bundle's as_alias())
+	--show helpbook (a_bundle's as_alias())
+	call method "showHelpBook:" of _app_controller with parameter (a_bundle's posix_path())
 end process
 
 on process_file(a_bundle)
-	set a_text to call method "script_source:" of _app_controller with parameter (a_bundle's posix_path())
+	set a_text to call method "sourceOfScript:" of _app_controller with parameter (a_bundle's posix_path())
 	process given bundle:a_bundle, text:a_text
 end process_file

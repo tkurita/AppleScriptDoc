@@ -17,7 +17,7 @@
 }
 
 #pragma mark services for scripts
-- (NSString *)script_source:(NSString *)path
+- (NSString *)sourceOfScript:(NSString *)path
 {
 	NSDictionary *error_info;
 	NSAppleScript *a_script = [[[NSAppleScript alloc] initWithContentsOfURL:
@@ -25,6 +25,27 @@
 									
 	return [a_script source];
 
+}
+
+- (OSStatus)showHelpBook:(NSString *)path
+{
+	CFBundleRef app_bundle = NULL;
+    CFStringRef bookname = NULL;
+    OSStatus err = noErr;
+	
+    app_bundle = CFBundleGetMainBundle();
+    if (app_bundle == NULL) {err = fnfErr; goto bail;}
+	
+    bookname = CFBundleGetValueForInfoDictionaryKey(app_bundle,CFSTR("CFBundleHelpBookName"));
+    if (bookname == NULL) {err = fnfErr; goto bail;}
+	
+    if (CFGetTypeID(bookname) != CFStringGetTypeID()) {
+        err = paramErr;
+    }
+	
+    if (err == noErr) err = AHGotoPage (bookname, NULL, NULL);// 5
+bail:
+    return err;
 }
 
 #pragma mark private methods

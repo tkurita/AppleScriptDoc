@@ -195,7 +195,7 @@ end output_to_folder
 on process_file(a_file)
 	initialize()
 	DocElements's set_script_support(true)
-	set a_text to call method "script_source:" of _app_controller with parameter (a_file's posix_path())
+	set a_text to call method "sourceOfScript:" of _app_controller with parameter (a_file's posix_path())
 	set script_name to a_file's basename()
 	
 	set a_root to (POSIX file (contents of default entry "HelpBookRootPath" of user defaults)) as alias

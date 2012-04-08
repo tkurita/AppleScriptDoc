@@ -11,7 +11,7 @@ on process_file(a_file)
 	end try
 	set index_page to XFile's make_with(a_result)
 	set index_page to index_page's change_path_extension("html")
-	set a_text to call method "script_source:" of _app_controller with parameter (a_file's posix_path())
+	set a_text to call method "souceOfScript:" of _app_controller with parameter (a_file's posix_path())
 	set script_name to a_file's basename()
 	
 	ExportHelpBook's initialize()
