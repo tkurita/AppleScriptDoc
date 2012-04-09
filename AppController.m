@@ -29,21 +29,21 @@
 
 - (OSStatus)showHelpBook:(NSString *)path
 {
-	CFBundleRef app_bundle = NULL;
-    CFStringRef bookname = NULL;
     OSStatus err = noErr;
 	
-    app_bundle = CFBundleGetMainBundle();
-    if (app_bundle == NULL) {err = fnfErr; goto bail;}
+	FSRef ref;
+	err = FSPathMakeRef((UInt8 *)[path fileSystemRepresentation], &ref, NULL);
+	if (err != noErr) goto bail;
+	err = AHRegisterHelpBook(&ref);
+	if (err != noErr) goto bail;
 	
-    bookname = CFBundleGetValueForInfoDictionaryKey(app_bundle,CFSTR("CFBundleHelpBookName"));
-    if (bookname == NULL) {err = fnfErr; goto bail;}
+	NSBundle *bundle_ref = [NSBundle bundleWithPath:path];
+    if (bundle_ref == nil) {err = fnfErr; goto bail;}
 	
-    if (CFGetTypeID(bookname) != CFStringGetTypeID()) {
-        err = paramErr;
-    }
-	
-    if (err == noErr) err = AHGotoPage (bookname, NULL, NULL);// 5
+	NSString *bookname = [[bundle_ref infoDictionary] objectForKey:@"CFBundleHelpBookName"];
+    if (bookname == nil) {err = fnfErr; goto bail;}
+		
+    if (err == noErr) err = AHGotoPage((CFStringRef)bookname, NULL, NULL);
 bail:
     return err;
 }

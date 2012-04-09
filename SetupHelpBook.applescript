@@ -32,7 +32,10 @@ on process given bundle:a_bundle, text:a_text
 		open (book_folder's as_alias())
 	end tell
 	--show helpbook (a_bundle's as_alias())
-	call method "showHelpBook:" of _app_controller with parameter (a_bundle's posix_path())
+	set a_result to call method "showHelpBook:" of _app_controller with parameter (a_bundle's posix_path())
+	if a_result is not 0 then
+		display alert "Error : " & a_result
+	end if
 end process
 
 on process_file(a_bundle)
