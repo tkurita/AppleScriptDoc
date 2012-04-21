@@ -232,8 +232,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -272,8 +270,7 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>2CFE96280C44991E00B0D2A6</string>
-								<string>2CA3B4700D335FEC00A8C813</string>
-								<string>2CAEEB550ECC129E0068900A</string>
+								<string>080E96DDFE201D6D7F000001</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>2C4EFF5B0C3C1642003743D7</string>
 								<string>2C4EFF5C0C3C1642003743D7</string>
@@ -281,6 +278,7 @@
 								<string>2C48092F0C3B7D94004E3217</string>
 								<string>2C4809300C3B7D94004E3217</string>
 								<string>2C4809380C3B7D94004E3217</string>
+								<string>29B97318FDCFA39411CA2CEA</string>
 								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -289,13 +287,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>42</integer>
-									<integer>24</integer>
+									<integer>4</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 636}, {268, 588}}</string>
+							<string>{{0, 0}, {268, 588}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -316,7 +314,7 @@
 							<real>246</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>77 197 1203 669 0 0 1440 878 </string>
+						<string>72 209 1203 669 0 0 1440 878 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -327,12 +325,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>handler.html</string>
+								<string>SaveToFile.applescript</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -340,11 +340,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>handler.html</string>
+										<string>SaveToFile.applescript</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2CE906EF1542EED60081D79D</string>
+										<string>2CE9071915436E3F0081D79D</string>
 										<key>history</key>
 										<array>
 											<string>2CF5C0B90C44594500224B65</string>
@@ -403,23 +403,25 @@
 											<string>2C4D6CA9152EBB2600C6DEF5</string>
 											<string>2C4D6CE0152EE8A200C6DEF5</string>
 											<string>2CB2FE5E152F4FD600A480A2</string>
-											<string>2CB2FE63152F4FD600A480A2</string>
 											<string>2C4D4C081531DFA400BB3D50</string>
-											<string>2C4D4C0A1531DFA400BB3D50</string>
 											<string>2C4D4C0B1531DFA400BB3D50</string>
 											<string>2C4D4C0C1531DFA400BB3D50</string>
-											<string>2C4D4C101531DFA400BB3D50</string>
 											<string>2C4D4C2E1532793000BB3D50</string>
 											<string>2C4D4C2F1532793000BB3D50</string>
 											<string>2C4D4C4C153282DC00BB3D50</string>
-											<string>2CE906B0154263D30081D79D</string>
-											<string>2CE906BC1542B4960081D79D</string>
-											<string>2CE906CB1542B7F10081D79D</string>
 											<string>2CE906D01542E8EE0081D79D</string>
-											<string>2CE906D51542EA030081D79D</string>
 											<string>2CE906D61542EA030081D79D</string>
 											<string>2CE906DD1542EC440081D79D</string>
-											<string>2CE906EE1542EED60081D79D</string>
+											<string>2CE906FF15436BA00081D79D</string>
+											<string>2CE9070015436BA00081D79D</string>
+											<string>2CE9070115436BA00081D79D</string>
+											<string>2CE9070215436BA00081D79D</string>
+											<string>2CE9070315436BA00081D79D</string>
+											<string>2CE9070415436BA00081D79D</string>
+											<string>2CE9070C15436D340081D79D</string>
+											<string>2CE9071615436E3F0081D79D</string>
+											<string>2CE9071715436E3F0081D79D</string>
+											<string>2CE9071815436E3F0081D79D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -433,7 +435,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {913, 448}}</string>
 								<key>RubberWindowFrame</key>
-								<string>77 197 1203 669 0 0 1440 878 </string>
+								<string>72 209 1203 669 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -453,7 +455,7 @@
 								<key>Frame</key>
 								<string>{{0, 453}, {913, 153}}</string>
 								<key>RubberWindowFrame</key>
-								<string>77 197 1203 669 0 0 1440 878 </string>
+								<string>72 209 1203 669 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -616,12 +618,12 @@
 		<string>2CE906E11542EC440081D79D</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>2C576A0B0EEECB21005D5F88</string>
 		<string>/Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/trunk/AppleScriptDoc.xcodeproj</string>
-		<string>1C530D57069F1CE1000CFCEE</string>
 	</array>
 	<key>WindowString</key>
-	<string>77 197 1203 669 0 0 1440 878 </string>
+	<string>72 209 1203 669 0 0 1440 878 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -851,14 +853,12 @@
 							<key>Dock</key>
 							<array>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
 										<string>1CDD528C0622207200134675</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>SetupHelpBook.applescript</string>
+										<string>ExportHelpBook.applescript</string>
 										<key>StatusBarVisibility</key>
 										<true/>
 									</dict>
@@ -879,6 +879,8 @@
 							<string>450pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -924,7 +926,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C530D57069F1CE1000CFCEE</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -945,6 +947,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

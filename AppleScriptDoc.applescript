@@ -94,7 +94,6 @@ end stop_indicator
 
 on clicked theObject
 	set a_name to name of theObject
-	
 	if a_name is "SetupHelpBook" then
 		start_indicator()
 		set a_path to contents of default entry "TargetScript" of user defaults

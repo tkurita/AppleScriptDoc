@@ -8,7 +8,9 @@ body {
 	color: black;
 	font-size: 12px;
 	font-family: "Lucida Grande", Arial, sans-serif;
-	background-color: white   ; }
+	background-color: white   ; 
+	margin: 0;
+	padding: 0;}
 h1 {
 	font-weight: bold;
 	font-size: 250%;
@@ -46,4 +48,12 @@ li  {	line-height: 150% }
 	min-width: 100%;
 	min-height: 25px;
 	margin: 0;
-	padding: 0; }
+	padding: 0; 
+	z-index: 1; }
+#contents { position: relative; margin: 5px 10px 10px; padding: 0; min-width: 450px; }
+.to-root {
+	line-height: 25px;
+	float: left;
+	margin: 0 0 0 1em;
+	padding: 0; }	
+	

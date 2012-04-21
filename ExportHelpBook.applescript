@@ -143,9 +143,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			tell template
 				insert_text("$DOC_TITLE", doc_title)
 				insert_text("$HANDLER_NAME", handler_name)
-				insert_text("$MODULE_NAME", script_name)
+				insert_text("$SCRIPT_NAME", script_name)
 				insert_text("$BODY", doc_element's as_xhtml())
-				--insert_text("$HELPBOOK_ROOT", HTMLElement's make_with("a", {{"href", rel_root}, {"id", "HelpBookRoot"}})'s as_html())
 				insert_text("$HELPBOOK_ROOT", rel_root)
 				insert_text("$INDEX_PAGE", rel_index_path)
 				write_to(handler_page)
@@ -176,13 +175,10 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	if my _stop_processing then error number -128
 	tell template
 		insert_text("$BODY", index_body)
-		insert_text("$APPLETITLE", my _appleTitle)
-		insert_text("$SCRIPTNAME", script_name)
-		--insert_text("$BOOKNAME", my _bookName)
-		insert_text("$BOOKNAME", doc_title)
-		--insert_text("$HELPBOOK_ROOT", HTMLElement's make_with("a", {{"href", rel_root}, {"id", "HelpBookRoot"}})'s as_html())
+		insert_text("$APPLE_TITLE", my _appleTitle)
+		insert_text("$SCRIPT_NAME", script_name)
+		insert_text("$BOOK_NAME", doc_title)
 		insert_text("$HELPBOOK_ROOT", rel_root)
-		--insert_text("$EDIT_SCRIPT", edit_scpt_path)
 		set index_page to write_to(index_page)
 	end tell
 	if my _stop_processing then error number -128
