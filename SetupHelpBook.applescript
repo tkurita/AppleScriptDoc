@@ -6,10 +6,6 @@ global DocElements
 
 property _template_folder : "HelpBookTemplate"
 
-on write_handler(handler_elem)
-	set template to TemplateProcessor's make_with_file(path to resource "reference.html" in directory _template_folder)
-end write_handler
-
 on process given bundle:a_bundle, text:a_text
 	--log "start process in SetupHelpBook"
 	if a_bundle is missing value then return
