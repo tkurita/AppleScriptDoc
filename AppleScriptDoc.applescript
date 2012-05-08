@@ -27,8 +27,6 @@ property RGBColor : module
 
 
 (*== GUI elements *)
-property _export_helpbook_button : missing value
-property _save_button : missing value
 property _recent_popup : missing value
 property _indicator : missing value
 
@@ -57,10 +55,13 @@ on cancel_export()
 	ExportHelpBook's stop_processing()
 end cancel_export
 
-on setup_helpbook()
-	set a_path to contents of default entry "TargetScript" of user defaults
+on setup_helpbook(a_path)
 	SetupHelpBook's process_file(XFile's make_with(POSIX file a_path))
 end setup_helpbook
+
+on save_to_file(a_path)
+	SaveToFile's process_file(XFile's make_with(POSIX file a_path))
+end save_to_file
 
 on import_script(script_name)
 	tell main bundle
@@ -98,27 +99,14 @@ end stop_indicator
 
 on clicked theObject
 	set a_name to name of theObject
-	if a_name is "SaveToFile" then
-		start_indicator()
-		set a_path to contents of default entry "TargetScript" of user defaults
-		try
-			SaveToFile's process_file(XFile's make_with(POSIX file a_path))
-		on error msg number errno
-			display alert "Error : " & errno message msg
-		end try
-		stop_indicator()
-	else if a_name is "CancelExport" then
+	if a_name is "CancelExport" then
 		--log "CancelExport"
 	end if
 end clicked
 
 on awake from nib theObject
 	set a_name to name of theObject
-	if a_name is "ExportHelpBook" then
-		set _export_helpbook_button to theObject
-	else if a_name is "SaveToFile" then
-		set _save_button to theObject
-	else if a_name is "RecentPopup" then
+	if a_name is "RecentPopup" then
 		set _recent_popup to theObject
 	else if a_name is "ProgressIndicator" then
 		set _indicator to theObject

@@ -1183,6 +1183,14 @@
 					</object>
 					<int key="connectionID">518</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">saveToFileAction:</string>
+						<reference key="source" ref="45014779"/>
+						<reference key="destination" ref="926336935"/>
+					</object>
+					<int key="connectionID">519</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -2032,9 +2040,8 @@
 							<int key="appleScriptScriptScope">0</int>
 							<object class="NSArray" key="appleScriptEventHandlerNames">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<string>AwakeFromNib</string>
 							</object>
-							<string key="appleScriptScriptName">AppleScriptDoc.applescript</string>
+							<string key="appleScriptScriptName"/>
 							<string key="appleScriptObjectName">ExportHelpBook</string>
 						</object>
 					</object>
@@ -2060,19 +2067,10 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>
 					<object class="NSMutableDictionary">
-						<string key="NS.key.0">IBAppleScriptAttributeName</string>
-						<object class="IBAppleScriptInfoAttribute" key="NS.object.0">
-							<string key="name">IBAppleScriptAttributeName</string>
-							<reference key="object" ref="926336935"/>
-							<int key="appleScriptObjectID">-1</int>
-							<int key="appleScriptScriptScope">0</int>
-							<object class="NSArray" key="appleScriptEventHandlerNames">
-								<bool key="EncodedWithXMLCoder">YES</bool>
-								<string>Clicked</string>
-								<string>AwakeFromNib</string>
-							</object>
-							<string key="appleScriptScriptName">AppleScriptDoc.applescript</string>
-							<string key="appleScriptObjectName">SaveToFile</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<reference key="dict.sortedKeys" ref="0"/>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
 						</object>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2162,7 +2160,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">518</int>
+			<int key="maxID">519</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2177,11 +2175,13 @@
 							<string>exportAction:</string>
 							<string>makeDonation:</string>
 							<string>popUpRecents:</string>
+							<string>saveToFileAction:</string>
 							<string>selectTarget:</string>
 							<string>setupHelpBookAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2196,6 +2196,7 @@
 							<string>exportAction:</string>
 							<string>makeDonation:</string>
 							<string>popUpRecents:</string>
+							<string>saveToFileAction:</string>
 							<string>selectTarget:</string>
 							<string>setupHelpBookAction:</string>
 						</object>
@@ -2211,6 +2212,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">popUpRecents:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">saveToFileAction:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

@@ -208,14 +208,16 @@ bail:
 								  contextInfo:nil];
 }
 
-- (IBAction)setupHelpBookAction:(id)sender
+- (void)processTargetScriptWithHandler:(NSString *)handlerName
 {
-	NSDictionary *error_info = nil;
 	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
+	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
 	
 	[progressIndicator setHidden:NO];
 	[progressIndicator startAnimation:self];
-	[a_script executeHandlerWithName:@"setup_helpbook" arguments:nil error:&error_info];
+	NSDictionary *error_info = nil;
+	[a_script executeHandlerWithName:handlerName
+							arguments:[NSArray arrayWithObject:a_path] error:&error_info];
 	if (error_info) {
 		NSNumber *err_no = [error_info objectForKey:@"OSAScriptErrorNumber"];
 		if ([err_no intValue] != -128) {
@@ -230,6 +232,16 @@ bail:
 	
 	[progressIndicator stopAnimation:self];
 	[progressIndicator setHidden:YES];	
+}
+
+- (IBAction)setupHelpBookAction:(id)sender
+{
+	[self processTargetScriptWithHandler:@"setup_helpbook"];
+}
+
+- (IBAction)saveToFileAction:(id)sender
+{
+	[self processTargetScriptWithHandler:@"save_to_file"];
 }
 
 @end

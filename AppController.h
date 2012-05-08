@@ -14,5 +14,6 @@
 - (IBAction)popUpRecents:(id)sender;
 - (IBAction)exportAction:(id)sender;
 - (IBAction)setupHelpBookAction:(id)sender;
+- (IBAction)saveToFileAction:(id)sender;
 - (IBAction)selectTarget:(id)sender;
 @end
