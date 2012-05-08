@@ -26,10 +26,6 @@ property CSSBuilder : module
 property RGBColor : module
 
 
-(*== GUI elements *)
-property _recent_popup : missing value
-property _indicator : missing value
-
 property _app_controller : missing value
 
 (*== variables *)
@@ -93,13 +89,6 @@ on clicked theObject
 		--log "CancelExport"
 	end if
 end clicked
-
-on awake from nib theObject
-	set a_name to name of theObject
-	if a_name is "RecentPopup" then
-		set _recent_popup to theObject
-	end if
-end awake from nib
 
 on open theObject
 	activate
