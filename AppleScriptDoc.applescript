@@ -83,13 +83,6 @@ on will finish launching theObject
 	set _app_controller to call method "delegate"
 end will finish launching
 
-on clicked theObject
-	set a_name to name of theObject
-	if a_name is "CancelExport" then
-		--log "CancelExport"
-	end if
-end clicked
-
 on open theObject
 	activate
 	set a_class to class of theObject
