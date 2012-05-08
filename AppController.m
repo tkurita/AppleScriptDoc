@@ -16,12 +16,33 @@
 - (OSAScript *)scriptWithName:(NSString *)name;
 @end
 
+static id sharedObj;
+
 @implementation AppController
 
 + (void)initialize
 {	
 	NSValueTransformer *transformer = [[[IsBundleTransformer alloc] init] autorelease];
 	[NSValueTransformer setValueTransformer:transformer forName:@"IsBundleTransformer"];
+}
+
++ (id)sharedAppController
+{
+	if (sharedObj == nil) {
+		sharedObj = [[self alloc] init];
+	}
+	return sharedObj;
+}
+
+- (id)init
+{
+	if (self = [super init]) {
+		if (sharedObj == nil) {
+			sharedObj = self;
+		}
+	}
+	
+	return self;
 }
 
 #pragma mark services for scripts

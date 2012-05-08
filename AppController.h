@@ -10,6 +10,9 @@
 	IBOutlet id progressIndicator;
 	NSWindowController *pathSettingWindowController;
 }
++ (id)sharedAppController;
+- (void)processTargetScriptWithHandler:(NSString *)handlerName;
+
 - (IBAction)makeDonation:(id)sender;
 - (IBAction)popUpRecents:(id)sender;
 - (IBAction)exportAction:(id)sender;

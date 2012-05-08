@@ -3,6 +3,7 @@
 #import "PathSettingWindowController.h"
 #import "PathExtra.h"
 #import "NSUserDefaultsExtensions.h"
+#import "AppController.h"
 
 @interface ASKScriptCache : NSObject
 {
@@ -12,9 +13,6 @@
 @end
 
 @implementation PathSettingWindowController
-
-//@class ASKScriptCache;
-//@class ASKScript;
 
 #define uselog 0
 
@@ -133,27 +131,8 @@ bail:
 
 - (IBAction)okAction:(id)sender
 {
-	NSDictionary *error_info = nil;
-	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
-	
-	[progressIndicator setHidden:NO];
-	[progressIndicator startAnimation:self];
-	[a_script executeHandlerWithName:@"export_helpbook" arguments:nil error:&error_info];
-	if (error_info) {
-		NSNumber *err_no = [error_info objectForKey:@"OSAScriptErrorNumber"];
-		if ([err_no intValue] != -128) {
-			[[NSAlert alertWithMessageText:@"AppleScript Error"
-				defaultButton:@"OK" alternateButton:nil otherButton:nil
-				informativeTextWithFormat:@"%@\nNumber: %@", 
-					[error_info objectForKey:@"OSAScriptErrorMessage"],
-					err_no] runModal];
-			NSLog(@"%@", [error_info description]);
-		}
-	}
-	
-	[progressIndicator stopAnimation:self];
-	[progressIndicator setHidden:YES];
-	
+	[[AppController sharedAppController] processTargetScriptWithHandler:@"export_helpbook"];
+
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSArray *array = [pathRecordsController selectedObjects];
 	if (array) {

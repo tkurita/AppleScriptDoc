@@ -28,9 +28,6 @@ property RGBColor : module
 
 property _app_controller : missing value
 
-(*== variables *)
-property _target_script : missing value
-
 (*== constants *)
 property _line_end : missing value
 
@@ -41,9 +38,8 @@ end boot
 
 property _ : boot
 
-on export_helpbook()
+on export_helpbook(a_path)
 	--log "start export_helpbook"
-	set a_path to contents of default entry "TargetScript" of user defaults
 	ExportHelpBook's process_file(XFile's make_with(a_path))
 end export_helpbook
 
