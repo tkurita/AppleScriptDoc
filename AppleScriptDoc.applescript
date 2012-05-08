@@ -87,16 +87,6 @@ on will finish launching theObject
 	set _app_controller to call method "delegate"
 end will finish launching
 
-on start_indicator()
-	set visible of _indicator to true
-	start _indicator
-end start_indicator
-
-on stop_indicator()
-	stop _indicator
-	set visible of _indicator to false
-end stop_indicator
-
 on clicked theObject
 	set a_name to name of theObject
 	if a_name is "CancelExport" then
@@ -108,8 +98,6 @@ on awake from nib theObject
 	set a_name to name of theObject
 	if a_name is "RecentPopup" then
 		set _recent_popup to theObject
-	else if a_name is "ProgressIndicator" then
-		set _indicator to theObject
 	end if
 end awake from nib
 
