@@ -5,8 +5,16 @@
 #import "IsBundleTransformer.h"
 #import "NSUserDefaultsExtensions.h"
 #import <Carbon/Carbon.h>
+#import <OSAKit/OSAScript.h>
 
 #define useLog 0
+
+@interface ASKScriptCache : NSObject
+{
+}
++ (ASKScriptCache *)sharedScriptCache;
+- (OSAScript *)scriptWithName:(NSString *)name;
+@end
 
 @implementation AppController
 
@@ -198,6 +206,30 @@ bail:
 								modalDelegate:self 
 							   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
 								  contextInfo:nil];
+}
+
+- (IBAction)setupHelpBookAction:(id)sender
+{
+	NSDictionary *error_info = nil;
+	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
+	
+	[progressIndicator setHidden:NO];
+	[progressIndicator startAnimation:self];
+	[a_script executeHandlerWithName:@"setup_helpbook" arguments:nil error:&error_info];
+	if (error_info) {
+		NSNumber *err_no = [error_info objectForKey:@"OSAScriptErrorNumber"];
+		if ([err_no intValue] != -128) {
+			[[NSAlert alertWithMessageText:@"AppleScript Error"
+							 defaultButton:@"OK" alternateButton:nil otherButton:nil
+				 informativeTextWithFormat:@"%@\nNumber: %@", 
+			  [error_info objectForKey:@"OSAScriptErrorMessage"],
+			  err_no] runModal];
+			NSLog(@"%@", [error_info description]);
+		}
+	}
+	
+	[progressIndicator stopAnimation:self];
+	[progressIndicator setHidden:YES];	
 }
 
 @end

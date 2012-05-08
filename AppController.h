@@ -7,10 +7,12 @@
     IBOutlet id recentScriptsButton;
 	IBOutlet id mainWindow;
 	IBOutlet id targetScriptBox;
+	IBOutlet id progressIndicator;
 	NSWindowController *pathSettingWindowController;
 }
 - (IBAction)makeDonation:(id)sender;
 - (IBAction)popUpRecents:(id)sender;
 - (IBAction)exportAction:(id)sender;
+- (IBAction)setupHelpBookAction:(id)sender;
 - (IBAction)selectTarget:(id)sender;
 @end
