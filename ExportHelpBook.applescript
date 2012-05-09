@@ -56,6 +56,50 @@ on set_use_appletitle(a_flag)
 	set _use_appletitle to a_flag
 end set_use_appletitle
 
+on jump_list(index_contents)
+	set jp_list to HTMLElement's make_with("select", {{"onchange", "navibarJump(this)"}})
+	jp_list's push_element_with("option", {{"value", ""}})'s push("§")
+	script walker
+		on push_headding(he, marker)
+			-- log "start push_headding"
+			try
+				he's attribute_value -- check handler existance
+				set attv to he's attribute_value("id")
+			on error msg number errno
+				if errno is not in {-1700, -1728, 900} then
+					error msg number errno
+				end if
+				return true
+			end try
+			set jp_label to he's plain_contents()
+			if class of attv is script then
+				set attv to attv's as_unicode()
+			end if
+			jp_list's push_element_with("option", {{"value", "#" & attv}})'s push(marker & jp_label)
+		end push_headding
+		
+		on do(he)
+			try
+				he's element_name
+				set ename to he's element_name()
+			on error msg number errno
+				if errno is not in {-1700, -1728} then
+					error msg number errno
+				end if
+				return true
+			end try
+			if ename is "h2" then
+				push_headding(he, "")
+			else if ename is "h3" then
+				push_headding(he, "- ")
+			end if
+			return true
+		end do
+	end script
+	index_contents's walk(walker)
+	return jp_list
+end jump_list
+
 --global doc_container
 on output_to_folder(root_ref, index_page, a_text, script_name)
 	--log "start output_to_folder"
@@ -74,9 +118,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", my _bookName}})'s as_html()
 	end if
 	set doc_title to script_name & " Reference"
-	--set index_contents to make XList
 	set index_contents to make HTMLElement
-	set style_formatter to make_from_setting() of ASFormattingStyle
+	set style_formatter to ASFormattingStyle's make_from_setting()
 	if my _stop_processing then error number -128
 	set doc_container to ASDocParser's parse_list(every paragraph of a_text)
 	set a_link_manager to doc_container's link_manager()
@@ -90,6 +133,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	
 	script HandlerIDManager
 		property _handler_id : {}
+		
 		on handler_id_for(handler_name)
 			if handler_name is not in _handler_id then
 				set end of _handler_id to handler_name
@@ -106,7 +150,6 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 				end repeat
 			end if
 		end handler_id_for
-		
 	end script
 	
 	repeat with doc_element in elementList of doc_container
@@ -124,7 +167,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			set handler_name to get_handler_name() of doc_element
 			set handler_id to HandlerIDManager's handler_id_for(handler_name)
 			
-			set handler_heading to HTMLElement's make_with("h3", {})
+			set handler_heading to HTMLElement's make_with("h3", {{"id", handler_id}})
 			set a_link to handler_heading's push_element_with("a", {{"href", "pages/" & handler_id & ".html"}})
 			a_link's push(handler_name)
 			index_contents's push(handler_heading)
@@ -170,11 +213,13 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	oneshot_doc's release()
 	*)
 	set index_body to index_contents's as_html()
+	set jump_list_text to jump_list(index_contents)'s as_html()
 	set pathconv to PathConverter's make_with(index_page's posix_path())
 	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
 	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory my _template_folder)
 	if my _stop_processing then error number -128
 	tell template
+		insert_text("$JUMP_LIST", jump_list_text)
 		insert_text("$BODY", index_body)
 		insert_text("$APPLE_TITLE", my _appleTitle)
 		insert_text("$SCRIPT_NAME", script_name)

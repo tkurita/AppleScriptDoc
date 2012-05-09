@@ -247,7 +247,9 @@ bail:
 				 informativeTextWithFormat:@"%@\nNumber: %@", 
 			  [error_info objectForKey:OSAScriptErrorMessage],
 			  err_no] runModal];
+#if useLog
 			NSLog(@"%@", [error_info description]);
+#endif			
 		}
 	}
 	

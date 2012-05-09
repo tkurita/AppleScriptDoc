@@ -42,7 +42,7 @@ on make_heading_element(a_line)
 		
 		on html_element_with(a_tag)
 			set anc_name to my _data's replace(space, "_")
-			set an_elem to HTMLElement's make_with(a_tag, {{id, anc_name's as_unicode()}})
+			set an_elem to HTMLElement's make_with(a_tag, {{"id", anc_name's as_unicode()}})
 			return an_elem's push(my _data)
 		end html_element_with
 		

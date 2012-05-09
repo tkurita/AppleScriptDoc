@@ -78,6 +78,8 @@
 		2CAEEB5D0ECC129E0068900A /* ASHTML.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CAEEB590ECC129E0068900A /* ASHTML.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2CAEEB8A0ECC13E30068900A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEB750ECC13E30068900A /* Carbon.framework */; };
 		2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEC450ECC1B0F0068900A /* OSAKit.framework */; };
+		2CDBA3D7155A9ADA0030F7AB /* navibar-jump.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */; };
+		2CDBA3F3155A9CB00030F7AB /* navibar-jump.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */; };
 		2CE5F1620D321CE700EDC0FF /* DocElements.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CE5F1610D321CE700EDC0FF /* DocElements.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2CE5F4230D328D7B00EDC0FF /* IsBundleTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */; };
 		2CE5F48C0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */; };
@@ -105,6 +107,7 @@
 			dstPath = HelpBookTemplate/assets;
 			dstSubfolderSpec = 7;
 			files = (
+				2CDBA3D7155A9ADA0030F7AB /* navibar-jump.js in CopyFiles */,
 				2C4D6C91152EBA1A00C6DEF5 /* navgrad-normal.png in CopyFiles */,
 				2C4809A50C3B7F58004E3217 /* Clipboard24.png in CopyFiles */,
 				2C4809A60C3B7F58004E3217 /* default.css in CopyFiles */,
@@ -162,6 +165,7 @@
 			dstPath = HTMLTemplate/assets;
 			dstSubfolderSpec = 7;
 			files = (
+				2CDBA3F3155A9CB00030F7AB /* navibar-jump.js in CopyFiles */,
 				2C4D6C6A152EB64F00C6DEF5 /* navgrad-normal.png in CopyFiles */,
 				2C4EFF740C3C16C0003743D7 /* default.css in CopyFiles */,
 				2C4EFF750C3C16C0003743D7 /* handler_page.css in CopyFiles */,
@@ -254,6 +258,7 @@
 		2CAEEB590ECC129E0068900A /* ASHTML.applescript */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.applescript; path = ASHTML.applescript; sourceTree = "<group>"; };
 		2CAEEB750ECC13E30068900A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		2CAEEC450ECC1B0F0068900A /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = /System/Library/Frameworks/OSAKit.framework; sourceTree = "<absolute>"; };
+		2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "navibar-jump.js"; sourceTree = "<group>"; };
 		2CE5F1610D321CE700EDC0FF /* DocElements.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = DocElements.applescript; sourceTree = "<group>"; };
 		2CE5F4200D328D7B00EDC0FF /* IsBundleTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsBundleTransformer.h; sourceTree = "<group>"; };
 		2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsBundleTransformer.m; sourceTree = "<group>"; };
@@ -478,6 +483,7 @@
 		2C4809300C3B7D94004E3217 /* assets */ = {
 			isa = PBXGroup;
 			children = (
+				2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */,
 				2C4D6C69152EB64F00C6DEF5 /* navgrad-normal.png */,
 				2C4809310C3B7D94004E3217 /* Clipboard24.png */,
 				2C4809320C3B7D94004E3217 /* default.css */,
@@ -774,7 +780,7 @@
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
@@ -804,7 +810,7 @@
 					ppc,
 				);
 				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "ppc i386 ppc64 x86_64";
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
