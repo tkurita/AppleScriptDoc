@@ -74,7 +74,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", my _bookName}})'s as_html()
 	end if
 	set doc_title to script_name & " Reference"
-	set index_contents to make XList
+	--set index_contents to make XList
+	set index_contents to make HTMLElement
 	set style_formatter to make_from_setting() of ASFormattingStyle
 	if my _stop_processing then error number -128
 	set doc_container to ASDocParser's parse_list(every paragraph of a_text)
@@ -114,7 +115,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		--log a_kind
 		if a_kind is "title" then
 			--log "start process title element"
-			index_contents's push(as_xhtml() of doc_element)
+			index_contents's push(doc_element's html_element())
 			set doc_title to doc_element's get_contents()'s as_unicode()
 			--log "end process title element"
 			
@@ -126,14 +127,14 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			set handler_heading to HTMLElement's make_with("h3", {})
 			set a_link to handler_heading's push_element_with("a", {{"href", "pages/" & handler_id & ".html"}})
 			a_link's push(handler_name)
-			index_contents's push(handler_heading's as_html())
+			index_contents's push(handler_heading)
 			
 			a_link_manager's set_prefix("pages/")
 			set an_abstruct to doc_element's copy_abstruct()
 			an_abstruct's each(a_link_manager)
 			--log an_abstruct's dump()
 			set srd to SimpleRD's make_with_iterator(an_abstruct)
-			index_contents's push(srd's as_xhtml())
+			index_contents's push(srd's html_tree())
 			set handler_page to pages_folder's child(handler_id & ".html")
 			set hanlder_page_path to handler_page's posix_path()
 			a_link_manager's set_current_page(hanlder_page_path)
@@ -156,11 +157,11 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			--log "kind is paragraph"
 			a_link_manager's set_prefix("pages/")
 			doc_element's each(a_link_manager)
-			index_contents's push(doc_element's as_xhtml())
+			index_contents's push(doc_element's html_element())
 			--log "end kind is paragraph"
 		else
 			--log "start process other element"
-			index_contents's push(doc_element's as_xhtml())
+			index_contents's push(doc_element's html_element())
 			--log "end process other element"
 		end if
 	end repeat
@@ -168,7 +169,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	oneshot_doc's catch_doc()
 	oneshot_doc's release()
 	*)
-	set index_body to index_contents's as_unicode_with(_line_end)
+	set index_body to index_contents's as_html()
 	set pathconv to PathConverter's make_with(index_page's posix_path())
 	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
 	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory my _template_folder)

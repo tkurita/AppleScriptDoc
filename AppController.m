@@ -240,12 +240,12 @@ bail:
 	[a_script executeHandlerWithName:handlerName
 							arguments:[NSArray arrayWithObject:a_path] error:&error_info];
 	if (error_info) {
-		NSNumber *err_no = [error_info objectForKey:@"OSAScriptErrorNumber"];
+		NSNumber *err_no = [error_info objectForKey:OSAScriptErrorNumber];
 		if ([err_no intValue] != -128) {
 			[[NSAlert alertWithMessageText:@"AppleScript Error"
 							 defaultButton:@"OK" alternateButton:nil otherButton:nil
 				 informativeTextWithFormat:@"%@\nNumber: %@", 
-			  [error_info objectForKey:@"OSAScriptErrorMessage"],
+			  [error_info objectForKey:OSAScriptErrorMessage],
 			  err_no] runModal];
 			NSLog(@"%@", [error_info description]);
 		}

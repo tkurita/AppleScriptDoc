@@ -28,40 +28,32 @@ on strip_tag(a_text)
 	return a_list's as_xtext_with(space)
 end strip_tag
 
-(*!
-@abstruct
-@description
-@param a_line (script object) : An instance of XText
-@result script object : HeadingElement
-*)
 on make_heading_element(a_line)
 	--log "start make_heading_element"
 	set a_tag to first word of a_line
 	script HeadingElement
 		--property parent : AppleScript
-		property tag : a_tag
+		property _tag : a_tag
 		property _data : strip_tag(a_line)
 		
 		on get_kind()
-			return my tag
+			return my _tag
 		end get_kind
 		
-		on as_html(a_tag)
-			set an_elem to HTMLElement's make_with(a_tag, {})
+		on html_element_with(a_tag)
 			set anc_name to my _data's replace(space, "_")
-			set an_anchor to an_elem's push_anchor_with(anc_name's as_unicode())
-			an_elem's push_content(my _data)
-			return an_elem's as_html()
-		end as_html
+			set an_elem to HTMLElement's make_with(a_tag, {{id, anc_name's as_unicode()}})
+			return an_elem's push(my _data)
+		end html_element_with
+		
+		on as_html_with(a_tag)
+			return html_element_with(a_tag)'s as_html()
+		end as_html_with
 		
 		on get_contents()
 			return my _data
 		end get_contents
 		
-		on as_xhtml()
-			--log "as_ xthtml in handler_element in HeadingElement"
-			return as_html()
-		end as_xhtml
 	end script
 	
 	--log "will end make_heading_element"
@@ -81,10 +73,17 @@ on make_group_element(parentElement)
 	script GroupElement
 		property parent : parentElement
 		
+		on html_element()
+			return html_element_with("h2")
+		end html_element
+		
 		on as_html()
-			return continue as_html("h2")
+			return as_html_with("h2")
 		end as_html
 		
+		on as_xhtml()
+			return as_html()
+		end as_xhtml
 	end script
 	return GroupElement
 end make_group_element
@@ -94,12 +93,20 @@ on make_title_element(parentElement)
 	script TitleElement
 		property parent : parentElement
 		
-		on as_html()
+		on html_element()
 			set an_elem to HTMLElement's make_with("h1", {})
-			an_elem's push_content(my _data)
+			an_elem's push(my _data)
+			return an_elem
+		end html_element
+		
+		on as_html()
+			set an_elem to html_element()
 			return an_elem's as_html()
 		end as_html
 		
+		on as_xhtml()
+			return as_html()
+		end as_xhtml
 	end script
 	return TitleElement
 end make_title_element
@@ -116,20 +123,22 @@ on make_paragraph_element(a_list)
 		on convert()
 			if (count me) > 0 then
 				set srd to SimpleRD's make_with_iterator(me)
-				return srd's perform_convert()
+				return srd's html_tree()
 			else
 				return ""
 			end if
 		end convert
 		
-		on as_html()
-			SimpleRD's use_html()
+		on html_element()
 			return convert()
+		end html_element
+		
+		on as_html()
+			return html_element()'s as_html()
 		end as_html
 		
 		on as_xhtml()
-			SimpleRD's use_xhtml()
-			return convert()
+			return as_html()
 		end as_xhtml
 	end script
 end make_paragraph_element
@@ -188,13 +197,13 @@ on make_handler_element(property_script)
 			my _abstruct's each(_link_manager)
 			set srd to make_with_iterator(my _abstruct) of SimpleRD
 			
-			output's push(srd's perform_convert())
+			output's push(srd's html_tree())
 			
 			if (my _description's count_items()) > 0 then
 				my _description's each(_link_manager)
 				set srd to make_with_iterator(my _description) of SimpleRD
 				output's push(_line_end)
-				output's push(srd's perform_convert())
+				output's push(srd's html_tree())
 			end if
 			
 			--log "after convertToHTML"
@@ -223,7 +232,7 @@ on make_handler_element(property_script)
 				output's push_element_with("div", {{"class", "subHeading"}})'s push("Result")
 				my _result's each(_link_manager)
 				set srd to make_with_iterator(my _result) of SimpleRD
-				output's push(srd's perform_convert())
+				output's push(srd's html_tree())
 			end if
 			
 			if _useAppleSegment then
@@ -231,18 +240,17 @@ on make_handler_element(property_script)
 			end if
 			
 			--log "will end outputText"
-			return output's as_html()
+			--return output's as_html()
+			return output
 		end convert
 		
 		on as_html()
-			SimpleRD's use_html()
-			return convert()
+			return convert()'s as_html()
 		end as_html
 		
 		on as_xhtml()
 			--log "as_ xthtml in handler_element"
-			SimpleRD's use_xhtml()
-			return convert()
+			return as_html()
 		end as_xhtml
 		
 	end script
