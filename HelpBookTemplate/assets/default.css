@@ -4,8 +4,16 @@ a:link {
 	color: #6666ff  }
 a:visited {
 	color: #999966  }
-body { color: black; font-size: 11px; font-family: "Lucida Grande", Arial, sans-serif; background-color: white; margin: 0; padding: 28px 0 0; }
-h1 { font-weight: bold; font-size: 150%; margin-top: 0; margin-bottom: 1.5ex; padding-top: 0; padding-bottom: 0.5ex; border-bottom: thick solid gray      }
+body {
+	color: black;
+	font-size: 11px; 
+	font-family: "Lucida Grande", Arial, sans-serif; 
+	background-color: white; margin: 0; padding: 28px 0 0; }
+h1 {
+	font-weight: bold;
+	font-size: 150%; 
+	margin-top: 0; margin-bottom: 1.5ex; padding-top: 0; padding-bottom: 0.5ex;
+	border-bottom: thick solid gray; }
 h2 {
 	font-weight: bold;
 	font-size: 130%;

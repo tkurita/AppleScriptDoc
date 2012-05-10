@@ -67,11 +67,12 @@
 		2C4EFEA80C3BB03A003743D7 /* SetupHelpBook.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C4EFEA70C3BB03A003743D7 /* SetupHelpBook.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2C4EFF6A0C3C1672003743D7 /* index.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5F0C3C1642003743D7 /* index.html */; };
 		2C4EFF730C3C16B9003743D7 /* handler.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF610C3C1642003743D7 /* handler.html */; };
-		2C4EFF740C3C16C0003743D7 /* default.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5D0C3C1642003743D7 /* default.css */; };
+		2C4EFF740C3C16C0003743D7 /* non-helpbook.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5D0C3C1642003743D7 /* non-helpbook.css */; };
 		2C72A8D70D3CBCDF00AECAF3 /* empty-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */; };
 		2C72A8E60D3CBDD700AECAF3 /* InfoPlistArranger.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C72A8E50D3CBDD700AECAF3 /* InfoPlistArranger.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2CA3B4790D33600300A8C813 /* DefaultsManager.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CA3B4730D335FEC00A8C813 /* DefaultsManager.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2CA7272D155B517800DEE9D6 /* handler_page.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4809340C3B7D94004E3217 /* handler_page.css */; };
+		2CA7273F155B537700DEE9D6 /* default.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4809320C3B7D94004E3217 /* default.css */; };
 		2CAEEB5B0ECC129E0068900A /* ASFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAEEB570ECC129E0068900A /* ASFormatting.m */; };
 		2CAEEB5C0ECC129E0068900A /* ASFormattingStyle.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CAEEB580ECC129E0068900A /* ASFormattingStyle.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2CAEEB5D0ECC129E0068900A /* ASHTML.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CAEEB590ECC129E0068900A /* ASHTML.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
@@ -163,10 +164,11 @@
 			dstPath = HTMLTemplate/assets;
 			dstSubfolderSpec = 7;
 			files = (
+				2CA7273F155B537700DEE9D6 /* default.css in CopyFiles */,
 				2CA7272D155B517800DEE9D6 /* handler_page.css in CopyFiles */,
 				2CDBA3F3155A9CB00030F7AB /* navibar-jump.js in CopyFiles */,
 				2C4D6C6A152EB64F00C6DEF5 /* navgrad-normal.png in CopyFiles */,
-				2C4EFF740C3C16C0003743D7 /* default.css in CopyFiles */,
+				2C4EFF740C3C16C0003743D7 /* non-helpbook.css in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +218,7 @@
 		2C46DB8010A19B7300501F03 /* HFSTypeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HFSTypeUtils.h; sourceTree = "<group>"; };
 		2C46DBC910A1A6BC00501F03 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		2C4809310C3B7D94004E3217 /* Clipboard24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Clipboard24.png; sourceTree = "<group>"; };
-		2C4809320C3B7D94004E3217 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = default.css; sourceTree = "<group>"; };
+		2C4809320C3B7D94004E3217 /* default.css */ = {isa = PBXFileReference; explicitFileType = text.css; fileEncoding = 4; path = default.css; sourceTree = "<group>"; };
 		2C4809330C3B7D94004E3217 /* editScript.scpt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.scpt; path = editScript.scpt; sourceTree = "<group>"; };
 		2C4809340C3B7D94004E3217 /* handler_page.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = handler_page.css; sourceTree = "<group>"; };
 		2C4809350C3B7D94004E3217 /* run_helpscript.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = run_helpscript.js; sourceTree = "<group>"; };
@@ -236,7 +238,7 @@
 		2C4EC726152D9F5C004167B9 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		2C4EC728152D9F5C004167B9 /* Japanese */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = Japanese; path = Japanese.lproj/PathSettingWindow.strings; sourceTree = "<group>"; };
 		2C4EFEA70C3BB03A003743D7 /* SetupHelpBook.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SetupHelpBook.applescript; sourceTree = "<group>"; };
-		2C4EFF5D0C3C1642003743D7 /* default.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = default.css; sourceTree = "<group>"; };
+		2C4EFF5D0C3C1642003743D7 /* non-helpbook.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "non-helpbook.css"; sourceTree = "<group>"; };
 		2C4EFF5F0C3C1642003743D7 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2C4EFF610C3C1642003743D7 /* handler.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = handler.html; sourceTree = "<group>"; };
 		2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "empty-Info.plist"; sourceTree = "<group>"; };
@@ -512,7 +514,7 @@
 		2C4EFF5C0C3C1642003743D7 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				2C4EFF5D0C3C1642003743D7 /* default.css */,
+				2C4EFF5D0C3C1642003743D7 /* non-helpbook.css */,
 			);
 			path = assets;
 			sourceTree = "<group>";
