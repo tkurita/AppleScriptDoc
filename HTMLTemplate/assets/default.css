@@ -34,7 +34,7 @@ p     {	line-height: 160%;
 pre  {	margin-right: 4ex;
 	margin-left: 4ex }
 li  {	line-height: 150% }
-#smartheader {
+#navi-bar {
 	background-image: url(navgrad-normal.png);
 	position: fixed;
 	top: 0;
