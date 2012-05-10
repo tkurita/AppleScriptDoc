@@ -229,13 +229,24 @@ bail:
 								  contextInfo:nil];
 }
 
-- (void)processTargetScriptWithHandler:(NSString *)handlerName
+- (void)startIndicator
+{
+	[progressIndicator setHidden:NO];
+	[progressIndicator startAnimation:self];	
+}
+
+- (void)stopIndicator
+{
+	[progressIndicator stopAnimation:self];
+	[progressIndicator setHidden:YES];
+}
+
+- (void)processTargetScriptWithHandler:(NSString *)handlerName sender:(id)sender
 {
 	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
 	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
 	
-	[progressIndicator setHidden:NO];
-	[progressIndicator startAnimation:self];
+	[sender startIndicator];
 	NSDictionary *error_info = nil;
 	[a_script executeHandlerWithName:handlerName
 							arguments:[NSArray arrayWithObject:a_path] error:&error_info];
@@ -252,19 +263,17 @@ bail:
 #endif			
 		}
 	}
-	
-	[progressIndicator stopAnimation:self];
-	[progressIndicator setHidden:YES];	
+	[sender stopIndicator];
 }
 
 - (IBAction)setupHelpBookAction:(id)sender
 {
-	[self processTargetScriptWithHandler:@"setup_helpbook"];
+	[self processTargetScriptWithHandler:@"setup_helpbook" sender:self];
 }
 
 - (IBAction)saveToFileAction:(id)sender
 {
-	[self processTargetScriptWithHandler:@"save_to_file"];
+	[self processTargetScriptWithHandler:@"save_to_file" sender:self];
 }
 
 @end

@@ -16,10 +16,21 @@
 
 #define uselog 0
 
-- (IBAction)cancelAction:(id)sender
+- (void)startIndicator
+{
+	[progressIndicator setHidden:NO];
+	[progressIndicator startAnimation:self];	
+}
+
+- (void)stopIndicator
 {
 	[progressIndicator stopAnimation:self];
 	[progressIndicator setHidden:YES];
+}
+
+- (IBAction)cancelAction:(id)sender
+{
+	[self stopIndicator];
 
 	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];		
 	NSDictionary *error_info = nil;
@@ -131,7 +142,8 @@ bail:
 
 - (IBAction)okAction:(id)sender
 {
-	[[AppController sharedAppController] processTargetScriptWithHandler:@"export_helpbook"];
+	[[AppController sharedAppController] processTargetScriptWithHandler:@"export_helpbook"
+																 sender:self];
 
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSArray *array = [pathRecordsController selectedObjects];

@@ -203,7 +203,48 @@
 	<key>Notifications</key>
 	<array/>
 	<key>OpenEditors</key>
-	<array/>
+	<array>
+		<dict>
+			<key>Content</key>
+			<dict>
+				<key>PBXProjectModuleGUID</key>
+				<string>2CA7279A155B5F2700DEE9D6</string>
+				<key>PBXProjectModuleLabel</key>
+				<string>3811 と ローカル — PathSettingWindowController.m を比較</string>
+				<key>PBXSplitModuleInNavigatorKey</key>
+				<dict>
+					<key>Split0</key>
+					<dict>
+						<key>PBXProjectModuleGUID</key>
+						<string>2CA7279B155B5F2700DEE9D6</string>
+						<key>PBXProjectModuleLabel</key>
+						<string>3811 と ローカル — PathSettingWindowController.m を比較</string>
+						<key>_historyCapacity</key>
+						<integer>0</integer>
+						<key>bookmark</key>
+						<string>2CA727A7155B5F5F00DEE9D6</string>
+						<key>history</key>
+						<array>
+							<string>2CA7279C155B5F2700DEE9D6</string>
+						</array>
+					</dict>
+					<key>SplitCount</key>
+					<string>1</string>
+				</dict>
+				<key>StatusBarVisibility</key>
+				<true/>
+			</dict>
+			<key>Geometry</key>
+			<dict>
+				<key>Frame</key>
+				<string>{{0, 20}, {1233, 700}}</string>
+				<key>PBXModuleWindowStatusBarHidden2</key>
+				<false/>
+				<key>RubberWindowFrame</key>
+				<string>509 84 1233 741 0 0 1440 878 </string>
+			</dict>
+		</dict>
+	</array>
 	<key>PerspectiveWidths</key>
 	<array>
 		<integer>-1</integer>
@@ -235,8 +276,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -282,6 +321,7 @@
 								<string>2C4EFF600C3C1642003743D7</string>
 								<string>2C48092F0C3B7D94004E3217</string>
 								<string>2C4809300C3B7D94004E3217</string>
+								<string>2C4809380C3B7D94004E3217</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
@@ -289,14 +329,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>41</integer>
-									<integer>40</integer>
-									<integer>24</integer>
+									<integer>7</integer>
+									<integer>3</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 382}, {268, 611}}</string>
+							<string>{{0, 0}, {268, 611}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -328,12 +367,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>default.css</string>
+								<string>PathSettingWindowController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -341,7 +382,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>default.css</string>
+										<string>PathSettingWindowController.m</string>
+										<key>_historyCapacity</key>
+										<integer>0</integer>
+										<key>bookmark</key>
+										<string>2CA727A6155B5F5F00DEE9D6</string>
 										<key>history</key>
 										<array>
 											<string>2CF5C0B90C44594500224B65</string>
@@ -381,7 +426,6 @@
 											<string>2C2F28B0152C401F002051CF</string>
 											<string>2C2F28B1152C401F002051CF</string>
 											<string>2C2F28B2152C401F002051CF</string>
-											<string>2C2F28B3152C401F002051CF</string>
 											<string>2C4EC707152D9698004167B9</string>
 											<string>2C4EC731152D9FD0004167B9</string>
 											<string>2C4EC732152D9FD0004167B9</string>
@@ -400,13 +444,10 @@
 											<string>2C275B6A154A5087006FFB2B</string>
 											<string>2CDBA138155929F00030F7AB</string>
 											<string>2CDBA222155937000030F7AB</string>
-											<string>2CDBA225155937000030F7AB</string>
-											<string>2CDBA2381559382E0030F7AB</string>
 											<string>2CDBA23A1559382E0030F7AB</string>
 											<string>2CDBA23C1559382E0030F7AB</string>
 											<string>2CDBA27B1559F3BA0030F7AB</string>
 											<string>2CDBA2D2155A06F40030F7AB</string>
-											<string>2CDBA319155A74080030F7AB</string>
 											<string>2CDBA3D1155A9A760030F7AB</string>
 											<string>2CDBA420155AA0150030F7AB</string>
 											<string>2CA72730155B518F00DEE9D6</string>
@@ -416,8 +457,13 @@
 											<string>2CA72744155B53A400DEE9D6</string>
 											<string>2CA72746155B53A400DEE9D6</string>
 											<string>2CA72759155B5AAE00DEE9D6</string>
-											<string>2CA7275A155B5AAE00DEE9D6</string>
-											<string>2CA7275B155B5AAE00DEE9D6</string>
+											<string>2CA72792155B5F2700DEE9D6</string>
+											<string>2CA72793155B5F2700DEE9D6</string>
+											<string>2CA72794155B5F2700DEE9D6</string>
+											<string>2CA72795155B5F2700DEE9D6</string>
+											<string>2CA72797155B5F2700DEE9D6</string>
+											<string>2CA727A4155B5F5F00DEE9D6</string>
+											<string>2CA727A5155B5F5F00DEE9D6</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -611,8 +657,10 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>2C576A0B0EEECB21005D5F88</string>
+		<string>2CA7279A155B5F2700DEE9D6</string>
 		<string>/Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/trunk/AppleScriptDoc.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -632,12 +680,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>AppController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -975,7 +1025,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>2CDBA443155AA77D0030F7AB</string>
+				<string>2CA7279F155B5F2700DEE9D6</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

@@ -11,7 +11,7 @@
 	NSWindowController *pathSettingWindowController;
 }
 + (id)sharedAppController;
-- (void)processTargetScriptWithHandler:(NSString *)handlerName;
+- (void)processTargetScriptWithHandler:(NSString *)handlerName sender:(id)sender;
 
 - (IBAction)makeDonation:(id)sender;
 - (IBAction)popUpRecents:(id)sender;
