@@ -1,3 +1,28 @@
+-- modules loaded at compile time
+property HTMLElement : module
+property SimpleRD : module
+property XDict : module
+property XList : module
+property XText : module
+property TemplateProcessor : module
+property XFileBase : module "XFile"
+property PathConverter : module
+property XCharacterSet : module
+property CSSBuilder : module
+property RGBColor : module
+--property collecting modules : true
+property only local : true
+
+(*== constants *)
+property _line_end : missing value
+
+on boot
+	boot (module loader of application (get "AppleScriptDocLib")) for me
+	set my _line_end to HTMLElement's line_end()
+end boot
+
+property _ : boot
+
 (*== Modules *)
 property DefaultsManager : missing value
 property ASDocParser : missing value
@@ -11,32 +36,8 @@ property ASHTML : missing value
 property DocElements : missing value
 property XFile : missing value
 property OneShotScriptEditor : missing value
-
--- modules loaded at compile time
-property HTMLElement : module
-property SimpleRD : module
-property XDict : module
-property XList : module
-property XText : module
-property TemplateProcessor : module
-property XFileBase : module "XFile"
-property PathConverter : module
-property XCharacterSet : module
-property CSSBuilder : module
-property RGBColor : module
-
-
 property _app_controller : missing value
 
-(*== constants *)
-property _line_end : missing value
-
-on boot
-	boot (module loader of application (get "AppleScriptDocLib")) for me
-	set my _line_end to HTMLElement's line_end()
-end boot
-
-property _ : boot
 
 on export_helpbook(a_path)
 	--log "start export_helpbook"
