@@ -63,7 +63,9 @@ li  {
 	float: left;
 	margin: 0 0 0 1em;
 	padding: 0; }
-.navibar-prev { background-image: url(../../../../../../images/triangle-left-16.png); background-repeat: no-repeat; background-position: left top; margin: 0 0.5em 0 1em; padding: 0 0 2px 16px; }
-.navibar-next { background-image: url(../../../../../../images/list-triangle-16.png); background-repeat: no-repeat; background-position: right top; margin-right: 0; margin-left: 0.5em; padding: 0 16px 2px 0; }
+.navibar-prev { background-image: url(navi-previous16.gif); background-repeat: no-repeat; background-position: left top; margin: 0 0.5em 0 1em; padding: 0 0 2px 18px; }
+.navibar-next { background-image: url(navi-next16.gif); background-repeat: no-repeat; background-position: right top; margin-right: 0; margin-left: 0.5em; padding: 0 18px 2px 0; }
 .prev-next-item { text-align: right; margin: 0 10px 0 0; padding: 0; }
+.prev-next-item a, .prev-next-item a:visited { color: gray; text-decoration: none; }
+.prev-next-item a:hover { color: black; text-decoration: none; }
 #navi-bar select { margin-left: 20px; }
