@@ -21,7 +21,7 @@
 		argumentStrings = (
 		);
 		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
+		breakpointsEnabled = 0;
 		configStateDict = {
 			"PBXLSLaunchAction-1" = {
 				PBXLSLaunchAction = 1;
@@ -927,10 +927,10 @@
 	};
 	2C4809320C3B7D94004E3217 /* default.css */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1265, 936}}";
-			sepNavSelRange = "{1624, 0}";
-			sepNavVisRange = "{901, 1126}";
-			sepNavWindowFrame = "{{55, 123}, {739, 667}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1398, 806}}";
+			sepNavSelRange = "{1672, 0}";
+			sepNavVisRange = "{664, 1371}";
+			sepNavWindowFrame = "{{551, 127}, {739, 667}}";
 		};
 	};
 	2C4809330C3B7D94004E3217 /* editScript.scpt */ = {
@@ -959,25 +959,25 @@
 	};
 	2C4809360C3B7D94004E3217 /* setClipboard.scpt */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {665, 427}}";
+			sepNavIntBoundsRect = "{{0, 0}, {728, 413}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 146}";
 		};
 	};
 	2C4809370C3B7D94004E3217 /* index.html */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {859, 442}}";
-			sepNavSelRange = "{708, 0}";
-			sepNavVisRange = "{0, 1209}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 455}}";
+			sepNavSelRange = "{879, 0}";
+			sepNavVisRange = "{0, 1158}";
 			sepNavVisRect = "{{0, 0}, {866, 492}}";
 			sepNavWindowFrame = "{{38, 313}, {905, 565}}";
 		};
 	};
 	2C4809390C3B7D94004E3217 /* handler.html */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {859, 506}}";
-			sepNavSelRange = "{811, 0}";
-			sepNavVisRange = "{0, 1090}";
+			sepNavIntBoundsRect = "{{0, 0}, {859, 429}}";
+			sepNavSelRange = "{949, 0}";
+			sepNavVisRange = "{0, 1124}";
 			sepNavVisRect = "{{0, 160}, {784, 69}}";
 		};
 	};
@@ -1524,7 +1524,7 @@
 		fRef = 2C4809320C3B7D94004E3217 /* default.css */;
 		name = "default.css: 69";
 		rLen = 0;
-		rLoc = 2020;
+		rLoc = 2068;
 		rType = 0;
 		vrLen = 1222;
 		vrLoc = 711;

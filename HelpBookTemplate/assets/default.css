@@ -40,18 +40,11 @@ li  {
 	margin-top: 0.5em;
 	margin-right: 1.5em;
 	margin-bottom: 0.5em; }
-#navi-bar {
-	font-size: 10px;
-	background-image: url(navgrad-normal.png);
-	position: fixed;
-	top: 0;
-	left: 0;
-	min-width: 100%;
-	min-height: 25px;
-	margin: 0;
-	padding: 0; 
-	z-index: 1; 
-	white-space: nowrap; }
+#navi-bar { font-size: 10px; background-image: url(navgrad-normal.png); 
+			position: fixed; top: 0; left: 0; min-height: 25px; margin: 0; padding: 0; z-index: 1; 
+			min-width: 100%; white-space: nowrap; }
+#navi-bar .left-contents { margin: 0 60px 0 0; padding: 0; }
+#navi-bar select { margin-left: 15px; }
 #contents { position: relative; margin: 5px 10px 10px; padding: 0; min-width: 450px; }
 .edit-script-link {
 	line-height: 25px;
@@ -68,4 +61,4 @@ li  {
 .prev-next-item { text-align: right; margin: 0 10px 0 0; padding: 0; }
 .prev-next-item a, .prev-next-item a:visited { color: gray; text-decoration: none; }
 .prev-next-item a:hover { color: black; text-decoration: none; }
-#navi-bar select { margin-left: 20px; }
+
