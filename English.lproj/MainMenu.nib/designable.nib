@@ -806,12 +806,6 @@
 				</object>
 				<string key="NSName">_NSMainMenu</string>
 			</object>
-			<object class="ASKNibObjectInfoManager" id="43675265">
-				<string key="$0"/>
-				<object class="NSMutableArray" key="$1">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-				</object>
-			</object>
 			<object class="NSCustomObject" id="45014779">
 				<string key="NSClassName">AppController</string>
 			</object>
@@ -1658,15 +1652,6 @@
 						<reference key="parent" ref="582188287"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">220</int>
-						<reference key="object" ref="43675265"/>
-						<object class="NSMutableArray" key="children">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-						</object>
-						<reference key="parent" ref="0"/>
-						<string key="objectName">AppleScript Info</string>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">327</int>
 						<reference key="object" ref="45014779"/>
 						<reference key="parent" ref="0"/>
@@ -1877,7 +1862,6 @@
 					<string>213.IBAttributePlaceholdersKey</string>
 					<string>213.IBPluginDependency</string>
 					<string>213.ImportedFromIB2</string>
-					<string>220.ImportedFromIB2</string>
 					<string>23.IBPluginDependency</string>
 					<string>23.ImportedFromIB2</string>
 					<string>24.IBPluginDependency</string>
@@ -1934,18 +1918,10 @@
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSMutableDictionary">
-						<string key="NS.key.0">IBAppleScriptAttributeName</string>
-						<object class="IBAppleScriptInfoAttribute" key="NS.object.0">
-							<string key="name">IBAppleScriptAttributeName</string>
-							<reference key="object" ref="657968384"/>
-							<int key="appleScriptObjectID">-1</int>
-							<int key="appleScriptScriptScope">0</int>
-							<object class="NSArray" key="appleScriptEventHandlerNames">
-								<bool key="EncodedWithXMLCoder">YES</bool>
-								<string>WillFinishLaunching</string>
-							</object>
-							<string key="appleScriptScriptName">AppleScriptDoc.applescript</string>
-							<string key="appleScriptObjectName"/>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<reference key="dict.sortedKeys" ref="0"/>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
 						</object>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2064,7 +2040,6 @@
 						</object>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<boolean value="YES"/>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<boolean value="YES"/>

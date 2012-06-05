@@ -5,7 +5,6 @@
 #import "IsBundleTransformer.h"
 #import "NSUserDefaultsExtensions.h"
 #import <Carbon/Carbon.h>
-#import <OSAKit/OSAScript.h>
 
 #define useLog 0
 
@@ -241,27 +240,60 @@ bail:
 	[progressIndicator setHidden:YES];
 }
 
+void showOSAError(NSDictionary *err_info)
+{
+	[NSApp activateIgnoringOtherApps:YES];
+	NSNumber *err_no = [err_info objectForKey:OSAScriptErrorNumber];
+	if ([err_no intValue] != -128) {
+		[[NSAlert alertWithMessageText:@"AppleScript Error"
+						 defaultButton:@"OK" alternateButton:nil otherButton:nil
+			 informativeTextWithFormat:@"%@\nNumber: %@", 
+				[err_info objectForKey:OSAScriptErrorMessage],
+				 err_no]
+			runModal];
+#if useLog
+		NSLog(@"%@", [error_info description]);
+#endif			
+	}
+}
+
+- (OSAScript *)script
+{
+	if (script) return script;
+	NSDictionary *err_info = nil;	
+	NSString *path = [[NSBundle mainBundle] pathForResource:@"AppleScriptDoc"
+										ofType:@"scpt" inDirectory:@"Scripts"];
+	
+	OSAScript *scpt = [[OSAScript alloc] initWithContentsOfURL:
+					   [NSURL fileURLWithPath:path] error:&err_info];
+	
+	if (err_info) {
+		showOSAError(err_info);
+		if (scpt) [scpt release];
+		return nil;
+	}
+	
+	[scpt executeHandlerWithName:@"setup_modules"
+					   arguments:nil error:&err_info];
+	if (err_info) {
+		showOSAError(err_info);
+		if (scpt) [scpt release];
+	}
+	script = scpt;
+	return script;
+}
+
 - (void)processTargetScriptWithHandler:(NSString *)handlerName sender:(id)sender
 {
-	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];
+	OSAScript *a_script = [self script];
 	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
 	
 	[sender startIndicator];
-	NSDictionary *error_info = nil;
+	NSDictionary *err_info = nil;
 	[a_script executeHandlerWithName:handlerName
-							arguments:[NSArray arrayWithObject:a_path] error:&error_info];
-	if (error_info) {
-		NSNumber *err_no = [error_info objectForKey:OSAScriptErrorNumber];
-		if ([err_no intValue] != -128) {
-			[[NSAlert alertWithMessageText:@"AppleScript Error"
-							 defaultButton:@"OK" alternateButton:nil otherButton:nil
-				 informativeTextWithFormat:@"%@\nNumber: %@", 
-			  [error_info objectForKey:OSAScriptErrorMessage],
-			  err_no] runModal];
-#if useLog
-			NSLog(@"%@", [error_info description]);
-#endif			
-		}
+							arguments:[NSArray arrayWithObject:a_path] error:&err_info];
+	if (err_info) {
+		showOSAError(err_info);
 	}
 	[sender stopIndicator];
 }

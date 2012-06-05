@@ -108,7 +108,11 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	end if
 	set book_folder to index_page's parent_folder()
 	book_folder's make_path(missing value)
-	set temp_asset_folder to XFile's make_with(path to resource "assets" in directory my _template_folder)
+	tell main bundle
+		set a_path to path for resource "assets" directory my _template_folder
+	end tell
+	set temp_asset_folder to XFile's make_with(a_path)
+	--set temp_asset_folder to XFile's make_with(path to resource "assets" in directory my _template_folder)
 	set assets_folder to temp_asset_folder's copy_to(book_folder)
 	set pages_folder to book_folder's make_folder("pages")
 	if my _bookName is missing value then
@@ -126,7 +130,11 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set root_page_path to index_page's posix_path()
 	a_link_manager's set_root_page(root_page_path)
 	a_link_manager's set_current_page(root_page_path)
-	set template_folder to XFile's make_with(path to resource my _template_folder)
+	tell main bundle
+		set a_path to path for resource my _template_folder
+	end tell
+	set template_folder to XFile's make_with(a_path)
+	--set template_folder to XFile's make_with(path to resource my _template_folder)
 	set handler_template to template_folder's child("pages/handler.html")
 	set rel_index_path to "../" & index_page's item_name()
 	if my _stop_processing then error number -128
@@ -216,7 +224,11 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set jump_list_text to jump_list(index_contents)'s as_html()
 	set pathconv to PathConverter's make_with(index_page's posix_path())
 	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
-	set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory my _template_folder)
+	tell main bundle
+		set a_path to path for resource "index.html" directory my _template_folder
+	end tell
+	set template to TemplateProcessor's make_with_file(a_path)
+	--set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory my _template_folder)
 	if my _stop_processing then error number -128
 	tell template
 		insert_text("$JUMP_LIST", jump_list_text)

@@ -31,17 +31,19 @@
 - (IBAction)cancelAction:(id)sender
 {
 	[self stopIndicator];
-
-	id a_script = [[ASKScriptCache sharedScriptCache] scriptWithName:@"AppleScriptDoc"];		
+	OSAScript *a_script = [[AppController sharedAppController] script];
 	NSDictionary *error_info = nil;
 	[a_script executeHandlerWithName:@"cancel_export" arguments:nil error:&error_info];
 	if (error_info) {
+		showOSAError(error_info);
+		/*
 		[[NSAlert alertWithMessageText:@"AppleScript Error"
 			defaultButton:@"OK" alternateButton:nil otherButton:nil
 			informativeTextWithFormat:@"%@\nNumber: %@", 
 				[error_info objectForKey:@"OSAScriptErrorMessage"],
 				[error_info objectForKey:@"OSAScriptErrorNumber"]] runModal];
 		NSLog(@"%@", [error_info description]);
+		 */
 	}
 		
 	[[NSApplication sharedApplication] endSheet:[sender window] returnCode:128];

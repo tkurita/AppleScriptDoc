@@ -63,8 +63,7 @@ on import_script(script_name)
 	return load script POSIX file a_path
 end import_script
 
-on will finish launching theObject
-	--boot
+on setup_modules()
 	set ASFormattingStyle to import_script("ASFormattingStyle")
 	set ASHTML to import_script("ASHTML")'s initialize()
 	set XFile to make (import_script("XFileExtend"))
@@ -78,5 +77,5 @@ on will finish launching theObject
 	set SaveToFile to import_script("SaveToFile")
 	set InfoPlistArranger to import_script("InfoPlistArranger")
 	set _app_controller to call method "delegate"
-end will finish launching
+end setup_modules
 
