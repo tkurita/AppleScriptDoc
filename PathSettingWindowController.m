@@ -109,6 +109,7 @@ bail:
 {
 	NSSavePanel *save_panel = [NSSavePanel savePanel];
 	[save_panel setRequiredFileType:@"html"];
+	[save_panel setCanSelectHiddenExtension:YES];
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSString *a_path = [user_defaults stringForKey:@"ExportFilePath"];
 	NSString *a_name;
