@@ -47,7 +47,7 @@
 				<string key="NSWindowContentMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSWindowContentMinSize">{578, 155}</string>
 				<object class="NSView" key="NSWindowView" id="726272329">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -56,7 +56,6 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{164, 12}, {200, 32}}</string>
 							<reference key="NSSuperview" ref="726272329"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="924230922">
 								<int key="NSCellFlags">604110336</int>
@@ -84,7 +83,6 @@
 							<int key="NSvFlags">289</int>
 							<string key="NSFrame">{{364, 12}, {200, 32}}</string>
 							<reference key="NSSuperview" ref="726272329"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="674578453">
 								<int key="NSCellFlags">604110336</int>
@@ -106,7 +104,6 @@
 							<int key="NSvFlags">292</int>
 							<string key="NSFrame">{{14, 12}, {150, 32}}</string>
 							<reference key="NSSuperview" ref="726272329"/>
-							<reference key="NSWindow"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="717740551">
 								<int key="NSCellFlags">604110336</int>
@@ -140,7 +137,6 @@
 											<int key="NSvFlags">274</int>
 											<string key="NSFrame">{{6, 11}, {521, 52}}</string>
 											<reference key="NSSuperview" ref="377854170"/>
-											<reference key="NSWindow"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="301662152">
 												<int key="NSCellFlags">-2078147071</int>
@@ -177,7 +173,6 @@
 											<int key="NSvFlags">289</int>
 											<string key="NSFrame">{{459, 2}, {80, 20}}</string>
 											<reference key="NSSuperview" ref="377854170"/>
-											<reference key="NSWindow"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="15172483">
 												<int key="NSCellFlags">67239424</int>
@@ -200,7 +195,6 @@
 											<int key="NSvFlags">289</int>
 											<string key="NSFrame">{{441, 2}, {19, 20}}</string>
 											<reference key="NSSuperview" ref="377854170"/>
-											<reference key="NSWindow"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSPopUpButtonCell" key="NSCell" id="848952539">
 												<int key="NSCellFlags">-2076049856</int>
@@ -279,12 +273,10 @@
 									</object>
 									<string key="NSFrame">{{2, 2}, {540, 71}}</string>
 									<reference key="NSSuperview" ref="476072970"/>
-									<reference key="NSWindow"/>
 								</object>
 							</object>
 							<string key="NSFrame">{{17, 56}, {544, 91}}</string>
 							<reference key="NSSuperview" ref="726272329"/>
-							<reference key="NSWindow"/>
 							<string key="NSOffsets">{0, 0}</string>
 							<object class="NSTextFieldCell" key="NSTitleCell">
 								<int key="NSCellFlags">67239424</int>
@@ -309,14 +301,11 @@
 							<object class="NSPSMatrix" key="NSDrawMatrix"/>
 							<string key="NSFrame">{{258, 78}, {32, 32}}</string>
 							<reference key="NSSuperview" ref="726272329"/>
-							<reference key="NSWindow"/>
 							<int key="NSpiFlags">20490</int>
 							<double key="NSMaxValue">100</double>
 						</object>
 					</object>
 					<string key="NSFrameSize">{578, 155}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1440, 938}}</string>
 				<string key="NSMinSize">{578, 177}</string>
@@ -1953,7 +1942,6 @@
 							<int key="appleScriptScriptScope">0</int>
 							<object class="NSArray" key="appleScriptEventHandlerNames">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<string>Open</string>
 								<string>WillFinishLaunching</string>
 							</object>
 							<string key="appleScriptScriptName">AppleScriptDoc.applescript</string>
@@ -2314,13 +2302,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBUserSource</string>
 						<string key="minorKey"/>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">NDScript/NSAppleEventDescriptor+NDScriptData.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

@@ -80,21 +80,3 @@ on will finish launching theObject
 	set _app_controller to call method "delegate"
 end will finish launching
 
-on open theObject
-	activate
-	set a_class to class of theObject
-	if a_class is list then
-		set theObject to item 1 of theObject
-		set a_class to class of theObject
-	end if
-	if a_class is script then
-		do of theObject for "" at me
-	else
-		set a_file to XFile's make_with(theObject)
-		set a_suffix to a_file's path_extension()
-		set app_controller to call method "delegate"
-		call method "setTargetScript:" of app_controller with parameter a_file's posix_path()
-	end if
-	return true
-end open
-
