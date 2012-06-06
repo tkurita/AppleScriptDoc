@@ -1,16 +1,8 @@
 #import <Carbon/Carbon.h>
-#import <OSAKit/OSAScript.h>
 #import "PathSettingWindowController.h"
 #import "PathExtra.h"
 #import "NSUserDefaultsExtensions.h"
 #import "AppController.h"
-
-@interface ASKScriptCache : NSObject
-{
-}
-+ (ASKScriptCache *)sharedScriptCache;
-- (OSAScript *)scriptWithName:(NSString *)name;
-@end
 
 @implementation PathSettingWindowController
 
@@ -36,14 +28,6 @@
 	[a_script executeHandlerWithName:@"cancel_export" arguments:nil error:&error_info];
 	if (error_info) {
 		showOSAError(error_info);
-		/*
-		[[NSAlert alertWithMessageText:@"AppleScript Error"
-			defaultButton:@"OK" alternateButton:nil otherButton:nil
-			informativeTextWithFormat:@"%@\nNumber: %@", 
-				[error_info objectForKey:@"OSAScriptErrorMessage"],
-				[error_info objectForKey:@"OSAScriptErrorNumber"]] runModal];
-		NSLog(@"%@", [error_info description]);
-		 */
 	}
 		
 	[[NSApplication sharedApplication] endSheet:[sender window] returnCode:128];
