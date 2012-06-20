@@ -65,7 +65,7 @@ end import_script
 
 on setup_modules()
 	set ASFormattingStyle to import_script("ASFormattingStyle")
-	set ASHTML to import_script("ASHTML")'s initialize()
+	set ASHTML to make (import_script("ASHTML"))
 	set XFile to make (import_script("XFileExtend"))
 	
 	set DefaultsManager to import_script("DefaultsManager")

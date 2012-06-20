@@ -521,22 +521,11 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		257572C3072881A4000BE9CA /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		257572C2072881A4000BE9CA /* AppleScriptDoc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E71A80508A2C90C0034BBD9 /* Build configuration list for PBXNativeTarget "AppleScriptDoc" */;
 			buildPhases = (
-				257572C3072881A4000BE9CA /* Headers */,
 				2C4EC700152D9614004167B9 /* ShellScript */,
 				257572C4072881A4000BE9CA /* AppleScript */,
 				257572C6072881A4000BE9CA /* Resources */,
