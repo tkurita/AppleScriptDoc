@@ -19,6 +19,7 @@ property _line_end : missing value
 on boot
 	boot (module loader of application (get "AppleScriptDocLib")) for me
 	set my _line_end to HTMLElement's line_end()
+	return missing value
 end boot
 
 property _ : boot
@@ -49,11 +50,11 @@ on cancel_export()
 end cancel_export
 
 on setup_helpbook(a_path)
-	SetupHelpBook's process_file(XFile's make_with(POSIX file a_path))
+	SetupHelpBook's process_file(XFile's make_with(a_path as POSIX file))
 end setup_helpbook
 
 on save_to_file(a_path)
-	SaveToFile's process_file(XFile's make_with(POSIX file a_path))
+	SaveToFile's process_file(XFile's make_with(a_path as POSIX file))
 end save_to_file
 
 on import_script(script_name)

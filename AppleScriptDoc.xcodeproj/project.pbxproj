@@ -77,6 +77,7 @@
 		2CAEEB5D0ECC129E0068900A /* ASHTML.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CAEEB590ECC129E0068900A /* ASHTML.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2CAEEB8A0ECC13E30068900A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEB750ECC13E30068900A /* Carbon.framework */; };
 		2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEC450ECC1B0F0068900A /* OSAKit.framework */; };
+		2CCDF7FE164D145900591CB2 /* NSURL+NDCarbonUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BEEC0C43CD1D00224B65 /* NSURL+NDCarbonUtilities.m */; };
 		2CDBA3D7155A9ADA0030F7AB /* navibar-jump.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */; };
 		2CDBA3F3155A9CB00030F7AB /* navibar-jump.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */; };
 		2CE5F1620D321CE700EDC0FF /* DocElements.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CE5F1610D321CE700EDC0FF /* DocElements.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
@@ -644,6 +645,7 @@
 				2CAEEB5B0ECC129E0068900A /* ASFormatting.m in Sources */,
 				2C46DAFA10A1951500501F03 /* ASFormattingExtensions.m in Sources */,
 				2C46DB8110A19B7300501F03 /* HFSTypeUtils.m in Sources */,
+				2CCDF7FE164D145900591CB2 /* NSURL+NDCarbonUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,7 +703,7 @@
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH)";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
@@ -731,7 +733,7 @@
 					ppc,
 				);
 				ARCHS_STANDARD_32_64_BIT_PRE_XCODE_3_1 = "ppc i386 ppc64 x86_64";
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_1)",
