@@ -355,6 +355,7 @@ on make_doc_container()
 		end has_scheme
 		
 		on process_autolink(a_text)
+			-- log "start process_autolink in LinkManager"
 			set start_pos to a_text's offset_of("((<")
 			if start_pos > 0 then
 				set end_pos to a_text's offset_of(">))")
@@ -362,23 +363,25 @@ on make_doc_container()
 					error "Link bracket is not closed in " & quoted form of (a_text's as_unicode()) number 1455
 				end if
 				set linked_word to a_text's text_in_range(start_pos + 3, end_pos - 1)
+				set linked_word_text to linked_word's as_unicode()
 				if has_scheme(linked_word) then
-					set a_link to HTMLElement's make_with("a", {{"href", linked_word}})
-					a_link's push(linked_word)
+					set a_link to HTMLElement's make_with("a", {{"href", linked_word_text}})
+					a_link's push(linked_word_text)
 				else if linked_word's include("@") then
-					set a_link to HTMLElement's make_with("a", {{"href", linked_word's prepend("mailto:")}})
-					a_link's push(linked_word)
+					set a_link to HTMLElement's make_with("a", {{"href", linked_word's prepend("mailto:")'s as_unicode()}})
+					a_link's push(linked_word_text)
 				else
-					error "The link location for " & quoted form of (linked_word's as_unicode()) & " is not specified." number 1460
+					error "The link location for " & quoted form of (linked_word_text) & " is not specified." number 1460
 				end if
 				set a_text to a_text's replace_in_range(start_pos, end_pos + 2, a_link's as_html())
 				return process_autolink(a_text)
 			end if
+			-- log "end process_autolink"
 			return a_text
 		end process_autolink
 		
 		on do(a_text)
-			--repeat with a_word in my _anchor_words
+			-- log "start do in LinkManager"
 			my _anchor_words's reset()
 			repeat while my _anchor_words's has_next()
 				set a_word to my _anchor_words's next()
@@ -402,6 +405,7 @@ on make_doc_container()
 					set contents of a_text to a_text's replace(link_word, a_tag's as_xhtml())
 				end if
 			end repeat
+			-- log "before process_autolink"
 			set a_result to process_autolink(contents of a_text)
 			set contents of a_text to a_result
 			return true

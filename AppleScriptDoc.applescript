@@ -25,7 +25,6 @@ end boot
 property _ : boot
 
 (*== Modules *)
-property DefaultsManager : missing value
 property ASDocParser : missing value
 property ExportHelpBook : missing value
 property SetupHelpBook : missing value
@@ -69,7 +68,6 @@ on setup_modules()
 	set ASHTML to make (import_script("ASHTML"))
 	set XFile to make (import_script("XFileExtend"))
 	
-	set DefaultsManager to import_script("DefaultsManager")
 	set ASDocParser to import_script("ASDocParser")
 	ASDocParser's set_wrap_with_block(false)
 	set DocElements to import_script("DocElements")

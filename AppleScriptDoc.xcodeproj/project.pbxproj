@@ -12,7 +12,6 @@
 			buildActionMask = 2147483647;
 			contextName = "";
 			files = (
-				2CA3B4790D33600300A8C813 /* DefaultsManager.applescript in AppleScript */,
 				257572C5072881A4000BE9CA /* AppleScriptDoc.applescript in AppleScript */,
 				2C0AD6840C3B5FA500E2B397 /* ASDocParser.applescript in AppleScript */,
 				2C0AD6A00C3B61AB00E2B397 /* ExportHelpBook.applescript in AppleScript */,
@@ -69,7 +68,6 @@
 		2C621B6D156FD6880043B4BE /* navi-previous16.gif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C621B6B156FD6660043B4BE /* navi-previous16.gif */; };
 		2C72A8D70D3CBCDF00AECAF3 /* empty-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */; };
 		2C72A8E60D3CBDD700AECAF3 /* InfoPlistArranger.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2C72A8E50D3CBDD700AECAF3 /* InfoPlistArranger.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
-		2CA3B4790D33600300A8C813 /* DefaultsManager.applescript in AppleScript */ = {isa = PBXBuildFile; fileRef = 2CA3B4730D335FEC00A8C813 /* DefaultsManager.applescript */; settings = {ATTRIBUTES = (Debug, ); }; };
 		2CA7272D155B517800DEE9D6 /* handler_page.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4809340C3B7D94004E3217 /* handler_page.css */; };
 		2CA7273F155B537700DEE9D6 /* default.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4809320C3B7D94004E3217 /* default.css */; };
 		2CAEEB5B0ECC129E0068900A /* ASFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CAEEB570ECC129E0068900A /* ASFormatting.m */; };

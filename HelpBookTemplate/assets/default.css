@@ -1,9 +1,6 @@
-a:active {
-	color: #66ff66  }
-a:link {
-	color: #6666ff  }
-a:visited {
-	color: #999966  }
+a:link { color: #6666ff  }
+a:visited { color: #999966  }
+a:active { color: #f66  }
 body {
 	color: black;
 	font-size: 11px; 
