@@ -1,9 +1,10 @@
 global ExportHelpBook
 global XFile
-global _app_controller
+global appController
 global DocElements
 
 on process_file(a_file)
+	-- log "start process_file in SaveToFile"
 	try
 		set a_result to choose file name default name "index.html"
 	on error
@@ -11,7 +12,7 @@ on process_file(a_file)
 	end try
 	set index_page to XFile's make_with(a_result)
 	set index_page to index_page's change_path_extension("html")
-	set a_text to call method "sourceOfScript:" of _app_controller with parameter (a_file's posix_path())
+	set a_text to appController's sourceOfScript_(a_file's posix_path()) as text
 	set script_name to a_file's basename()
 	
 	ExportHelpBook's initialize()
@@ -22,4 +23,5 @@ on process_file(a_file)
 	tell application "Finder"
 		open index_page's as_alias()
 	end tell
+	-- log "end process_file in SaveToFile"
 end process_file

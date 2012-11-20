@@ -30,7 +30,7 @@ end strip_tag
 
 on make_heading_element(a_line)
 	--log "start make_heading_element"
-	set a_tag to first word of a_line
+	set a_tag to first word of (a_line's as_unicode())
 	script HeadingElement
 		--property parent : AppleScript
 		property _tag : a_tag
@@ -121,6 +121,7 @@ on make_paragraph_element(a_list)
 		end get_kind
 		
 		on convert()
+			--log "start convert in ParagraphElement"
 			if (count me) > 0 then
 				set srd to SimpleRD's make_with_iterator(me)
 				return srd's html_tree()
@@ -170,8 +171,7 @@ on make_handler_element(property_script)
 		end get_abstruct
 		
 		on convert()
-			--log "start convert　in HandlerElement"
-			--set output_list to {}
+			--log "start convert in HandlerElement"
 			set output to make HTMLElement
 			if _useAppleSegment then
 				output's push_comment_with("", {{"AppleSegStart", my _handler_name}})
@@ -184,6 +184,7 @@ on make_handler_element(property_script)
 			
 			--log "sourceCode"
 			set syntax_p to output's push_element_with("p", {{"class", "sourceCode"}})
+			
 			syntax_p's push(ASHTML's process_text(my _syntax's as_unicode(), true))
 			
 			--log "scriptSupport"
@@ -194,43 +195,48 @@ on make_handler_element(property_script)
 			
 			_link_manager's set_prefix("")
 			--log "abstruct"
-			my _abstruct's each(_link_manager)
+			my _abstruct's enumerate(_link_manager)
 			set srd to make_with_iterator(my _abstruct) of SimpleRD
 			
 			output's push(srd's html_tree())
 			
 			if (my _description's count_items()) > 0 then
-				my _description's each(_link_manager)
+				my _description's enumerate(_link_manager)
 				set srd to make_with_iterator(my _description) of SimpleRD
 				output's push(_line_end)
 				output's push(srd's html_tree())
 			end if
 			
-			--log "after convertToHTML"
+			--log "will process parameter descriptions"
 			if (my _parameters's count_items()) > 0 then
 				set a_div to output's push_element_with("div", {{"class", "subHeading"}})
 				a_div's push("Parameters")
 				set a_ul to output's push_element_with("ul", {})
+				
 				script ProcessParamDescription
-					on do(param_descs)
-						param_descs's each(_link_manager)
+					on do(param_descs, sender)
+						--log "start do in ProcessParamDescription"
+						param_descs's enumerate(_link_manager)
 						set a_li to a_ul's push_element_with("li", {})
+						
 						script RowText
 							on do(a_text)
 								return a_text's as_unicode()
 							end do
 						end script
+						
 						a_li's push(param_descs's map(RowText)'s as_unicode_with(_line_end))
 						return true
 					end do
 				end script
-				my _parameters's each(ProcessParamDescription)
+				
+				my _parameters's enumerate(ProcessParamDescription)
 			end if
 			
-			--log "process result field"
+			--log "will process result field"
 			if (my _result's count_items()) > 0 then
 				output's push_element_with("div", {{"class", "subHeading"}})'s push("Result")
-				my _result's each(_link_manager)
+				my _result's enumerate(_link_manager)
 				set srd to make_with_iterator(my _result) of SimpleRD
 				output's push(srd's html_tree())
 			end if
@@ -240,7 +246,6 @@ on make_handler_element(property_script)
 			end if
 			
 			--log "will end outputText"
-			--return output's as_html()
 			return output
 		end convert
 		

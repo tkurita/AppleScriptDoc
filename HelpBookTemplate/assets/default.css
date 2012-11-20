@@ -1,9 +1,6 @@
-a:active {
-	color: #66ff66  }
-a:link {
-	color: #6666ff  }
-a:visited {
-	color: #999966  }
+a:link { color: #6666ff  }
+a:visited { color: #999966  }
+a:active { color: #f66  }
 body {
 	color: black;
 	font-size: 11px; 
@@ -29,8 +26,8 @@ h2 {
 h3 {
 	font-weight: bold;
 	font-size: 110%  ; }
-h4   {	margin-left: 1em }
-p     {	line-height: 160%;
+h4 {margin-left: 1em }
+p    {	line-height: 160%;
 	margin-right: 1.5em;
 	margin-left: 1.5em }
 pre  {	margin-right: 4ex;

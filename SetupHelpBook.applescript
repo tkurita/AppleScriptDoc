@@ -1,13 +1,13 @@
 global ExportHelpBook
 global XFile
-global _app_controller
+global appController
 global InfoPlistArranger
 global DocElements
 
 property _template_folder : "HelpBookTemplate"
 
 on process given bundle:a_bundle, text:a_text
-	--log "start process in SetupHelpBook"
+	-- log "start process in SetupHelpBook"
 	if a_bundle is missing value then return
 	if not InfoPlistArranger's check_target(a_bundle) then return
 	ExportHelpBook's initialize()
@@ -27,14 +27,15 @@ on process given bundle:a_bundle, text:a_text
 	tell application "Help Indexer"
 		open (book_folder's as_alias())
 	end tell
-	--show helpbook (a_bundle's as_alias())
-	set a_result to call method "showHelpBook:" of _app_controller with parameter (a_bundle's posix_path())
-	if a_result is not 0 then
+	set a_result to appController's showHelpBook_(a_bundle's posix_path()) as boolean
+	if a_result then
 		display alert "Error : " & a_result
 	end if
+	-- log "end process in SetupHelpBook"
 end process
 
 on process_file(a_bundle)
-	set a_text to call method "sourceOfScript:" of _app_controller with parameter (a_bundle's posix_path())
+	-- log "start process_file in SetupHelpBook"
+	set a_text to appController's sourceOfScript_(a_bundle's posix_path()) as text
 	process given bundle:a_bundle, text:a_text
 end process_file

@@ -159,6 +159,8 @@ bail:
 	
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	[user_defaults registerDefaults:factory_defaults];
+	
+	[appleScriptDocController setup];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -256,7 +258,7 @@ void showOSAError(NSDictionary *err_info)
 #endif			
 	}
 }
-
+/*
 - (OSAScript *)script
 {
 	if (script) return script;
@@ -282,30 +284,36 @@ void showOSAError(NSDictionary *err_info)
 	script = scpt;
 	return script;
 }
+*/
 
-- (void)processTargetScriptWithHandler:(NSString *)handlerName sender:(id)sender
+- (void)exportHelpBook:(id)sender
 {
-	OSAScript *a_script = [self script];
 	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
-	
 	[sender startIndicator];
-	NSDictionary *err_info = nil;
-	[a_script executeHandlerWithName:handlerName
-							arguments:[NSArray arrayWithObject:a_path] error:&err_info];
-	if (err_info) {
-		showOSAError(err_info);
-	}
-	[sender stopIndicator];
+	[appleScriptDocController exportHelpBook:a_path];
+	[sender stopIndicator];	
+}
+
+- (void)cancelExport:(id)sender
+{
+	[appleScriptDocController cancelExport];
 }
 
 - (IBAction)setupHelpBookAction:(id)sender
 {
-	[self processTargetScriptWithHandler:@"setup_helpbook" sender:self];
+	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
+	[self startIndicator];
+	[appleScriptDocController setupHelpBook:a_path];
+	[self stopIndicator];
 }
 
 - (IBAction)saveToFileAction:(id)sender
 {
-	[self processTargetScriptWithHandler:@"save_to_file" sender:self];
+	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
+	[self startIndicator];
+	[appleScriptDocController saveToFile:a_path];
+	[self stopIndicator];	
 }
+
 
 @end

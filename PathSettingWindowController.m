@@ -23,13 +23,14 @@
 - (IBAction)cancelAction:(id)sender
 {
 	[self stopIndicator];
-	OSAScript *a_script = [[AppController sharedAppController] script];
+	/*OSAScript *a_script = [[AppController sharedAppController] script];
 	NSDictionary *error_info = nil;
 	[a_script executeHandlerWithName:@"cancel_export" arguments:nil error:&error_info];
 	if (error_info) {
 		showOSAError(error_info);
 	}
-		
+	*/
+	[[AppController sharedAppController] cancelExport:self];
 	[[NSApplication sharedApplication] endSheet:[sender window] returnCode:128];
 }
 
@@ -129,8 +130,7 @@ bail:
 
 - (IBAction)okAction:(id)sender
 {
-	[[AppController sharedAppController] processTargetScriptWithHandler:@"export_helpbook"
-																 sender:self];
+	[[AppController sharedAppController] exportHelpBook:self];
 
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSArray *array = [pathRecordsController selectedObjects];

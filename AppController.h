@@ -10,15 +10,15 @@ void showOSAError(NSDictionary *err_info);
 	IBOutlet id targetScriptBox;
 	IBOutlet id progressIndicator;
 	NSWindowController *pathSettingWindowController;
-	OSAScript *script;
+	IBOutlet id appleScriptDocController;
 }
 + (id)sharedAppController;
-- (void)processTargetScriptWithHandler:(NSString *)handlerName sender:(id)sender;
-- (OSAScript *)script;
 - (IBAction)makeDonation:(id)sender;
 - (IBAction)popUpRecents:(id)sender;
 - (IBAction)exportAction:(id)sender;
 - (IBAction)setupHelpBookAction:(id)sender;
 - (IBAction)saveToFileAction:(id)sender;
 - (IBAction)selectTarget:(id)sender;
+- (void)exportHelpBook:(id)sender;;
+- (void)cancelExport:(id)sender;
 @end

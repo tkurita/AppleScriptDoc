@@ -114,32 +114,34 @@ on extract_doc_region(line_list)
 end extract_doc_region
 
 on is_handler(a_line)
+	--log "start is_handler"
 	return (a_line starts with "on ") or (a_line starts with "to ")
 end is_handler
 
 on is_heading_tag(a_line)
-	set a_tag to first word of a_line
+	set a_tag to first word of (a_line's as_unicode())
 	return a_tag is in {"group", "title"}
 end is_heading_tag
 
 on is_handler_tag(a_line)
-	set a_tag to first word of a_line
+	set a_tag to first word of (a_line's as_unicode())
 	return a_tag is in {"abstruct", "description", "param", "result", "syntax"}
 end is_handler_tag
 
 on is_references_tag(a_line)
-	set a_tag to first word of a_line
+	set a_tag to (first word of (a_line's as_unicode()))
 	return a_tag is in {"references", "glossary"} -- "glossary is deprecated"
 end is_references_tag
 
 on parse_heading_region(a_region, doc_container)
+	--log "start parse_heading_region"
 	local paragraph_list
 	set paragraph_list to {}
-	set enumerator to lineEnum of a_region
+	set enumerator to a_region's lineEnum
 	
 	repeat while enumerator's has_next()
-		set a_line to next() of enumerator
-		
+		set a_line to enumerator's next()
+		--log a_line
 		if (not a_line's equal_to("")) then
 			if (a_line's starts_with("@")) then
 				if paragraph_list is not {} then
@@ -208,6 +210,7 @@ on parse_references(a_region, doc_container)
 end parse_references
 
 on tag_contents(enumerator)
+	--log "start tag_contents"
 	set content_list to {}
 	set a_line to enumerator's current_item()
 	set a_text to DocElements's strip_tag(a_line)
@@ -215,8 +218,8 @@ on tag_contents(enumerator)
 		set end of content_list to a_text
 	end if
 	
-	repeat while has_next() of enumerator
-		set a_line to next() of enumerator
+	repeat while enumerator's has_next()
+		set a_line to enumerator's next()
 		if a_line's starts_with("@") then
 			enumerator's decrement_index()
 			exit repeat
@@ -224,6 +227,7 @@ on tag_contents(enumerator)
 			set end of content_list to a_line
 		end if
 	end repeat
+	--log "count tag contents : " & (count content_list)
 	return content_list
 end tag_contents
 
@@ -238,10 +242,10 @@ on parse_handler_region(a_region, doc_container)
 	set is_continued to false
 	set enumerator to lineEnum of a_region
 	repeat while enumerator's has_next()
-		set a_line to next() of enumerator
+		set a_line to enumerator's next()
 		
 		if a_line's starts_with("@") then
-			set the_tag to first word of a_line
+			set the_tag to first word of (a_line's as_unicode())
 			if the_tag is "abstruct" then
 				set abstruct_list to tag_contents(enumerator)
 			else if the_tag is "description" then
@@ -274,13 +278,15 @@ on parse_handler_region(a_region, doc_container)
 	else
 		set syntax_text to item 1 of syntax_list
 	end if
+	
 	script HandlerProperties
+		property parent : AppleScript
 		property _abstruct : XList's make_with(abstruct_list)
 		property _description : XList's make_with(description_list)
 		property _result : XList's make_with(result_list)
 		property _parameters : XList's make_with(param_list)
 		property _syntax : syntax_text
-		property _handler_name : first word of syntax_text
+		property _handler_name : first word of (syntax_text's as_unicode())
 	end script
 	
 	doc_container's push(DocElements's make_handler_element(HandlerProperties))
@@ -355,6 +361,7 @@ on make_doc_container()
 		end has_scheme
 		
 		on process_autolink(a_text)
+			--log "start process_autolink"
 			set start_pos to a_text's offset_of("((<")
 			if start_pos > 0 then
 				set end_pos to a_text's offset_of(">))")
@@ -362,33 +369,36 @@ on make_doc_container()
 					error "Link bracket is not closed in " & quoted form of (a_text's as_unicode()) number 1455
 				end if
 				set linked_word to a_text's text_in_range(start_pos + 3, end_pos - 1)
+				set linked_word_text to linked_word's as_unicode()
 				if has_scheme(linked_word) then
-					set a_link to HTMLElement's make_with("a", {{"href", linked_word}})
-					a_link's push(linked_word)
+					set a_link to HTMLElement's make_with("a", {{"href", linked_word_text}})
+					a_link's push(linked_word_text)
 				else if linked_word's include("@") then
-					set a_link to HTMLElement's make_with("a", {{"href", linked_word's prepend("mailto:")}})
-					a_link's push(linked_word)
+					set a_link to HTMLElement's make_with("a", {{"href", linked_word's prepend("mailto:")'s as_unicode()}})
+					a_link's push(linked_word_text)
 				else
-					error "The link location for " & quoted form of (linked_word's as_unicode()) & " is not specified." number 1460
+					error "The link location for " & quoted form of (linked_word_text) & " is not specified." number 1460
 				end if
 				set a_text to a_text's replace_in_range(start_pos, end_pos + 2, a_link's as_html())
+				-- log "before process_autolink in process_autolink"
 				return process_autolink(a_text)
 			end if
 			return a_text
 		end process_autolink
 		
-		on do(a_text)
-			--repeat with a_word in my _anchor_words
+		on do(a_text, sender)
+			--log "start do in LinkManager"
 			my _anchor_words's reset()
 			repeat while my _anchor_words's has_next()
 				set a_word to my _anchor_words's next()
+				--log "anchor word : " & a_word
 				set link_word to "((<" & a_word & ">))"
 				if a_text's include(link_word) then
 					set link_text to link_tag(a_word)
-					set contents of a_text to a_text's replace(link_word, link_text)
+					set a_text to a_text's replace(link_word, link_text)
 				end if
 			end repeat
-			
+			--log "insert external links"
 			set an_iterator to my _external_links's iterator()
 			repeat while an_iterator's has_next()
 				set {a_word, a_record} to an_iterator's next()
@@ -399,11 +409,13 @@ on make_doc_container()
 						a_tag's set_attribute("target", a_record's link_target)
 					end if
 					a_tag's push(a_word)
-					set contents of a_text to a_text's replace(link_word, a_tag's as_xhtml())
+					set a_text to a_text's replace(link_word, a_tag's as_xhtml())
 				end if
 			end repeat
-			set a_result to process_autolink(contents of a_text)
-			set contents of a_text to a_result
+			--log "befor process_autolink in do of LinkManager"
+			set a_result to process_autolink(a_text)
+			sender's set_item_at(a_result, sender's current_index())
+			--log "end do in LinkManager"
 			return true
 		end do
 	end script
@@ -456,16 +468,14 @@ end set_layout_processor
 
 --global doc_regions
 on parse_list(a_list)
-	--log "start parse_list"
+	-- log "start parse_list"
 	set doc_regions to extract_doc_region(a_list)
-	--log "after extract_doc_region"
 	set doc_container to make_doc_container()
-	--log "after make_doc_container"
 	repeat with a_region in doc_regions
 		parse_heading_region(a_region, doc_container)
 	end repeat
-	--log "after parse regions"
 	DocElements's set_link_manager(doc_container's link_manager())
+	--log "end parse_list"
 	return doc_container
 end parse_list
 
