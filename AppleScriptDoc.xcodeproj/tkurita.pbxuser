@@ -100,7 +100,7 @@
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeArchitecturePreference = x86_64;
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = 25D9445407B1533600FF306F /* AppleScriptDoc */;
 		activeTarget = 257572C2072881A4000BE9CA /* AppleScriptDoc */;
 		addToTargets = (
@@ -173,7 +173,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					22,
 					300,
-					562,
+					796,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXExecutablesDataSource_ActiveFlagID,
@@ -279,10 +279,14 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 374923241;
-			PBXWorkspaceStateSaveDate = 374923241;
+			PBXPerProjectTemplateStateSaveDate = 375150536;
+			PBXWorkspaceStateSaveDate = 375150536;
 		};
 		perUserProjectItems = {
+			2C14C893165C573F00637990 = 2C14C893165C573F00637990 /* PlistBookmark */;
+			2C14C895165C575100637990 = 2C14C895165C575100637990 /* PlistBookmark */;
+			2C14C8C5165C57D600637990 /* PlistBookmark */ = 2C14C8C5165C57D600637990 /* PlistBookmark */;
+			2C14C8C9165C57F300637990 /* PlistBookmark */ = 2C14C8C9165C57F300637990 /* PlistBookmark */;
 			2CDB82561655DA8D00DB56C9 = 2CDB82561655DA8D00DB56C9 /* PBXTextBookmark */;
 			2CDB82A2165684FA00DB56C9 = 2CDB82A2165684FA00DB56C9 /* PBXTextBookmark */;
 			2CDB82A3165684FA00DB56C9 = 2CDB82A3165684FA00DB56C9 /* PBXTextBookmark */;
@@ -290,13 +294,6 @@
 			2CDB82A9165684FA00DB56C9 = 2CDB82A9165684FA00DB56C9 /* PBXTextBookmark */;
 			2CDB82AA165684FA00DB56C9 = 2CDB82AA165684FA00DB56C9 /* PBXTextBookmark */;
 			2CDB82D91656988900DB56C9 = 2CDB82D91656988900DB56C9 /* PBXTextBookmark */;
-			2CDB83481658D0DB00DB56C9 = 2CDB83481658D0DB00DB56C9 /* PlistBookmark */;
-			2CDB83881658DF2F00DB56C9 = 2CDB83881658DF2F00DB56C9 /* PlistBookmark */;
-			2CDB83BA1658E00100DB56C9 /* PlistBookmark */ = 2CDB83BA1658E00100DB56C9 /* PlistBookmark */;
-			2CDB83D01658E13500DB56C9 /* PlistBookmark */ = 2CDB83D01658E13500DB56C9 /* PlistBookmark */;
-			2CDB83EC1658E29300DB56C9 /* PlistBookmark */ = 2CDB83EC1658E29300DB56C9 /* PlistBookmark */;
-			2CDB84141659200A00DB56C9 /* PlistBookmark */ = 2CDB84141659200A00DB56C9 /* PlistBookmark */;
-			2CDB84171659202700DB56C9 /* PlistBookmark */ = 2CDB84171659202700DB56C9 /* PlistBookmark */;
 		};
 		sourceControlManager = 25D9445A07B1533700FF306F /* Source Control */;
 		userBookmarkGroup = 2CAE15C70C46B6B40080A422 /* PBXBookmarkGroup */;
@@ -327,6 +324,50 @@
 			sepNavVisRect = "{{0, 1112}, {824, 492}}";
 			sepNavWindowFrame = "{{181, 119}, {863, 733}}";
 		};
+	};
+	2C14C893165C573F00637990 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	2C14C895165C575100637990 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	2C14C8C5165C57D600637990 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
+	};
+	2C14C8C9165C57F300637990 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+		);
+		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775807;
 	};
 	2C2975070C3C8F82000CDBEF /* SaveToFile.applescript */ = {
 		uiCtxt = {
@@ -782,83 +823,6 @@
 		rType = 0;
 		vrLen = 1224;
 		vrLoc = 2922;
-	};
-	2CDB83481658D0DB00DB56C9 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775808;
-	};
-	2CDB83881658DF2F00DB56C9 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775808;
-	};
-	2CDB83BA1658E00100DB56C9 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	2CDB83D01658E13500DB56C9 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	2CDB83EC1658E29300DB56C9 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	2CDB84141659200A00DB56C9 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	2CDB84171659202700DB56C9 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775807;
 	};
 	2CDBA2641559F3700030F7AB /* AppController.m:296 */ = {
 		isa = PBXFileBreakpoint;
