@@ -176,7 +176,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					22,
 					300,
-					562,
+					783,
 				);
 				PBXFileTableDataSourceColumnsKey = (
 					PBXExecutablesDataSource_ActiveFlagID,
@@ -190,7 +190,7 @@
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
 					20,
-					886,
+					871,
 					20,
 					43,
 					43,
@@ -265,7 +265,7 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					870,
+					855,
 					60,
 					20,
 					48,
@@ -282,19 +282,19 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 375114036;
-			PBXWorkspaceStateSaveDate = 375114036;
+			PBXPerProjectTemplateStateSaveDate = 375283562;
+			PBXWorkspaceStateSaveDate = 375283562;
 		};
 		perUserProjectItems = {
 			2C0AD6830C3B5FA500E2B397 = 2C0AD6830C3B5FA500E2B397 /* ASDocParser.applescript */;
-			2C1E1FEF165BC93E003DD780 /* PBXTextBookmark */ = 2C1E1FEF165BC93E003DD780 /* PBXTextBookmark */;
-			2C1E200B165BCF85003DD780 /* PBXTextBookmark */ = 2C1E200B165BCF85003DD780 /* PBXTextBookmark */;
-			2C1E200C165BCF85003DD780 /* PBXTextBookmark */ = 2C1E200C165BCF85003DD780 /* PBXTextBookmark */;
-			2C1E200D165BCF85003DD780 /* XCBuildMessageTextBookmark */ = 2C1E200D165BCF85003DD780 /* XCBuildMessageTextBookmark */;
-			2C1E200E165BCF85003DD780 /* PBXTextBookmark */ = 2C1E200E165BCF85003DD780 /* PBXTextBookmark */;
-			2C1E200F165BCF8C003DD780 /* PBXTextBookmark */ = 2C1E200F165BCF8C003DD780 /* PBXTextBookmark */;
-			2C1E2015165BCFA6003DD780 /* PBXTextBookmark */ = 2C1E2015165BCFA6003DD780 /* PBXTextBookmark */;
-			2C1E2016165BCFAA003DD780 /* PBXTextBookmark */ = 2C1E2016165BCFAA003DD780 /* PBXTextBookmark */;
+			2C1E1FEF165BC93E003DD780 = 2C1E1FEF165BC93E003DD780 /* PBXTextBookmark */;
+			2C1E200B165BCF85003DD780 = 2C1E200B165BCF85003DD780 /* PBXTextBookmark */;
+			2C1E200C165BCF85003DD780 = 2C1E200C165BCF85003DD780 /* PBXTextBookmark */;
+			2C1E200D165BCF85003DD780 = 2C1E200D165BCF85003DD780 /* PBXTextBookmark */;
+			2C1E200E165BCF85003DD780 = 2C1E200E165BCF85003DD780 /* PBXTextBookmark */;
+			2C1E200F165BCF8C003DD780 = 2C1E200F165BCF8C003DD780 /* PBXTextBookmark */;
+			2C1E2015165BCFA6003DD780 = 2C1E2015165BCFA6003DD780 /* PBXTextBookmark */;
+			2C1E2016165BCFAA003DD780 = 2C1E2016165BCFAA003DD780 /* PBXTextBookmark */;
 			2C3033161654AE1D009B067A = 2C3033161654AE1D009B067A /* PBXTextBookmark */;
 			2C3033311654B55A009B067A = 2C3033311654B55A009B067A /* PBXTextBookmark */;
 			2C3033351654B55D009B067A = 2C3033351654B55D009B067A /* PBXBookmark */;
@@ -314,6 +314,11 @@
 			2CDB853B165B795100DB56C9 = 2CDB853B165B795100DB56C9 /* PBXTextBookmark */;
 			2CDB853C165B795100DB56C9 = 2CDB853C165B795100DB56C9 /* PBXTextBookmark */;
 			2CDB857F165B871400DB56C9 = 2CDB857F165B871400DB56C9 /* PBXTextBookmark */;
+			2CF8A490165E89DE005C9832 /* PBXTextBookmark */ = 2CF8A490165E89DE005C9832 /* PBXTextBookmark */;
+			2CF8A491165E89DE005C9832 /* PBXTextBookmark */ = 2CF8A491165E89DE005C9832 /* PBXTextBookmark */;
+			2CF8A492165E89DE005C9832 /* PBXTextBookmark */ = 2CF8A492165E89DE005C9832 /* PBXTextBookmark */;
+			2CF8A493165E89DE005C9832 /* PBXTextBookmark */ = 2CF8A493165E89DE005C9832 /* PBXTextBookmark */;
+			2CF8A494165E89DE005C9832 /* PBXTextBookmark */ = 2CF8A494165E89DE005C9832 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 25D9445A07B1533700FF306F /* Source Control */;
 		userBookmarkGroup = 2CAE15C70C46B6B40080A422 /* PBXBookmarkGroup */;
@@ -376,11 +381,10 @@
 		vrLen = 223;
 		vrLoc = 0;
 	};
-	2C1E200D165BCF85003DD780 /* XCBuildMessageTextBookmark */ = {
+	2C1E200D165BCF85003DD780 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		comments = "'fileAttributesAtPath:traverseLink:' is deprecated (declared at /Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Foundation.framework/Headers/NSFileManager.h:162)";
 		fRef = 2CF5BEF00C43CD1D00224B65 /* PathExtra.m */;
-		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
 		rLoc = 262;
 		rType = 1;
@@ -1188,6 +1192,84 @@
 			sepNavVisRect = "{{0, 27}, {1090, 396}}";
 			sepNavWindowFrame = "{{15, 98}, {1066, 775}}";
 		};
+	};
+	2CF8A489165E87B2005C9832 /* localize_ib.mk */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1073, 495}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 247}";
+		};
+	};
+	2CF8A48A165E87B2005C9832 /* localize_ib.sh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1073, 495}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1049}";
+		};
+	};
+	2CF8A48B165E87B2005C9832 /* localize.mk */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1073, 495}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 543}";
+		};
+	};
+	2CF8A48C165E87C8005C9832 /* require_strings_file.sh */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1073, 495}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 575}";
+		};
+	};
+	2CF8A490165E89DE005C9832 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CF8A489165E87B2005C9832 /* localize_ib.mk */;
+		name = "localize_ib.mk: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 247;
+		vrLoc = 0;
+	};
+	2CF8A491165E89DE005C9832 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CF8A48A165E87B2005C9832 /* localize_ib.sh */;
+		name = "localize_ib.sh: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1049;
+		vrLoc = 0;
+	};
+	2CF8A492165E89DE005C9832 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CF8A48B165E87B2005C9832 /* localize.mk */;
+		name = "localize.mk: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 543;
+		vrLoc = 0;
+	};
+	2CF8A493165E89DE005C9832 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CF8A48C165E87C8005C9832 /* require_strings_file.sh */;
+		name = "require_strings_file.sh: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 575;
+		vrLoc = 0;
+	};
+	2CF8A494165E89DE005C9832 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 2CF8A48C165E87C8005C9832 /* require_strings_file.sh */;
+		name = "require_strings_file.sh: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 575;
+		vrLoc = 0;
 	};
 	2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */ = {
 		uiCtxt = {

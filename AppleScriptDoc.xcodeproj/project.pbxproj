@@ -223,6 +223,10 @@
 		2CF5BEF30C43CD1D00224B65 /* WindowVisibilityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WindowVisibilityController.h; sourceTree = "<group>"; };
 		2CF5BEF40C43CD1D00224B65 /* WindowVisibilityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WindowVisibilityController.m; sourceTree = "<group>"; };
 		2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = XFileExtend.applescript; sourceTree = "<group>"; };
+		2CF8A489165E87B2005C9832 /* localize_ib.mk */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = localize_ib.mk; sourceTree = "<group>"; };
+		2CF8A48A165E87B2005C9832 /* localize_ib.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localize_ib.sh; sourceTree = "<group>"; };
+		2CF8A48B165E87B2005C9832 /* localize.mk */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = localize.mk; sourceTree = "<group>"; };
+		2CF8A48C165E87C8005C9832 /* require_strings_file.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = require_strings_file.sh; sourceTree = "<group>"; };
 		2CFE95FA0C4485B100B0D2A6 /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/PathSettingWindow.nib; sourceTree = "<group>"; };
 		2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.h; path = PathSettingWindowController.h; sourceTree = "<group>"; };
 		2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.objc; path = PathSettingWindowController.m; sourceTree = "<group>"; wrapsLines = 1; };
@@ -298,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				2CF5BE310C43AB3300224B65 /* History.rd */,
+				2CF8A482165E877C005C9832 /* localize tools */,
 				2CFE96280C44991E00B0D2A6 /* Class */,
 				080E96DDFE201D6D7F000001 /* Scripts */,
 				2CAEEB550ECC129E0068900A /* ASHTMLLib */,
@@ -451,6 +456,17 @@
 			path = CocoaLib;
 			sourceTree = "<group>";
 		};
+		2CF8A482165E877C005C9832 /* localize tools */ = {
+			isa = PBXGroup;
+			children = (
+				2CF8A48C165E87C8005C9832 /* require_strings_file.sh */,
+				2CF8A489165E87B2005C9832 /* localize_ib.mk */,
+				2CF8A48A165E87B2005C9832 /* localize_ib.sh */,
+				2CF8A48B165E87B2005C9832 /* localize.mk */,
+			);
+			name = "localize tools";
+			sourceTree = "<group>";
+		};
 		2CFE96280C44991E00B0D2A6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
@@ -560,18 +576,12 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/English.lproj/MainMenu.nib",
-				"$(SRCROOT)/Japanese.lproj/MainMenu.strings",
-				"$(SRCROOT)/Japanese.lproj/PathSettingWindow.strings",
-				"$(SRCROOT)/English.lproj/PathSettingWindow.nib",
 			);
 			outputPaths = (
-				"$(SRCROOT)/Japanese.lproj/PathSettingWindow.nib",
-				"$(SRCROOT)/Japanese.lproj/MainMenu.nib",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Extract English strings (use this to check if you added new strings to your nibs)\n# ibtool --generate-strings-file Resources/English.lproj/MainWindow.strings Resources/English.lproj/MainWindow.xib\n# Generate Localized interface\n\nfunction generate_localized_interface\n{\nbase_lang=$1\ntarget_lang=$2\ntarget_nib=$3\nnib_basename=`basename ${target_nib} .nib` \n\ntarget_lang_strings=${target_lang}.lproj/${nib_basename}.strings\ntarget_lang_nib=${target_lang}.lproj/${target_nib}\n\nif ! [ -e ${target_lang_strings} ]; then\n\tibtool --generate-strings-file ${target_lang_strings} ${target_lang_nib}\nelse\n\techo \"${target_lang_strings} exist\"\U0013\nfi\n\nibtool --strings-file ${target_lang_strings} --write ${target_lang_nib} ${base_lang}.lproj/${target_nib}\nrm -rf ${target_lang_nib}/.svn\n}\n\ngenerate_localized_interface English Japanese MainMenu.nib\ngenerate_localized_interface English Japanese PathSettingWindow.nib\n\n\n";
+			shellScript = "make -f localize.mk target_lang=Japanese\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
