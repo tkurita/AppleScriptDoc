@@ -232,7 +232,6 @@
 		2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.objc; path = PathSettingWindowController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		2CFE96240C4498FE00B0D2A6 /* DropBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropBox.h; sourceTree = "<group>"; };
 		2CFE96250C4498FE00B0D2A6 /* DropBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropBox.m; sourceTree = "<group>"; };
-		65359356078DD41800E8BB2F /* AppleScriptKit.sdef */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.sdef; name = AppleScriptKit.sdef; path = /System/Library/Frameworks/AppleScriptKit.framework/Versions/A/Resources/AppleScriptKit.sdef; sourceTree = "<absolute>"; };
 		DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; lineEnding = 0; path = AppleScriptDoc.applescript; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -339,7 +338,6 @@
 				2C48092F0C3B7D94004E3217 /* HelpBookTemplate */,
 				2CFE960D0C4485DC00B0D2A6 /* PathSettingWindow.nib */,
 				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
-				65359356078DD41800E8BB2F /* AppleScriptKit.sdef */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
