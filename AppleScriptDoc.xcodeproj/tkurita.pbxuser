@@ -279,15 +279,14 @@
 					PBXFileDataSource_Warnings_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 375150536;
-			PBXWorkspaceStateSaveDate = 375150536;
+			PBXPerProjectTemplateStateSaveDate = 375769064;
+			PBXWorkspaceStateSaveDate = 375769064;
 		};
 		perUserProjectItems = {
-			2C14C893165C573F00637990 = 2C14C893165C573F00637990 /* PlistBookmark */;
+			2C0DBDAC1665C1AD00651736 = 2C0DBDAC1665C1AD00651736 /* PlistBookmark */;
+			2C0DBDB21665C7DD00651736 = 2C0DBDB21665C7DD00651736 /* PlistBookmark */;
 			2C14C895165C575100637990 = 2C14C895165C575100637990 /* PlistBookmark */;
-			2C14C8C5165C57D600637990 /* PlistBookmark */ = 2C14C8C5165C57D600637990 /* PlistBookmark */;
-			2C14C8C9165C57F300637990 /* PlistBookmark */ = 2C14C8C9165C57F300637990 /* PlistBookmark */;
-			2C14C8CE165C583700637990 /* PlistBookmark */ = 2C14C8CE165C583700637990 /* PlistBookmark */;
+			2C14C8CF165C591200637990 = 2C14C8CF165C591200637990 /* PlistBookmark */;
 			2CDB82561655DA8D00DB56C9 = 2CDB82561655DA8D00DB56C9 /* PBXTextBookmark */;
 			2CDB82A2165684FA00DB56C9 = 2CDB82A2165684FA00DB56C9 /* PBXTextBookmark */;
 			2CDB82A3165684FA00DB56C9 = 2CDB82A3165684FA00DB56C9 /* PBXTextBookmark */;
@@ -326,12 +325,24 @@
 			sepNavWindowFrame = "{{181, 119}, {863, 733}}";
 		};
 	};
-	2C14C893165C573F00637990 /* PlistBookmark */ = {
+	2C0DBDAC1665C1AD00651736 /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
 		fallbackIsa = PBXBookmark;
 		isK = 0;
 		kPath = (
+		);
+		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
+		rLen = 0;
+		rLoc = 9223372036854775808;
+	};
+	2C0DBDB21665C7DD00651736 /* PlistBookmark */ = {
+		isa = PlistBookmark;
+		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
+		fallbackIsa = PBXBookmark;
+		isK = 0;
+		kPath = (
+			CFBundleIconFile,
 		);
 		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
 		rLen = 0;
@@ -348,7 +359,7 @@
 		rLen = 0;
 		rLoc = 9223372036854775808;
 	};
-	2C14C8C5165C57D600637990 /* PlistBookmark */ = {
+	2C14C8CF165C591200637990 /* PlistBookmark */ = {
 		isa = PlistBookmark;
 		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
 		fallbackIsa = PBXBookmark;
@@ -357,29 +368,7 @@
 		);
 		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
 		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	2C14C8C9165C57F300637990 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775807;
-	};
-	2C14C8CE165C583700637990 /* PlistBookmark */ = {
-		isa = PlistBookmark;
-		fRef = 257572D5072881A4000BE9CA /* Info.plist */;
-		fallbackIsa = PBXBookmark;
-		isK = 0;
-		kPath = (
-		);
-		name = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/1_4/trunk/Info.plist;
-		rLen = 0;
-		rLoc = 9223372036854775807;
+		rLoc = 9223372036854775808;
 	};
 	2C2975070C3C8F82000CDBEF /* SaveToFile.applescript */ = {
 		uiCtxt = {
