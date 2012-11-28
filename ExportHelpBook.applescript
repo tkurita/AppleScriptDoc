@@ -172,7 +172,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			
 		else if a_kind is "handler" then
 			--log "start process handler element"
-			set handler_name to get_handler_name() of doc_element
+			set handler_name to doc_element's get_handler_name()
+			-- log handler_name
 			set handler_id to HandlerIDManager's handler_id_for(handler_name)
 			
 			set handler_heading to HTMLElement's make_with("h3", {{"id", handler_id}})
@@ -182,7 +183,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			
 			a_link_manager's set_prefix("pages/")
 			set an_abstruct to doc_element's copy_abstruct()
-			an_abstruct's each(a_link_manager)
+			an_abstruct's enumerate(a_link_manager)
 			--log an_abstruct's dump()
 			set srd to SimpleRD's make_with_iterator(an_abstruct)
 			index_contents's push(srd's html_tree())
@@ -207,7 +208,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		else if a_kind is "paragraph" then
 			--log "kind is paragraph"
 			a_link_manager's set_prefix("pages/")
-			doc_element's each(a_link_manager)
+			doc_element's enumerate(a_link_manager)
 			index_contents's push(doc_element's html_element())
 			--log "end kind is paragraph"
 		else

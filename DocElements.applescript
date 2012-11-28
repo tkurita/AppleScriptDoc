@@ -194,13 +194,13 @@ on make_handler_element(property_script)
 			
 			_link_manager's set_prefix("")
 			--log "abstruct"
-			my _abstruct's each(_link_manager)
+			my _abstruct's enumerate(_link_manager)
 			set srd to make_with_iterator(my _abstruct) of SimpleRD
 			
 			output's push(srd's html_tree())
 			
 			if (my _description's count_items()) > 0 then
-				my _description's each(_link_manager)
+				my _description's enumerate(_link_manager)
 				set srd to make_with_iterator(my _description) of SimpleRD
 				output's push(_line_end)
 				output's push(srd's html_tree())
@@ -212,8 +212,9 @@ on make_handler_element(property_script)
 				a_div's push("Parameters")
 				set a_ul to output's push_element_with("ul", {})
 				script ProcessParamDescription
-					on do(param_descs)
-						param_descs's each(_link_manager)
+					on do(param_descs, sender)
+						--log "start do in ProcessParamDescription"
+						param_descs's enumerate(_link_manager)
 						set a_li to a_ul's push_element_with("li", {})
 						script RowText
 							on do(a_text)
@@ -224,13 +225,14 @@ on make_handler_element(property_script)
 						return true
 					end do
 				end script
-				my _parameters's each(ProcessParamDescription)
+				
+				my _parameters's enumerate(ProcessParamDescription)
 			end if
 			
 			--log "process result field"
 			if (my _result's count_items()) > 0 then
 				output's push_element_with("div", {{"class", "subHeading"}})'s push("Result")
-				my _result's each(_link_manager)
+				my _result's enumerate(_link_manager)
 				set srd to make_with_iterator(my _result) of SimpleRD
 				output's push(srd's html_tree())
 			end if
