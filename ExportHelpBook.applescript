@@ -11,7 +11,7 @@ global TemplateProcessor
 global XFile
 global XList
 --global OneShotScriptEditor
-global _app_controller
+global appController
 
 property _bookName : missing value
 property _appleTitle : ""
@@ -57,11 +57,12 @@ on set_use_appletitle(a_flag)
 end set_use_appletitle
 
 on jump_list(index_contents)
+	--log "start jump_list in ExportHelpBook"
 	set jp_list to HTMLElement's make_with("select", {{"onchange", "navibarJump(this)"}})
 	jp_list's push_element_with("option", {{"value", ""}})'s push("§")
 	script walker
 		on push_headding(he, marker)
-			-- log "start push_headding"
+			--log "start push_headding"
 			try
 				he's attribute_value -- check handler existance
 				set attv to he's attribute_value("id")
@@ -76,9 +77,11 @@ on jump_list(index_contents)
 				set attv to attv's as_unicode()
 			end if
 			jp_list's push_element_with("option", {{"value", "#" & attv}})'s push(marker & jp_label)
+			--log "end push_headding"
 		end push_headding
 		
 		on do(he)
+			--log "start do in walker in jump_list"
 			try
 				he's element_name
 				set ename to he's element_name()
@@ -93,33 +96,33 @@ on jump_list(index_contents)
 			else if ename is "h3" then
 				push_headding(he, "- ")
 			end if
+			--log "end do in walker in jump_list"
 			return true
 		end do
 	end script
 	index_contents's walk(walker)
+	--log "end jump_list in ExportHelpBook"
 	return jp_list
 end jump_list
 
 --global doc_container
 on output_to_folder(root_ref, index_page, a_text, script_name)
-	--log "start output_to_folder"
+	--log "start output_to_folder in ExportHelpBook"
 	if class of index_page is not script then
 		set index_page to XFile's make_with(index_page)
 	end if
 	set book_folder to index_page's parent_folder()
 	book_folder's make_path(missing value)
-	tell main bundle
-		set a_path to path for resource "assets" directory my _template_folder
-	end tell
+	set a_path to path to resource "assets" in directory my _template_folder
 	set temp_asset_folder to XFile's make_with(a_path)
-	--set temp_asset_folder to XFile's make_with(path to resource "assets" in directory my _template_folder)
 	set assets_folder to temp_asset_folder's copy_to(book_folder)
 	set pages_folder to book_folder's make_folder("pages")
 	if my _bookName is missing value then
 		set my _bookName to script_name & " Help"
 	end if
 	if _use_appletitle then
-		set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", my _bookName}})'s as_html()
+		set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", my _bookName}})
+		set my _appleTitle to my _appleTitle's as_html()
 	end if
 	set doc_title to script_name & " Reference"
 	set index_contents to make HTMLElement
@@ -130,15 +133,11 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set root_page_path to index_page's posix_path()
 	a_link_manager's set_root_page(root_page_path)
 	a_link_manager's set_current_page(root_page_path)
-	tell main bundle
-		set a_path to path for resource my _template_folder
-	end tell
+	set a_path to path to resource my _template_folder
 	set template_folder to XFile's make_with(a_path)
-	--set template_folder to XFile's make_with(path to resource my _template_folder)
 	set handler_template to template_folder's child("pages/handler.html")
 	set rel_index_path to "../" & index_page's item_name()
 	if my _stop_processing then error number -128
-	
 	script HandlerIDManager
 		property _handler_id : {}
 		
@@ -160,6 +159,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		end handler_id_for
 	end script
 	
+	--log "will arrange doc elements in output_to_folder of ExportHelpBook"
 	repeat with doc_element in elementList of doc_container
 		if my _stop_processing then error number -128
 		set a_kind to doc_element's get_kind()
@@ -175,16 +175,13 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			set handler_name to doc_element's get_handler_name()
 			-- log handler_name
 			set handler_id to HandlerIDManager's handler_id_for(handler_name)
-			
 			set handler_heading to HTMLElement's make_with("h3", {{"id", handler_id}})
 			set a_link to handler_heading's push_element_with("a", {{"href", "pages/" & handler_id & ".html"}})
 			a_link's push(handler_name)
 			index_contents's push(handler_heading)
-			
 			a_link_manager's set_prefix("pages/")
 			set an_abstruct to doc_element's copy_abstruct()
 			an_abstruct's enumerate(a_link_manager)
-			--log an_abstruct's dump()
 			set srd to SimpleRD's make_with_iterator(an_abstruct)
 			index_contents's push(srd's html_tree())
 			set handler_page to pages_folder's child(handler_id & ".html")
@@ -203,10 +200,10 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 				write_to(handler_page)
 			end tell
 			a_link_manager's set_current_page(root_page_path)
-			--log "end process handler element"
+			-- log "end process handler element"
 			
 		else if a_kind is "paragraph" then
-			--log "kind is paragraph"
+			-- log "kind is paragraph"
 			a_link_manager's set_prefix("pages/")
 			doc_element's enumerate(a_link_manager)
 			index_contents's push(doc_element's html_element())
@@ -214,22 +211,17 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		else
 			--log "start process other element"
 			index_contents's push(doc_element's html_element())
-			--log "end process other element"
+			-- log "end process other element"
 		end if
 	end repeat
-	(*
-	oneshot_doc's catch_doc()
-	oneshot_doc's release()
-	*)
+	
+	-- log "index_contents's as_html"
 	set index_body to index_contents's as_html()
 	set jump_list_text to jump_list(index_contents)'s as_html()
 	set pathconv to PathConverter's make_with(index_page's posix_path())
 	set rel_root to relative_path of pathconv for (POSIX path of root_ref)
-	tell main bundle
-		set a_path to path for resource "index.html" directory my _template_folder
-	end tell
+	set a_path to path to resource "index.html" in directory my _template_folder
 	set template to TemplateProcessor's make_with_file(a_path)
-	--set template to TemplateProcessor's make_with_file(path to resource "index.html" in directory my _template_folder)
 	if my _stop_processing then error number -128
 	tell template
 		insert_text("$JUMP_LIST", jump_list_text)
@@ -241,21 +233,26 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 		set index_page to write_to(index_page)
 	end tell
 	if my _stop_processing then error number -128
+	-- log "before build css in output_to_folder"
 	set css_text to style_formatter's build_css()
 	set as_css_file to assets_folder's child("applescript.css")
 	as_css_file's write_as_utf8(css_text)
-	--log "end of output_to_folder"
+	-- log "end of output_to_folder"
 	return index_page
 end output_to_folder
 
 on process_file(a_file)
 	initialize()
 	DocElements's set_script_support(true)
-	set a_text to call method "sourceOfScript:" of _app_controller with parameter (a_file's posix_path())
+	set a_text to appController's sourceOfScript_(a_file's posix_path()) as text
+	--set a_text to call method "sourceOfScript:" of appController with parameter (a_file's posix_path())
 	set script_name to a_file's basename()
-	
-	set a_root to (POSIX file (contents of default entry "HelpBookRootPath" of user defaults)) as alias
-	set a_destination to POSIX file (contents of default entry "ExportFilePath" of user defaults)
+	tell current application's class "NSUserDefaults"'s standardUserDefaults()
+		set a_root to ((its stringValueForKey_("HelpBookRootPath") as text) as POSIX file) as alias
+		set a_destination to (its stringValueForKey_("ExportFilePath") as text) as POSIX file
+		--set a_root to (POSIX file (contents of default entry "HelpBookRootPath" of user defaults)) as alias
+		--set a_destination to POSIX file (contents of default entry "ExportFilePath" of user defaults)
+	end tell
 	set index_page to output_to_folder(a_root, a_destination, a_text, script_name)
 	
 	index_page's set_types(missing value, missing value)

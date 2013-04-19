@@ -119,17 +119,17 @@ on is_handler(a_line)
 end is_handler
 
 on is_heading_tag(a_line)
-	set a_tag to first word of a_line
+	set a_tag to first word of (a_line's as_unicode())
 	return a_tag is in {"group", "title"}
 end is_heading_tag
 
 on is_handler_tag(a_line)
-	set a_tag to first word of a_line
+	set a_tag to first word of (a_line's as_unicode())
 	return a_tag is in {"abstruct", "description", "param", "result", "syntax"}
 end is_handler_tag
 
 on is_references_tag(a_line)
-	set a_tag to first word of a_line
+	set a_tag to (first word of (a_line's as_unicode()))
 	return a_tag is in {"references", "glossary"} -- "glossary is deprecated"
 end is_references_tag
 
@@ -245,7 +245,7 @@ on parse_handler_region(a_region, doc_container)
 		set a_line to enumerator's next()
 		
 		if a_line's starts_with("@") then
-			set the_tag to first word of a_line
+			set the_tag to first word of (a_line's as_unicode())
 			if the_tag is "abstruct" then
 				set abstruct_list to tag_contents(enumerator)
 			else if the_tag is "description" then
@@ -278,13 +278,15 @@ on parse_handler_region(a_region, doc_container)
 	else
 		set syntax_text to item 1 of syntax_list
 	end if
+	
 	script HandlerProperties
+		property parent : AppleScript
 		property _abstruct : XList's make_with(abstruct_list)
 		property _description : XList's make_with(description_list)
 		property _result : XList's make_with(result_list)
 		property _parameters : XList's make_with(param_list)
 		property _syntax : syntax_text
-		property _handler_name : first word of syntax_text
+		property _handler_name : first word of (syntax_text's as_unicode())
 	end script
 	
 	doc_container's push(DocElements's make_handler_element(HandlerProperties))
