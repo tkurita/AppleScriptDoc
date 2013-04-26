@@ -274,18 +274,15 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateExpansionKey</key>
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
-								<string>080E96DDFE201D6D7F000001</string>
-								<string>2CAEEB550ECC129E0068900A</string>
-								<string>29B97315FDCFA39411CA2CEA</string>
-								<string>29B97323FDCFA39411CA2CEA</string>
-								<string>1058C7A0FEA54F0111CA2CBB</string>
+								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FBAC04509CD000000102</string>
 								<string>1C37FAAC04509CD000000102</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>1</integer>
+									<integer>10</integer>
+									<integer>7</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -325,7 +322,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>2CF8A483165E8791005C9832</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>AppController.m</string>
+								<string>Info.plist</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -333,11 +330,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>2CF8A484165E8791005C9832</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>AppController.m</string>
+										<string>Info.plist</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>2C0BE55D16DCF6420005A62A</string>
+										<string>2CA317F6172A53B2007A3C03</string>
 										<key>history</key>
 										<array>
 											<string>2CF8A490165E89DE005C9832</string>
@@ -346,7 +343,8 @@
 											<string>2C4FD98B16647FB100FBA7AC</string>
 											<string>2C0DBD911665C18800651736</string>
 											<string>2C0BE55B16DCF6420005A62A</string>
-											<string>2C0BE55C16DCF6420005A62A</string>
+											<string>2CA317F4172A53B2007A3C03</string>
+											<string>2CA317F5172A53B2007A3C03</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -360,18 +358,18 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1134, 443}}</string>
+								<string>{{0, 0}, {1134, 428}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 128 1440 750 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>443pt</string>
+							<string>428pt</string>
 						</dict>
 						<dict>
 							<key>Proportion</key>
-							<string>239pt</string>
+							<string>254pt</string>
 							<key>Tabs</key>
 							<array>
 								<dict>
@@ -385,14 +383,12 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1134, 212}}</string>
+										<string>{{10, 27}, {0, -27}}</string>
 									</dict>
 									<key>Module</key>
 									<string>XCDetailModule</string>
 								</dict>
 								<dict>
-									<key>BecomeActive</key>
-									<true/>
 									<key>ContentConfiguration</key>
 									<dict>
 										<key>PBXProjectModuleGUID</key>
@@ -403,7 +399,7 @@
 									<key>GeometryConfiguration</key>
 									<dict>
 										<key>Frame</key>
-										<string>{{10, 27}, {1134, 212}}</string>
+										<string>{{10, 27}, {1134, 227}}</string>
 										<key>RubberWindowFrame</key>
 										<string>0 128 1440 750 0 0 1440 878 </string>
 									</dict>
@@ -492,11 +488,11 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>2C0BE55E16DCF6420005A62A</string>
+				<string>2CA317F1172A539A007A3C03</string>
 				<string>1CA23ED40692098700951B8B</string>
-				<string>2C0BE55F16DCF6420005A62A</string>
+				<string>2CA317F2172A539A007A3C03</string>
 				<string>2CF8A483165E8791005C9832</string>
-				<string>2C0BE56016DCF6420005A62A</string>
+				<string>2CA317F3172A539A007A3C03</string>
 				<string>1CA23EDF0692099D00951B8B</string>
 				<string>1CA23EE00692099D00951B8B</string>
 				<string>1CA23EE10692099D00951B8B</string>
