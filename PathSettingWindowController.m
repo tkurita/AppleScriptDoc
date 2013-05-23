@@ -100,13 +100,16 @@ bail:
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSString *a_path = [user_defaults stringForKey:@"ExportFilePath"];
 	NSString *a_name;
+	NSString *dir = nil;
 	if (a_path) {
 		a_name = [a_path lastPathComponent];
+		dir = [a_path stringByDeletingLastPathComponent];
+		if (![dir fileExists]) dir = nil;
 	} else {
 		a_name = [user_defaults stringForKey:@"ExportFileName"];
 	}
 	
-	[save_panel beginSheetForDirectory:nil file:a_name
+	[save_panel beginSheetForDirectory:dir file:a_name
 		modalForWindow:[self window] modalDelegate:self
 		didEndSelector:@selector(savePanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
@@ -119,11 +122,14 @@ bail:
 
 - (IBAction)chooseHBRoot:(id)sender
 {
+	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
+	NSString *a_path = [user_defaults stringForKey:@"HelpBookRootPath"];
+	
 	NSOpenPanel *open_panel = [NSOpenPanel openPanel];
 	[open_panel setCanChooseFiles:NO];
 	[open_panel setCanChooseDirectories:YES];
 	[open_panel setCanCreateDirectories:YES];
-	[open_panel beginSheetForDirectory:nil file:nil types:nil 
+	[open_panel beginSheetForDirectory:a_path file:nil types:nil 
 		modalForWindow:[self window] modalDelegate:self 
 		didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
 }
