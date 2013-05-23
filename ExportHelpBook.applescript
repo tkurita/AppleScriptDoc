@@ -248,10 +248,8 @@ on process_file(a_file)
 	--set a_text to call method "sourceOfScript:" of appController with parameter (a_file's posix_path())
 	set script_name to a_file's basename()
 	tell current application's class "NSUserDefaults"'s standardUserDefaults()
-		set a_root to ((its stringValueForKey_("HelpBookRootPath") as text) as POSIX file) as alias
-		set a_destination to (its stringValueForKey_("ExportFilePath") as text) as POSIX file
-		--set a_root to (POSIX file (contents of default entry "HelpBookRootPath" of user defaults)) as alias
-		--set a_destination to POSIX file (contents of default entry "ExportFilePath" of user defaults)
+		set a_root to ((its stringForKey_("HelpBookRootPath") as text) as POSIX file) as alias
+		set a_destination to (its stringForKey_("ExportFilePath") as text) as POSIX file
 	end tell
 	set index_page to output_to_folder(a_root, a_destination, a_text, script_name)
 	
