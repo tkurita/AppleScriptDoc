@@ -41,6 +41,7 @@
 		2C4EFF740C3C16C0003743D7 /* non-helpbook.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5D0C3C1642003743D7 /* non-helpbook.css */; };
 		2C621B6C156FD6880043B4BE /* navi-next16.gif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C621B6A156FD6660043B4BE /* navi-next16.gif */; };
 		2C621B6D156FD6880043B4BE /* navi-previous16.gif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C621B6B156FD6660043B4BE /* navi-previous16.gif */; };
+		2C631EE91836370300364C36 /* navgrad-normal.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4D6C69152EB64F00C6DEF5 /* navgrad-normal.png */; };
 		2C72A8D70D3CBCDF00AECAF3 /* empty-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */; };
 		2C72A8E60D3CBDD700AECAF3 /* InfoPlistArranger.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2C72A8E50D3CBDD700AECAF3 /* InfoPlistArranger.applescript */; settings = {ATTRIBUTES = (); }; };
 		2CA7272D155B517800DEE9D6 /* handler_page.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4809340C3B7D94004E3217 /* handler_page.css */; };
@@ -86,6 +87,7 @@
 				2C621B6C156FD6880043B4BE /* navi-next16.gif in CopyFiles */,
 				2C621B6D156FD6880043B4BE /* navi-previous16.gif in CopyFiles */,
 				2CDBA3D7155A9ADA0030F7AB /* navibar-jump.js in CopyFiles */,
+				2C631EE91836370300364C36 /* navgrad-normal.png in CopyFiles */,
 				2C4809A50C3B7F58004E3217 /* Clipboard24.png in CopyFiles */,
 				2C4809A60C3B7F58004E3217 /* default.css in CopyFiles */,
 				2C4809A70C3B7F58004E3217 /* editScript.scpt in CopyFiles */,
