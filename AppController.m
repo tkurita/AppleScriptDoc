@@ -1,5 +1,5 @@
 #import "AppController.h"
-#import <DonationReminder/DonationReminder.h>
+#import "DonationReminder/DonationReminder.h"
 #import "PathSettingWindowController.h"
 #import "PathExtra.h"
 #import "IsBundleTransformer.h"

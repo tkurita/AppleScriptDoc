@@ -1,0 +1,45 @@
+[submodule "DonationReminder"]
+	path = DonationReminder
+	url = http://github.com/tkurita/DonationReminder.git
+[submodule "DropBox"]
+	path = DropBox
+	url = http://github.com/tkurita/DropBox.git
+[submodule "PathExtra"]
+	path = PathExtra
+	url = http://github.com/tkurita/PathExtra.git
+[submodule "ASHTMLLib"]
+	path = ASHTMLLib
+	url = http://github.com/tkurita/ASHTMLLib.git
+[submodule "LibraryScripts/XText.scptd"]
+	path = LibraryScripts/XText.scptd
+	url = http://github.com/tkurita/XText.scptd.git
+[submodule "LibraryScripts/XList.scptd"]
+	path = LibraryScripts/XList.scptd
+	url = http://github.com/tkurita/XList.scptd.git
+[submodule "LibraryScripts/XFile.scptd"]
+	path = LibraryScripts/XFile.scptd
+	url = http://github.com/tkurita/XFile.scptd.git
+[submodule "LibraryScripts/XDict.scptd"]
+	path = LibraryScripts/XDict.scptd
+	url = http://github.com/tkurita/XDict.scptd.git
+[submodule "LibraryScripts/XCharacterSet.scptd"]
+	path = LibraryScripts/XCharacterSet.scptd
+	url = http://github.com/tkurita/XCharacterSet.scptd.git
+[submodule "LibraryScripts/RGBColor.scptd"]
+	path = LibraryScripts/RGBColor.scptd
+	url = http://github.com/tkurita/RGBColor.scptd.git
+[submodule "LibraryScripts/PathInfo.scptd"]
+	path = LibraryScripts/PathInfo.scptd
+	url = http://github.com/tkurita/PathInfo.scptd.git
+[submodule "LibraryScripts/PathConverter.scptd"]
+	path = LibraryScripts/PathConverter.scptd
+	url = http://github.com/tkurita/PathConverter.scptd.git
+[submodule "LibraryScripts/HTMLElement.scptd"]
+	path = LibraryScripts/HTMLElement.scptd
+	url = http://github.com/tkurita/HTMLElement.scptd.git
+[submodule "LibraryScripts/CSSBuilder.scptd"]
+	path = LibraryScripts/CSSBuilder.scptd
+	url = http://github.com/tkurita/CSSBuilder.scptd.git
+[submodule "LibraryScripts/TemplateProcessor.scptd"]
+	path = LibraryScripts/TemplateProcessor.scptd
+	url = http://github.com/tkurita/TemplateProcessor.scptd.git
