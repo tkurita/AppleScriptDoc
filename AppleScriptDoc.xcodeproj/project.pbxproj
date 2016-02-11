@@ -724,6 +724,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = AppleScriptDoc;
+				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
@@ -742,6 +743,7 @@
 				INSTALL_PATH = /Applications;
 				OTHER_OSAFLAGS = "-x";
 				PRODUCT_NAME = AppleScriptDoc;
+				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};

@@ -139,10 +139,9 @@ bail:
 	}
 
 	[pathRecordsController addObject:
-		[NSDictionary dictionaryWithObjectsAndKeys:
-			[user_defaults stringForKey:@"ExportFilePath"], @"ExportFilePath", 
-			[user_defaults stringForKey:@"HelpBookRootPath"], @"HelpBookRootPath", 
-			[user_defaults stringForKey:@"TargetScript"], @"ScriptPath", nil]];	
+		@{@"ExportFilePath": [user_defaults stringForKey:@"ExportFilePath"], 
+			@"HelpBookRootPath": [user_defaults stringForKey:@"HelpBookRootPath"], 
+			@"ScriptPath": [user_defaults stringForKey:@"TargetScript"]}];	
 	[[NSApplication sharedApplication] endSheet: [sender window] returnCode:128];
 }
 
@@ -183,11 +182,11 @@ bail:
 	
 	if (array && [array count]) {
 		NSDictionary *path_dict = [array lastObject];
-		NSEnumerator *enumerator = [[NSArray arrayWithObjects:@"HelpBookRootPath", @"ExportFilePath", nil]
+		NSEnumerator *enumerator = [@[@"HelpBookRootPath", @"ExportFilePath"]
 										objectEnumerator];
 		NSString *a_key;
 		while (a_key = [enumerator nextObject]) {
-			NSString *a_path = [path_dict objectForKey:a_key];
+			NSString *a_path = path_dict[a_key];
 			if (a_path) {
 				[user_defaults setObject:a_path forKey:a_key];
 			}
@@ -216,13 +215,11 @@ bail:
 #if uselog
 	NSLog(@"windowDidLoad");
 #endif
-	[helpBookRootBox setAcceptFileInfo:[NSArray arrayWithObject:
-		[NSDictionary dictionaryWithObject:NSFileTypeDirectory forKey:@"FileType"]]];
+	[helpBookRootBox setAcceptFileInfo:@[@{@"FileType": NSFileTypeDirectory}]];
 	
-	[exportDestBox setAcceptFileInfo:[NSArray arrayWithObjects:
-		[NSDictionary dictionaryWithObject:NSFileTypeDirectory forKey:@"FileType"],
-		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeRegular, @"FileType",
-													@"html", @"PathExtension", nil], nil]];
+	[exportDestBox setAcceptFileInfo:@[@{@"FileType": NSFileTypeDirectory},
+		@{@"FileType": NSFileTypeRegular,
+													@"PathExtension": @"html"}]];
 	
 	NSPopUpButtonCell *a_cell = [helpBookRootPopup cell];
 	[a_cell setBezelStyle:NSSmallSquareBezelStyle];
@@ -242,7 +239,7 @@ bail:
 
 - (BOOL)dropBox:(NSView *)dbv acceptDrop:(id <NSDraggingInfo>)info item:(id)item
 {
-	item = [[item infoResolvingAliasFile] objectForKey:@"ResolvedPath"];
+	item = [item infoResolvingAliasFile][@"ResolvedPath"];
 	if (dbv == exportDestBox) {
 		if ([item isFolder]) {
 			NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];

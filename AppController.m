@@ -74,7 +74,7 @@ static id sharedObj;
         return fnfErr;
     }
 	
-	NSString *bookname = [[bundle_ref infoDictionary] objectForKey:@"CFBundleHelpBookName"];
+	NSString *bookname = [bundle_ref infoDictionary][@"CFBundleHelpBookName"];
     if (! bookname) {
         NSLog(@"Failed to obtain CFBundleHelpBookName : %@", path);
         return fnfErr;
@@ -104,11 +104,10 @@ static id sharedObj;
 	[a_cell setBezelStyle:NSSmallSquareBezelStyle];
 	[a_cell setArrowPosition:NSPopUpArrowAtCenter];
 
-	[targetScriptBox setAcceptFileInfo:[NSArray arrayWithObjects:
-		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeDirectory, @"FileType",
-													@"scptd", @"PathExtension", nil], 
-		[NSDictionary dictionaryWithObjectsAndKeys:NSFileTypeRegular, @"FileType",
-													@"scpt", @"PathExtension", nil], nil]];
+	[targetScriptBox setAcceptFileInfo:@[@{@"FileType": NSFileTypeDirectory,
+													@"PathExtension": @"scptd"}, 
+		@{@"FileType": NSFileTypeRegular,
+													@"PathExtension": @"scpt"}]];
 	[mainWindow center];
 	[mainWindow setFrameAutosaveName:@"Main"];
 }
@@ -116,7 +115,7 @@ static id sharedObj;
 #pragma mark delegate methods for somethings
 - (BOOL)dropBox:(NSView *)dbv acceptDrop:(id <NSDraggingInfo>)info item:(id)item
 {
-	item = [[item infoResolvingAliasFile] objectForKey:@"ResolvedPath"];
+	item = [item infoResolvingAliasFile][@"ResolvedPath"];
 	[self setTargetScript:item];
 	return YES;
 }
@@ -190,7 +189,7 @@ static id sharedObj;
                         NSURL *an_url = [panel URL];
                         NSDictionary *alias_info = [an_url infoResolvingAliasFile];
                         if (alias_info) {
-                            [self setTargetScript:[alias_info objectForKey:@"ResolvedPath"] ];
+                            [self setTargetScript:alias_info[@"ResolvedPath"] ];
                         } else {
                             [panel orderOut:self];
                             NSAlert *an_alert = [NSAlert alertWithMessageText:@"Can't resolving alias"
@@ -245,12 +244,12 @@ static id sharedObj;
 void showOSAError(NSDictionary *err_info)
 {
 	[NSApp activateIgnoringOtherApps:YES];
-	NSNumber *err_no = [err_info objectForKey:OSAScriptErrorNumber];
+	NSNumber *err_no = err_info[OSAScriptErrorNumber];
 	if ([err_no intValue] != -128) {
 		[[NSAlert alertWithMessageText:@"AppleScript Error"
 						 defaultButton:@"OK" alternateButton:nil otherButton:nil
 			 informativeTextWithFormat:@"%@\nNumber: %@", 
-				[err_info objectForKey:OSAScriptErrorMessage],
+				err_info[OSAScriptErrorMessage],
 				 err_no]
 			runModal];
 #if useLog
