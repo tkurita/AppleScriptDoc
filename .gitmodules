@@ -43,3 +43,12 @@
 [submodule "LibraryScripts/TemplateProcessor.scptd"]
 	path = LibraryScripts/TemplateProcessor.scptd
 	url = http://github.com/tkurita/TemplateProcessor.scptd.git
+[submodule "LibraryScripts/SimpleRD/SimpleRD.scptd"]
+	path = LibraryScripts/SimpleRD/SimpleRD.scptd
+	url = http://github.com/tkurita/SimpleRD.scptd.git
+[submodule "LibraryScripts/SimpleRD/HTMLFormatter.scptd"]
+	path = LibraryScripts/SimpleRD/HTMLFormatter.scptd
+	url = http://github.com/tkurita/HTMLFormatter.scptd.git
+[submodule "LibraryScripts/SimpleRD/HTMLTreeFormatter.scptd"]
+	path = LibraryScripts/SimpleRD/HTMLTreeFormatter.scptd
+	url = http://github.com/tkurita/HTMLTreeFormatter.scptd.git
