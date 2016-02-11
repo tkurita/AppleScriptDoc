@@ -15,6 +15,13 @@
 - (OSAScript *)scriptWithName:(NSString *)name;
 @end
 
+@interface AppleScriptDocController : NSObject
+- (void)saveToFile:(NSString *)path;
+- (void)setupHelpBook:(NSString *)path;
+- (void)cancelExport;
+- (void)setup;
+@end
+
 static id sharedObj;
 
 @implementation AppController
@@ -57,23 +64,23 @@ static id sharedObj;
 
 - (OSStatus)showHelpBook:(NSString *)path
 {
-    OSStatus err = noErr;
-	
-	FSRef ref;
-	err = FSPathMakeRef((UInt8 *)[path fileSystemRepresentation], &ref, NULL);
-	if (err != noErr) goto bail;
-	err = AHRegisterHelpBook(&ref);
-	if (err != noErr) goto bail;
-	
 	NSBundle *bundle_ref = [NSBundle bundleWithPath:path];
-    if (bundle_ref == nil) {err = fnfErr; goto bail;}
+    if (! bundle_ref) {
+        NSLog(@"Failed to obtain bundle : %@", path);
+        return fnfErr;
+    }
+    if (![[NSHelpManager sharedHelpManager] registerBooksInBundle:bundle_ref]) {
+        NSLog(@"Failed to registerBooksInBundle : %@", path);
+        return fnfErr;
+    }
 	
 	NSString *bookname = [[bundle_ref infoDictionary] objectForKey:@"CFBundleHelpBookName"];
-    if (bookname == nil) {err = fnfErr; goto bail;}
+    if (! bookname) {
+        NSLog(@"Failed to obtain CFBundleHelpBookName : %@", path);
+        return fnfErr;
+    }
 		
-    if (err == noErr) err = AHGotoPage((CFStringRef)bookname, NULL, NULL);
-bail:
-    return err;
+    return AHGotoPage((CFStringRef)bookname, NULL, NULL);
 }
 
 #pragma mark private methods
@@ -112,25 +119,6 @@ bail:
 	item = [[item infoResolvingAliasFile] objectForKey:@"ResolvedPath"];
 	[self setTargetScript:item];
 	return YES;
-}
-
-- (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode 
-												contextInfo:(void  *)contextInfo
-{
-	if (returnCode == NSOKButton) {
-		NSString *a_path = [panel filename];
-		NSDictionary *alias_info = [a_path infoResolvingAliasFile];
-		if (alias_info) {
-			[self setTargetScript:[alias_info objectForKey:@"ResolvedPath"] ];
-		} else {
-			[panel orderOut:self];
-			NSAlert *an_alert = [NSAlert alertWithMessageText:@"Can't resolving alias"
-							defaultButton:@"OK" alternateButton:nil otherButton:nil
-							informativeTextWithFormat:@"No original item of '%@'",a_path ];
-			[an_alert beginSheetModalForWindow:mainWindow modalDelegate:self
-														didEndSelector:nil contextInfo:nil];
-		}
-	}
 }
 
 - (void)sheetDidEnd:(NSWindow*)sheet returnCode:(int)returnCode contextInfo:(void*)contextInfo
@@ -193,13 +181,25 @@ bail:
 
 - (IBAction)selectTarget:(id)sender
 {
-	NSOpenPanel *a_panel = [NSOpenPanel openPanel];
-	[a_panel setResolvesAliases:NO];
-	[a_panel beginSheetForDirectory:nil file:nil 
-			types:[NSArray arrayWithObjects:@"scpt", @"scptd", nil]
-			modalForWindow:mainWindow modalDelegate:self
-			didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) 
-			contextInfo:nil];
+	NSOpenPanel *panel = [NSOpenPanel openPanel];
+	[panel setResolvesAliases:NO];
+    [panel setAllowedFileTypes:@[@"scpt", @"scptd"]];
+    [panel beginSheetModalForWindow:mainWindow
+                    completionHandler:^(NSInteger result) {
+                        if (result != NSOKButton) return;
+                        NSURL *an_url = [panel URL];
+                        NSDictionary *alias_info = [an_url infoResolvingAliasFile];
+                        if (alias_info) {
+                            [self setTargetScript:[alias_info objectForKey:@"ResolvedPath"] ];
+                        } else {
+                            [panel orderOut:self];
+                            NSAlert *an_alert = [NSAlert alertWithMessageText:@"Can't resolving alias"
+                                                                defaultButton:@"OK" alternateButton:nil otherButton:nil
+                                                    informativeTextWithFormat:@"No original item of '%@'",an_url.path ];
+                            [an_alert beginSheetModalForWindow:mainWindow modalDelegate:self
+                                                didEndSelector:nil contextInfo:nil];
+                        }
+                    }];
 }
 
 - (IBAction)popUpRecents:(id)sender

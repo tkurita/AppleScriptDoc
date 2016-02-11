@@ -86,16 +86,10 @@ bail:
 	[self addToRecents:path forKey:@"RecentExportPathes"];
 }
 
-- (void)savePanelDidEnd:(NSSavePanel *)panel returnCode:(int)returnCode  contextInfo:(void  *)contextInfo
-{
-	if (returnCode == NSCancelButton) return;
-	[self setExportPath:[panel filename]];
-}
-
 - (IBAction)chooseExportPath:(id)sender
 {
 	NSSavePanel *save_panel = [NSSavePanel savePanel];
-	[save_panel setRequiredFileType:@"html"];
+	[save_panel setAllowedFileTypes:@[@"public.html"]];
 	[save_panel setCanSelectHiddenExtension:YES];
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSString *a_path = [user_defaults stringForKey:@"ExportFilePath"];
@@ -108,16 +102,13 @@ bail:
 	} else {
 		a_name = [user_defaults stringForKey:@"ExportFileName"];
 	}
-	
-	[save_panel beginSheetForDirectory:dir file:a_name
-		modalForWindow:[self window] modalDelegate:self
-		didEndSelector:@selector(savePanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
-}
-
-- (void)openPanelDidEnd:(NSOpenPanel *)panel returnCode:(int)returnCode contextInfo:(void  *)contextInfo
-{
-	if (returnCode == NSCancelButton) return;
-	[self setHelpBookRoot:[panel filename]];
+	[save_panel setDirectoryURL:[NSURL fileURLWithPath:dir]];
+    [save_panel setNameFieldStringValue:a_name];
+    [save_panel beginSheetModalForWindow:self.window
+                       completionHandler:^(NSInteger result) {
+        if (result == NSCancelButton) return;
+        [self setExportPath:[[save_panel URL] path]];
+    }];
 }
 
 - (IBAction)chooseHBRoot:(id)sender
@@ -129,9 +120,12 @@ bail:
 	[open_panel setCanChooseFiles:NO];
 	[open_panel setCanChooseDirectories:YES];
 	[open_panel setCanCreateDirectories:YES];
-	[open_panel beginSheetForDirectory:a_path file:nil types:nil 
-		modalForWindow:[self window] modalDelegate:self 
-		didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:) contextInfo:nil];
+    [open_panel setDirectoryURL:[NSURL fileURLWithPath:a_path]];
+    [open_panel beginSheetModalForWindow:self.window
+                       completionHandler:^(NSInteger result) {
+                           if (result == NSCancelButton) return;
+                           [self setHelpBookRoot:[[open_panel URL] path]];
+                       }];
 }
 
 - (IBAction)okAction:(id)sender

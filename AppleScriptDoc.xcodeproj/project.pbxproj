@@ -58,16 +58,9 @@
 		2CFA14141C6C1D8E0068526B /* DropBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA14111C6C1D8E0068526B /* DropBox.m */; };
 		2CFA14151C6C1D8E0068526B /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA14131C6C1D8E0068526B /* HFSTypeUtils.m */; };
 		2CFA141D1C6C1D9B0068526B /* PathExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA141B1C6C1D9B0068526B /* PathExtra.m */; };
-		2CFA46931C6C77D10094B047 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 257572D5072881A4000BE9CA /* Info.plist */; };
 		2CFA469A1C6C78040094B047 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46941C6C78040094B047 /* InfoPlist.strings */; };
 		2CFA469B1C6C78040094B047 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46961C6C78040094B047 /* MainMenu.nib */; };
 		2CFA469C1C6C78040094B047 /* PathSettingWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46981C6C78040094B047 /* PathSettingWindow.nib */; };
-		2CFA46A41C6C783B0094B047 /* MainMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A01C6C783B0094B047 /* MainMenu.strings */; };
-		2CFA46A51C6C783B0094B047 /* PathSettingWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A21C6C783B0094B047 /* PathSettingWindow.strings */; };
-		2CFA46AB1C6C7E370094B047 /* localize.mk in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A71C6C7E370094B047 /* localize.mk */; };
-		2CFA46AC1C6C7E370094B047 /* localize_ib.mk in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A81C6C7E370094B047 /* localize_ib.mk */; };
-		2CFA46AD1C6C7E370094B047 /* localize_ib.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A91C6C7E370094B047 /* localize_ib.sh */; };
-		2CFA46AE1C6C7E370094B047 /* require_strings_file.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46AA1C6C7E370094B047 /* require_strings_file.sh */; };
 		2CFE961B0C44925A00B0D2A6 /* PathSettingWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */; };
 /* End PBXBuildFile section */
 
@@ -237,10 +230,10 @@
 		2CFA14191C6C1D9B0068526B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PathExtra_Localizable.strings; sourceTree = "<group>"; };
 		2CFA141A1C6C1D9B0068526B /* PathExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathExtra.h; sourceTree = "<group>"; };
 		2CFA141B1C6C1D9B0068526B /* PathExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathExtra.m; sourceTree = "<group>"; };
-		2CFA46951C6C78040094B047 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2CFA46951C6C78040094B047 /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2CFA46971C6C78040094B047 /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2CFA46991C6C78040094B047 /* en */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = en; path = en.lproj/PathSettingWindow.nib; sourceTree = "<group>"; };
-		2CFA469D1C6C78090094B047 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2CFA469D1C6C78090094B047 /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2CFA469E1C6C780E0094B047 /* ja */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ja; path = ja.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		2CFA469F1C6C78120094B047 /* ja */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ja; path = ja.lproj/PathSettingWindow.nib; sourceTree = "<group>"; };
 		2CFA46A11C6C783B0094B047 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
@@ -585,16 +578,9 @@
 				2C72A8D70D3CBCDF00AECAF3 /* empty-Info.plist in Resources */,
 				2C4BF1060F09652600F015E7 /* dsa_pub.pem in Resources */,
 				2C46DBCA10A1A6BC00501F03 /* Credits.rtf in Resources */,
-				2CFA46931C6C77D10094B047 /* Info.plist in Resources */,
 				2CFA469A1C6C78040094B047 /* InfoPlist.strings in Resources */,
 				2CFA469B1C6C78040094B047 /* MainMenu.nib in Resources */,
 				2CFA469C1C6C78040094B047 /* PathSettingWindow.nib in Resources */,
-				2CFA46A41C6C783B0094B047 /* MainMenu.strings in Resources */,
-				2CFA46A51C6C783B0094B047 /* PathSettingWindow.strings in Resources */,
-				2CFA46AB1C6C7E370094B047 /* localize.mk in Resources */,
-				2CFA46AC1C6C7E370094B047 /* localize_ib.mk in Resources */,
-				2CFA46AD1C6C7E370094B047 /* localize_ib.sh in Resources */,
-				2CFA46AE1C6C7E370094B047 /* require_strings_file.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +611,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -f LocalizeTools/localize.mk target_lang=ja nibs='MainMenu.nib PathSettingWindow.nib MonitorWindow.nib'\n";
+			shellScript = "make -f LocalizeTools/localize.mk target_lang=ja nibs='MainMenu.nib PathSettingWindow.nib'\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
