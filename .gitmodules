@@ -52,3 +52,6 @@
 [submodule "LibraryScripts/SimpleRD/HTMLTreeFormatter.scptd"]
 	path = LibraryScripts/SimpleRD/HTMLTreeFormatter.scptd
 	url = http://github.com/tkurita/HTMLTreeFormatter.scptd.git
+[submodule "ja.lproj/LocalizeTools"]
+	path = ja.lproj/LocalizeTools
+	url = http://github.com/tkurita/LocalizeTools.git
