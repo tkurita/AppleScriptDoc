@@ -218,12 +218,12 @@ static id sharedObj;
 
 - (IBAction)exportAction:(id)sender
 {
-	if (!pathSettingWindowController) {
-		pathSettingWindowController = 
+	if (!_pathSettingWindowController) {
+		self.pathSettingWindowController =
 			[[PathSettingWindowController alloc] initWithWindowNibName:@"PathSettingWindow"];
 	}
 
-	[[NSApplication sharedApplication] beginSheet:[pathSettingWindowController window] 
+	[[NSApplication sharedApplication] beginSheet:[_pathSettingWindowController window]
 							   modalForWindow:mainWindow 
 								modalDelegate:self 
 							   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 

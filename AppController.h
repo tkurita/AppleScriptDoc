@@ -9,9 +9,11 @@ void showOSAError(NSDictionary *err_info);
 	IBOutlet id mainWindow;
 	IBOutlet id targetScriptBox;
 	IBOutlet id progressIndicator;
-	NSWindowController *pathSettingWindowController;
 	IBOutlet id appleScriptDocController;
 }
+
+@property (retain) NSWindowController *pathSettingWindowController;
+
 + (id)sharedAppController;
 - (IBAction)makeDonation:(id)sender;
 - (IBAction)popUpRecents:(id)sender;
