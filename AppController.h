@@ -12,7 +12,7 @@ void showOSAError(NSDictionary *err_info);
 	IBOutlet id appleScriptDocController;
 }
 
-@property (retain) NSWindowController *pathSettingWindowController;
+@property (strong) NSWindowController *pathSettingWindowController;
 
 + (id)sharedAppController;
 - (IBAction)makeDonation:(id)sender;

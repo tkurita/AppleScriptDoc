@@ -28,7 +28,7 @@ static id sharedObj;
 
 + (void)initialize
 {	
-	NSValueTransformer *transformer = [[[IsBundleTransformer alloc] init] autorelease];
+	NSValueTransformer *transformer = [[IsBundleTransformer alloc] init];
 	[NSValueTransformer setValueTransformer:transformer forName:@"IsBundleTransformer"];
 }
 
@@ -55,8 +55,8 @@ static id sharedObj;
 - (NSString *)sourceOfScript:(NSString *)path
 {
 	NSDictionary *error_info;
-	NSAppleScript *a_script = [[[NSAppleScript alloc] initWithContentsOfURL:
-									[NSURL fileURLWithPath:path] error:&error_info] autorelease];
+	NSAppleScript *a_script = [[NSAppleScript alloc] initWithContentsOfURL:
+									[NSURL fileURLWithPath:path] error:&error_info];
 									
 	return [a_script source];
 
@@ -80,7 +80,7 @@ static id sharedObj;
         return fnfErr;
     }
 		
-    return AHGotoPage((CFStringRef)bookname, NULL, NULL);
+    return AHGotoPage((__bridge CFStringRef)bookname, NULL, NULL);
 }
 
 #pragma mark private methods
@@ -257,33 +257,6 @@ void showOSAError(NSDictionary *err_info)
 #endif			
 	}
 }
-/*
-- (OSAScript *)script
-{
-	if (script) return script;
-	NSDictionary *err_info = nil;	
-	NSString *path = [[NSBundle mainBundle] pathForResource:@"AppleScriptDoc"
-										ofType:@"scpt" inDirectory:@"Scripts"];
-	
-	OSAScript *scpt = [[OSAScript alloc] initWithContentsOfURL:
-					   [NSURL fileURLWithPath:path] error:&err_info];
-	
-	if (err_info) {
-		showOSAError(err_info);
-		if (scpt) [scpt release];
-		return nil;
-	}
-	
-	[scpt executeHandlerWithName:@"setup_modules"
-					   arguments:nil error:&err_info];
-	if (err_info) {
-		showOSAError(err_info);
-		if (scpt) [scpt release];
-	}
-	script = scpt;
-	return script;
-}
-*/
 
 - (void)exportHelpBook:(id)sender
 {

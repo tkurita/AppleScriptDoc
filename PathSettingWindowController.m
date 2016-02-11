@@ -23,49 +23,34 @@
 - (IBAction)cancelAction:(id)sender
 {
 	[self stopIndicator];
-	/*OSAScript *a_script = [[AppController sharedAppController] script];
-	NSDictionary *error_info = nil;
-	[a_script executeHandlerWithName:@"cancel_export" arguments:nil error:&error_info];
-	if (error_info) {
-		showOSAError(error_info);
-	}
-	*/
 	[[AppController sharedAppController] cancelExport:self];
 	[[NSApplication sharedApplication] endSheet:[sender window] returnCode:128];
 }
 
 - (void)checkOKCondition
-{
-	BOOL is_ok = YES;
-	
+{	
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSString *root_path;
 	if (!(root_path = [user_defaults stringForKey:@"HelpBookRootPath"])) {
-		is_ok = NO;
-		goto bail;
+		[okButton setEnabled:NO];return;
 	}
 	
 	if (![root_path fileExists]) {
-		is_ok = NO;
-		goto bail;
+		[okButton setEnabled:NO];return;
 	}
 	
 	NSString *export_path;
 	if (!(export_path = [user_defaults stringForKey:@"ExportFilePath"])) {
-		is_ok = NO;
-		goto bail;
+		[okButton setEnabled:NO];return;
 	}
 	
 	if (![export_path hasPrefix:root_path]) {
 		[exportPathWarning setHidden:NO];
-		is_ok = NO;
-		goto bail;
+		[okButton setEnabled:NO];
 	} else {
 		[exportPathWarning setHidden:YES];
-	}
-	
-bail:
-	[okButton setEnabled:is_ok];
+        [okButton setEnabled:YES];
+	}	
 }
 
 - (void)addToRecents:(NSString *)path forKey:(NSString *)key
