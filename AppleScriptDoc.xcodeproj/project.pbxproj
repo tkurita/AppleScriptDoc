@@ -64,6 +64,10 @@
 		2CFA469C1C6C78040094B047 /* PathSettingWindow.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46981C6C78040094B047 /* PathSettingWindow.nib */; };
 		2CFA46A41C6C783B0094B047 /* MainMenu.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A01C6C783B0094B047 /* MainMenu.strings */; };
 		2CFA46A51C6C783B0094B047 /* PathSettingWindow.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A21C6C783B0094B047 /* PathSettingWindow.strings */; };
+		2CFA46AB1C6C7E370094B047 /* localize.mk in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A71C6C7E370094B047 /* localize.mk */; };
+		2CFA46AC1C6C7E370094B047 /* localize_ib.mk in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A81C6C7E370094B047 /* localize_ib.mk */; };
+		2CFA46AD1C6C7E370094B047 /* localize_ib.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46A91C6C7E370094B047 /* localize_ib.sh */; };
+		2CFA46AE1C6C7E370094B047 /* require_strings_file.sh in Resources */ = {isa = PBXBuildFile; fileRef = 2CFA46AA1C6C7E370094B047 /* require_strings_file.sh */; };
 		2CFE961B0C44925A00B0D2A6 /* PathSettingWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */; };
 /* End PBXBuildFile section */
 
@@ -217,10 +221,6 @@
 		2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSUserDefaultsExtensions.m; sourceTree = "<group>"; };
 		2CF5BE310C43AB3300224B65 /* History.rd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = History.rd; path = ../History.rd; sourceTree = SOURCE_ROOT; wrapsLines = 1; };
 		2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = XFileExtend.applescript; sourceTree = "<group>"; };
-		2CF8A489165E87B2005C9832 /* localize_ib.mk */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = localize_ib.mk; sourceTree = "<group>"; };
-		2CF8A48A165E87B2005C9832 /* localize_ib.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localize_ib.sh; sourceTree = "<group>"; };
-		2CF8A48B165E87B2005C9832 /* localize.mk */ = {isa = PBXFileReference; explicitFileType = sourcecode.make; fileEncoding = 4; path = localize.mk; sourceTree = "<group>"; };
-		2CF8A48C165E87C8005C9832 /* require_strings_file.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = require_strings_file.sh; sourceTree = "<group>"; };
 		2CFA13F71C6C1C5C0068526B /* DonationReminder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DonationReminder.xcodeproj; path = DonationReminder/DonationReminder.xcodeproj; sourceTree = "<group>"; };
 		2CFA13FD1C6C1C8C0068526B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		2CFA14051C6C1D840068526B /* ASFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFormatting.h; sourceTree = "<group>"; };
@@ -245,6 +245,10 @@
 		2CFA469F1C6C78120094B047 /* ja */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ja; path = ja.lproj/PathSettingWindow.nib; sourceTree = "<group>"; };
 		2CFA46A11C6C783B0094B047 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		2CFA46A31C6C783B0094B047 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PathSettingWindow.strings; sourceTree = "<group>"; };
+		2CFA46A71C6C7E370094B047 /* localize.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = localize.mk; sourceTree = "<group>"; };
+		2CFA46A81C6C7E370094B047 /* localize_ib.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = localize_ib.mk; sourceTree = "<group>"; };
+		2CFA46A91C6C7E370094B047 /* localize_ib.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localize_ib.sh; sourceTree = "<group>"; };
+		2CFA46AA1C6C7E370094B047 /* require_strings_file.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = require_strings_file.sh; sourceTree = "<group>"; };
 		2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.h; path = PathSettingWindowController.h; sourceTree = "<group>"; };
 		2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.objc; path = PathSettingWindowController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; lineEnding = 0; path = AppleScriptDoc.applescript; sourceTree = "<group>"; };
@@ -319,13 +323,13 @@
 				2CFA14161C6C1D9B0068526B /* PathExtra */,
 				2CFA140F1C6C1D8E0068526B /* DropBox */,
 				2CFA14041C6C1D840068526B /* ASHTMLLib */,
-				2CF8A482165E877C005C9832 /* localize tools */,
 				2CFE96280C44991E00B0D2A6 /* Class */,
 				080E96DDFE201D6D7F000001 /* Scripts */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				2CFA46A61C6C7E370094B047 /* LocalizeTools */,
 				2CFA13F71C6C1C5C0068526B /* DonationReminder.xcodeproj */,
 			);
 			name = AppleScriptDoc;
@@ -430,17 +434,6 @@
 			path = pages;
 			sourceTree = "<group>";
 		};
-		2CF8A482165E877C005C9832 /* localize tools */ = {
-			isa = PBXGroup;
-			children = (
-				2CF8A48C165E87C8005C9832 /* require_strings_file.sh */,
-				2CF8A489165E87B2005C9832 /* localize_ib.mk */,
-				2CF8A48A165E87B2005C9832 /* localize_ib.sh */,
-				2CF8A48B165E87B2005C9832 /* localize.mk */,
-			);
-			name = "localize tools";
-			sourceTree = "<group>";
-		};
 		2CFA13F81C6C1C5C0068526B /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +474,17 @@
 				2CFA141B1C6C1D9B0068526B /* PathExtra.m */,
 			);
 			path = PathExtra;
+			sourceTree = "<group>";
+		};
+		2CFA46A61C6C7E370094B047 /* LocalizeTools */ = {
+			isa = PBXGroup;
+			children = (
+				2CFA46A71C6C7E370094B047 /* localize.mk */,
+				2CFA46A81C6C7E370094B047 /* localize_ib.mk */,
+				2CFA46A91C6C7E370094B047 /* localize_ib.sh */,
+				2CFA46AA1C6C7E370094B047 /* require_strings_file.sh */,
+			);
+			path = LocalizeTools;
 			sourceTree = "<group>";
 		};
 		2CFE96280C44991E00B0D2A6 /* Class */ = {
@@ -587,6 +591,10 @@
 				2CFA469C1C6C78040094B047 /* PathSettingWindow.nib in Resources */,
 				2CFA46A41C6C783B0094B047 /* MainMenu.strings in Resources */,
 				2CFA46A51C6C783B0094B047 /* PathSettingWindow.strings in Resources */,
+				2CFA46AB1C6C7E370094B047 /* localize.mk in Resources */,
+				2CFA46AC1C6C7E370094B047 /* localize_ib.mk in Resources */,
+				2CFA46AD1C6C7E370094B047 /* localize_ib.sh in Resources */,
+				2CFA46AE1C6C7E370094B047 /* require_strings_file.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +625,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "make -f localize.mk target_lang=Japanese\n";
+			shellScript = "make -f LocalizeTools/localize.mk target_lang=ja nibs='MainMenu.nib PathSettingWindow.nib MonitorWindow.nib'\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
