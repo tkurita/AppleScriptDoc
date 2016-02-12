@@ -52,10 +52,11 @@ script AppleScriptDocController
 		SetupHelpBook's process_file(XFile's make_with((a_path as text) as POSIX file))
 	end setupHelpBook_
 	
-	on saveToFile_(a_path)
-		SaveToFile's process_file(XFile's make_with((a_path as text) as POSIX file))
-	end saveToFile_
-	
+    on outputFrom_toPath_(src, dst)
+        SaveToFile's process_file(XFile's make_with((src as text) as POSIX file),¬
+                    XFile's make_with((dst as text) as POSIX file))
+    end outputFrom_toPath_
+    
 	on import_script(a_name)
 		--log "start import_script"
 		return load script (path to resource a_name & ".scpt")

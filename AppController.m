@@ -16,7 +16,7 @@
 @end
 
 @interface AppleScriptDocController : NSObject
-- (void)saveToFile:(NSString *)path;
+- (void)outputFrom:(NSString *)src toPath:(NSString *)dst;
 - (void)setupHelpBook:(NSString *)path;
 - (void)cancelExport;
 - (void)setup;
@@ -279,12 +279,25 @@ void showOSAError(NSDictionary *err_info)
 	[self stopIndicator];
 }
 
+- (void)outputToPath:(NSString *)dst
+{
+    NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
+    [self startIndicator];
+	[appleScriptDocController outputFrom:a_path toPath:dst];
+	[self stopIndicator];
+}
+
 - (IBAction)saveToFileAction:(id)sender
 {
-	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
-	[self startIndicator];
-	[appleScriptDocController saveToFile:a_path];
-	[self stopIndicator];	
+	NSSavePanel *panel = [NSSavePanel savePanel];
+    [panel setAllowedFileTypes:@[@"public.html"]];
+    [panel setCanSelectHiddenExtension:YES];
+    [panel setNameFieldStringValue:@"index.html"];
+    [panel beginSheetModalForWindow:mainWindow
+                  completionHandler:^(NSInteger result) {
+                      if (result != NSOKButton) return;
+                      [self outputToPath:panel.URL.path];
+                  }];
 }
 
 
