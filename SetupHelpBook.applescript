@@ -24,9 +24,17 @@ on process given bundle:a_bundle, text:a_text
 		InfoPlistArranger's set_book_name(ExportHelpBook's bookname())
 	end if
 	InfoPlistArranger's setup_info_pllist()
+    (*
 	tell application "Help Indexer"
 		open (book_folder's as_alias())
 	end tell
+     *)
+    tell current application's class "HBIndexer"'s hbIndexerWithTarget_(book_folder's posix_path())
+        if not (its makeIndex() as boolean) then
+            return
+        end if
+    end tell
+    
 	set a_result to appController's showHelpBook_(a_bundle's posix_path()) as boolean
 	if a_result then
 		display alert "Error : " & a_result

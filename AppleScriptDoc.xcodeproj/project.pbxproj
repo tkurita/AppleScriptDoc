@@ -43,6 +43,7 @@
 		2CAEEB8A0ECC13E30068900A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEB750ECC13E30068900A /* Carbon.framework */; };
 		2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEC450ECC1B0F0068900A /* OSAKit.framework */; };
 		2CC5AA001C6CB71E007FEA6C /* AppleScriptDocHelp in Resources */ = {isa = PBXBuildFile; fileRef = 2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */; };
+		2CC5AA051C6D7D29007FEA6C /* HBIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */; };
 		2CCDF86E164D5B9200591CB2 /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCDF86D164D5B9200591CB2 /* AppleScriptObjC.framework */; };
 		2CDBA3D7155A9ADA0030F7AB /* navibar-jump.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */; };
 		2CDBA3F3155A9CB00030F7AB /* navibar-jump.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */; };
@@ -210,6 +211,8 @@
 		2CAEEB750ECC13E30068900A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		2CAEEC450ECC1B0F0068900A /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = /System/Library/Frameworks/OSAKit.framework; sourceTree = "<absolute>"; };
 		2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppleScriptDocHelp; sourceTree = "<group>"; };
+		2CC5AA031C6D7D29007FEA6C /* HBIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBIndexer.h; sourceTree = "<group>"; };
+		2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBIndexer.m; sourceTree = "<group>"; };
 		2CCDF86D164D5B9200591CB2 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		2CCDFC55165086DB00591CB2 /* DonationReminder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationReminder.framework; path = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/DonationReminder.framework; sourceTree = "<absolute>"; };
 		2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "navibar-jump.js"; sourceTree = "<group>"; };
@@ -492,6 +495,8 @@
 				2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */,
 				2CE5F4890D32EEE900EDC0FF /* NSUserDefaultsExtensions.h */,
 				2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */,
+				2CC5AA031C6D7D29007FEA6C /* HBIndexer.h */,
+				2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -643,6 +648,7 @@
 				2CFA14141C6C1D8E0068526B /* DropBox.m in Sources */,
 				2CFA14151C6C1D8E0068526B /* HFSTypeUtils.m in Sources */,
 				2CFA141D1C6C1D9B0068526B /* PathExtra.m in Sources */,
+				2CC5AA051C6D7D29007FEA6C /* HBIndexer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
