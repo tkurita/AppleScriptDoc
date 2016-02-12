@@ -10,7 +10,6 @@ global SimpleRD
 global TemplateProcessor
 global XFile
 global XList
---global OneShotScriptEditor
 global appController
 
 property _bookName : missing value
@@ -245,7 +244,6 @@ on process_file(a_file)
 	initialize()
 	DocElements's set_script_support(true)
 	set a_text to appController's sourceOfScript_(a_file's posix_path()) as text
-	--set a_text to call method "sourceOfScript:" of appController with parameter (a_file's posix_path())
 	set script_name to a_file's basename()
 	tell current application's class "NSUserDefaults"'s standardUserDefaults()
 		set a_root to ((its stringForKey_("HelpBookRootPath") as text) as POSIX file) as alias
