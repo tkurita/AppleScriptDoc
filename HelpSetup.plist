@@ -6,7 +6,7 @@
 	<true/>
 	<key>ManualFolder</key>
 	<string>/Users/tkurita/Factories/Websites/scriptfactory/web-content/software/ScriptEditor/AppleScriptDoc/manual</string>
-	<key>ManualPage</key>
-	<string>index.html</string>
+	<key>NewLayout</key>
+	<true/>
 </dict>
 </plist>

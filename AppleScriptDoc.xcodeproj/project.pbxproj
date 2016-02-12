@@ -42,6 +42,7 @@
 		2CA7273F155B537700DEE9D6 /* default.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4809320C3B7D94004E3217 /* default.css */; };
 		2CAEEB8A0ECC13E30068900A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEB750ECC13E30068900A /* Carbon.framework */; };
 		2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEC450ECC1B0F0068900A /* OSAKit.framework */; };
+		2CC5AA001C6CB71E007FEA6C /* AppleScriptDocHelp in Resources */ = {isa = PBXBuildFile; fileRef = 2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */; };
 		2CCDF86E164D5B9200591CB2 /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCDF86D164D5B9200591CB2 /* AppleScriptObjC.framework */; };
 		2CDBA3D7155A9ADA0030F7AB /* navibar-jump.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */; };
 		2CDBA3F3155A9CB00030F7AB /* navibar-jump.js in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */; };
@@ -208,6 +209,7 @@
 		2C777EF71C6CA25A007F64DF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/MainMenu.strings; sourceTree = "<group>"; };
 		2CAEEB750ECC13E30068900A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		2CAEEC450ECC1B0F0068900A /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = /System/Library/Frameworks/OSAKit.framework; sourceTree = "<absolute>"; };
+		2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppleScriptDocHelp; sourceTree = "<group>"; };
 		2CCDF86D164D5B9200591CB2 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		2CCDFC55165086DB00591CB2 /* DonationReminder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationReminder.framework; path = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/DonationReminder.framework; sourceTree = "<absolute>"; };
 		2CDBA3D6155A9ADA0030F7AB /* navibar-jump.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "navibar-jump.js"; sourceTree = "<group>"; };
@@ -338,6 +340,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */,
 				2C777EF41C6CA252007F64DF /* MainMenu.xib */,
 				2C777EF01C6C9F60007F64DF /* PathSettingWindow.xib */,
 				2CFA46A21C6C783B0094B047 /* PathSettingWindow.strings */,
@@ -580,6 +583,7 @@
 				2CFA469A1C6C78040094B047 /* InfoPlist.strings in Resources */,
 				2C777EF21C6C9F60007F64DF /* PathSettingWindow.xib in Resources */,
 				2C777EF61C6CA252007F64DF /* MainMenu.xib in Resources */,
+				2CC5AA001C6CB71E007FEA6C /* AppleScriptDocHelp in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,7 +601,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"$BUILD_STYLE\" = 'Release' ]; then\ncd $BUILT_PRODUCTS_DIR\nSetupHelpBook $FULL_PRODUCT_NAME\nfi\n";
+			shellScript = "if [ ! \"$CONFIGURATION\" = 'Release' ]; then\necho \"HelpBook setup script will run only with Release configuration\";\nexit 0\nfi\n\ncd \"$BUILT_PRODUCTS_DIR\"\nSetupHelpBook \"$FULL_PRODUCT_NAME\"\n\n";
 		};
 		2C4EC700152D9614004167B9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -704,6 +708,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 25;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -726,6 +731,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
 				CURRENT_PROJECT_VERSION = 25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -734,7 +740,6 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
-				OTHER_OSAFLAGS = "-x";
 				PRODUCT_NAME = AppleScriptDoc;
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -750,6 +755,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_VERSION = 1.6;
 				SDKROOT = macosx10.8;
 			};
 			name = Debug;
@@ -762,6 +768,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PRODUCT_VERSION = 1.6;
 				SDKROOT = macosx10.8;
 			};
 			name = Release;
