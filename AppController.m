@@ -22,8 +22,6 @@
 - (void)setup;
 @end
 
-static id sharedObj;
-
 @implementation AppController
 
 + (void)initialize
@@ -32,24 +30,36 @@ static id sharedObj;
 	[NSValueTransformer setValueTransformer:transformer forName:@"IsBundleTransformer"];
 }
 
-+ (id)sharedAppController
+#pragma mark singleton
+static id sharedInstance = nil;
+
++ (AppController *)sharedAppController
 {
-	if (sharedObj == nil) {
-		sharedObj = [[self alloc] init];
-	}
-	return sharedObj;
+    static dispatch_once_t once;
+    dispatch_once(&once, ^{
+        (void)[[AppController alloc] init];
+    });
+    return sharedInstance;
 }
 
-- (id)init
-{
-	if (self = [super init]) {
-		if (sharedObj == nil) {
-			sharedObj = self;
-		}
-	}
++ (id)allocWithZone:(NSZone *)zone {
 	
-	return self;
+	__block id ret = nil;
+	
+	static dispatch_once_t once;
+	dispatch_once(&once, ^{
+		sharedInstance = [super allocWithZone:zone];
+		ret = sharedInstance;
+	});
+	
+	return  ret;
 }
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return self;
+}
+
 
 #pragma mark services for scripts
 - (NSString *)sourceOfScript:(NSString *)path
