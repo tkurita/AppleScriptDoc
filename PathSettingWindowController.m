@@ -115,7 +115,8 @@
 
 - (IBAction)okAction:(id)sender
 {
-	[[AppController sharedAppController] exportHelpBook:self];
+    AppController *app_controller = [AppController sharedAppController];
+    NSDictionary *err_info = [[AppController sharedAppController] exportHelpBook:self];
 
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSArray *array = [pathRecordsController selectedObjects];
@@ -128,6 +129,19 @@
 			@"HelpBookRootPath": [user_defaults stringForKey:@"HelpBookRootPath"], 
 			@"ScriptPath": [user_defaults stringForKey:@"TargetScript"]}];	
 	[[NSApplication sharedApplication] endSheet: [sender window] returnCode:128];
+    
+    if (err_info) {
+        if (err_info ) {
+            NSError *error = [NSError errorWithDomain:@"AppleScriptDocErrorDomain"
+                                                 code:[err_info[@"number"] intValue]
+                                             userInfo:@{NSLocalizedDescriptionKey: err_info[@"message"]}];
+            NSAlert *alert = [NSAlert alertWithError:error];
+            [alert beginSheetModalForWindow:[app_controller mainWindow]
+                              modalDelegate:self
+                             didEndSelector:nil
+                                contextInfo:nil];
+        }
+    }
 }
 
 - (IBAction)setExportPathFromRecents:(id)sender

@@ -3,16 +3,18 @@
 
 void showOSAError(NSDictionary *err_info);
 
+@class AppleScriptDocController;
+
 @interface AppController : NSObject
 {
-    IBOutlet id recentScriptsButton;
-	IBOutlet id mainWindow;
-	IBOutlet id targetScriptBox;
-	IBOutlet id progressIndicator;
-	IBOutlet id appleScriptDocController;
+    __weak IBOutlet id recentScriptsButton;
+	__weak IBOutlet id targetScriptBox;
+	__weak IBOutlet id progressIndicator;
+	__weak IBOutlet AppleScriptDocController *appleScriptDocController;
 }
 
-@property (strong) NSWindowController *pathSettingWindowController;
+@property (nonatomic, strong) NSWindowController *pathSettingWindowController;
+@property (nonatomic, weak) IBOutlet NSWindow *mainWindow;
 
 + (id)sharedAppController;
 - (IBAction)makeDonation:(id)sender;
@@ -21,6 +23,6 @@ void showOSAError(NSDictionary *err_info);
 - (IBAction)setupHelpBookAction:(id)sender;
 - (IBAction)saveToFileAction:(id)sender;
 - (IBAction)selectTarget:(id)sender;
-- (void)exportHelpBook:(id)sender;;
+- (NSDictionary *)exportHelpBook:(id)sender;;
 - (void)cancelExport:(id)sender;
 @end

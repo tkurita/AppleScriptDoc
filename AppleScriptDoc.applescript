@@ -38,10 +38,15 @@ script AppleScriptDocController
 	property XFile : missing value
 	property OneShotScriptEditor : missing value
 	property appController : missing value
-	
+    
 	on exportHelpBook_(a_path)
 		--log "start export_helpbook"
-		ExportHelpBook's process_file(XFile's make_with(a_path as text))
+        try
+            ExportHelpBook's process_file(XFile's make_with(a_path as text))
+        on error msg number errno
+            return {|message|:msg, |number|:errno}
+        end try
+        return missing value
 	end exportHelpBook_
 	
 	on cancelExport()

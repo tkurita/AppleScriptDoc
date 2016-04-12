@@ -5,16 +5,16 @@
 
 @interface PathSettingWindowController : NSWindowController <DropBoxDragAndDrop>
 {
-    IBOutlet id exportDestBox;
-    IBOutlet id exportDestField;
-    IBOutlet id exportPathPopup;
-    IBOutlet id helpBookRootBox;
-    IBOutlet id helpBookRootField;
-    IBOutlet id helpBookRootPopup;
-	IBOutlet id okButton;
-	IBOutlet id exportPathWarning;
-	IBOutlet id progressIndicator;
-	IBOutlet id pathRecordsController;
+    __weak IBOutlet id exportDestBox;
+    __weak IBOutlet id exportDestField;
+    __weak IBOutlet id exportPathPopup;
+    __weak IBOutlet id helpBookRootBox;
+    __weak IBOutlet id helpBookRootField;
+    __weak IBOutlet id helpBookRootPopup;
+	__weak IBOutlet id okButton;
+	__weak IBOutlet id exportPathWarning;
+	__weak IBOutlet id progressIndicator;
+	__weak IBOutlet id pathRecordsController;
 }
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)chooseExportPath:(id)sender;

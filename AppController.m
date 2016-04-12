@@ -8,18 +8,19 @@
 
 #define useLog 0
 
-@interface ASKScriptCache : NSObject
-{
-}
-+ (ASKScriptCache *)sharedScriptCache;
-- (OSAScript *)scriptWithName:(NSString *)name;
-@end
-
 @interface AppleScriptDocController : NSObject
 - (void)outputFrom:(NSString *)src toPath:(NSString *)dst;
 - (void)setupHelpBook:(NSString *)path;
 - (void)cancelExport;
 - (void)setup;
+- (NSDictionary *)exportHelpBook:(NSString *)path;
+@end
+
+@interface ASKScriptCache : NSObject
+{
+}
++ (ASKScriptCache *)sharedScriptCache;
+- (OSAScript *)scriptWithName:(NSString *)name;
 @end
 
 @implementation AppController
@@ -118,8 +119,8 @@ static id sharedInstance = nil;
 													@"PathExtension": @"scptd"}, 
 		@{@"FileType": NSFileTypeRegular,
 													@"PathExtension": @"scpt"}]];
-	[mainWindow center];
-	[mainWindow setFrameAutosaveName:@"Main"];
+	[_mainWindow center];
+	[_mainWindow setFrameAutosaveName:@"Main"];
 }
 
 #pragma mark delegate methods for somethings
@@ -169,7 +170,7 @@ static id sharedInstance = nil;
 			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"TargetScript"];
 		}
 	}
-	[mainWindow orderFront:self];
+	[_mainWindow orderFront:self];
 }
 
 - (BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)theApplication
@@ -179,7 +180,7 @@ static id sharedInstance = nil;
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification
 {
-	[mainWindow saveFrameUsingName:@"Main"];
+	[_mainWindow saveFrameUsingName:@"Main"];
 }
 
 #pragma mark actions
@@ -193,7 +194,7 @@ static id sharedInstance = nil;
 	NSOpenPanel *panel = [NSOpenPanel openPanel];
 	[panel setResolvesAliases:NO];
     [panel setAllowedFileTypes:@[@"scpt", @"scptd"]];
-    [panel beginSheetModalForWindow:mainWindow
+    [panel beginSheetModalForWindow:_mainWindow
                     completionHandler:^(NSInteger result) {
                         if (result != NSOKButton) return;
                         NSURL *an_url = [panel URL];
@@ -205,7 +206,7 @@ static id sharedInstance = nil;
                             NSAlert *an_alert = [NSAlert alertWithMessageText:@"Can't resolving alias"
                                                                 defaultButton:@"OK" alternateButton:nil otherButton:nil
                                                     informativeTextWithFormat:@"No original item of '%@'",an_url.path ];
-                            [an_alert beginSheetModalForWindow:mainWindow modalDelegate:self
+                            [an_alert beginSheetModalForWindow:_mainWindow modalDelegate:self
                                                 didEndSelector:nil contextInfo:nil];
                         }
                     }];
@@ -233,7 +234,7 @@ static id sharedInstance = nil;
 	}
 
 	[[NSApplication sharedApplication] beginSheet:[_pathSettingWindowController window]
-							   modalForWindow:mainWindow 
+							   modalForWindow:_mainWindow
 								modalDelegate:self 
 							   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) 
 								  contextInfo:nil];
@@ -268,12 +269,13 @@ void showOSAError(NSDictionary *err_info)
 	}
 }
 
-- (void)exportHelpBook:(id)sender
+- (NSDictionary *)exportHelpBook:(id)sender
 {
 	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
 	[sender startIndicator];
-	[appleScriptDocController exportHelpBook:a_path];
-	[sender stopIndicator];	
+    NSDictionary *err_info = [appleScriptDocController exportHelpBook:a_path];
+	[sender stopIndicator];
+    return err_info;
 }
 
 - (void)cancelExport:(id)sender
@@ -303,7 +305,7 @@ void showOSAError(NSDictionary *err_info)
     [panel setAllowedFileTypes:@[@"public.html"]];
     [panel setCanSelectHiddenExtension:YES];
     [panel setNameFieldStringValue:@"index.html"];
-    [panel beginSheetModalForWindow:mainWindow
+    [panel beginSheetModalForWindow:_mainWindow
                   completionHandler:^(NSInteger result) {
                       if (result != NSOKButton) return;
                       [self outputToPath:panel.URL.path];
