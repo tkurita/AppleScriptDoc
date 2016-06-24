@@ -133,12 +133,12 @@ on is_references_tag(a_line)
 	return a_tag is in {"references", "glossary"} -- "glossary is deprecated"
 end is_references_tag
 
-on is_code_tag(a_line)
+on is_example_tag(a_line)
     set a_tag to (first word of (a_line's as_unicode()))
-    return a_tag is in {"code", "example"}
-end is_code_tag
+    return a_tag is in {"example"}
+end is_example_tag
 
-on parse_code_region(a_region, doc_container)
+on parse_example_region(a_region, doc_container)
     set enumerator to lineEnum of a_region
     
     set content_list to {}
@@ -152,8 +152,8 @@ on parse_code_region(a_region, doc_container)
         end if
     end repeat
     
-    doc_container's push(DocElements's make_code_element(content_list))
-end parse_code_region
+    doc_container's push(DocElements's make_example_element(content_list))
+end parse_example_region
 
 on parse_heading_region(a_region, doc_container)
 	--log "start parse_heading_region"
@@ -180,8 +180,8 @@ on parse_heading_region(a_region, doc_container)
 				else if is_references_tag(a_line) then
 					parse_references(a_region, doc_container)
 					exit repeat
-                else if is_code_tag(a_line) then
-                    parse_code_region(a_region, doc_container)
+                else if is_example_tag(a_line) then
+                    parse_example_region(a_region, doc_container)
                     exit repeat
 				else
 					error (quoted form of a_line) & " have an unknown tag." number 1450

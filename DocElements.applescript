@@ -261,8 +261,8 @@ on make_handler_element(property_script)
 	end script
 end make_handler_element
 
-on make_code_element(a_list)
-    script CodeElement
+on make_example_element(a_list)
+    script ExampleElement
         property parent : XList's make_with(a_list)
     
         on get_kind()
@@ -289,4 +289,4 @@ on make_code_element(a_list)
             return as_html()
         end as_xhtml
     end script
-end make_code_element
+end make_example_element
