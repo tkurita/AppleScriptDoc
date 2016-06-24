@@ -538,7 +538,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = 4E71A80908A2C90C0034BBD9 /* Build configuration list for PBXProject "AppleScriptDoc" */;
 			compatibilityVersion = "Xcode 6.3";
@@ -720,7 +720,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -729,6 +729,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = Scriptfactory.AppleScriptDoc;
 				PRODUCT_NAME = AppleScriptDoc;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -741,7 +742,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -749,6 +750,7 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
+				PRODUCT_BUNDLE_IDENTIFIER = Scriptfactory.AppleScriptDoc;
 				PRODUCT_NAME = AppleScriptDoc;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -758,10 +760,11 @@
 		4E71A80A08A2C90C0034BBD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_VERSION = 1.6;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_VERSION = 1.7;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -769,10 +772,9 @@
 		4E71A80B08A2C90C0034BBD9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_VERSION = 1.6;
+				PRODUCT_VERSION = 1.7;
 				SDKROOT = macosx;
 			};
 			name = Release;

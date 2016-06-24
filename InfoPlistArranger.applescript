@@ -27,7 +27,7 @@ on check_target(a_target_bundle)
 		set _plist_file to empty_plist's copy_to(_plist_file)
 	end if
 	
-	tell application "System Events"
+	tell application id "com.apple.systemevents"
 		set _target_plist to value of contents of property list file (_plist_file's hfs_path())
 	end tell
 	
@@ -101,7 +101,7 @@ on setup_info_pllist()
 	set helpbook_rec to {|CFBundleHelpBookName|:my _book_name, |CFBundleHelpBookFolder|:_book_folder_name, |CFBundleIdentifier|:my _bundle_identifier}
 	
 	set new_rec to _target_plist & helpbook_rec
-	tell application "System Events"
+	tell application id "com.apple.systemevents"
 		set value of contents of property list file (_plist_file's hfs_path()) to new_rec
 	end tell
 	
@@ -110,7 +110,7 @@ on setup_info_pllist()
 	(** setup recover-Info.plist **)
 	set recover_plist to resource_folder's child("recover-Info.plist")
 	if recover_plist's item_exists() then
-		tell application "System Events"
+		tell application id "com.apple.systemevents"
 			set a_plist_ref to property list file (_plist_file's hfs_path())
 			set reccover_plist_rec to value of contents of a_plist_ref
 			set value of contents of a_plist_ref to (reccover_plist_rec & helpbook_rec)

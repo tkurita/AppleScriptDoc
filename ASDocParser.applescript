@@ -133,6 +133,28 @@ on is_references_tag(a_line)
 	return a_tag is in {"references", "glossary"} -- "glossary is deprecated"
 end is_references_tag
 
+on is_code_tag(a_line)
+    set a_tag to (first word of (a_line's as_unicode()))
+    return a_tag is in {"code", "example"}
+end is_code_tag
+
+on parse_code_region(a_region, doc_container)
+    set enumerator to lineEnum of a_region
+    
+    set content_list to {}
+    repeat while enumerator's has_next()
+        set a_line to enumerator's next()
+        if a_line's starts_with("@") then
+            enumerator's decrement_index()
+            exit repeat
+        else
+            set end of content_list to a_line's as_text()
+        end if
+    end repeat
+    
+    doc_container's push(DocElements's make_code_element(content_list))
+end parse_code_region
+
 on parse_heading_region(a_region, doc_container)
 	--log "start parse_heading_region"
 	local paragraph_list
@@ -158,6 +180,9 @@ on parse_heading_region(a_region, doc_container)
 				else if is_references_tag(a_line) then
 					parse_references(a_region, doc_container)
 					exit repeat
+                else if is_code_tag(a_line) then
+                    parse_code_region(a_region, doc_container)
+                    exit repeat
 				else
 					error (quoted form of a_line) & " have an unknown tag." number 1450
 				end if

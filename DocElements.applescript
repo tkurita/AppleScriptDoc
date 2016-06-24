@@ -260,3 +260,33 @@ on make_handler_element(property_script)
 		
 	end script
 end make_handler_element
+
+on make_code_element(a_list)
+    script CodeElement
+        property parent : XList's make_with(a_list)
+    
+        on get_kind()
+            return "code"
+        end get_kind
+    
+        on html_element()
+            tell make ASHTML
+                set_wrap_with_block(true)
+                set a_html to process_text(my as_text_with(return), false)
+            end tell
+                
+            tell make HTMLElement
+                push(a_html)
+                return it
+            end tell
+        end html_element
+        
+        on as_html()
+            return html_element()'s as_html()
+        end as_html
+    
+        on as_xhtml()
+            return as_html()
+        end as_xhtml
+    end script
+end make_code_element
