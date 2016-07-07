@@ -84,7 +84,7 @@ static id sharedInstance = nil;
         NSLog(@"Failed to registerBooksInBundle : %@", path);
         return fnfErr;
     }
-	
+    
 	NSString *bookname = [bundle_ref infoDictionary][@"CFBundleHelpBookName"];
     if (! bookname) {
         NSLog(@"Failed to obtain CFBundleHelpBookName : %@", path);
@@ -92,6 +92,22 @@ static id sharedInstance = nil;
     }
 		
     return AHGotoPage((__bridge CFStringRef)bookname, NULL, NULL);
+}
+
+
+- (OSStatus)showHelpBook:(NSString *)path bookname:(NSString *)name
+{
+    NSBundle *bundle_ref = [NSBundle bundleWithPath:path];
+    if (! bundle_ref) {
+        NSLog(@"Failed to obtain bundle : %@", path);
+        return fnfErr;
+    }
+    if (![[NSHelpManager sharedHelpManager] registerBooksInBundle:bundle_ref]) {
+        NSLog(@"Failed to registerBooksInBundle : %@", path);
+        return fnfErr;
+    }
+    
+    return AHGotoPage((__bridge CFStringRef)name, NULL, NULL);
 }
 
 #pragma mark private methods

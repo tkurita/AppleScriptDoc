@@ -1,121 +1,101 @@
 global XFile
 
+property _target_xfile : missing value
 property _target_bundle : missing value
-property _book_name : missing value
+property _info_dict : missing value
+
 property _book_folder_name : missing value
-property _bundle_identifier : missing value
-property _target_plist : missing value
+property _bundle_id_is_checked : false
 property _need_setup : false
-property _plist_file : missing value
 property _is_setuped : false
 property _book_folder : missing value
+property NSString : class "NSString"
+property NSMutableDictionary : class "NSMutableDictionary"
 
-on check_target(a_target_bundle)
-	set _book_folder to missing value
-	set _is_setuped to false
-	set _need_setup to false
-	set _target_bundle to a_target_bundle
-	
-	set contents_folder to a_target_bundle's child("Contents/")
-	set _plist_file to contents_folder's child("Info.plist")
-	if not (_plist_file's item_exists()) then
-		--log (_plist_file's unicode_value())
-		--display alert "The document " & quote & (a_target_bundle's item_name()) & quote & " does't have Info.plist."
-		--return false
-		set myself to XFile's make_with(path to me)
-		set empty_plist to myself's bundle_resource("empty-Info.plist")
-		set _plist_file to empty_plist's copy_to(_plist_file)
-	end if
-	
-	tell application id "com.apple.systemevents"
-		set _target_plist to value of contents of property list file (_plist_file's hfs_path())
-	end tell
-	
-	try
-		set _book_name to |CFBundleHelpBookName| of _target_plist
-	on error
-		set _book_name to missing value
-		set _need_setup to true
-		--set book_name to (targetBundle's basename()) & " Reference"
-	end try
-	
-	try
-		set _book_folder_name to |CFBundleHelpBookFolder| of _target_plist
-	on error
-		set _book_folder_name to missing value
-		set _need_setup to true
-	end try
-	
-	try
-		set _bundle_identifier to |CFBundleIdentifier| of _target_plist
-	on error
-		set _bundle_identifier to missing value
-		set _need_setup to true
-	end try
-	
-	if _book_folder_name is not missing value then
-		set resource_folder to my _target_bundle's bundle_resources_folder()
-		set _book_folder to resource_folder's make_folder(_book_folder_name)
-	end if
-	
+on check_target(x_file)
+    set my _bundle_id_is_checked to false
+	set my _book_folder to missing value
+	set my _is_setuped to false
+	set my _need_setup to false
+	set my _target_xfile to x_file
+    set my _info_dict to NSMutableDictionary's dictionaryWithContentsOfFile_(_target_xfile's child("Contents/Info.plist")'s posix_file())
+    
+    set my _book_folder_name to _info_dict's valueForKey_("CFBundleHelpBookFolder")
+    if my _book_folder_name is missing value then
+        set my _need_setup to true
+    else
+        set resource_folder to my _target_xfile's bundle_resources_folder()
+        set my _book_folder to resource_folder's make_folder(_book_folder_name)
+    end if
+    
 	return true
 end check_target
 
-on set_book_name(book_name)
-	set _book_name to book_name
-end set_book_name
+on value_for(a_key)
+    return my _info_dict's objectForKey_(a_key)
+end value_for
 
-on get_book_name()
-	return my _book_name
-end get_book_name
+on product_name()
+    set a_result to missing value
+    try
+        set a_result to my _info_dict's objectForKey_("CFBundleName")
+    end try
+    if a_result is not missing value then
+        return a_result
+    end if
+    return _target_xfile's basename()
+end product_name
+
+on set_bookname(book_name)
+    --log "start set_bookname"
+    my _info_dict's setObject_forKey_(book_name, "CFBundleHelpBookName")
+    set my _need_setup to true
+end set_bookname
+
+on bookname()
+	return my _info_dict's objectForKey_("CFBundleHelpBookName")
+end bookname
 
 on setup_book_folder()
 	if _book_folder_name is missing value then
-		set _book_folder_name to (_target_bundle's basename()) & " Help"
+		set my _book_folder_name to (my _target_xfile's basename()) & "Help"
+        my _info_dict's setObject_forKey_(my _book_folder_name, "CFBundleHelpBookFolder")
+        set my _need_setup to true
 	end if
-	set resource_folder to my _target_bundle's bundle_resources_folder()
-	set _book_folder to resource_folder's make_folder(_book_folder_name)
+	set resource_folder to my _target_xfile's bundle_resources_folder()
+	set my _book_folder to resource_folder's make_folder(_book_folder_name)
 end setup_book_folder
 
 on get_book_folder()
-	
 	if my _book_folder is missing value then
 		setup_book_folder()
 	end if
-	
 	return _book_folder
 end get_book_folder
 
-on setup_info_pllist()
+on bundle_identifier()
+    set bundle_id to my _info_dict's objectForKey_("CFBundleIndentifier")
+    if bundle_id is missing value then
+        set bundle_id to (system attribute "USER") & "." & (my _target_xfile's basename())
+        my _info_dict's setObject_forKey_(bundle_id, "CFBundleIndentifier")
+        set my _need_setup to true
+    end if
+    set my _bundle_id_is_checked to true
+    return bundle_id
+end bundle_identifier
+
+on setup_info_plist()
+    --log "start setup_info_plist"
 	set _is_setuped to true
+    if not _bundle_id_is_checked then
+        bundle_identifier()
+    end if
 	if not _need_setup then return
-	
-	if my _book_name is missing value then
-		--set my _book_name to (_target_bundle's basename()) & " Reference"
-		set my _book_name to my _book_folder_name
-	end if
-	
-	if my _bundle_identifier is missing value then
-		set my _bundle_identifier to ((system attribute "USER") & "." & (_target_bundle's basename()))
-	end if
-	set helpbook_rec to {|CFBundleHelpBookName|:my _book_name, |CFBundleHelpBookFolder|:_book_folder_name, |CFBundleIdentifier|:my _bundle_identifier}
-	
-	set new_rec to _target_plist & helpbook_rec
-	tell application id "com.apple.systemevents"
-		set value of contents of property list file (_plist_file's hfs_path()) to new_rec
-	end tell
-	
-	set resource_folder to my _target_bundle's bundle_resources_folder()
-	
-	(** setup recover-Info.plist **)
-	set recover_plist to resource_folder's child("recover-Info.plist")
-	if recover_plist's item_exists() then
-		tell application id "com.apple.systemevents"
-			set a_plist_ref to property list file (_plist_file's hfs_path())
-			set reccover_plist_rec to value of contents of a_plist_ref
-			set value of contents of a_plist_ref to (reccover_plist_rec & helpbook_rec)
-		end tell
-	else
-		_plist_file's copy_to(resource_folder's child("recover-Info.plist"))
-	end if
-end setup_info_pllist
+    set target_infoPlist to my _target_xfile's child("Contents/Info.plist")
+    my _info_dict's writeToFile_atomically_(target_infoPlist's posix_path(), 1)
+    
+    set recover_plist to my _target_xfile's bundle_resources_folder()'s child("recover-Info.plist")
+    if recover_plist's item_exists() then
+        target_infoPlist's copy_to(recover_plist)
+    end if
+end setup_info_plist

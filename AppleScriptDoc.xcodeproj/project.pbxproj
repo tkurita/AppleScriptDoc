@@ -31,6 +31,7 @@
 		2C4EFF6A0C3C1672003743D7 /* index.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5F0C3C1642003743D7 /* index.html */; };
 		2C4EFF730C3C16B9003743D7 /* handler.html in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF610C3C1642003743D7 /* handler.html */; };
 		2C4EFF740C3C16C0003743D7 /* non-helpbook.css in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4EFF5D0C3C1642003743D7 /* non-helpbook.css */; };
+		2C6203021D2E0B11000BD9CC /* HBBundleTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2C6203011D2E0B11000BD9CC /* HBBundleTemplate */; };
 		2C621B6C156FD6880043B4BE /* navi-next16.gif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C621B6A156FD6660043B4BE /* navi-next16.gif */; };
 		2C621B6D156FD6880043B4BE /* navi-previous16.gif in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C621B6B156FD6660043B4BE /* navi-previous16.gif */; };
 		2C631EE91836370300364C36 /* navgrad-normal.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2C4D6C69152EB64F00C6DEF5 /* navgrad-normal.png */; };
@@ -200,6 +201,7 @@
 		2C4EFF5D0C3C1642003743D7 /* non-helpbook.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "non-helpbook.css"; sourceTree = "<group>"; };
 		2C4EFF5F0C3C1642003743D7 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		2C4EFF610C3C1642003743D7 /* handler.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = handler.html; sourceTree = "<group>"; };
+		2C6203011D2E0B11000BD9CC /* HBBundleTemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HBBundleTemplate; sourceTree = "<group>"; };
 		2C621B6A156FD6660043B4BE /* navi-next16.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "navi-next16.gif"; sourceTree = "<group>"; };
 		2C621B6B156FD6660043B4BE /* navi-previous16.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "navi-previous16.gif"; sourceTree = "<group>"; };
 		2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "empty-Info.plist"; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				2C4A6CBE0C3CE15E00DBBCD4 /* FactorySettings.plist */,
 				2C4EFF5B0C3C1642003743D7 /* HTMLTemplate */,
 				2C48092F0C3B7D94004E3217 /* HelpBookTemplate */,
+				2C6203011D2E0B11000BD9CC /* HBBundleTemplate */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C6203021D2E0B11000BD9CC /* HBBundleTemplate in Resources */,
 				2C4A6CBF0C3CE15F00DBBCD4 /* FactorySettings.plist in Resources */,
 				2C2C1F850C8EEC5C0094E73B /* HelpSetup.plist in Resources */,
 				2C72A8D70D3CBCDF00AECAF3 /* empty-Info.plist in Resources */,
@@ -720,13 +724,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_BUNDLE_IDENTIFIER = Scriptfactory.AppleScriptDoc;
@@ -742,12 +744,11 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
-				CURRENT_PROJECT_VERSION = 27;
+				CURRENT_PROJECT_VERSION = 28;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				PRODUCT_BUNDLE_IDENTIFIER = Scriptfactory.AppleScriptDoc;
@@ -760,8 +761,6 @@
 		4E71A80A08A2C90C0034BBD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = c99;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_VERSION = 1.7;
@@ -772,7 +771,6 @@
 		4E71A80B08A2C90C0034BBD9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				GCC_C_LANGUAGE_STANDARD = c99;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_VERSION = 1.7;
 				SDKROOT = macosx;
