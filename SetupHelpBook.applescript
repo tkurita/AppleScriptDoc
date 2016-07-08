@@ -38,10 +38,10 @@ end
 on process given bundle:a_bundle, text:a_text
 	--log "start process in SetupHelpBook"
 	if a_bundle is missing value then return
-	if not InfoPlistArranger's check_target(a_bundle) then return
+	set product_infoplist to InfoPlistArranger's make_with(a_bundle)
 	ExportHelpBook's initialize()
 	DocElements's set_script_support(true)
-    set {output:book_folder, infoPlist:hb_infoPlist} to prepare_HBBundle(a_bundle, InfoPlistArranger)
+    set {output:book_folder, infoPlist:hb_infoPlist} to prepare_HBBundle(a_bundle, product_infoplist)
     tell NSDictionary's dictionaryWithContentsOfFile_(hb_infoPlist's posix_path())
         set doc_title to its objectForKey_("HPDBookTitle")
     end tell
@@ -50,7 +50,7 @@ on process given bundle:a_bundle, text:a_text
 	ExportHelpBook's set_use_appletitle(true)
 	ExportHelpBook's output_to_folder(book_folder's as_alias(), index_page, a_text, a_bundle's basename())
 
-	InfoPlistArranger's setup_info_plist()
+	product_infoplist's setup_info_plist()
     
     tell current application's class "HBIndexer"'s hbIndexerWithTarget_(book_folder's posix_path())
         its setIndexFileName_("search.helpindex")
@@ -59,7 +59,7 @@ on process given bundle:a_bundle, text:a_text
         end if
     end tell
     
-	set a_result to appController's showHelpBook_bookname_(a_bundle's posix_path(), InfoPlistArranger's bookname()) as boolean
+	set a_result to appController's showHelpBook_bookname_(a_bundle's posix_path(), product_infoplist's bookname()) as boolean
 	if a_result then
 		display alert "Error : " & a_result
 	end if
