@@ -2,6 +2,7 @@ global SimpleRD
 global ASHTML
 global XList
 global HTMLElement
+global ScriptLinkMaker
 global _line_end
 
 property _useAppleSegment : false
@@ -261,32 +262,37 @@ on make_handler_element(property_script)
 	end script
 end make_handler_element
 
+script ExampleElement
+    property parent : AppleScript
+    
+    on get_kind()
+        return "code"
+    end get_kind
+    
+    on html_element()
+        set a_code to my _contents's as_text_with(return)
+        tell make ASHTML
+            set_wrap_with_block(true)
+            set a_html to process_text(a_code, false)
+        end tell
+        tell ScriptLinkMaker's button_with_template(a_code, "Open this script", "new", "button_template.html")
+            return a_html's unshift(it)
+        end tell
+    end html_element
+    
+    on as_html()
+        return html_element()'s as_html()
+    end as_html
+    
+    on as_xhtml()
+        return as_html()
+    end as_xhtml
+end script
+
 on make_example_element(a_list)
-    script ExampleElement
-        property parent : XList's make_with(a_list)
-    
-        on get_kind()
-            return "code"
-        end get_kind
-    
-        on html_element()
-            tell make ASHTML
-                set_wrap_with_block(true)
-                set a_html to process_text(my as_text_with(return), false)
-            end tell
-                
-            tell make HTMLElement
-                push(a_html)
-                return it
-            end tell
-        end html_element
-        
-        on as_html()
-            return html_element()'s as_html()
-        end as_html
-    
-        on as_xhtml()
-            return as_html()
-        end as_xhtml
+    script ExampleElementInstance
+        property parent : ExampleElement
+        property _contents :  XList's make_with(a_list)
     end script
+    return ExampleElementInstance
 end make_example_element

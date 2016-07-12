@@ -55,3 +55,6 @@
 [submodule "ja.lproj/LocalizeTools"]
 	path = LocalizeTools
 	url = http://github.com/tkurita/LocalizeTools.git
+[submodule "StringExtra"]
+	path = StringExtra
+	url = https://github.com/tkurita/StringExtra

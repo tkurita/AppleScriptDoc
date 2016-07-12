@@ -33,7 +33,7 @@ on prepare_HBBundle(product_bundle, product_infoplist)
         product_infoplist's set_bookname(product_id&".help")
     end if
     return {output:hb_bundle_folder's child("Contents/Resources/"), infoPlist:info_in_HBBundle}
-end
+end prepare_HBBundle
 
 on process given bundle:a_bundle, text:a_text
 	--log "start process in SetupHelpBook"

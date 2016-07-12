@@ -64,3 +64,6 @@ li  {
     margin-left: 2em;
     padding: 1ex;
     border: solid 2px silver }
+.scriptButton {
+    float :right;
+    text-align: right;}

@@ -38,6 +38,7 @@ script AppleScriptDocController
 	property XFile : missing value
 	property OneShotScriptEditor : missing value
 	property appController : missing value
+    property ScriptLinkMaker : missing value
     
 	on exportHelpBook_(a_path)
 		--log "start export_helpbook"
@@ -79,6 +80,7 @@ script AppleScriptDocController
 		set SetupHelpBook to import_script("SetupHelpBook")
 		set SaveToFile to import_script("SaveToFile")
 		set InfoPlistArranger to import_script("InfoPlistArranger")
+        set ScriptLinkMaker to import_script("ScriptLinkMaker")
 	end setup
 	
 end script
