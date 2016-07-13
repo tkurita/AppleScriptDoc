@@ -5,6 +5,4 @@
 	margin-bottom: 1.5ex;
 	padding-bottom: 0.5ex;
 	border-bottom: thin solid black  }
-.subHeading {
-	font-weight: bold;
-	font-size: 120%  }
+.subHeading { font-weight: bold; font-size: 120%  ; margin-top: 0.5em; margin-bottom: 0.5em; }

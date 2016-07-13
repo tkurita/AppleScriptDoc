@@ -3,15 +3,12 @@ global TemplateProcessor
 property NSString : class "NSString"
 
 on href_with_text(a_text, an_action)
-	log "start href_with_text"
-    log a_text
+	--log "start href_with_text in ScriptLinkMaker"
 	tell NSString's stringWithString_(a_text)
 		set escaped_text to stringByAddingPercentEscapesUsingEncoding_leavings_additionals_(134217984, "", "&'+") as text
-        --set escaped_text to stringByAddingPercentEncodingWithAllowedCharacters_(missing value)
 	end tell
-    log escaped_text
 	set href_text to "applescript://com.apple.scripteditor?action=" & an_action & "&amp;script=" & escaped_text
-	--log "end href_with_text"
+	--log "end href_with_text in ScriptLinkMaker"
 	return href_text
 end href_with_text
 

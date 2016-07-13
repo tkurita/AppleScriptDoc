@@ -55,6 +55,7 @@ script AppleScriptDocController
 	end cancelExport
 	
 	on setupHelpBook_(a_path)
+        log "start setupHelpBook_"
 		SetupHelpBook's process_file(XFile's make_with((a_path as text) as POSIX file))
 	end setupHelpBook_
 	

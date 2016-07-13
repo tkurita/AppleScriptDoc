@@ -181,7 +181,7 @@ static id sharedInstance = nil;
 {
 	[DonationReminder remindDonation];
 	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
-	if (a_path) {
+    if (a_path) {
 		if (![a_path fileExists]) {
 			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"TargetScript"];
 		}
@@ -301,7 +301,9 @@ void showOSAError(NSDictionary *err_info)
 
 - (IBAction)setupHelpBookAction:(id)sender
 {
-	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    [userdefaults synchronize];
+    NSString *a_path = [userdefaults stringForKey:@"TargetScript"];
 	[self startIndicator];
 	[appleScriptDocController setupHelpBook:a_path];
 	[self stopIndicator];

@@ -3,6 +3,7 @@ property NSString : class "NSString"
 property NSMutableDictionary : class "NSMutableDictionary"
 
 on make_with(x_file)
+    --log "make_with in InfoPlistArranger"
     set a_class to me
     set a_dict to NSMutableDictionary's dictionaryWithContentsOfFile_(¬
                         x_file's child("Contents/Info.plist")'s posix_path())
@@ -10,7 +11,7 @@ on make_with(x_file)
         property parent : a_class
         property _target_xfile : x_file
         property _info_dict : a_dict
-        property _book_folder_name : a_dict's objectForKey_("CFBundleHelpBookFolder")
+        property _book_folder_name : a_dict's objectForKey_("CFBundleHelpBookFolder") as text
         property _book_folder : missing value
         property _need_setup : false
         property _bundle_id_is_checked : false
@@ -24,7 +25,7 @@ on make_with(x_file)
             set its _book_folder to resource_folder's make_folder(its _book_folder_name)
         end if
     end tell
-
+    --log "end make_with in InfoPlistArranger"
     return InfoPlistArrangerInstance
 end make_with
 
@@ -71,11 +72,13 @@ on get_book_folder()
 end get_book_folder
 
 on bundle_identifier()
-    set bundle_id to my _info_dict's objectForKey_("CFBundleIndentifier")
+    set bundle_id to my _info_dict's objectForKey_("CFBundleIdentifier")
     if bundle_id is missing value then
         set bundle_id to (system attribute "USER") & "." & (my _target_xfile's basename())
-        my _info_dict's setObject_forKey_(bundle_id, "CFBundleIndentifier")
+        my _info_dict's setObject_forKey_(bundle_id, "CFBundleIdentifier")
         set my _need_setup to true
+    else
+        set bundle_id to bundle_id as text
     end if
     set my _bundle_id_is_checked to true
     return bundle_id

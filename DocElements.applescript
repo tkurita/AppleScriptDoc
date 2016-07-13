@@ -241,7 +241,13 @@ on make_handler_element(property_script)
 				set srd to make_with_iterator(my _result) of SimpleRD
 				output's push(srd's html_tree())
 			end if
-			
+
+
+            if my _example is not missing value then
+                output's push_element_with("div", {{"class", "subHeading"}})'s push("Example")
+                output's push(my _example's html_element())
+            end if
+
 			if _useAppleSegment then
 				ouput's push_comment_with("AppleSegEnd", {})
 			end if
@@ -266,17 +272,22 @@ script ExampleElement
     property parent : AppleScript
     
     on get_kind()
-        return "code"
+        return "example"
     end get_kind
     
     on html_element()
+        --log "start html_element"
         set a_code to my _contents's as_text_with(return)
         tell make ASHTML
-            set_wrap_with_block(true)
+            set_wrap_with_block(false)
             set a_html to process_text(a_code, false)
         end tell
-        tell ScriptLinkMaker's button_with_template(a_code, "Open this script", "new", "button_template.html")
-            return a_html's unshift(it)
+        set script_link to ScriptLinkMaker's button_with_template(a_code, "Open this script", "new", "button_template.html")
+        tell HTMLElement's make_with("div", {{"class", "sourceCode"}})
+            push(script_link)
+            push(a_html)
+            --log "end html_element"
+            return it
         end tell
     end html_element
     

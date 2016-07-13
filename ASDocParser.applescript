@@ -263,7 +263,8 @@ on parse_handler_region(a_region, doc_container)
 	set result_list to {}
 	set abstruct_list to {}
 	set syntax_list to {}
-	
+    set example_element to missing value
+    
 	set is_continued to false
 	set enumerator to lineEnum of a_region
 	repeat while enumerator's has_next()
@@ -281,6 +282,10 @@ on parse_handler_region(a_region, doc_container)
 				set result_list to tag_contents(enumerator)
 			else if the_tag is "syntax" then
 				set syntax_list to tag_contents(enumerator)
+            else if the_tag is "example" then
+                set x_list to make XList
+                parse_example_region(a_region, x_list)
+                set example_element to x_list's item_at(1)
 			else
 				set is_continued to true
 				enumerator's decrement_index()
@@ -312,6 +317,7 @@ on parse_handler_region(a_region, doc_container)
 		property _parameters : XList's make_with(param_list)
 		property _syntax : syntax_text
 		property _handler_name : first word of (syntax_text's as_unicode())
+        property _example : example_element
 	end script
 	
 	doc_container's push(DocElements's make_handler_element(HandlerProperties))
