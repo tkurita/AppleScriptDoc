@@ -176,13 +176,13 @@ on parse_heading_region(a_region, doc_container)
 				else if is_handler_tag(a_line) then
 					enumerator's decrement_index()
 					parse_handler_region(a_region, doc_container)
-					exit repeat
+					--exit repeat
 				else if is_references_tag(a_line) then
 					parse_references(a_region, doc_container)
-					exit repeat
                 else if is_example_tag(a_line) then
                     parse_example_region(a_region, doc_container)
-                    exit repeat
+                else if a_line's word_at(1)'s is_equal("end") then
+                    -- do nothing
 				else
 					error (quoted form of a_line) & " have an unknown tag." number 1450
 				end if
@@ -230,7 +230,7 @@ on parse_references(a_region, doc_container)
 	end repeat
 	
 	if is_continued then
-		parse_heading_region(a_region, doc_container)
+        enumerator's decrement_index()
 	end if
 end parse_references
 
@@ -286,6 +286,8 @@ on parse_handler_region(a_region, doc_container)
                 set x_list to make XList
                 parse_example_region(a_region, x_list)
                 set example_element to x_list's item_at(1)
+            else if the_tag is "end" then
+                -- do nothing
 			else
 				set is_continued to true
 				enumerator's decrement_index()
@@ -323,7 +325,8 @@ on parse_handler_region(a_region, doc_container)
 	doc_container's push(DocElements's make_handler_element(HandlerProperties))
 	--log "end parse_handler_region"
 	if is_continued then
-		parse_heading_region(a_region, doc_container)
+        enumerator's decrement_index()
+		--parse_heading_region(a_region, doc_container)
 	end if
 end parse_handler_region
 
