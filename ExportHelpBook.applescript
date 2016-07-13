@@ -36,11 +36,11 @@ on set_template_folder(a_name)
 end set_template_folder
 
 on appletitle()
-	return _appleTitle
+	return my _appleTitle
 end appletitle
 
 on bookname()
-	return _bookName
+	return my _bookName
 end bookname
 
 on set_bookname(a_name)
@@ -116,18 +116,12 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set temp_asset_folder to XFile's make_with(a_path)
 	set assets_folder to temp_asset_folder's copy_to(book_folder)
 	set pages_folder to book_folder's make_folder("pages")
-	if my _bookName is missing value then
-		set my _bookName to script_name & " Help"
-	end if
-	if _use_appletitle then
-		set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", my _bookName}})
-		set my _appleTitle to my _appleTitle's as_html()
-	end if
-	set doc_title to script_name & " Reference"
+	
 	set index_contents to make HTMLElement
 	set style_formatter to ASFormattingStyle's make_from_setting()
 	if my _stop_processing then error number -128
 	set doc_container to ASDocParser's parse_list(every paragraph of a_text)
+    
 	set a_link_manager to doc_container's link_manager()
 	set root_page_path to index_page's posix_path()
 	a_link_manager's set_root_page(root_page_path)
@@ -157,7 +151,8 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			end if
 		end handler_id_for
 	end script
-	
+
+    set doc_title to missing value
 	--log "will arrange doc elements in output_to_folder of ExportHelpBook"
 	repeat with doc_element in elementList of doc_container
 		if my _stop_processing then error number -128
@@ -213,7 +208,20 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 			-- log "end process other element"
 		end if
 	end repeat
-	
+
+    if doc_title is missing value then
+        set doc_title to script_name & " Reference"
+    end if
+
+    if my _bookName is missing value then
+        set my _bookName to doc_title
+    end if
+
+    if _use_appletitle then
+        set my _appleTitle to HTMLElement's make_with("meta", {{"name", "AppleTitle"}, {"content", my _bookName}})
+        set my _appleTitle to my _appleTitle's as_html()
+    end if
+
 	-- log "index_contents's as_html"
 	set index_body to index_contents's as_html()
 	set jump_list_text to jump_list(index_contents)'s as_html()
@@ -236,6 +244,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	set css_text to style_formatter's build_css()
 	set as_css_file to assets_folder's child("applescript.css")
 	as_css_file's write_as_utf8(css_text)
+
 	-- log "end of output_to_folder"
 	return index_page
 end output_to_folder
