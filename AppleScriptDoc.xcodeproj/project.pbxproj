@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BCA590765205398468F16B6 /* libPods-AppleScriptDoc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 453ED35E42ACA1B7BB30676A /* libPods-AppleScriptDoc.a */; };
 		257572C5072881A4000BE9CA /* AppleScriptDoc.applescript in Sources */ = {isa = PBXBuildFile; fileRef = DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */; settings = {ATTRIBUTES = (); }; };
 		257572CA072881A4000BE9CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		257572CC072881A4000BE9CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -39,9 +40,7 @@
 		2CE5F4230D328D7B00EDC0FF /* IsBundleTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */; };
 		2CE5F48C0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */; };
 		2CF5BFEF0C43E6E600224B65 /* XFileExtend.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */; settings = {ATTRIBUTES = (); }; };
-		2CFA13FE1C6C1C8C0068526B /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFA13FD1C6C1C8C0068526B /* Sparkle.framework */; };
 		2CFA14011C6C1CC00068526B /* DonationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFA13FC1C6C1C5D0068526B /* DonationReminder.framework */; };
-		2CFA14021C6C1CD60068526B /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CFA13FD1C6C1C8C0068526B /* Sparkle.framework */; };
 		2CFA14031C6C1CDF0068526B /* DonationReminder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CFA13FC1C6C1C5D0068526B /* DonationReminder.framework */; };
 		2CFA140B1C6C1D840068526B /* ASFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA14061C6C1D840068526B /* ASFormatting.m */; };
 		2CFA140C1C6C1D840068526B /* ASFormattingExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA14081C6C1D840068526B /* ASFormattingExtensions.m */; };
@@ -77,7 +76,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2CFA14021C6C1CD60068526B /* Sparkle.framework in CopyFiles */,
 				2CFA14031C6C1CDF0068526B /* DonationReminder.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,7 +98,6 @@
 		2C2975070C3C8F82000CDBEF /* SaveToFile.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SaveToFile.applescript; sourceTree = "<group>"; };
 		2C2C1F840C8EEC5C0094E73B /* HelpSetup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HelpSetup.plist; sourceTree = "<group>"; };
 		2C46DBC910A1A6BC00501F03 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		2C499CA20F09262900FA540D /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = ../Sparkle.framework; sourceTree = SOURCE_ROOT; };
 		2C4A6CBE0C3CE15E00DBBCD4 /* FactorySettings.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = FactorySettings.plist; sourceTree = "<group>"; };
 		2C4A6CEE0C3CE21B00DBBCD4 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; wrapsLines = 1; };
 		2C4A6CEF0C3CE21B00DBBCD4 /* AppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppController.h; sourceTree = "<group>"; };
@@ -132,7 +129,6 @@
 		2CF5BE310C43AB3300224B65 /* History.rd */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = History.rd; path = ../History.rd; sourceTree = SOURCE_ROOT; wrapsLines = 1; };
 		2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = XFileExtend.applescript; sourceTree = "<group>"; };
 		2CFA13F71C6C1C5C0068526B /* DonationReminder.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DonationReminder.xcodeproj; path = DonationReminder/DonationReminder.xcodeproj; sourceTree = "<group>"; };
-		2CFA13FD1C6C1C8C0068526B /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		2CFA14051C6C1D840068526B /* ASFormatting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFormatting.h; sourceTree = "<group>"; };
 		2CFA14061C6C1D840068526B /* ASFormatting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASFormatting.m; sourceTree = "<group>"; };
 		2CFA14071C6C1D840068526B /* ASFormattingExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASFormattingExtensions.h; sourceTree = "<group>"; };
@@ -151,7 +147,10 @@
 		2CFA46AA1C6C7E370094B047 /* require_strings_file.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = require_strings_file.sh; sourceTree = "<group>"; };
 		2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.h; path = PathSettingWindowController.h; sourceTree = "<group>"; };
 		2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.objc; path = PathSettingWindowController.m; sourceTree = "<group>"; wrapsLines = 1; };
+		453ED35E42ACA1B7BB30676A /* libPods-AppleScriptDoc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppleScriptDoc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E67486B3EE2E784C4A97EB7 /* Pods-AppleScriptDoc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppleScriptDoc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc.debug.xcconfig"; sourceTree = "<group>"; };
 		DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; lineEnding = 0; path = AppleScriptDoc.applescript; sourceTree = "<group>"; };
+		DBE05ED6A4F2DA5A4E4A0694 /* Pods-AppleScriptDoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppleScriptDoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,7 +163,7 @@
 				2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */,
 				2CCDF86E164D5B9200591CB2 /* AppleScriptObjC.framework in Frameworks */,
 				2CFA14011C6C1CC00068526B /* DonationReminder.framework in Frameworks */,
-				2CFA13FE1C6C1C8C0068526B /* Sparkle.framework in Frameworks */,
+				1BCA590765205398468F16B6 /* libPods-AppleScriptDoc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +189,6 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2C499CA20F09262900FA540D /* Sparkle.framework */,
 				2CAEEC450ECC1B0F0068900A /* OSAKit.framework */,
 				2CAEEB750ECC13E30068900A /* Carbon.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
@@ -233,6 +231,7 @@
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				2CFA46A61C6C7E370094B047 /* LocalizeTools */,
 				2CFA13F71C6C1C5C0068526B /* DonationReminder.xcodeproj */,
+				60497277E54F4B8E470BD577 /* Pods */,
 			);
 			name = AppleScriptDoc;
 			sourceTree = "<group>";
@@ -269,9 +268,9 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2CFA13FD1C6C1C8C0068526B /* Sparkle.framework */,
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				453ED35E42ACA1B7BB30676A /* libPods-AppleScriptDoc.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -354,6 +353,15 @@
 			name = Class;
 			sourceTree = "<group>";
 		};
+		60497277E54F4B8E470BD577 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E67486B3EE2E784C4A97EB7 /* Pods-AppleScriptDoc.debug.xcconfig */,
+				DBE05ED6A4F2DA5A4E4A0694 /* Pods-AppleScriptDoc.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -361,12 +369,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4E71A80508A2C90C0034BBD9 /* Build configuration list for PBXNativeTarget "AppleScriptDoc" */;
 			buildPhases = (
+				39D08462146712559E610695 /* [CP] Check Pods Manifest.lock */,
 				2C4EC700152D9614004167B9 /* ShellScript */,
 				257572C6072881A4000BE9CA /* Resources */,
 				257572C9072881A4000BE9CA /* Sources */,
 				257572CB072881A4000BE9CA /* Frameworks */,
 				2C4A6CFB0C3CE37500DBBCD4 /* CopyFiles */,
 				2C275B3F1548C3CE006FFB2B /* ShellScript */,
+				72F028975BA9C3AA5D8BB07F /* [CP] Embed Pods Frameworks */,
+				B92CBF53BC8991E6457B455B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -475,6 +486,51 @@
 			shellPath = /bin/sh;
 			shellScript = "#make -f LocalizeTools/localize.mk target_lang=ja nibs='MainMenu.nib PathSettingWindow.nib'\n";
 		};
+		39D08462146712559E610695 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		72F028975BA9C3AA5D8BB07F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B92CBF53BC8991E6457B455B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -551,6 +607,7 @@
 /* Begin XCBuildConfiguration section */
 		4E71A80608A2C90C0034BBD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E67486B3EE2E784C4A97EB7 /* Pods-AppleScriptDoc.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -560,11 +617,13 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/Pods/Sparkle",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Scriptfactory.AppleScriptDoc;
 				PRODUCT_NAME = AppleScriptDoc;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -574,6 +633,7 @@
 		};
 		4E71A80708A2C90C0034BBD9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBE05ED6A4F2DA5A4E4A0694 /* Pods-AppleScriptDoc.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -582,10 +642,12 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
+					"$(SRCROOT)",
+					"$(PROJECT_DIR)/Pods/Sparkle",
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Scriptfactory.AppleScriptDoc;
 				PRODUCT_NAME = AppleScriptDoc;
 				VERSIONING_SYSTEM = "apple-generic";
