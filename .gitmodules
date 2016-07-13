@@ -52,9 +52,6 @@
 [submodule "LibraryScripts/SimpleRD/HTMLTreeFormatter.scptd"]
 	path = LibraryScripts/SimpleRD/HTMLTreeFormatter.scptd
 	url = http://github.com/tkurita/HTMLTreeFormatter.scptd.git
-[submodule "ja.lproj/LocalizeTools"]
-	path = LocalizeTools
-	url = http://github.com/tkurita/LocalizeTools.git
 [submodule "StringExtra"]
 	path = StringExtra
 	url = https://github.com/tkurita/StringExtra
