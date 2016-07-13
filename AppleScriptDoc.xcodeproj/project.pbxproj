@@ -472,6 +472,7 @@
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "if [ ! \"$CONFIGURATION\" = 'Release' ]; then\necho \"HelpBook setup script will run only with Release configuration\";\nexit 0\nfi\n\ncd \"$BUILT_PRODUCTS_DIR\"\nSetupHelpBook \"$FULL_PRODUCT_NAME\"\n\n";
+			showEnvVarsInLog = 0;
 		};
 		2C4EC700152D9614004167B9 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -639,7 +640,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
 				CURRENT_PROJECT_VERSION = 28;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
