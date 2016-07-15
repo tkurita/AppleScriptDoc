@@ -36,6 +36,7 @@
 		2CC5AA001C6CB71E007FEA6C /* AppleScriptDocHelp in Resources */ = {isa = PBXBuildFile; fileRef = 2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */; };
 		2CC5AA051C6D7D29007FEA6C /* HBIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */; };
 		2CCDF86E164D5B9200591CB2 /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCDF86D164D5B9200591CB2 /* AppleScriptObjC.framework */; };
+		2CDEA6DB1D39323C00A75006 /* HandlerElement.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2CDEA6DA1D39323C00A75006 /* HandlerElement.applescript */; };
 		2CE5F1620D321CE700EDC0FF /* DocElements.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F1610D321CE700EDC0FF /* DocElements.applescript */; settings = {ATTRIBUTES = (); }; };
 		2CE5F4230D328D7B00EDC0FF /* IsBundleTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */; };
 		2CE5F48C0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */; };
@@ -121,6 +122,7 @@
 		2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBIndexer.m; sourceTree = "<group>"; };
 		2CCDF86D164D5B9200591CB2 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		2CCDFC55165086DB00591CB2 /* DonationReminder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationReminder.framework; path = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/DonationReminder.framework; sourceTree = "<absolute>"; };
+		2CDEA6DA1D39323C00A75006 /* HandlerElement.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = HandlerElement.applescript; sourceTree = "<group>"; };
 		2CE5F1610D321CE700EDC0FF /* DocElements.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = DocElements.applescript; sourceTree = "<group>"; };
 		2CE5F4200D328D7B00EDC0FF /* IsBundleTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsBundleTransformer.h; sourceTree = "<group>"; };
 		2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsBundleTransformer.m; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */,
+				2CDEA6DA1D39323C00A75006 /* HandlerElement.applescript */,
 				2C0AD6830C3B5FA500E2B397 /* ASDocParser.applescript */,
 				2C0AD69F0C3B61AB00E2B397 /* ExportHelpBook.applescript */,
 				2C4EFEA70C3BB03A003743D7 /* SetupHelpBook.applescript */,
@@ -546,6 +549,7 @@
 				2C2975080C3C8F82000CDBEF /* SaveToFile.applescript in Sources */,
 				2CF5BFEF0C43E6E600224B65 /* XFileExtend.applescript in Sources */,
 				2CE5F1620D321CE700EDC0FF /* DocElements.applescript in Sources */,
+				2CDEA6DB1D39323C00A75006 /* HandlerElement.applescript in Sources */,
 				2C72A8E60D3CBDD700AECAF3 /* InfoPlistArranger.applescript in Sources */,
 				257572CA072881A4000BE9CA /* main.m in Sources */,
 				2C4A6CF00C3CE21B00DBBCD4 /* AppController.m in Sources */,

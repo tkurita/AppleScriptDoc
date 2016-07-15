@@ -1,7 +1,7 @@
 global _line_end
 
 global ASDocParser
-global DocElements
+global HandlerElement
 global ASFormattingStyle
 global ASHTML
 global HTMLElement
@@ -251,7 +251,7 @@ end output_to_folder
 
 on process_file(a_file)
 	initialize()
-	DocElements's set_script_support(true)
+	HandlerElement's set_script_support(true)
 	set a_text to appController's sourceOfScript_(a_file's posix_path()) as text
 	set script_name to a_file's basename()
 	tell current application's class "NSUserDefaults"'s standardUserDefaults()

@@ -1,7 +1,7 @@
 global ExportHelpBook
 global XFile
 global appController
-global DocElements
+global HandlerElement
 
 on process_file(a_file, index_page)
 	set index_page to index_page's change_path_extension("html")
@@ -10,7 +10,7 @@ on process_file(a_file, index_page)
 	
 	ExportHelpBook's initialize()
 	ExportHelpBook's set_template_folder("HTMLTemplate")
-	DocElements's set_script_support(false)
+	HandlerElement's set_script_support(false)
 	set index_page to ExportHelpBook's output_to_folder(¬
         index_page's parent_folder()'s as_alias(), index_page, a_text, script_name)
 	index_page's set_types(missing value, missing value)

@@ -5,20 +5,20 @@ global HTMLElement
 global ScriptLinkMaker
 global _line_end
 
-property _useAppleSegment : false
+property _useAppleSegment : false -- moved to HandlerElement
 --property _useAppleSegment : true
-property _useScriptSupport : true
-property _link_manager : missing value
+property _useScriptSupport : true -- moved to HandlerElement
+property _link_manager : missing value -- can be delete
 
-on set_link_manager(an_link_manager)
+on set_link_manager(an_link_manager) -- can be delete
 	set my _link_manager to an_link_manager
 end set_link_manager
 
-on set_use_Apple_segment(a_flag)
+on set_use_Apple_segment(a_flag) -- moved to HandlerElement
 	set my _useAppleSegment to a_flag
 end set_use_Apple_segment
 
-on set_script_support(a_flag)
+on set_script_support(a_flag) -- moved to HandlerElement
 	set my _useScriptSupport to a_flag
 end set_script_support
 
@@ -144,7 +144,7 @@ on make_paragraph_element(a_list)
 		end as_xhtml
 	end script
 end make_paragraph_element
-
+(*
 on make_handler_element(property_script)
 	--log "start make_handler_element"
 	script HandlerElement
@@ -267,6 +267,7 @@ on make_handler_element(property_script)
 		
 	end script
 end make_handler_element
+*)
 
 script ExampleElement
     property parent : AppleScript

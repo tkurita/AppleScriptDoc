@@ -1,5 +1,6 @@
 global ASHTML
 global DocElements
+global HandlerElement
 global HTMLElement
 global XDict
 global XList
@@ -281,7 +282,7 @@ on parse_handler_region(a_region, doc_container)
 			else if the_tag is "result" then
 				set result_list to tag_contents(enumerator)
 			else if the_tag is "syntax" then
-				set syntax_list to tag_contents(enumerator)
+				set end of syntax_list to first item of tag_contents(enumerator)
             else if the_tag is "example" then
                 set x_list to make XList
                 parse_example_region(a_region, x_list)
@@ -304,25 +305,26 @@ on parse_handler_region(a_region, doc_container)
 		set syntax_text to DocElements's strip_tag(nextLine of a_region)
 		set comment_offset to syntax_text's offset_of("--")
 		if comment_offset > 0 then
-			--set syntax_text to text 1 thru (comment_offset - 1) of syntax_text
 			set syntax_text to syntax_text's text_in_range(1, (comment_offset - 1))
 		end if
-	else
-		set syntax_text to item 1 of syntax_list
+        set syntax_list to {syntax_text}
+	--else
+		--set syntax_text to item 1 of syntax_list
 	end if
 	
-	script HandlerProperties
-		property parent : AppleScript
+	script HandlerElementInstance
+		property parent : HandlerElement
 		property _abstruct : XList's make_with(abstruct_list)
 		property _description : XList's make_with(description_list)
 		property _result : XList's make_with(result_list)
 		property _parameters : XList's make_with(param_list)
-		property _syntax : syntax_text
-		property _handler_name : first word of (syntax_text's as_unicode())
+		property _syntax : XList's make_with(syntax_list)
+		property _handler_name : first word of ((get first item of syntax_list)'s as_text())
         property _example : example_element
+        property _link_manager : doc_container's link_manager()
 	end script
 	
-	doc_container's push(DocElements's make_handler_element(HandlerProperties))
+	doc_container's push(HandlerElementInstance)
 	--log "end parse_handler_region"
 	if is_continued then
         enumerator's decrement_index()
@@ -508,7 +510,7 @@ on parse_list(a_list)
 	repeat with a_region in doc_regions
 		parse_heading_region(a_region, doc_container)
 	end repeat
-	DocElements's set_link_manager(doc_container's link_manager())
+	--DocElements's set_link_manager(doc_container's link_manager())
 	--log "end parse_list"
 	return doc_container
 end parse_list

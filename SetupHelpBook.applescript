@@ -2,7 +2,7 @@ global ExportHelpBook
 global XFile
 global appController
 global InfoPlistArranger
-global DocElements
+global HandlerElement
 global TemplateProcessor
 
 property NSDictionary : class "NSDictionary"
@@ -44,7 +44,7 @@ on process given bundle:a_bundle, text:a_text
 	--log "start process in SetupHelpBook"
 	if a_bundle is missing value then return
 	set product_infoplist to InfoPlistArranger's make_with(a_bundle)
-	DocElements's set_script_support(true)
+	HandlerElement's set_script_support(true)
     set {output:book_folder, infoPlist:hb_infoPlist, infoPlistContents:hb_info_plist_contents} ¬
         to prepare_HBBundle(a_bundle, product_infoplist)
 	set index_page to book_folder's child("index.html")
