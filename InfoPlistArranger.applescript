@@ -7,11 +7,15 @@ on make_with(x_file)
     set a_class to me
     set a_dict to NSMutableDictionary's dictionaryWithContentsOfFile_(¬
                         x_file's child("Contents/Info.plist")'s posix_path())
+    set book_folder_name to a_dict's objectForKey_("CFBundleHelpBookFolder")
+    if book_folder_name is not missing value then
+        set book_folder_name to book_folder_name as text
+    end if
     script InfoPlistArrangerInstance
         property parent : a_class
         property _target_xfile : x_file
         property _info_dict : a_dict
-        property _book_folder_name : a_dict's objectForKey_("CFBundleHelpBookFolder") as text
+        property _book_folder_name : book_folder_name
         property _book_folder : missing value
         property _need_setup : false
         property _bundle_id_is_checked : false
@@ -19,7 +23,7 @@ on make_with(x_file)
 
     tell InfoPlistArrangerInstance
         if its _book_folder_name is missing value then
-            set my _need_setup to true
+            set its _need_setup to true
         else
             set resource_folder to x_file's bundle_resources_folder()
             set its _book_folder to resource_folder's make_folder(its _book_folder_name)
@@ -34,12 +38,13 @@ on value_for(a_key)
 end value_for
 
 on product_name()
+    --log "start product_name"
     set a_result to missing value
     try
         set a_result to my _info_dict's objectForKey_("CFBundleName")
     end try
     if a_result is not missing value then
-        return a_result
+        return a_result as text
     end if
     return my _target_xfile's basename()
 end product_name
@@ -55,6 +60,7 @@ on bookname()
 end bookname
 
 on setup_book_folder()
+    --log "start setup_book_folder"
 	if my _book_folder_name is missing value then
 		set my _book_folder_name to (my _target_xfile's basename()) & "Help"
         my _info_dict's setObject_forKey_(my _book_folder_name, "CFBundleHelpBookFolder")
@@ -62,12 +68,15 @@ on setup_book_folder()
 	end if
 	set resource_folder to my _target_xfile's bundle_resources_folder()
 	set my _book_folder to resource_folder's make_folder(my _book_folder_name)
+    --log "end setup_book_folder"
 end setup_book_folder
 
 on get_book_folder()
+    --log "start get_book_folder"
 	if my _book_folder is missing value then
 		setup_book_folder()
 	end if
+    --log "end get_book_folder :"&(my _book_folder's posix_path())
 	return my _book_folder
 end get_book_folder
 
