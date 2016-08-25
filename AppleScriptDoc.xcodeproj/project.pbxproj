@@ -42,7 +42,7 @@
 		2CE5F48C0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */; };
 		2CF5BFEF0C43E6E600224B65 /* XFileExtend.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2CF5BFEE0C43E6E600224B65 /* XFileExtend.applescript */; settings = {ATTRIBUTES = (); }; };
 		2CFA14011C6C1CC00068526B /* DonationReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CFA13FC1C6C1C5D0068526B /* DonationReminder.framework */; };
-		2CFA14031C6C1CDF0068526B /* DonationReminder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CFA13FC1C6C1C5D0068526B /* DonationReminder.framework */; };
+		2CFA14031C6C1CDF0068526B /* DonationReminder.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2CFA13FC1C6C1C5D0068526B /* DonationReminder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		2CFA140B1C6C1D840068526B /* ASFormatting.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA14061C6C1D840068526B /* ASFormatting.m */; };
 		2CFA140C1C6C1D840068526B /* ASFormattingExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA14081C6C1D840068526B /* ASFormattingExtensions.m */; };
 		2CFA140D1C6C1D840068526B /* ASFormattingStyle.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA14091C6C1D840068526B /* ASFormattingStyle.applescript */; };
@@ -400,6 +400,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					257572C2072881A4000BE9CA = {
+						DevelopmentTeam = 5VBC6385DN;
+					};
+				};
 			};
 			buildConfigurationList = 4E71A80908A2C90C0034BBD9 /* Build configuration list for PBXProject "AppleScriptDoc" */;
 			compatibilityVersion = "Xcode 6.3";
@@ -615,6 +620,7 @@
 			baseConfigurationReference = 8E67486B3EE2E784C4A97EB7 /* Pods-AppleScriptDoc.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
 				COPY_PHASE_STRIP = NO;
@@ -629,7 +635,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Scriptfactory.AppleScriptDoc;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.script-factory.AppleScriptDoc";
 				PRODUCT_NAME = AppleScriptDoc;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
@@ -641,6 +647,7 @@
 			baseConfigurationReference = DBE05ED6A4F2DA5A4E4A0694 /* Pods-AppleScriptDoc.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2016, Tetsuro KURITA";
 				CURRENT_PROJECT_VERSION = 28;
@@ -652,7 +659,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Scriptfactory.AppleScriptDoc;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.script-factory.AppleScriptDoc";
 				PRODUCT_NAME = AppleScriptDoc;
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
