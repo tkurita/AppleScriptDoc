@@ -87,7 +87,9 @@
 	} else {
 		a_name = [user_defaults stringForKey:@"ExportFileName"];
 	}
-	[save_panel setDirectoryURL:[NSURL fileURLWithPath:dir]];
+    if (dir) {
+        [save_panel setDirectoryURL:[NSURL fileURLWithPath:dir]];
+    }
     [save_panel setNameFieldStringValue:a_name];
     [save_panel beginSheetModalForWindow:self.window
                        completionHandler:^(NSInteger result) {
@@ -105,7 +107,9 @@
 	[open_panel setCanChooseFiles:NO];
 	[open_panel setCanChooseDirectories:YES];
 	[open_panel setCanCreateDirectories:YES];
-    [open_panel setDirectoryURL:[NSURL fileURLWithPath:a_path]];
+    if (a_path) {
+        [open_panel setDirectoryURL:[NSURL fileURLWithPath:a_path]];
+    }
     [open_panel beginSheetModalForWindow:self.window
                        completionHandler:^(NSInteger result) {
                            if (result == NSCancelButton) return;
