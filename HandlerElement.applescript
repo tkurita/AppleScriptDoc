@@ -55,9 +55,9 @@ on convert()
             set syntax_p to output's push_element_with("p", {{"class", "sourceCode"}})
             syntax_p's push(ASHTML's process_text(syntax_text's as_text(), true))
             if my _useScriptSupport then
-                set a_link to syntax_p's push_element_with("a", {{"href", "../assets/setClipboard.scpt"},¬
+                set a_link to syntax_p's push_element_with("a", {{"href", "../assets-helpbook/setClipboard.scpt"},¬
                                                     {"onclick", "return runHelpScriptWithInnerText(this)"}})
-                a_link's push_element_with("img", {{"src", "../assets/Clipboard24.png"}, {"alt", "copy to clipboard"}, {"align", "right"}})
+                a_link's push_element_with("img", {{"src", "../assets-helpbook/Clipboard24.png"}, {"alt", "copy to clipboard"}, {"align", "right"}})
             end if
             return true
         end do

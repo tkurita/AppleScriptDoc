@@ -17,19 +17,34 @@ property _appleTitle : ""
 property _use_appletitle : false
 property _defaultPageName : "reference.html"
 property _template_folder : "HelpBookTemplate"
+property _assets_srcfolders : {"HelpBookTemplate/assets", "HelpBookTemplate/assets-helpbook"}
 property _stop_processing : false
 
-on stop_processing()
-	set my _stop_processing to true
-end stop_processing
+property _current_exporter : missing value
 
-on initialize()
-	set my _bookName to missing value
-	set my _appleTitle to ""
-	set my _use_appletitle to false
-	set my _template_folder to "HelpBookTemplate"
-	set my _stop_processing to false
-end initialize
+on make
+    set a_class to me
+    script ExportHelpBookInstance
+        property _bookName : my _bookName
+        property _appleTitle : my _appleTitle
+        property _use_appletitle : my _use_appletitle
+        property _defaultPageName : my _defaultPageName
+        property _template_folder : my _template_folder
+        property _assets_srcfolders : my _assets_srcfolders
+        property _stop_processing : false
+        property _current_exporter : me
+    end script
+    set my _current_exporter to ExportHelpBookInstance
+    return ExportHelpBookInstance
+end make
+
+on set_assets_srcfolders(a_list)
+    set my _assets_srcfolders to a_list
+end set_assets_srcfolders
+
+on stop_processing()
+	set my _current_exporter's _stop_processing to true
+end stop_processing
 
 on set_template_folder(a_name)
 	set my _template_folder to a_name
@@ -112,11 +127,16 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	end if
 	set book_folder to index_page's parent_folder()
 	book_folder's make_path(missing value)
-	set a_path to path to resource "assets" in directory my _template_folder
-	set temp_asset_folder to XFile's make_with(a_path)
-	set assets_folder to temp_asset_folder's copy_to(book_folder)
-	set pages_folder to book_folder's make_folder("pages")
-	
+    script CopyAssetsFolders
+        on do(src)
+            set x_src to XFile's make_with(path to resource src)
+            return x_src's copy_to(book_folder)
+        end do
+    end script
+    set assets_folders to XList's make_with(my _assets_srcfolders)'s map(CopyAssetsFolders)
+
+    set pages_folder to book_folder's make_folder("pages")
+
 	set index_contents to make HTMLElement
 	set style_formatter to ASFormattingStyle's make_from_setting()
 	if my _stop_processing then error number -128
@@ -242,7 +262,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	if my _stop_processing then error number -128
 	-- log "before build css in output_to_folder"
 	set css_text to style_formatter's build_css()
-	set as_css_file to assets_folder's child("applescript.css")
+	set as_css_file to assets_folders's item_at(1)'s child("applescript.css")
 	as_css_file's write_as_utf8(css_text)
 
 	-- log "end of output_to_folder"
@@ -250,7 +270,6 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 end output_to_folder
 
 on process({source:x_file, destination:a_destination})
-	initialize()
 	HandlerElement's set_script_support(true)
 	set a_text to appController's sourceOfScript_(x_file's posix_path()) as text
 	set script_name to x_file's basename()
@@ -266,3 +285,4 @@ on process({source:x_file, destination:a_destination})
 		open index_page's as_alias()
 	end tell
 end process
+

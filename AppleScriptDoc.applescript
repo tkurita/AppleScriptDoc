@@ -25,7 +25,6 @@ script AppleScriptDocController
 	property _ : boot_for(me)
 	
 	(*== Modules *)
-	property DefaultsManager : missing value
 	property ASDocParser : missing value
 	property ExportHelpBook : missing value
 	property SetupHelpBook : missing value
@@ -36,7 +35,6 @@ script AppleScriptDocController
 	property ASHTML : missing value
 	property DocElements : missing value
 	property XFile : missing value
-	property OneShotScriptEditor : missing value
 	property appController : missing value
     property ScriptLinkMaker : missing value
     property HandlerElement : missing value
@@ -44,8 +42,10 @@ script AppleScriptDocController
 	on exportHelpBook_toPath_(src, dest)
 		--log "start export_helpbook"
         try
-            ExportHelpBook's process({source:XFile's make_with(src as text), ¬
-                                      destination:((dest as text) as POSIX file)})
+            tell (make ExportHelpBook)
+                process({source:XFile's make_with(src as text), ¬
+                                          destination:((dest as text) as POSIX file)})
+            end tell
         on error msg number errno
             return {|message|:msg, |number|:errno}
         end try

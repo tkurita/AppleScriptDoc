@@ -49,20 +49,20 @@ on process given bundle:a_bundle, text:a_text
         to prepare_HBBundle(a_bundle, product_infoplist)
 	set index_page to book_folder's child("index.html")
     
-    tell ExportHelpBook
-        initialize()
+    tell (make ExportHelpBook)
         set_use_appletitle(true)
         output_to_folder(book_folder's as_alias(), index_page, a_text, a_bundle's basename())
+        set exporter to it
     end tell
     
     if hb_info_plist_contents is not missing value then
         tell hb_info_plist_contents
-            insert_text("${HelpBookTitle}", ExportHelpBook's bookname())
+            insert_text("${HelpBookTitle}", exporter's bookname())
             write_to(hb_infoPlist)
         end tell
     else
         tell NSMutableDictionary's dictionaryWithContentsOfFile_(hb_infoPlist's posix_path())
-            setObject_forKey_(ExportHelpBook's bookname(), "HPDBookTitle")
+            setObject_forKey_(exporter's bookname(), "HPDBookTitle")
             writeToFile_atomically_(hb_infoPlist's posix_path(), true)
         end tell
     end if
