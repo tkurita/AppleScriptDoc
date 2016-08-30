@@ -11,6 +11,7 @@ void showOSAError(NSDictionary *err_info);
 	__weak IBOutlet id targetScriptBox;
 	__weak IBOutlet id progressIndicator;
 	__weak IBOutlet AppleScriptDocController *appleScriptDocController;
+    __weak IBOutlet NSArrayController *RecentScriptsController;
 }
 
 @property (nonatomic, strong) NSWindowController *pathSettingWindowController;

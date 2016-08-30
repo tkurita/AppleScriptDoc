@@ -3,6 +3,7 @@
 #import "PathExtra.h"
 #import "NSUserDefaultsExtensions.h"
 #import "AppController.h"
+#import "NSDataExtensions.h"
 
 @implementation PathSettingWindowController
 
@@ -30,21 +31,21 @@
 - (void)checkOKCondition
 {	
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
-	NSString *root_path;
-	if (!(root_path = [user_defaults stringForKey:@"HelpBookRootPath"])) {
+	NSURL *root_url;
+	if (!(root_url = [user_defaults fileURLForKey:@"HelpBookRootURL"])) {
 		[okButton setEnabled:NO];return;
 	}
-	
+    NSString *root_path = root_url.path;
 	if (![root_path fileExists]) {
 		[okButton setEnabled:NO];return;
 	}
 	
-	NSString *export_path;
-	if (!(export_path = [user_defaults stringForKey:@"ExportFilePath"])) {
+	NSURL *export_url;
+	if (! _exportFileURL) {
 		[okButton setEnabled:NO];return;
 	}
 	
-	if (![export_path hasPrefix:root_path]) {
+	if (![_exportFileURL.path hasPrefix:root_path]) {
 		[exportPathWarning setHidden:NO];
 		[okButton setEnabled:NO];
 	} else {
@@ -53,22 +54,31 @@
 	}	
 }
 
-- (void)addToRecents:(NSString *)path forKey:(NSString *)key
+- (void)addToRecents:(NSData *)bmd forKey:(NSString *)key
 {
-	[[NSUserDefaults standardUserDefaults] addToHistory:path forKey:key];
+	[[NSUserDefaults standardUserDefaults] addToHistory:bmd forKey:key];
 	[self checkOKCondition];
 }
 
-- (void)setHelpBookRoot:(NSString *)path
+- (void)setHelpBookRoot:(NSURL *)anURL
 {
-	[[NSUserDefaults standardUserDefaults] setObject:path forKey:@"HelpBookRootPath"];
-	[self addToRecents:path forKey:@"RecentHelpBookRoots"];
+    NSError *error = nil;
+    NSData *bmd = [anURL bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope
+                  includingResourceValuesForKeys:nil
+                                   relativeToURL:nil error:&error];
+    [[NSUserDefaults standardUserDefaults] setObject:bmd forKey:@"HelpBookRootURL"];
+	[self addToRecents:bmd forKey:@"RecentHelpBookRootURLs"];
 }
 
-- (void)setExportPath:(NSString *)path
+
+- (void)saveExportFileURL
 {
-	[[NSUserDefaults standardUserDefaults] setObject:path forKey:@"ExportFilePath"];
-	[self addToRecents:path forKey:@"RecentExportPathes"];
+    NSError *error = nil;
+    NSData *bmd = [_exportFileURL bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope
+                   includingResourceValuesForKeys:nil
+                                    relativeToURL:nil error:&error];
+    [[NSUserDefaults standardUserDefaults] setObject:bmd forKey:@"ExportFileURL"];
+	[self addToRecents:bmd forKey:@"RecentExportFileURLs"];
 }
 
 - (IBAction)chooseExportPath:(id)sender
@@ -77,43 +87,45 @@
 	[save_panel setAllowedFileTypes:@[@"public.html"]];
 	[save_panel setCanSelectHiddenExtension:YES];
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
-	NSString *a_path = [user_defaults stringForKey:@"ExportFilePath"];
+	NSURL *an_url = [user_defaults fileURLForKey:@"ExportFileURL"];
 	NSString *a_name;
-	NSString *dir = nil;
-	if (a_path) {
-		a_name = [a_path lastPathComponent];
-		dir = [a_path stringByDeletingLastPathComponent];
-		if (![dir fileExists]) dir = nil;
+	NSURL *dir = nil;
+	if (an_url) {
+		a_name = [an_url lastPathComponent];
+		dir = [an_url URLByDeletingLastPathComponent];
+		if (![dir.path fileExists]) dir = nil;
 	} else {
 		a_name = [user_defaults stringForKey:@"ExportFileName"];
 	}
+    
     if (dir) {
-        [save_panel setDirectoryURL:[NSURL fileURLWithPath:dir]];
+        [save_panel setDirectoryURL:dir];
     }
     [save_panel setNameFieldStringValue:a_name];
     [save_panel beginSheetModalForWindow:self.window
                        completionHandler:^(NSInteger result) {
         if (result == NSCancelButton) return;
-        [self setExportPath:[[save_panel URL] path]];
+        self.exportFileURL = [save_panel URL];
+        [self checkOKCondition];
     }];
 }
 
 - (IBAction)chooseHBRoot:(id)sender
 {
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
-	NSString *a_path = [user_defaults stringForKey:@"HelpBookRootPath"];
+	NSURL *an_url = [user_defaults fileURLForKey:@"HelpBookRootURL"];
 	
 	NSOpenPanel *open_panel = [NSOpenPanel openPanel];
 	[open_panel setCanChooseFiles:NO];
 	[open_panel setCanChooseDirectories:YES];
 	[open_panel setCanCreateDirectories:YES];
-    if (a_path) {
-        [open_panel setDirectoryURL:[NSURL fileURLWithPath:a_path]];
+    if (an_url) {
+        [open_panel setDirectoryURL:an_url];
     }
     [open_panel beginSheetModalForWindow:self.window
                        completionHandler:^(NSInteger result) {
                            if (result == NSCancelButton) return;
-                           [self setHelpBookRoot:[[open_panel URL] path]];
+                           [self setHelpBookRoot:[open_panel URL]];
                        }];
 }
 
@@ -121,17 +133,18 @@
 {
     AppController *app_controller = [AppController sharedAppController];
     NSDictionary *err_info = [[AppController sharedAppController] exportHelpBook:self];
-
+    [self saveExportFileURL];
+    
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSArray *array = [pathRecordsController selectedObjects];
-	if (array) {
+	if (array && array.count) {
 		[pathRecordsController removeObjects:array];
 	}
-
+    
 	[pathRecordsController addObject:
-		@{@"ExportFilePath": [user_defaults stringForKey:@"ExportFilePath"], 
-			@"HelpBookRootPath": [user_defaults stringForKey:@"HelpBookRootPath"], 
-			@"ScriptPath": [user_defaults stringForKey:@"TargetScript"]}];	
+		@{@"ExportFileURL": [user_defaults dataForKey:@"ExportFileURL"],
+			@"HelpBookRootURL": [user_defaults dataForKey:@"HelpBookRootURL"],
+			@"ScriptURL": [user_defaults dataForKey:@"TargetScript"]}];
 	[[NSApplication sharedApplication] endSheet: [sender window] returnCode:128];
     
     if (err_info) {
@@ -150,50 +163,52 @@
 
 - (IBAction)setExportPathFromRecents:(id)sender
 {
-	NSString *a_path = [[sender selectedItem] title];
+    NSData *bmd = [[RecentExportFileURLsController selectedObjects] lastObject];
 	UInt32 is_optkey = GetCurrentEventKeyModifiers() & optionKey;
 	if (!is_optkey) {
-		[[NSUserDefaults standardUserDefaults] setObject:a_path forKey:@"ExportFilePath"];
+		[[NSUserDefaults standardUserDefaults] setObject:bmd forKey:@"ExportFileURL"];
 		[self checkOKCondition];
 	} else {
-		[[NSUserDefaults standardUserDefaults] removeFromHistory:a_path
-														  forKey:@"RecentExportPathes"];
+		[[NSUserDefaults standardUserDefaults] removeFromHistory:bmd
+														  forKey:@"RecentExportFileURLs"];
 	}
 }
 
 - (IBAction)setHelpBookRootFromRecents:(id)sender
 {
-	NSString *a_path = [[sender selectedItem] title];
+    NSData *bmd = [[RecentHelpBookRootURLsController selectedObjects] lastObject];
 	UInt32 is_optkey = GetCurrentEventKeyModifiers() & optionKey;
-	if ((!is_optkey) && [a_path fileExists]) {
-		[[NSUserDefaults standardUserDefaults] setObject:a_path forKey:@"HelpBookRootPath"];
+	if ((!is_optkey) && [[bmd path] fileExists]) {
+		[[NSUserDefaults standardUserDefaults] setObject:bmd forKey:@"HelpBookRootURL"];
 		[self checkOKCondition];
 	} else {
-		[[NSUserDefaults standardUserDefaults] removeFromHistory:a_path
-														  forKey:@"RecentHelpBookRoots"];
+		[[NSUserDefaults standardUserDefaults] removeFromHistory:bmd
+														  forKey:@"RecentHelpBookRootURLs"];
 	}
 }
 
 - (void)updatePathesForTarget
 {
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
-	NSString *target_path = [user_defaults objectForKey:@"TargetScript"];
+	NSString *target_path = [[user_defaults fileURLForKey:@"TargetScript"] path];
 	NSPredicate *predicate = [NSPredicate
-								predicateWithFormat:@"ScriptPath like[c] %@", target_path];
+								predicateWithFormat:@"ScriptURL.path like[c] %@", target_path];
 	[pathRecordsController setFilterPredicate:predicate];
 	NSArray *array = [pathRecordsController arrangedObjects];
 	
 	if (array && [array count]) {
 		NSDictionary *path_dict = [array lastObject];
-		NSEnumerator *enumerator = [@[@"HelpBookRootPath", @"ExportFilePath"]
+		NSEnumerator *enumerator = [@[@"HelpBookRootURL", @"ExportFileURL"]
 										objectEnumerator];
 		NSString *a_key;
 		while (a_key = [enumerator nextObject]) {
-			NSString *a_path = path_dict[a_key];
-			if (a_path) {
-				[user_defaults setObject:a_path forKey:a_key];
+			NSData *bmd = path_dict[a_key];
+			if (bmd) {
+                //NSLog(@"%@", bmd.path);
+				[user_defaults setObject:bmd forKey:a_key];
 			}
 		}
+        self.exportFileURL = [path_dict[@"ExportFileURL"] fileURL];
 		[pathRecordsController setSelectedObjects:array];
 	} else {
 #if uselog	
@@ -232,12 +247,13 @@
 	[a_cell setBezelStyle:NSSmallSquareBezelStyle];
 	[a_cell setArrowPosition:NSPopUpArrowAtCenter];
 
-	[self updatePathesForTarget];
-	[self checkOKCondition];
-	 [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self
+    [[NSUserDefaultsController sharedUserDefaultsController] addObserver:self
              forKeyPath:@"values.TargetScript"
                  options:(NSKeyValueObservingOptionNew)
                     context:NULL];
+    self.exportFileURL = [[NSUserDefaults standardUserDefaults] fileURLForKey:@"ExportFileURL"];
+    [self updatePathesForTarget];
+    [self checkOKCondition];
 }
 
 - (BOOL)dropBox:(NSView *)dbv acceptDrop:(id <NSDraggingInfo>)info item:(id)item
@@ -246,18 +262,18 @@
 	if (dbv == exportDestBox) {
 		if ([item isFolder]) {
 			NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
-			NSString *current_path = [user_defaults objectForKey:@"ExportFilePath"];
+			NSURL *current_url = [user_defaults fileURLForKey:@"ExportFileURL"];
 			NSString *a_name;
-			if (current_path) {
-				a_name = [current_path lastPathComponent];
+			if (current_url) {
+				a_name = [current_url lastPathComponent];
 			} else {
 				a_name = [user_defaults stringForKey:@"ExportFileName"];
 			}
 			item = [item stringByAppendingPathComponent:a_name];
 		}
-		[self setExportPath:item];
+		[self setExportFileURL:[item fileURL]];
 	} else if (dbv == helpBookRootBox) {
-		[self setHelpBookRoot:item];
+		[self setHelpBookRoot:[item fileURL]];
 	}
 	[self checkOKCondition];
 	return YES;

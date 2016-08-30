@@ -13,6 +13,7 @@
 		257572CC072881A4000BE9CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		2C0AD6840C3B5FA500E2B397 /* ASDocParser.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2C0AD6830C3B5FA500E2B397 /* ASDocParser.applescript */; settings = {ATTRIBUTES = (); }; };
 		2C0AD6A00C3B61AB00E2B397 /* ExportHelpBook.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2C0AD69F0C3B61AB00E2B397 /* ExportHelpBook.applescript */; settings = {ATTRIBUTES = (); }; };
+		2C10B4B81D756B370094B552 /* NSDataExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C10B4B71D756B370094B552 /* NSDataExtensions.m */; };
 		2C21553F1D34EB5600281743 /* ScriptLinkMaker.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2C21553E1D34EB5600281743 /* ScriptLinkMaker.applescript */; };
 		2C2155411D34EF0300281743 /* button_template.html in Resources */ = {isa = PBXBuildFile; fileRef = 2C2155401D34EF0300281743 /* button_template.html */; };
 		2C2155471D3506BD00281743 /* StringExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = 2C2155461D3506BD00281743 /* StringExtra.m */; };
@@ -33,6 +34,8 @@
 		2C777EF61C6CA252007F64DF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C777EF41C6CA252007F64DF /* MainMenu.xib */; };
 		2CAEEB8A0ECC13E30068900A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEB750ECC13E30068900A /* Carbon.framework */; };
 		2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEC450ECC1B0F0068900A /* OSAKit.framework */; };
+		2CB2690D1D74595E00CBD51F /* URLToPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2690C1D74595E00CBD51F /* URLToPathTransformer.m */; };
+		2CB269101D752A7900CBD51F /* BookmarkToPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2690F1D752A7900CBD51F /* BookmarkToPathTransformer.m */; };
 		2CC5AA001C6CB71E007FEA6C /* AppleScriptDocHelp in Resources */ = {isa = PBXBuildFile; fileRef = 2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */; };
 		2CC5AA051C6D7D29007FEA6C /* HBIndexer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */; };
 		2CCDF86E164D5B9200591CB2 /* AppleScriptObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CCDF86D164D5B9200591CB2 /* AppleScriptObjC.framework */; };
@@ -92,6 +95,8 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C0AD6830C3B5FA500E2B397 /* ASDocParser.applescript */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.applescript; path = ASDocParser.applescript; sourceTree = "<group>"; };
 		2C0AD69F0C3B61AB00E2B397 /* ExportHelpBook.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ExportHelpBook.applescript; sourceTree = "<group>"; };
+		2C10B4B61D756B370094B552 /* NSDataExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataExtensions.h; sourceTree = "<group>"; };
+		2C10B4B71D756B370094B552 /* NSDataExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataExtensions.m; sourceTree = "<group>"; };
 		2C21553E1D34EB5600281743 /* ScriptLinkMaker.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = ScriptLinkMaker.applescript; sourceTree = "<group>"; };
 		2C2155401D34EF0300281743 /* button_template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = button_template.html; sourceTree = "<group>"; };
 		2C2155451D3506BD00281743 /* StringExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringExtra.h; sourceTree = "<group>"; };
@@ -117,6 +122,10 @@
 		2C777EF51C6CA252007F64DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2CAEEB750ECC13E30068900A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		2CAEEC450ECC1B0F0068900A /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = /System/Library/Frameworks/OSAKit.framework; sourceTree = "<absolute>"; };
+		2CB2690B1D74595E00CBD51F /* URLToPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLToPathTransformer.h; sourceTree = "<group>"; };
+		2CB2690C1D74595E00CBD51F /* URLToPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLToPathTransformer.m; sourceTree = "<group>"; };
+		2CB2690E1D752A7900CBD51F /* BookmarkToPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkToPathTransformer.h; sourceTree = "<group>"; };
+		2CB2690F1D752A7900CBD51F /* BookmarkToPathTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkToPathTransformer.m; sourceTree = "<group>"; };
 		2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AppleScriptDocHelp; sourceTree = "<group>"; };
 		2CC5AA031C6D7D29007FEA6C /* HBIndexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HBIndexer.h; sourceTree = "<group>"; };
 		2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBIndexer.m; sourceTree = "<group>"; };
@@ -352,6 +361,12 @@
 				2CE5F48A0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m */,
 				2CC5AA031C6D7D29007FEA6C /* HBIndexer.h */,
 				2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */,
+				2CB2690B1D74595E00CBD51F /* URLToPathTransformer.h */,
+				2CB2690C1D74595E00CBD51F /* URLToPathTransformer.m */,
+				2CB2690E1D752A7900CBD51F /* BookmarkToPathTransformer.h */,
+				2CB2690F1D752A7900CBD51F /* BookmarkToPathTransformer.m */,
+				2C10B4B61D756B370094B552 /* NSDataExtensions.h */,
+				2C10B4B71D756B370094B552 /* NSDataExtensions.m */,
 			);
 			name = Class;
 			sourceTree = "<group>";
@@ -550,6 +565,7 @@
 				257572C5072881A4000BE9CA /* AppleScriptDoc.applescript in Sources */,
 				2C0AD6840C3B5FA500E2B397 /* ASDocParser.applescript in Sources */,
 				2C0AD6A00C3B61AB00E2B397 /* ExportHelpBook.applescript in Sources */,
+				2CB269101D752A7900CBD51F /* BookmarkToPathTransformer.m in Sources */,
 				2C4EFEA80C3BB03A003743D7 /* SetupHelpBook.applescript in Sources */,
 				2C2975080C3C8F82000CDBEF /* SaveToFile.applescript in Sources */,
 				2CF5BFEF0C43E6E600224B65 /* XFileExtend.applescript in Sources */,
@@ -559,6 +575,7 @@
 				257572CA072881A4000BE9CA /* main.m in Sources */,
 				2C4A6CF00C3CE21B00DBBCD4 /* AppController.m in Sources */,
 				2CFE961B0C44925A00B0D2A6 /* PathSettingWindowController.m in Sources */,
+				2C10B4B81D756B370094B552 /* NSDataExtensions.m in Sources */,
 				2CE5F4230D328D7B00EDC0FF /* IsBundleTransformer.m in Sources */,
 				2CE5F48C0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m in Sources */,
 				2CFA140B1C6C1D840068526B /* ASFormatting.m in Sources */,
@@ -568,6 +585,7 @@
 				2C21553F1D34EB5600281743 /* ScriptLinkMaker.applescript in Sources */,
 				2CFA14141C6C1D8E0068526B /* DropBox.m in Sources */,
 				2CFA14151C6C1D8E0068526B /* HFSTypeUtils.m in Sources */,
+				2CB2690D1D74595E00CBD51F /* URLToPathTransformer.m in Sources */,
 				2C2155471D3506BD00281743 /* StringExtra.m in Sources */,
 				2CFA141D1C6C1D9B0068526B /* PathExtra.m in Sources */,
 				2CC5AA051C6D7D29007FEA6C /* HBIndexer.m in Sources */,
@@ -669,6 +687,7 @@
 		4E71A80A08A2C90C0034BBD9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_VERSION = 1.7;

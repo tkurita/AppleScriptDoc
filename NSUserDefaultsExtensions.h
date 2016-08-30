@@ -5,5 +5,7 @@
 
 - (void)addToHistory:(id)value forKey:(NSString *)key;
 - (void)removeFromHistory:(id)value forKey:(NSString *)key;
+- (void)setFileURL:(NSURL *)anURL forKey:(NSString *)key;
+- (NSURL *)fileURLForKey:(NSString *)key;
 
 @end

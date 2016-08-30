@@ -249,14 +249,15 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	return index_page
 end output_to_folder
 
-on process_file(a_file)
+on process({source:x_file, destination:a_destination})
 	initialize()
 	HandlerElement's set_script_support(true)
-	set a_text to appController's sourceOfScript_(a_file's posix_path()) as text
-	set script_name to a_file's basename()
+	set a_text to appController's sourceOfScript_(x_file's posix_path()) as text
+	set script_name to x_file's basename()
 	tell current application's class "NSUserDefaults"'s standardUserDefaults()
-		set a_root to ((its stringForKey_("HelpBookRootPath") as text) as POSIX file) as alias
-		set a_destination to (its stringForKey_("ExportFilePath") as text) as POSIX file
+        set a_root to ((its fileURLForKey_("HelpBookRootURL")'s |path|() as text) as POSIX file) as alias
+		--set a_root to ((its stringForKey_("HelpBookRootPath") as text) as POSIX file) as alias
+		--set a_destination to (its stringForKey_("ExportFilePath") as text) as POSIX file
 	end tell
 	set index_page to output_to_folder(a_root, a_destination, a_text, script_name)
 	
@@ -264,4 +265,4 @@ on process_file(a_file)
 	tell application "Finder"
 		open index_page's as_alias()
 	end tell
-end process_file
+end process

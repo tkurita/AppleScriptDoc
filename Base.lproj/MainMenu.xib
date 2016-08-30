@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment version="1080" identifier="macosx"/>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
@@ -95,7 +95,11 @@ DQ
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="386" name="value" keyPath="values.TargetScript" id="432"/>
+                                        <binding destination="386" name="value" keyPath="values.TargetScript" id="Ywi-rx-NEE">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">URLToPathTransformer</string>
+                                            </dictionary>
+                                        </binding>
                                     </connections>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="210">
@@ -130,7 +134,8 @@ DQ
                                     </popUpButtonCell>
                                     <connections>
                                         <action selector="popUpRecents:" target="327" id="416"/>
-                                        <binding destination="386" name="contentValues" keyPath="values.RecentScripts" id="395"/>
+                                        <binding destination="FOo-T2-DRV" name="contentValues" keyPath="arrangedObjects.path" id="RpU-ew-S1u"/>
+                                        <binding destination="FOo-T2-DRV" name="selectedIndex" keyPath="selectionIndex" previousBinding="RpU-ew-S1u" id="Ygm-Kh-V9E"/>
                                     </connections>
                                 </popUpButton>
                             </subviews>
@@ -370,6 +375,7 @@ DQ
         </menu>
         <customObject id="327" userLabel="AppController" customClass="AppController">
             <connections>
+                <outlet property="RecentScriptsController" destination="FOo-T2-DRV" id="pzz-LC-zrs"/>
                 <outlet property="appleScriptDocController" destination="520" id="522"/>
                 <outlet property="mainWindow" destination="21" id="420"/>
                 <outlet property="progressIndicator" destination="424" id="517"/>
@@ -384,5 +390,10 @@ DQ
                 <outlet property="appController" destination="327" id="521"/>
             </connections>
         </customObject>
+        <arrayController objectClassName="NSData" editable="NO" id="FOo-T2-DRV" userLabel="RecentScriptsController">
+            <connections>
+                <binding destination="386" name="contentArray" keyPath="values.RecentScripts" id="cyU-iT-3Ro"/>
+            </connections>
+        </arrayController>
     </objects>
 </document>

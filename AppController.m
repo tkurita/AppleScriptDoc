@@ -3,6 +3,8 @@
 #import "PathSettingWindowController.h"
 #import "PathExtra.h"
 #import "IsBundleTransformer.h"
+#import "URLToPathTransformer.h"
+#import "BookmarkToPathTransformer.h"
 #import "NSUserDefaultsExtensions.h"
 #import <Carbon/Carbon.h>
 
@@ -13,14 +15,7 @@
 - (void)setupHelpBook:(NSString *)path;
 - (void)cancelExport;
 - (void)setup;
-- (NSDictionary *)exportHelpBook:(NSString *)path;
-@end
-
-@interface ASKScriptCache : NSObject
-{
-}
-+ (ASKScriptCache *)sharedScriptCache;
-- (OSAScript *)scriptWithName:(NSString *)name;
+- (NSDictionary *)exportHelpBook:(NSString *)path toPath:(NSString *)destination;
 @end
 
 @implementation AppController
@@ -29,6 +24,15 @@
 {	
 	NSValueTransformer *transformer = [[IsBundleTransformer alloc] init];
 	[NSValueTransformer setValueTransformer:transformer forName:@"IsBundleTransformer"];
+
+    [NSValueTransformer setValueTransformer:[[URLToPathTransformer alloc] init]
+                                    forName:@"URLToPathTransformer"];
+
+    [NSValueTransformer setValueTransformer:[[BookmarkToPathTransformer alloc] init]
+                                    forName:@"BookmarkToPathTransformer"];
+
+    // clear UserDefaults cache
+    //[[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]];
 }
 
 #pragma mark singleton
@@ -111,11 +115,15 @@ static id sharedInstance = nil;
 }
 
 #pragma mark private methods
-- (BOOL)setTargetScript:(NSString *)a_path
+- (BOOL)setTargetScript:(NSURL *)an_url
 {
-	[[NSUserDefaultsController sharedUserDefaultsController]
-					setValue:a_path forKeyPath:@"values.TargetScript"];
-	[[NSUserDefaults standardUserDefaults] addToHistory:a_path forKey:@"RecentScripts"];
+    NSError *error = nil;
+    NSData *bmd = [an_url bookmarkDataWithOptions:NSURLBookmarkCreationWithSecurityScope
+                        includingResourceValuesForKeys:nil
+                                    relativeToURL:nil error:&error];
+    [[NSUserDefaultsController sharedUserDefaultsController]
+					setValue:bmd forKeyPath:@"values.TargetScript"];
+	[[NSUserDefaults standardUserDefaults] addToHistory:bmd forKey:@"RecentScripts"];
 	[recentScriptsButton setTitle:@""];
 	return YES;
 }
@@ -143,7 +151,7 @@ static id sharedInstance = nil;
 - (BOOL)dropBox:(NSView *)dbv acceptDrop:(id <NSDraggingInfo>)info item:(id)item
 {
 	item = [item infoResolvingAliasFile][@"ResolvedPath"];
-	[self setTargetScript:item];
+	[self setTargetScript:[item fileURL]];
 	return YES;
 }
 
@@ -159,7 +167,7 @@ static id sharedInstance = nil;
 #if useLog
 	NSLog(filename);
 #endif
-	return [self setTargetScript:filename];
+	return [self setTargetScript:[filename fileURL]];
 }
 
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
@@ -173,16 +181,23 @@ static id sharedInstance = nil;
 	
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	[user_defaults registerDefaults:factory_defaults];
-	
+    
 	[appleScriptDocController setup];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	[DonationReminder remindDonation];
-	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
-    if (a_path) {
-		if (![a_path fileExists]) {
+	NSData *bmd = [[NSUserDefaults standardUserDefaults] dataForKey:@"TargetScript"];
+    BOOL is_stale;
+    NSError *error = nil;
+    NSURL *an_url = [NSURL URLByResolvingBookmarkData:bmd
+                                              options:NSURLBookmarkResolutionWithSecurityScope
+                                        relativeToURL:nil
+                                  bookmarkDataIsStale:&is_stale
+                                                error:&error];
+    if (an_url) {
+		if (![[an_url path] fileExists]) {
 			[[NSUserDefaults standardUserDefaults] removeObjectForKey:@"TargetScript"];
 		}
 	}
@@ -216,7 +231,7 @@ static id sharedInstance = nil;
                         NSURL *an_url = [panel URL];
                         NSDictionary *alias_info = [an_url infoResolvingAliasFile];
                         if (alias_info) {
-                            [self setTargetScript:alias_info[@"ResolvedPath"] ];
+                            [self setTargetScript:alias_info[@"ResolvedURL"] ];
                         } else {
                             [panel orderOut:self];
                             NSAlert *an_alert = [NSAlert alertWithMessageText:@"Can't resolving alias"
@@ -230,13 +245,20 @@ static id sharedInstance = nil;
 
 - (IBAction)popUpRecents:(id)sender
 {
-	NSString *a_path = [[sender selectedItem] title];
+    NSData *bmd = [[RecentScriptsController selectedObjects] lastObject];
+    BOOL is_stale;
+    NSError *error = nil;
+    NSURL *an_url = [NSURL URLByResolvingBookmarkData:bmd
+                                              options:NSURLBookmarkResolutionWithSecurityScope
+                                        relativeToURL:nil
+                                  bookmarkDataIsStale:&is_stale
+                                                error:&error];
 	UInt32 is_optkey = GetCurrentEventKeyModifiers() & optionKey;
-	if ((!is_optkey) && [a_path fileExists]) {
+	if ((!is_optkey) && [[an_url path] fileExists]) {
 		[[NSUserDefaultsController sharedUserDefaultsController] 
-						setValue:a_path forKeyPath:@"values.TargetScript"];
+						setValue:bmd forKeyPath:@"values.TargetScript"];
 	} else {
-		[[NSUserDefaults standardUserDefaults] removeFromHistory:a_path
+		[[NSUserDefaults standardUserDefaults] removeFromHistory:bmd
 												forKey:@"RecentScripts"];
 	}
 	[recentScriptsButton setTitle:@""];
@@ -287,9 +309,10 @@ void showOSAError(NSDictionary *err_info)
 
 - (NSDictionary *)exportHelpBook:(id)sender
 {
-	NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
+	NSURL *an_url = [[NSUserDefaults standardUserDefaults] fileURLForKey:@"TargetScript"];
 	[sender startIndicator];
-    NSDictionary *err_info = [appleScriptDocController exportHelpBook:a_path];
+    NSDictionary *err_info = [appleScriptDocController exportHelpBook:[an_url path]
+                                toPath:[[(PathSettingWindowController*)sender exportFileURL] path]];
 	[sender stopIndicator];
     return err_info;
 }
@@ -303,15 +326,15 @@ void showOSAError(NSDictionary *err_info)
 {
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     [userdefaults synchronize];
-    NSString *a_path = [userdefaults stringForKey:@"TargetScript"];
+    NSURL *an_url = [userdefaults fileURLForKey:@"TargetScript"];
 	[self startIndicator];
-	[appleScriptDocController setupHelpBook:a_path];
+	[appleScriptDocController setupHelpBook:[an_url path]];
 	[self stopIndicator];
 }
 
 - (void)outputToPath:(NSString *)dst
 {
-    NSString *a_path = [[NSUserDefaults standardUserDefaults] stringForKey:@"TargetScript"];
+    NSString *a_path = [[[NSUserDefaults standardUserDefaults] fileURLForKey:@"TargetScript"] path];
     [self startIndicator];
 	[appleScriptDocController outputFrom:a_path toPath:dst];
 	[self stopIndicator];

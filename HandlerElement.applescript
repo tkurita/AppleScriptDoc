@@ -68,13 +68,13 @@ on convert()
 
     --log "abstruct"
     my _abstruct's enumerate(my _link_manager)
-    set srd to make_with_iterator(my _abstruct) of SimpleRD
+    set srd to SimpleRD's make_with_iterator(my _abstruct)
     
     output's push(srd's html_tree())
     
     if (my _description's count_items()) > 0 then
         my _description's enumerate(my _link_manager)
-        set srd to make_with_iterator(my _description) of SimpleRD
+        set srd to SimpleRD's make_with_iterator(my _description)
         output's push(_line_end)
         output's push(srd's html_tree())
     end if
@@ -110,7 +110,7 @@ on convert()
     if (my _result's count_items()) > 0 then
         output's push_element_with("div", {{"class", "subHeading"}})'s push("Result")
         my _result's enumerate(my _link_manager)
-        set srd to make_with_iterator(my _result) of SimpleRD
+        set srd to SimpleRD's make_with_iterator(my _result)
         output's push(srd's html_tree())
     end if
 

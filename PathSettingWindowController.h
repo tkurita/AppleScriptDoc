@@ -15,6 +15,8 @@
 	__weak IBOutlet id exportPathWarning;
 	__weak IBOutlet id progressIndicator;
 	__weak IBOutlet id pathRecordsController;
+    __weak IBOutlet id RecentHelpBookRootURLsController;
+    __weak IBOutlet id RecentExportFileURLsController;
 }
 - (IBAction)cancelAction:(id)sender;
 - (IBAction)chooseExportPath:(id)sender;
@@ -22,4 +24,7 @@
 - (IBAction)okAction:(id)sender;
 - (IBAction)setExportPathFromRecents:(id)sender;
 - (IBAction)setHelpBookRootFromRecents:(id)sender;
+
+@property (nonatomic, strong) NSURL *exportFileURL;
+
 @end

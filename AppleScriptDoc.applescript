@@ -41,10 +41,11 @@ script AppleScriptDocController
     property ScriptLinkMaker : missing value
     property HandlerElement : missing value
     
-	on exportHelpBook_(a_path)
+	on exportHelpBook_toPath_(src, dest)
 		--log "start export_helpbook"
         try
-            ExportHelpBook's process_file(XFile's make_with(a_path as text))
+            ExportHelpBook's process({source:XFile's make_with(src as text), ¬
+                                      destination:((dest as text) as POSIX file)})
         on error msg number errno
             return {|message|:msg, |number|:errno}
         end try
@@ -56,7 +57,7 @@ script AppleScriptDocController
 	end cancelExport
 	
 	on setupHelpBook_(a_path)
-        --log "start setupHelpBook_"
+        -- log "start setupHelpBook_"
 		SetupHelpBook's process_file(XFile's make_with((a_path as text) as POSIX file))
 	end setupHelpBook_
 	

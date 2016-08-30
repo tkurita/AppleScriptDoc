@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment version="1080" identifier="macosx"/>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
         <capability name="box content view" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PathSettingWindowController">
             <connections>
+                <outlet property="RecentExportFileURLsController" destination="Jr7-wh-9XD" id="S2T-p9-EUD"/>
+                <outlet property="RecentHelpBookRootURLsController" destination="0A4-Lg-Z2R" id="gv6-yc-CPU"/>
                 <outlet property="exportDestBox" destination="20" id="30"/>
                 <outlet property="exportDestField" destination="28" id="33"/>
                 <outlet property="exportPathPopup" destination="23" id="56"/>
@@ -22,6 +24,16 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <arrayController objectClassName="NSData" id="0A4-Lg-Z2R" userLabel="RecentHelpBookRootURLsController">
+            <connections>
+                <binding destination="41" name="contentArray" keyPath="values.RecentHelpBookRootURLs" id="fpt-dU-keZ"/>
+            </connections>
+        </arrayController>
+        <arrayController objectClassName="NSData" id="Jr7-wh-9XD" userLabel="RecentExportFileURLsController">
+            <connections>
+                <binding destination="41" name="contentArray" keyPath="values.RecentExportFileURLs" id="gwl-TU-6bz"/>
+            </connections>
+        </arrayController>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="5" userLabel="Window">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -83,7 +95,11 @@ DQ
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="41" name="value" keyPath="values.HelpBookRootPath" id="47"/>
+                                        <binding destination="41" name="value" keyPath="values.HelpBookRootURL" id="jTT-hC-JmC">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">BookmarkToPathTransformer</string>
+                                            </dictionary>
+                                        </binding>
                                     </connections>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="18">
@@ -118,7 +134,7 @@ DQ
                                     </popUpButtonCell>
                                     <connections>
                                         <action selector="setHelpBookRootFromRecents:" target="-2" id="37"/>
-                                        <binding destination="41" name="contentValues" keyPath="values.RecentHelpBookRoots" id="53"/>
+                                        <binding destination="0A4-Lg-Z2R" name="contentValues" keyPath="arrangedObjects.path" id="dwH-jh-uqU"/>
                                     </connections>
                                 </popUpButton>
                             </subviews>
@@ -157,7 +173,7 @@ DQ
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                     <connections>
-                                        <binding destination="41" name="value" keyPath="values.ExportFilePath" id="51"/>
+                                        <binding destination="-2" name="value" keyPath="exportFileURL.path" id="C9Z-Us-2Vf"/>
                                     </connections>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="22">
@@ -192,7 +208,7 @@ DQ
                                     </popUpButtonCell>
                                     <connections>
                                         <action selector="setExportPathFromRecents:" target="-2" id="40"/>
-                                        <binding destination="41" name="contentValues" keyPath="values.RecentExportPathes" id="52"/>
+                                        <binding destination="Jr7-wh-9XD" name="contentValues" keyPath="arrangedObjects.path" id="FKa-8p-AEN"/>
                                     </connections>
                                 </popUpButton>
                                 <textField hidden="YES" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" preferredMaxLayoutWidth="378" translatesAutoresizingMaskIntoConstraints="NO" id="58">
@@ -252,11 +268,11 @@ DQ
             </connections>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="41" userLabel="Shared Defaults"/>
-        <arrayController automaticallyPreparesContent="YES" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="100" userLabel="Array Controller">
+        <arrayController automaticallyPreparesContent="YES" selectsInsertedObjects="NO" clearsFilterPredicateOnInsertion="NO" id="100" userLabel="PathRecrodController">
             <declaredKeys>
-                <string>ExportFilePath</string>
-                <string>HelpBookRootPath</string>
-                <string>ScriptPath</string>
+                <string>ExportFileURL</string>
+                <string>HelpBookRootURL</string>
+                <string>ScriptURL</string>
             </declaredKeys>
             <connections>
                 <binding destination="41" name="contentArray" keyPath="values.PathRecords" id="103"/>

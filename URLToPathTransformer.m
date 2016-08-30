@@ -1,18 +1,26 @@
-#import "IsBundleTransformer.h"
+//
+//  URLToPathTransformer.m
+//  AppleScriptDoc
+//
+//  Created by 栗田 哲郎 on 2016/08/29.
+//
+//
 
-@implementation IsBundleTransformer
+#import "URLToPathTransformer.h"
+
+@implementation URLToPathTransformer
 
 + (Class)transformedValueClass
 {
-	return [NSNumber class];
+    return [NSString class];
 }
 
 + (BOOL)allowsReverseTransformation
 {
-	return NO;
+    return NO;
 }
 
-- (id)transformedValue:(id)value
+- (id)transformedValue:(NSData *)value
 {
     if (!value) return nil;
     BOOL is_stale;
@@ -22,8 +30,7 @@
                                         relativeToURL:nil
                                   bookmarkDataIsStale:&is_stale
                                                 error:&error];
-	return [NSNumber numberWithBool:
-				(value && [[NSWorkspace sharedWorkspace] isFilePackageAtPath:[an_url path]])];
+    return [an_url path];
 }
 
 @end
