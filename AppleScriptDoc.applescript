@@ -57,8 +57,18 @@ script AppleScriptDocController
 	end cancelExport
 	
 	on setupHelpBook_(a_path)
-        -- log "start setupHelpBook_"
-		SetupHelpBook's process_file(XFile's make_with((a_path as text) as POSIX file))
+        try
+            SetupHelpBook's process_file(XFile's make_with((a_path as text) as POSIX file))
+        on error msg number errno from offending_obj
+            if errno is 1503 then
+                tell offending_obj
+                    set details to error_message() & return & target_text()
+                end tell
+            else
+                set details to ""
+            end if
+            display alert msg message details
+        end try
 	end setupHelpBook_
 	
     on outputFrom_toPath_(src, dst)
@@ -74,7 +84,7 @@ script AppleScriptDocController
 	on setup()
 		--log "start setup in AppleScriptDocController"
 		set ASFormattingStyle to import_script("ASFormattingStyle")
-		set ASHTML to make (import_script("ASHTML"))
+		set ASHTML to import_script("ASHTML")'s initialize()
 		set XFile to make (import_script("XFileExtend"))
 		set ASDocParser to import_script("ASDocParser")
 		ASDocParser's set_wrap_with_block(false)
