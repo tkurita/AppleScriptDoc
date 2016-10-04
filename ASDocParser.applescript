@@ -17,7 +17,7 @@ on extract_doc_region(line_list)
 	set doc_block_list to {}
 	
 	script DocExtractor
-		property _isInDoc : false
+        property _indoc_counter : 0
 		property _docIsEnded : false
 		property _textList : {}
 		property _indent : ""
@@ -57,12 +57,17 @@ on extract_doc_region(line_list)
 				end if
 			end if
 			
-			if _isInDoc or (not a_line's equal_to("")) then
+			if (my _indoc_counter > 0) or (not a_line's equal_to("")) then
 				set {indent_text, beg_deblank_line} to a_line's strip_beginning()
 				set {end_text, end_deblank_line} to a_line's strip_endding()
-				if _isInDoc then
-					set _isInDoc to not end_deblank_line's ends_with("*)")
-					if _isInDoc then
+				if (my _indoc_counter > 0) then
+                    if beg_deblank_line's starts_with("(*") then
+                        set my _indoc_counter to my _indoc_counter +1
+                    end if
+                    if end_deblank_line's ends_with("*)") then
+                        set my _indoc_counter to my _indoc_counter -1
+                    end if
+					if (my _indoc_counter > 0) then
 						set end of _textList to strip_indent(a_line)
 					else
 						try
@@ -75,24 +80,28 @@ on extract_doc_region(line_list)
 						if not deblank_line's equal_to("") then
 							set end of _textList to deblank_line
 						end if
-						set _isInDoc to false
+						
 						set _docIsEnded to true
 					end if
 				else
-					set _isInDoc to beg_deblank_line's starts_with("(*!")
-					if _isInDoc then
+					if beg_deblank_line's starts_with("(*!") then
+                        set my _indoc_counter to 1
+                    end if
+					if (my _indoc_counter > 0) then
 						set _indent to indent_text
 						set _n_indent to length of indent_text
 						if length of beg_deblank_line > 3 then
 							set deblank_line to beg_deblank_line's text_in_range(4, -1)
 							if end_deblank_line's ends_with("*)") then
+                                set my _indoc_counter to my _indoc_counter -1
+                            end if
+                            if (my _indoc_counter is 0) then
 								set {end_text, deblank_line} to deblank_line's strip_endding()
 								try
 									set deblank_line to deblank_line's text_in_range(1, -3)
 								on error
 									set deblank_line to XText's make_with("")
 								end try
-								set _isInDoc to false
 								set _docIsEnded to true
 								set {end_text, deblank_line} to deblank_line's strip_endding()
 							end if
