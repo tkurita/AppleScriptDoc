@@ -20,7 +20,7 @@
 
 	[a_history insertObject:value atIndex:1];
     //[a_history insertObject:value atIndex:0];
-	unsigned int history_max = [self integerForKey:@"HistoryMax"];
+	NSInteger history_max = [self integerForKey:@"HistoryMax"];
 
 	if ([a_history count] > history_max) {
 		[a_history removeLastObject];

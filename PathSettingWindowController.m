@@ -40,7 +40,6 @@
 		[okButton setEnabled:NO];return;
 	}
 	
-	NSURL *export_url;
 	if (! _exportFileURL) {
 		[okButton setEnabled:NO];return;
 	}
