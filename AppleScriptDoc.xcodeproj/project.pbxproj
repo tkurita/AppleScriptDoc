@@ -120,6 +120,8 @@
 		2C72A8E50D3CBDD700AECAF3 /* InfoPlistArranger.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = InfoPlistArranger.applescript; sourceTree = "<group>"; };
 		2C777EF11C6C9F60007F64DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PathSettingWindow.xib; sourceTree = "<group>"; };
 		2C777EF51C6CA252007F64DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		2C9FA76D1E0BCC0E003F3DC1 /* FileArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileArrayController.h; sourceTree = "<group>"; };
+		2C9FA76E1E0BCC0E003F3DC1 /* FileArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileArrayController.m; sourceTree = "<group>"; };
 		2CAEEB750ECC13E30068900A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		2CAEEC450ECC1B0F0068900A /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = /System/Library/Frameworks/OSAKit.framework; sourceTree = "<absolute>"; };
 		2CB2690B1D74595E00CBD51F /* URLToPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLToPathTransformer.h; sourceTree = "<group>"; };
@@ -367,6 +369,8 @@
 				2CB2690F1D752A7900CBD51F /* BookmarkToPathTransformer.m */,
 				2C10B4B61D756B370094B552 /* NSDataExtensions.h */,
 				2C10B4B71D756B370094B552 /* NSDataExtensions.m */,
+				2C9FA76D1E0BCC0E003F3DC1 /* FileArrayController.h */,
+				2C9FA76E1E0BCC0E003F3DC1 /* FileArrayController.m */,
 			);
 			name = Class;
 			sourceTree = "<group>";

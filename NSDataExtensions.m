@@ -20,7 +20,10 @@
                                         relativeToURL:nil
                                   bookmarkDataIsStale:&is_stale
                                                 error:&error];
-    if (error) NSLog(@"Error in path of NSDataExtensions with %@", error);
+    if (error) {
+        NSLog(@"Error in path of NSDataExtensions with %@", error);
+        return nil;
+    }
     return an_url;
 }
 

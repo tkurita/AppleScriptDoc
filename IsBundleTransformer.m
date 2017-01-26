@@ -22,6 +22,10 @@
                                         relativeToURL:nil
                                   bookmarkDataIsStale:&is_stale
                                                 error:&error];
+    if (!an_url) {
+        //[[NSAlert alertWithError:error] runModal];
+        return nil;
+    }
 	return [NSNumber numberWithBool:
 				(value && [[NSWorkspace sharedWorkspace] isFilePackageAtPath:[an_url path]])];
 }

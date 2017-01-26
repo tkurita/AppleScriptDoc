@@ -6,6 +6,7 @@
 #import "URLToPathTransformer.h"
 #import "BookmarkToPathTransformer.h"
 #import "NSUserDefaultsExtensions.h"
+#import "NSDataExtensions.h"
 #import <Carbon/Carbon.h>
 
 #define useLog 0
@@ -134,11 +135,24 @@ static id sharedInstance = nil;
 #if useLog
 	NSLog(@"awakeFromNib");
 #endif
+    
+    NSArray *recent_scripts = [RecentScriptsController arrangedObjects];
+    NSMutableArray* invalid_items = [NSMutableArray arrayWithCapacity:[recent_scripts count]];
+    for (NSData *an_item in recent_scripts) {
+        if (![an_item fileURL]) {
+            [invalid_items addObject:an_item];
+        }
+        //NSLog(@"%@", an_item);
+    }
+    if ([invalid_items count]) {
+        [RecentScriptsController removeObjects:invalid_items];
+    }
+    
 	[recentScriptsButton setTitle:@""];
 	NSPopUpButtonCell *a_cell = [recentScriptsButton cell];
 	[a_cell setBezelStyle:NSSmallSquareBezelStyle];
 	[a_cell setArrowPosition:NSPopUpArrowAtCenter];
-
+    
 	[targetScriptBox setAcceptFileInfo:@[@{@"FileType": NSFileTypeDirectory,
 													@"PathExtension": @"scptd"}, 
 		@{@"FileType": NSFileTypeRegular,
@@ -307,6 +321,12 @@ void showOSAError(NSDictionary *err_info)
 	}
 }
 
+BOOL existTargetScript(NSError **error)
+{
+    NSURL *an_url = [[NSUserDefaults standardUserDefaults] fileURLForKey:@"TargetScript"];
+    return [an_url checkResourceIsReachableAndReturnError:error];
+}
+
 - (NSDictionary *)exportHelpBook:(id)sender
 {
 	NSURL *an_url = [[NSUserDefaults standardUserDefaults] fileURLForKey:@"TargetScript"];
@@ -342,7 +362,14 @@ void showOSAError(NSDictionary *err_info)
 
 - (IBAction)saveToFileAction:(id)sender
 {
-	NSSavePanel *panel = [NSSavePanel savePanel];
+    NSError *error;
+    if (! existTargetScript(&error)) {
+        if (error) {
+            [[NSAlert alertWithError:error] runModal];
+        }
+        return;
+    }
+    NSSavePanel *panel = [NSSavePanel savePanel];
     [panel setAllowedFileTypes:@[@"public.html"]];
     [panel setCanSelectHiddenExtension:YES];
     [panel setNameFieldStringValue:@"index.html"];
