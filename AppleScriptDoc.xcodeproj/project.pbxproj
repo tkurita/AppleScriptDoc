@@ -29,6 +29,7 @@
 		2C57BBE01D35CE060066D9CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C57BBDE1D35CE060066D9CF /* InfoPlist.strings */; };
 		2C6203021D2E0B11000BD9CC /* HBBundleTemplate in Resources */ = {isa = PBXBuildFile; fileRef = 2C6203011D2E0B11000BD9CC /* HBBundleTemplate */; };
 		2C6447DF1E39D37900A414AE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2C6447E11E39D37900A414AE /* Localizable.strings */; };
+		2C6447E51E39DC9500A414AE /* AppleScriptDocIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 2C6447E41E39DC9500A414AE /* AppleScriptDocIcon.icns */; };
 		2C72A8D70D3CBCDF00AECAF3 /* empty-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */; };
 		2C72A8E60D3CBDD700AECAF3 /* InfoPlistArranger.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2C72A8E50D3CBDD700AECAF3 /* InfoPlistArranger.applescript */; settings = {ATTRIBUTES = (); }; };
 		2C777EF21C6C9F60007F64DF /* PathSettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C777EF01C6C9F60007F64DF /* PathSettingWindow.xib */; };
@@ -119,6 +120,7 @@
 		2C6203011D2E0B11000BD9CC /* HBBundleTemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HBBundleTemplate; sourceTree = "<group>"; };
 		2C6447E01E39D37900A414AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C6447E21E39D37B00A414AE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		2C6447E41E39DC9500A414AE /* AppleScriptDocIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppleScriptDocIcon.icns; sourceTree = "<group>"; };
 		2C72A8D60D3CBCDF00AECAF3 /* empty-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "empty-Info.plist"; sourceTree = "<group>"; };
 		2C72A8E50D3CBDD700AECAF3 /* InfoPlistArranger.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = InfoPlistArranger.applescript; sourceTree = "<group>"; };
 		2C777EF11C6C9F60007F64DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PathSettingWindow.xib; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2C6447E41E39DC9500A414AE /* AppleScriptDocIcon.icns */,
 				2C57BBDE1D35CE060066D9CF /* InfoPlist.strings */,
 				2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */,
 				2C777EF41C6CA252007F64DF /* MainMenu.xib */,
@@ -485,6 +488,7 @@
 				2C4BF1060F09652600F015E7 /* dsa_pub.pem in Resources */,
 				2C46DBCA10A1A6BC00501F03 /* Credits.rtf in Resources */,
 				2C777EF21C6C9F60007F64DF /* PathSettingWindow.xib in Resources */,
+				2C6447E51E39DC9500A414AE /* AppleScriptDocIcon.icns in Resources */,
 				2C777EF61C6CA252007F64DF /* MainMenu.xib in Resources */,
 				2CC5AA001C6CB71E007FEA6C /* AppleScriptDocHelp in Resources */,
 			);

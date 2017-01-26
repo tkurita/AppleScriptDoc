@@ -92,7 +92,7 @@
 	<key>CFBundleHelpBookName</key>
 	<string>Scriptfactory.AppleScriptDoc.help</string>
 	<key>CFBundleIconFile</key>
-	<string></string>
+	<string>AppleScriptDocIcon</string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
