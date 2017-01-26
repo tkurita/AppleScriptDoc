@@ -142,7 +142,6 @@ static id sharedInstance = nil;
         if (![an_item fileURL]) {
             [invalid_items addObject:an_item];
         }
-        //NSLog(@"%@", an_item);
     }
     if ([invalid_items count]) {
         [RecentScriptsController removeObjects:invalid_items];
@@ -280,6 +279,10 @@ static id sharedInstance = nil;
 
 - (IBAction)exportAction:(id)sender
 {
+    NSError *error;
+    if (! [self existTargetScriptReturnError:&error]) {
+        return;
+    }
 	if (!_pathSettingWindowController) {
 		self.pathSettingWindowController =
 			[[PathSettingWindowController alloc] initWithWindowNibName:@"PathSettingWindow"];
@@ -321,10 +324,21 @@ void showOSAError(NSDictionary *err_info)
 	}
 }
 
-BOOL existTargetScript(NSError **error)
+- (BOOL) existTargetScriptReturnError:(NSError **)errptr
 {
-    NSURL *an_url = [[NSUserDefaults standardUserDefaults] fileURLForKey:@"TargetScript"];
-    return [an_url checkResourceIsReachableAndReturnError:error];
+    NSURL *an_url = [[NSUserDefaults standardUserDefaults] fileURLForKey:@"TargetScript" error:errptr];
+    if (an_url && [an_url checkResourceIsReachableAndReturnError:errptr])
+        return YES;
+    if (! *errptr) {
+        NSString *errmsg = NSLocalizedString(@"fileNotExists", @"");
+        *errptr = [NSError errorWithDomain:@"AppleScriptDocErrorDomain"
+                                     code:1465
+                            userInfo:@{NSLocalizedDescriptionKey: errmsg}];
+    }
+    [[NSAlert alertWithError:*errptr]
+        beginSheetModalForWindow:_mainWindow modalDelegate:self
+                                               didEndSelector:nil contextInfo:nil];
+    return NO;
 }
 
 - (NSDictionary *)exportHelpBook:(id)sender
@@ -344,6 +358,10 @@ BOOL existTargetScript(NSError **error)
 
 - (IBAction)setupHelpBookAction:(id)sender
 {
+    NSError *error;
+    if (! [self existTargetScriptReturnError:&error]) {
+        return;
+    }
     NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
     [userdefaults synchronize];
     NSURL *an_url = [userdefaults fileURLForKey:@"TargetScript"];
@@ -363,10 +381,7 @@ BOOL existTargetScript(NSError **error)
 - (IBAction)saveToFileAction:(id)sender
 {
     NSError *error;
-    if (! existTargetScript(&error)) {
-        if (error) {
-            [[NSAlert alertWithError:error] runModal];
-        }
+    if (! [self existTargetScriptReturnError:&error]) {
         return;
     }
     NSSavePanel *panel = [NSSavePanel savePanel];

@@ -51,6 +51,19 @@
     [self setObject:bmd forKey:key];
 }
 
+- (NSURL *)fileURLForKey:(NSString *)key error:(NSError **)errptr
+{
+    NSData *bmd = [self dataForKey:key];
+    if (!bmd) return nil;
+    BOOL is_stale;
+    NSURL *an_url = [NSURL URLByResolvingBookmarkData:bmd
+                                              options:NSURLBookmarkResolutionWithSecurityScope
+                                        relativeToURL:nil
+                                  bookmarkDataIsStale:&is_stale
+                                                error:errptr];
+    return an_url;
+}
+    
 - (NSURL *)fileURLForKey:(NSString *)key
 {
     NSData *bmd = [self dataForKey:key];

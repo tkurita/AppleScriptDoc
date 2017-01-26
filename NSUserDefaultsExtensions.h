@@ -7,5 +7,5 @@
 - (void)removeFromHistory:(id)value forKey:(NSString *)key;
 - (void)setFileURL:(NSURL *)anURL forKey:(NSString *)key;
 - (NSURL *)fileURLForKey:(NSString *)key;
-
+- (NSURL *)fileURLForKey:(NSString *)key error:(NSError **)errptr;
 @end
