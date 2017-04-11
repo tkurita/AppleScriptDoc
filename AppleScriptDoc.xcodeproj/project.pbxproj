@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BCA590765205398468F16B6 /* libPods-AppleScriptDoc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 453ED35E42ACA1B7BB30676A /* libPods-AppleScriptDoc.a */; };
 		257572C5072881A4000BE9CA /* AppleScriptDoc.applescript in Sources */ = {isa = PBXBuildFile; fileRef = DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */; settings = {ATTRIBUTES = (); }; };
 		257572CA072881A4000BE9CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		257572CC072881A4000BE9CA /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -159,13 +158,8 @@
 		2CFA14131C6C1D8E0068526B /* HFSTypeUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HFSTypeUtils.m; sourceTree = "<group>"; };
 		2CFA141A1C6C1D9B0068526B /* PathExtra.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathExtra.h; sourceTree = "<group>"; };
 		2CFA141B1C6C1D9B0068526B /* PathExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathExtra.m; sourceTree = "<group>"; };
-		2CFA46A71C6C7E370094B047 /* localize.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = localize.mk; sourceTree = "<group>"; };
-		2CFA46A81C6C7E370094B047 /* localize_ib.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = localize_ib.mk; sourceTree = "<group>"; };
-		2CFA46A91C6C7E370094B047 /* localize_ib.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = localize_ib.sh; sourceTree = "<group>"; };
-		2CFA46AA1C6C7E370094B047 /* require_strings_file.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = require_strings_file.sh; sourceTree = "<group>"; };
 		2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.h; path = PathSettingWindowController.h; sourceTree = "<group>"; };
 		2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */ = {isa = PBXFileReference; fileEncoding = 2147483649; lastKnownFileType = sourcecode.c.objc; path = PathSettingWindowController.m; sourceTree = "<group>"; wrapsLines = 1; };
-		453ED35E42ACA1B7BB30676A /* libPods-AppleScriptDoc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppleScriptDoc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E67486B3EE2E784C4A97EB7 /* Pods-AppleScriptDoc.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppleScriptDoc.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc.debug.xcconfig"; sourceTree = "<group>"; };
 		DA206CF3015C4E8B03C91932 /* AppleScriptDoc.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; lineEnding = 0; path = AppleScriptDoc.applescript; sourceTree = "<group>"; };
 		DBE05ED6A4F2DA5A4E4A0694 /* Pods-AppleScriptDoc.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppleScriptDoc.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,7 +175,6 @@
 				2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */,
 				2CCDF86E164D5B9200591CB2 /* AppleScriptObjC.framework in Frameworks */,
 				2CFA14011C6C1CC00068526B /* DonationReminder.framework in Frameworks */,
-				1BCA590765205398468F16B6 /* libPods-AppleScriptDoc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +241,6 @@
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
-				2CFA46A61C6C7E370094B047 /* LocalizeTools */,
 				2CFA13F71C6C1C5C0068526B /* DonationReminder.xcodeproj */,
 				60497277E54F4B8E470BD577 /* Pods */,
 			);
@@ -291,7 +283,6 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
-				453ED35E42ACA1B7BB30676A /* libPods-AppleScriptDoc.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -344,17 +335,6 @@
 				2CFA141B1C6C1D9B0068526B /* PathExtra.m */,
 			);
 			path = PathExtra;
-			sourceTree = "<group>";
-		};
-		2CFA46A61C6C7E370094B047 /* LocalizeTools */ = {
-			isa = PBXGroup;
-			children = (
-				2CFA46A71C6C7E370094B047 /* localize.mk */,
-				2CFA46A81C6C7E370094B047 /* localize_ib.mk */,
-				2CFA46A91C6C7E370094B047 /* localize_ib.sh */,
-				2CFA46AA1C6C7E370094B047 /* require_strings_file.sh */,
-			);
-			path = LocalizeTools;
 			sourceTree = "<group>";
 		};
 		2CFE96280C44991E00B0D2A6 /* Class */ = {
@@ -447,6 +427,7 @@
 				en,
 			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* AppleScriptDoc */;
+			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectReferences = (
 				{
@@ -537,7 +518,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		72F028975BA9C3AA5D8BB07F /* [CP] Embed Pods Frameworks */ = {
@@ -666,7 +647,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2017, Tetsuro KURITA";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 5VBC6385DN;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -693,7 +674,7 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2017, Tetsuro KURITA";
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 32;
 				DEVELOPMENT_TEAM = 5VBC6385DN;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -734,7 +715,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_VERSION = 1.7;
+				PRODUCT_VERSION = 1.7.1b;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -761,7 +742,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
-				PRODUCT_VERSION = 1.7;
+				PRODUCT_VERSION = 1.7.1b;
 				SDKROOT = macosx;
 			};
 			name = Release;
