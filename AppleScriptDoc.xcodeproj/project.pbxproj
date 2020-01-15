@@ -104,6 +104,7 @@
 		2C2155461D3506BD00281743 /* StringExtra.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringExtra.m; sourceTree = "<group>"; };
 		2C2975070C3C8F82000CDBEF /* SaveToFile.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = SaveToFile.applescript; sourceTree = "<group>"; };
 		2C2C1F840C8EEC5C0094E73B /* HelpSetup.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HelpSetup.plist; sourceTree = "<group>"; };
+		2C440B3B23CF37AE005A5253 /* AppleScriptDoc.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AppleScriptDoc.entitlements; sourceTree = "<group>"; };
 		2C46DBC910A1A6BC00501F03 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		2C4A6CBE0C3CE15E00DBBCD4 /* FactorySettings.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; fileEncoding = 4; path = FactorySettings.plist; sourceTree = "<group>"; };
 		2C4A6CEE0C3CE21B00DBBCD4 /* AppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppController.m; sourceTree = "<group>"; wrapsLines = 1; };
@@ -230,6 +231,7 @@
 		29B97314FDCFA39411CA2CEA /* AppleScriptDoc */ = {
 			isa = PBXGroup;
 			children = (
+				2C440B3B23CF37AE005A5253 /* AppleScriptDoc.entitlements */,
 				2CF5BE310C43AB3300224B65 /* History.rd */,
 				2CFA14161C6C1D9B0068526B /* PathExtra */,
 				2C2155441D3506BD00281743 /* StringExtra */,
@@ -409,7 +411,7 @@
 				TargetAttributes = {
 					257572C2072881A4000BE9CA = {
 						DevelopmentTeam = 5VBC6385DN;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -641,13 +643,15 @@
 			baseConfigurationReference = 8E67486B3EE2E784C4A97EB7 /* Pods-AppleScriptDoc.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = AppleScriptDoc.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2017, Tetsuro KURITA";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 33;
+				CURRENT_PROJECT_VERSION = 34;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 5VBC6385DN;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -658,8 +662,10 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.script-factory.AppleScriptDoc";
 				PRODUCT_NAME = AppleScriptDoc;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};
@@ -670,11 +676,13 @@
 			baseConfigurationReference = DBE05ED6A4F2DA5A4E4A0694 /* Pods-AppleScriptDoc.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = AppleScriptDoc.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2017, Tetsuro KURITA";
-				CURRENT_PROJECT_VERSION = 33;
-				DEVELOPMENT_TEAM = 5VBC6385DN;
+				CURRENT_PROJECT_VERSION = 34;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -684,8 +692,10 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MARKETING_VERSION = 1.7.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.script-factory.AppleScriptDoc";
 				PRODUCT_NAME = AppleScriptDoc;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				VERSIONING_SYSTEM = "apple-generic";
 				WRAPPER_EXTENSION = app;
 			};

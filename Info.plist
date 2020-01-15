@@ -102,11 +102,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>${PRODUCT_VERSION}</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>33</string>
+	<string>34</string>
 	<key>DonationURL</key>
 	<string>http://www.script-factory.net/donationproxy.html</string>
 	<key>NSAppTransportSecurity</key>
