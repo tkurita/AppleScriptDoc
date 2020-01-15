@@ -55,6 +55,7 @@
 		2CFA14151C6C1D8E0068526B /* HFSTypeUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA14131C6C1D8E0068526B /* HFSTypeUtils.m */; };
 		2CFA141D1C6C1D9B0068526B /* PathExtra.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFA141B1C6C1D9B0068526B /* PathExtra.m */; };
 		2CFE961B0C44925A00B0D2A6 /* PathSettingWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFE96190C44925A00B0D2A6 /* PathSettingWindowController.m */; };
+		4B77671A5DC61C1DFA9D315A /* libPods-AppleScriptDoc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 24C35F7BBBC0306755ABF6DE /* libPods-AppleScriptDoc.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 
 /* Begin PBXFileReference section */
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		24C35F7BBBC0306755ABF6DE /* libPods-AppleScriptDoc.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-AppleScriptDoc.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		257572D5072881A4000BE9CA /* Info.plist */ = {isa = PBXFileReference; explicitFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		257572D6072881A4000BE9CA /* AppleScriptDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleScriptDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */,
 				2CCDF86E164D5B9200591CB2 /* AppleScriptObjC.framework in Frameworks */,
 				2CFA14011C6C1CC00068526B /* DonationReminder.framework in Frameworks */,
+				4B77671A5DC61C1DFA9D315A /* libPods-AppleScriptDoc.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,7 +231,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* AppleScriptDoc */ = {
+		29B97314FDCFA39411CA2CEA = {
 			isa = PBXGroup;
 			children = (
 				2C440B3B23CF37AE005A5253 /* AppleScriptDoc.entitlements */,
@@ -285,6 +288,7 @@
 			children = (
 				1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */,
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
+				24C35F7BBBC0306755ABF6DE /* libPods-AppleScriptDoc.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -388,7 +392,6 @@
 				2C4A6CFB0C3CE37500DBBCD4 /* CopyFiles */,
 				2C275B3F1548C3CE006FFB2B /* ShellScript */,
 				72F028975BA9C3AA5D8BB07F /* [CP] Embed Pods Frameworks */,
-				B92CBF53BC8991E6457B455B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -426,7 +429,7 @@
 				fr,
 				de,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* AppleScriptDoc */;
+			mainGroup = 29B97314FDCFA39411CA2CEA;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -512,13 +515,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AppleScriptDoc-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		72F028975BA9C3AA5D8BB07F /* [CP] Embed Pods Frameworks */ = {
@@ -527,28 +533,18 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc-frameworks.sh",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework",
+				"${PODS_ROOT}/Sparkle/Sparkle.framework.dSYM",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sparkle.framework",
+				"${DWARF_DSYM_FOLDER_PATH}/Sparkle.framework.dSYM",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B92CBF53BC8991E6457B455B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AppleScriptDoc/Pods-AppleScriptDoc-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
