@@ -152,10 +152,10 @@ static id sharedInstance = nil;
 	[a_cell setBezelStyle:NSSmallSquareBezelStyle];
 	[a_cell setArrowPosition:NSPopUpArrowAtCenter];
     
-	[targetScriptBox setAcceptFileInfo:@[@{@"FileType": NSFileTypeDirectory,
-													@"PathExtension": @"scptd"}, 
-		@{@"FileType": NSFileTypeRegular,
-													@"PathExtension": @"scpt"}]];
+	[targetScriptBox setAcceptFileInfo:@[
+        @{@"FileType": NSFileTypeDirectory, @"PathExtension": @"scptd"},
+        @{@"FileType": NSFileTypeRegular, @"PathExtension": @"scpt"},
+        @{@"FileType": NSFileTypeRegular, @"PathExtension": @"applescript"}]];
 	[_mainWindow center];
 	[_mainWindow setFrameAutosaveName:@"Main"];
 }

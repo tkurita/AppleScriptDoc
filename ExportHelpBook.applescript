@@ -271,7 +271,11 @@ end output_to_folder
 
 on process({source:x_file, destination:a_destination})
 	HandlerElement's set_script_support(true)
-	set a_text to appController's sourceOfScript_(x_file's posix_path()) as text
+    if x_file's path_extension() is "applescript" then
+        set a_text to read (x_file's posix_path())
+    else
+        set a_text to appController's sourceOfScript_(x_file's posix_path()) as text
+    end if
 	set script_name to x_file's basename()
 	tell current application's class "NSUserDefaults"'s standardUserDefaults()
         set a_root to ((its fileURLForKey_("HelpBookRootURL")'s |path|() as text) as POSIX file) as alias
@@ -280,9 +284,10 @@ on process({source:x_file, destination:a_destination})
 	end tell
 	set index_page to output_to_folder(a_root, a_destination, a_text, script_name)
 	
-	index_page's set_types(missing value, missing value)
-	tell application "Finder"
-		open index_page's as_alias()
-	end tell
+	-- index_page's set_types(missing value, missing value)
+    set aURL to current application's |NSURL|'s fileURLWithPath:(index_page's posix_path())
+    tell current application's |NSWorkspace|'s sharedWorkspace()
+        its openURL:aURL
+    end tell
 end process
 

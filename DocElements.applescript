@@ -60,6 +60,7 @@ on make_group_element(parentElement)
 		property parent : parentElement
 		
 		on html_element()
+            -- log "start html_element in GroupElement"
 			return html_element_with("h2")
 		end html_element
 		
@@ -107,7 +108,7 @@ on make_paragraph_element(a_list)
 		end get_kind
 		
 		on convert()
-			--log "start convert in ParagraphElement"
+			--tell applescript to log "start convert in ParagraphElement"
 			if (count me) > 0 then
 				set srd to SimpleRD's make_with_iterator(me)
 				return srd's html_tree()
@@ -138,7 +139,7 @@ script ExampleElement
     end get_kind
     
     on html_element()
-        --log "start html_element"
+        --log "start html_element in ExampleElement"
         set a_code to my _contents's as_text_with(return)
         tell make ASHTML
             set_wrap_with_block(false)

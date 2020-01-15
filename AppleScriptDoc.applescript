@@ -1,3 +1,6 @@
+use framework "Foundation"
+use scripting additions
+
 on setup(a_script)
     application (get "AppleScriptDocLib")'s loader()'s setup(a_script)
 	set a_script's _line_end to a_script's HTMLElement's line_end()
@@ -72,8 +75,19 @@ script AppleScriptDocController
 	end setupHelpBook_
 	
     on outputFrom_toPath_(src, dst)
-        SaveToFile's process_file(XFile's make_with((src as text) as POSIX file),¬
-                    XFile's make_with((dst as text) as POSIX file))
+        try
+            SaveToFile's process_file(XFile's make_with((src as text) as POSIX file),¬
+                        XFile's make_with((dst as text) as POSIX file))
+        on error msg number errno from offending_obj
+            if errno is 1503 then
+                tell offending_obj
+                    set details to error_message() & return & target_text()
+                end tell
+            else
+                set details to ""
+            end if
+            display alert msg message details
+        end try
     end outputFrom_toPath_
     
 	on import_script(a_name)
