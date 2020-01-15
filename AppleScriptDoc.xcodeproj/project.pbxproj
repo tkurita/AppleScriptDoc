@@ -231,7 +231,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA = {
+		29B97314FDCFA39411CA2CEA /* AppleScriptDoc */ = {
 			isa = PBXGroup;
 			children = (
 				2C440B3B23CF37AE005A5253 /* AppleScriptDoc.entitlements */,
@@ -429,7 +429,7 @@
 				fr,
 				de,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* AppleScriptDoc */;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectReferences = (

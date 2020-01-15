@@ -237,7 +237,7 @@ static id sharedInstance = nil;
 {
 	NSOpenPanel *panel = [NSOpenPanel openPanel];
 	[panel setResolvesAliases:NO];
-    [panel setAllowedFileTypes:@[@"scpt", @"scptd"]];
+    [panel setAllowedFileTypes:@[@"scpt", @"scptd", @"applescript"]];
     [panel beginSheetModalForWindow:_mainWindow
                     completionHandler:^(NSInteger result) {
                         if (result != NSOKButton) return;
