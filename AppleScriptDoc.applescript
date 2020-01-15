@@ -1,28 +1,28 @@
-on boot_for(a_script)
-	boot (module loader of application (get "AppleScriptDocLib")) for a_script
+on setup(a_script)
+    application (get "AppleScriptDocLib")'s loader()'s setup(a_script)
 	set a_script's _line_end to a_script's HTMLElement's line_end()
 	return
-end boot_for
+end setup
 
 script AppleScriptDocController
 	-- modules loaded at compile time
-	property HTMLElement : module
-	property SimpleRD : module
-	property XDict : module
-	property XList : module
-	property XText : module
-	property TemplateProcessor : module
-	property XFileBase : module "XFile"
-	property PathConverter : module
-	property XCharacterSet : module
-	property CSSBuilder : module
-	property RGBColor : module
-	--property collecting modules : true
-	property only local : true
+	property HTMLElement : "@module"
+	property SimpleRD : "@module"
+	property XDict : "@module"
+	property XList : "@module"
+	property XText : "@module"
+	property TemplateProcessor : "@module"
+	property XFileBase : "@module XFile"
+	property PathConverter : "@module"
+	property XCharacterSet : "@module"
+	property CSSBuilder : "@module"
+	property RGBColor : "@module"
+	--property _collecting_modules : true
+	property _only_local : true
 	
 	(*== constants *)
 	property _line_end : missing value
-	property _ : boot_for(me)
+	property _ : setup(me)
 	
 	(*== Modules *)
 	property ASDocParser : missing value
