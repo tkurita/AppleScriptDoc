@@ -33,6 +33,8 @@
 		2C72A8E60D3CBDD700AECAF3 /* InfoPlistArranger.applescript in Sources */ = {isa = PBXBuildFile; fileRef = 2C72A8E50D3CBDD700AECAF3 /* InfoPlistArranger.applescript */; settings = {ATTRIBUTES = (); }; };
 		2C777EF21C6C9F60007F64DF /* PathSettingWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C777EF01C6C9F60007F64DF /* PathSettingWindow.xib */; };
 		2C777EF61C6CA252007F64DF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C777EF41C6CA252007F64DF /* MainMenu.xib */; };
+		2CABB08D23CFF55300C6A0C4 /* ScriptCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CABB08C23CFF55300C6A0C4 /* ScriptCommands.m */; };
+		2CABB08E23CFFB7C00C6A0C4 /* AppleScriptDoc.sdef in Resources */ = {isa = PBXBuildFile; fileRef = 2CABB08A23CFF3E300C6A0C4 /* AppleScriptDoc.sdef */; };
 		2CAEEB8A0ECC13E30068900A /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEB750ECC13E30068900A /* Carbon.framework */; };
 		2CAEEC4E0ECC1B0F0068900A /* OSAKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CAEEC450ECC1B0F0068900A /* OSAKit.framework */; };
 		2CB2690D1D74595E00CBD51F /* URLToPathTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CB2690C1D74595E00CBD51F /* URLToPathTransformer.m */; };
@@ -129,6 +131,9 @@
 		2C777EF51C6CA252007F64DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2C9FA76D1E0BCC0E003F3DC1 /* FileArrayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileArrayController.h; sourceTree = "<group>"; };
 		2C9FA76E1E0BCC0E003F3DC1 /* FileArrayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileArrayController.m; sourceTree = "<group>"; };
+		2CABB08A23CFF3E300C6A0C4 /* AppleScriptDoc.sdef */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AppleScriptDoc.sdef; sourceTree = "<group>"; };
+		2CABB08B23CFF55300C6A0C4 /* ScriptCommands.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScriptCommands.h; sourceTree = "<group>"; };
+		2CABB08C23CFF55300C6A0C4 /* ScriptCommands.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScriptCommands.m; sourceTree = "<group>"; };
 		2CAEEB750ECC13E30068900A /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		2CAEEC450ECC1B0F0068900A /* OSAKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSAKit.framework; path = /System/Library/Frameworks/OSAKit.framework; sourceTree = "<absolute>"; };
 		2CB2690B1D74595E00CBD51F /* URLToPathTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLToPathTransformer.h; sourceTree = "<group>"; };
@@ -263,6 +268,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2CABB08A23CFF3E300C6A0C4 /* AppleScriptDoc.sdef */,
 				2C6447E41E39DC9500A414AE /* AppleScriptDocIcon.icns */,
 				2C57BBDE1D35CE060066D9CF /* InfoPlist.strings */,
 				2CC5A9FF1C6CB71E007FEA6C /* AppleScriptDocHelp */,
@@ -346,6 +352,8 @@
 		2CFE96280C44991E00B0D2A6 /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				2CABB08B23CFF55300C6A0C4 /* ScriptCommands.h */,
+				2CABB08C23CFF55300C6A0C4 /* ScriptCommands.m */,
 				2C4A6CEE0C3CE21B00DBBCD4 /* AppController.m */,
 				2C4A6CEF0C3CE21B00DBBCD4 /* AppController.h */,
 				2CFE96180C44925A00B0D2A6 /* PathSettingWindowController.h */,
@@ -460,6 +468,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CABB08E23CFFB7C00C6A0C4 /* AppleScriptDoc.sdef in Resources */,
 				2C57BBD81D355E750066D9CF /* HelpBookTemplate in Resources */,
 				2C6203021D2E0B11000BD9CC /* HBBundleTemplate in Resources */,
 				2C57BBDA1D355E7D0066D9CF /* HTMLTemplate in Resources */,
@@ -569,6 +578,7 @@
 				2CFE961B0C44925A00B0D2A6 /* PathSettingWindowController.m in Sources */,
 				2C10B4B81D756B370094B552 /* NSDataExtensions.m in Sources */,
 				2CE5F4230D328D7B00EDC0FF /* IsBundleTransformer.m in Sources */,
+				2CABB08D23CFF55300C6A0C4 /* ScriptCommands.m in Sources */,
 				2CE5F48C0D32EEE900EDC0FF /* NSUserDefaultsExtensions.m in Sources */,
 				2CFA140B1C6C1D840068526B /* ASFormatting.m in Sources */,
 				2CFA140C1C6C1D840068526B /* ASFormattingExtensions.m in Sources */,

@@ -11,14 +11,6 @@
 
 #define useLog 0
 
-@interface AppleScriptDocController : NSObject
-- (void)outputFrom:(NSString *)src toPath:(NSString *)dst;
-- (void)setupHelpBook:(NSString *)path;
-- (void)cancelExport;
-- (void)setup;
-- (NSDictionary *)exportHelpBook:(NSString *)path toPath:(NSString *)destination;
-@end
-
 @implementation AppController
 
 + (void)initialize
@@ -195,7 +187,7 @@ static id sharedInstance = nil;
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	[user_defaults registerDefaults:factory_defaults];
     
-	[appleScriptDocController setup];
+	[_appleScriptDocController setup];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -345,7 +337,7 @@ void showOSAError(NSDictionary *err_info)
 {
 	NSURL *an_url = [[NSUserDefaults standardUserDefaults] fileURLForKey:@"TargetScript"];
 	[sender startIndicator];
-    NSDictionary *err_info = [appleScriptDocController exportHelpBook:[an_url path]
+    NSDictionary *err_info = [_appleScriptDocController exportHelpBook:[an_url path]
                                 toPath:[[(PathSettingWindowController*)sender exportFileURL] path]];
 	[sender stopIndicator];
     return err_info;
@@ -353,7 +345,7 @@ void showOSAError(NSDictionary *err_info)
 
 - (void)cancelExport:(id)sender
 {
-	[appleScriptDocController cancelExport];
+	[_appleScriptDocController cancelExport];
 }
 
 - (IBAction)setupHelpBookAction:(id)sender
@@ -366,7 +358,7 @@ void showOSAError(NSDictionary *err_info)
     [userdefaults synchronize];
     NSURL *an_url = [userdefaults fileURLForKey:@"TargetScript"];
 	[self startIndicator];
-	[appleScriptDocController setupHelpBook:[an_url path]];
+	[_appleScriptDocController setupHelpBook:[an_url path]];
 	[self stopIndicator];
 }
 
@@ -374,7 +366,7 @@ void showOSAError(NSDictionary *err_info)
 {
     NSString *a_path = [[[NSUserDefaults standardUserDefaults] fileURLForKey:@"TargetScript"] path];
     [self startIndicator];
-	[appleScriptDocController outputFrom:a_path toPath:dst];
+	[_appleScriptDocController outputFrom:a_path toPath:dst];
 	[self stopIndicator];
 }
 
