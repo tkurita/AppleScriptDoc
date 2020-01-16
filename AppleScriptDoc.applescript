@@ -71,7 +71,9 @@ script AppleScriptDocController
                 set details to ""
             end if
             display alert msg message details
+            return false
         end try
+        return true
 	end setupHelpBook_
 	
     on outputFrom_toPath_(src, dst)

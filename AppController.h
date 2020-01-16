@@ -5,7 +5,7 @@ void showOSAError(NSDictionary *err_info);
 
 @interface AppleScriptDocController : NSObject
 - (void)outputFrom:(NSString *)src toPath:(NSString *)dst;
-- (void)setupHelpBook:(NSString *)path;
+- (NSNumber *)setupHelpBook:(NSString *)path;
 - (void)cancelExport;
 - (void)setup;
 - (NSDictionary *)exportHelpBook:(NSString *)path toPath:(NSString *)destination;
