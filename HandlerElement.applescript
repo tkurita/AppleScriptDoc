@@ -114,10 +114,15 @@ on convert()
         output's push(srd's html_tree())
     end if
 
-
-    if my _example is not missing value then
+    if ((my _example's item_counts()) is not 0) then
         output's push_element_with("div", {{"class", "subHeading"}})'s push("Example")
-        output's push(my _example's html_element())
+        script process_example
+            on do(an_example, sender)
+                output's push(an_example's html_element())
+                return true
+            end do
+        end script
+        my _example's enumerate(process_example)
     end if
 
     if my _useAppleSegment then

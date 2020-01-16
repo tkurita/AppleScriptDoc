@@ -273,7 +273,7 @@ on parse_handler_region(a_region, doc_container)
 	set result_list to {}
 	set abstruct_list to {}
 	set syntax_list to {}
-    set example_element to missing value
+    set example_list to {}
     
 	set is_continued to false
 	set enumerator to lineEnum of a_region
@@ -295,7 +295,7 @@ on parse_handler_region(a_region, doc_container)
             else if the_tag is "example" then
                 set x_list to make XList
                 parse_example_region(a_region, x_list)
-                set example_element to x_list's item_at(1)
+                set end of example_list to x_list's item_at(1)
             else if the_tag is "end" then
                 -- do nothing
 			else
@@ -329,7 +329,7 @@ on parse_handler_region(a_region, doc_container)
 		property _parameters : XList's make_with(param_list)
 		property _syntax : XList's make_with(syntax_list)
 		property _handler_name : first word of ((get first item of syntax_list)'s as_text())
-        property _example : example_element
+        property _example : XList's make_with(example_list)
         property _link_manager : doc_container's link_manager()
 	end script
 	
