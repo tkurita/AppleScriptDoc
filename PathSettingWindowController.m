@@ -83,8 +83,10 @@
 - (IBAction)chooseExportPath:(id)sender
 {
 	NSSavePanel *save_panel = [NSSavePanel savePanel];
-	[save_panel setAllowedFileTypes:@[@"public.html"]];
-	[save_panel setCanSelectHiddenExtension:YES];
+    save_panel.allowedFileTypes = @[@"public.html"];
+    save_panel.extensionHidden = NO;
+    save_panel.canSelectHiddenExtension = YES;
+	
 	NSUserDefaults *user_defaults = [NSUserDefaults standardUserDefaults];
 	NSURL *an_url = [user_defaults fileURLForKey:@"ExportFileURL"];
 	NSString *a_name;
@@ -98,9 +100,9 @@
 	}
     
     if (dir) {
-        [save_panel setDirectoryURL:dir];
+        save_panel.directoryURL = dir;
     }
-    [save_panel setNameFieldStringValue:a_name];
+    save_panel.nameFieldStringValue = a_name;
     [save_panel beginSheetModalForWindow:self.window
                        completionHandler:^(NSInteger result) {
         if (result == NSCancelButton) return;

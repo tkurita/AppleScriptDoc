@@ -385,9 +385,10 @@ void showOSAError(NSDictionary *err_info)
         return;
     }
     NSSavePanel *panel = [NSSavePanel savePanel];
-    [panel setAllowedFileTypes:@[@"public.html"]];
-    [panel setCanSelectHiddenExtension:YES];
-    [panel setNameFieldStringValue:@"index.html"];
+    panel.allowedFileTypes = @[@"public.html"];
+    panel.extensionHidden = NO;
+    panel.canSelectHiddenExtension = YES;
+    panel.nameFieldStringValue = @"index.html";
     [panel beginSheetModalForWindow:_mainWindow
                   completionHandler:^(NSInteger result) {
                       if (result != NSOKButton) return;
