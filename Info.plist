@@ -86,7 +86,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleGetInfoString</key>
-	<string>${PRODUCT_VERSION} ${COPYRIGHT}</string>
+	<string>$(MARKETING_VERSION) ${COPYRIGHT}</string>
 	<key>CFBundleHelpBookFolder</key>
 	<string>AppleScriptDocHelp</string>
 	<key>CFBundleHelpBookName</key>
@@ -106,7 +106,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>34</string>
+	<string>35</string>
 	<key>DonationURL</key>
 	<string>http://www.script-factory.net/donationproxy.html</string>
 	<key>LSApplicationCategoryType</key>
@@ -116,20 +116,20 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSAppleScriptEnabled</key>
+	<true/>
 	<key>NSHumanReadableCopyright</key>
 	<string>${COPYRIGHT}</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>OSAScriptingDefinition</key>
+	<string>AppleScriptDoc.sdef</string>
 	<key>SUCheckAtStartup</key>
 	<true/>
 	<key>SUFeedURL</key>
 	<string>http://www.script-factory.net/appcast/AppleScriptDoc.xml</string>
-	<key>OSAScriptingDefinition</key>
-	<string>AppleScriptDoc.sdef</string>
-	<key>NSAppleScriptEnabled</key>
-	<true/>
 	<key>SUPublicDSAKeyFile</key>
 	<string>dsa_pub.pem</string>
 </dict>

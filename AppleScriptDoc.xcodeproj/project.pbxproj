@@ -653,9 +653,9 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPYRIGHT = "Copyright 2007-2017, Tetsuro KURITA";
+				COPYRIGHT = "Copyright 2007-2020, Kurita Tetsuro";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 34;
+				CURRENT_PROJECT_VERSION = 35;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -671,7 +671,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.7.2;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.script-factory.AppleScriptDoc";
 				PRODUCT_NAME = AppleScriptDoc;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -689,8 +689,8 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				COPYRIGHT = "Copyright 2007-2017, Tetsuro KURITA";
-				CURRENT_PROJECT_VERSION = 34;
+				COPYRIGHT = "Copyright 2007-2020, Kurita Tetsuro";
+				CURRENT_PROJECT_VERSION = 35;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -704,7 +704,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.7.2;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.script-factory.AppleScriptDoc";
 				PRODUCT_NAME = AppleScriptDoc;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -746,7 +746,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_VERSION = 1.7.1;
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -783,7 +782,6 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_VERSION = 1.7.1;
 				SDKROOT = macosx;
 			};
 			name = Release;
