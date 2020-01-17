@@ -396,8 +396,8 @@
 				2C4EC700152D9614004167B9 /* ShellScript */,
 				257572C6072881A4000BE9CA /* Resources */,
 				257572C9072881A4000BE9CA /* Sources */,
-				257572CB072881A4000BE9CA /* Frameworks */,
 				2C4A6CFB0C3CE37500DBBCD4 /* CopyFiles */,
+				257572CB072881A4000BE9CA /* Frameworks */,
 				2C275B3F1548C3CE006FFB2B /* ShellScript */,
 				72F028975BA9C3AA5D8BB07F /* [CP] Embed Pods Frameworks */,
 			);
@@ -500,7 +500,7 @@
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
+			shellPath = "/bin/zsh -l";
 			shellScript = "if [ ! \"$CONFIGURATION\" = 'Release' ]; then\necho \"HelpBook setup script will run only with Release configuration\";\nexit 0\nfi\n\ncd \"$BUILT_PRODUCTS_DIR\"\nSetupHelpBook \"$FULL_PRODUCT_NAME\"\n";
 			showEnvVarsInLog = 0;
 		};
