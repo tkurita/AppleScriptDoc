@@ -105,7 +105,7 @@ on setup_info_plist()
     
     set recover_plist to my _target_xfile's bundle_resources_folder()'s child("recover-Info.plist")
     if recover_plist's item_exists() then
-        target_infoPlist's copy_to(recover_plist)
+        target_infoPlist's copy_with_replacing(recover_plist)
     end if
     set my _need_setup to false
 end setup_info_plist

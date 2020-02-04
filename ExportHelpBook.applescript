@@ -130,7 +130,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
     script CopyAssetsFolders
         on do(src)
             set x_src to XFile's make_with(path to resource src)
-            return x_src's copy_to(book_folder)
+            return x_src's copy_with_replacing(book_folder)
         end do
     end script
     set assets_folders to XList's make_with(my _assets_srcfolders)'s map(CopyAssetsFolders)
