@@ -129,6 +129,7 @@ on output_to_folder(root_ref, index_page, a_text, script_name)
 	book_folder's make_path(missing value)
     script CopyAssetsFolders
         on do(src)
+            -- log "start do in CopyAssetsFolders : "&src
             set x_src to XFile's make_with(path to resource src)
             return x_src's copy_with_replacing(book_folder)
         end do

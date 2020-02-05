@@ -23,8 +23,10 @@ on prepare_HBBundle(product_bundle, product_infoplist)
         end if
     else
         set myself to XFile's make_with(path to current application)
+        log "aaa-1"
         set info_in_HBBundle to myself's bundle_resource("HBBundleTemplate")'s ¬
             child("Contents")'s copy_with_replacing(hb_bundle_folder)'s child("Info.plist")
+        log "aaa-2"
         set product_id to product_infoplist's bundle_identifier()
         tell TemplateProcessor's make_with_xfile(info_in_HBBundle)
              insert_text("${HBBundleName}", hb_bundle_folder's basename())

@@ -1,11 +1,11 @@
 use framework "Foundation"
 use scripting additions
 
-on setup(a_script)
+on setup_modules(a_script)
     application (get "AppleScriptDocLib")'s loader()'s setup(a_script)
 	set a_script's _line_end to a_script's HTMLElement's line_end()
 	return
-end setup
+end setup_modules
 
 script AppleScriptDocController
 	-- modules loaded at compile time
@@ -25,7 +25,7 @@ script AppleScriptDocController
 	
 	(*== constants *)
 	property _line_end : missing value
-	property _ : setup(me)
+	property _ : setup_modules(me)
 	
 	(*== Modules *)
 	property ASDocParser : missing value
@@ -98,6 +98,7 @@ script AppleScriptDocController
 	end import_script
 	
 	on setup()
+        -- setup_modules(me) -- debug
 		--log "start setup in AppleScriptDocController"
 		set ASFormattingStyle to import_script("ASFormattingStyle")
 		set ASHTML to import_script("ASHTML")'s initialize()
