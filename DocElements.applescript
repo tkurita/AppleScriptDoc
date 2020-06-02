@@ -3,14 +3,15 @@ global ASHTML
 global XList
 global HTMLElement
 global ScriptLinkMaker
+global XText
 global _line_end
+
 
 --property _useAppleSegment : true
 
 on strip_tag(a_text)
-	set a_list to a_text's as_xlist_with(space)
-	a_list's delete_at(1)
-	return a_list's as_xtext_with(space)
+	set a_list to a_text's as_list_with(space)
+    return XText's make_with_list(rest of a_list, space)
 end strip_tag
 
 on make_heading_element(a_line)
