@@ -41,7 +41,7 @@ on prepare_HBBundle(product_bundle, product_infoplist)
 end prepare_HBBundle
 
 on process given bundle:a_bundle, text:a_text
-	log "start process in SetupHelpBook"
+	--log "start process in SetupHelpBook"
 	if a_bundle is missing value then return
 	set product_infoplist to InfoPlistArranger's make_with(a_bundle)
 	HandlerElement's set_script_support(true)

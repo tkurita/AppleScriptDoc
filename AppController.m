@@ -130,9 +130,15 @@ static id sharedInstance = nil;
     
     NSArray *recent_scripts = [RecentScriptsController arrangedObjects];
     NSMutableArray* invalid_items = [NSMutableArray arrayWithCapacity:[recent_scripts count]];
+    NSMutableArray* valid_items = [NSMutableArray arrayWithCapacity:[recent_scripts count]];
     for (NSData *an_item in recent_scripts) {
+        NSURL *url = [an_item fileURL];
         if (![an_item fileURL]) {
             [invalid_items addObject:an_item];
+        } else if ([valid_items containsObject:url]) {
+            [invalid_items addObject:an_item]; // remove dupulication
+        } else {
+            [valid_items addObject:url];
         }
     }
     if ([invalid_items count]) {
