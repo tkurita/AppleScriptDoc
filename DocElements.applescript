@@ -8,7 +8,6 @@ global _line_end
 --property _useAppleSegment : true
 
 on strip_tag(a_text)
-	--set a_list to XList's make_with_text(a_text, space)
 	set a_list to a_text's as_xlist_with(space)
 	a_list's delete_at(1)
 	return a_list's as_xtext_with(space)

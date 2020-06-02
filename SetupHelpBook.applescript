@@ -23,10 +23,8 @@ on prepare_HBBundle(product_bundle, product_infoplist)
         end if
     else
         set myself to XFile's make_with(path to current application)
-        log "aaa-1"
         set info_in_HBBundle to myself's bundle_resource("HBBundleTemplate")'s ¬
             child("Contents")'s copy_with_replacing(hb_bundle_folder)'s child("Info.plist")
-        log "aaa-2"
         set product_id to product_infoplist's bundle_identifier()
         tell TemplateProcessor's make_with_xfile(info_in_HBBundle)
              insert_text("${HBBundleName}", hb_bundle_folder's basename())
@@ -43,7 +41,7 @@ on prepare_HBBundle(product_bundle, product_infoplist)
 end prepare_HBBundle
 
 on process given bundle:a_bundle, text:a_text
-	--log "start process in SetupHelpBook"
+	log "start process in SetupHelpBook"
 	if a_bundle is missing value then return
 	set product_infoplist to InfoPlistArranger's make_with(a_bundle)
 	HandlerElement's set_script_support(true)
