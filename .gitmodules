@@ -55,3 +55,6 @@
 [submodule "StringExtra"]
 	path = StringExtra
 	url = https://github.com/tkurita/StringExtra
+[submodule "LibraryScripts/XRegex.scptd"]
+	path = LibraryScripts/XRegex.scptd
+	url = https://github.com/tkurita/XRegex.scptd.git
