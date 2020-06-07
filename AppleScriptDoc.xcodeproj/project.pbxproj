@@ -145,7 +145,7 @@
 		2CC5AA041C6D7D29007FEA6C /* HBIndexer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HBIndexer.m; sourceTree = "<group>"; };
 		2CCDF86D164D5B9200591CB2 /* AppleScriptObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppleScriptObjC.framework; path = System/Library/Frameworks/AppleScriptObjC.framework; sourceTree = SDKROOT; };
 		2CCDFC55165086DB00591CB2 /* DonationReminder.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DonationReminder.framework; path = /Users/tkurita/Dev/Projects/AppleScriptDoc/AppleScriptDoc/DonationReminder.framework; sourceTree = "<absolute>"; };
-		2CDEA6DA1D39323C00A75006 /* HandlerElement.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = HandlerElement.applescript; sourceTree = "<group>"; };
+		2CDEA6DA1D39323C00A75006 /* HandlerElement.applescript */ = {isa = PBXFileReference; explicitFileType = sourcecode.applescript; fileEncoding = 4; path = HandlerElement.applescript; sourceTree = "<group>"; };
 		2CE5F1610D321CE700EDC0FF /* DocElements.applescript */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.applescript; path = DocElements.applescript; sourceTree = "<group>"; };
 		2CE5F4200D328D7B00EDC0FF /* IsBundleTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IsBundleTransformer.h; sourceTree = "<group>"; };
 		2CE5F4210D328D7B00EDC0FF /* IsBundleTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IsBundleTransformer.m; sourceTree = "<group>"; };
@@ -655,7 +655,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2020, Kurita Tetsuro";
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -671,7 +671,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.8.1b;
+				MARKETING_VERSION = 1.8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.script-factory.AppleScriptDoc";
 				PRODUCT_NAME = AppleScriptDoc;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -690,7 +690,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPYRIGHT = "Copyright 2007-2020, Kurita Tetsuro";
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -704,7 +704,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.8.1b;
+				MARKETING_VERSION = 1.8.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.script-factory.AppleScriptDoc";
 				PRODUCT_NAME = AppleScriptDoc;
 				PROVISIONING_PROFILE_SPECIFIER = "";
