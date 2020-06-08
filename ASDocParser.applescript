@@ -8,6 +8,7 @@ global XText
 global PathConverter
 
 global _line_end
+global _ignoring_comment_pattern
 
 on set_wrap_with_block(a_flag)
 	ASHTML's set_wrap_with_block(a_flag)
@@ -65,7 +66,9 @@ on extract_doc_region(line_list)
                         set my _indoc_counter to my _indoc_counter +1
                     end if
                     if end_deblank_line's ends_with("*)") then
-                        set my _indoc_counter to my _indoc_counter -1
+                        if (_ignoring_comment_pattern's first_match(beg_deblank_line)) is missing value then
+                            set my _indoc_counter to my _indoc_counter -1
+                        end if
                     end if
 					if (my _indoc_counter > 0) then
 						set end of _textList to strip_indent(a_line)

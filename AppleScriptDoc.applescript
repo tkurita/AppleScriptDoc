@@ -20,13 +20,15 @@ script AppleScriptDocController
 	property XCharacterSet : "@module"
 	property CSSBuilder : "@module"
 	property RGBColor : "@module"
+    property XRegex : "@module"
 	--property _collecting_modules : true
 	property _only_local : true
 	
 	(*== constants *)
 	property _line_end : missing value
 	property _ : setup_modules(me)
-	
+    property _ignoring_comment_pattern : missing value
+
 	(*== Modules *)
 	property ASDocParser : missing value
 	property ExportHelpBook : missing value
@@ -112,6 +114,7 @@ script AppleScriptDocController
 		set InfoPlistArranger to import_script("InfoPlistArranger")
         set ScriptLinkMaker to import_script("ScriptLinkMaker")
         set HandlerElement to import_script("HandlerElement")
+        set my _ignoring_comment_pattern to XRegex's make_with("\\S+\\s*\\(\\*.+\\*\\)")
 	end setup
 	
 end script
