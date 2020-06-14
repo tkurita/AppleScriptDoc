@@ -121,6 +121,22 @@
 		2C57BBDC1D35B7160066D9CF /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/PathSettingWindow.strings; sourceTree = "<group>"; };
 		2C57BBDF1D35CE060066D9CF /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2C57BBE11D35CE0D0066D9CF /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		2C600D7C24960CBB00D6016E /* HTMLElement.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HTMLElement.scptd; sourceTree = "<group>"; };
+		2C600D7D24960CBB00D6016E /* RGBColor.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = RGBColor.scptd; sourceTree = "<group>"; };
+		2C600D7E24960CBB00D6016E /* XDict.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XDict.scptd; sourceTree = "<group>"; };
+		2C600D7F24960CBB00D6016E /* TemplateProcessor.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = TemplateProcessor.scptd; sourceTree = "<group>"; };
+		2C600D8024960CBB00D6016E /* CSSBuilder.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CSSBuilder.scptd; sourceTree = "<group>"; };
+		2C600D8124960CBB00D6016E /* XCharacterSet.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XCharacterSet.scptd; sourceTree = "<group>"; };
+		2C600D8224960CBB00D6016E /* XRegex.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XRegex.scptd; sourceTree = "<group>"; };
+		2C600D8324960CBB00D6016E /* PathInfo.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PathInfo.scptd; sourceTree = "<group>"; };
+		2C600D8424960CBB00D6016E /* XText.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XText.scptd; sourceTree = "<group>"; };
+		2C600D8524960CBB00D6016E /* PathConverter.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = PathConverter.scptd; sourceTree = "<group>"; };
+		2C600D8624960CBB00D6016E /* AppleScriptDocLib.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = AppleScriptDocLib.app; sourceTree = "<group>"; };
+		2C600D8724960CBB00D6016E /* XList.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XList.scptd; sourceTree = "<group>"; };
+		2C600D8924960CBB00D6016E /* HTMLFormatter.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HTMLFormatter.scptd; sourceTree = "<group>"; };
+		2C600D8A24960CBB00D6016E /* HTMLTreeFormatter.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = HTMLTreeFormatter.scptd; sourceTree = "<group>"; };
+		2C600D8B24960CBB00D6016E /* SimpleRD.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = SimpleRD.scptd; sourceTree = "<group>"; };
+		2C600D8C24960CBB00D6016E /* XFile.scptd */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XFile.scptd; sourceTree = "<group>"; };
 		2C6203011D2E0B11000BD9CC /* HBBundleTemplate */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HBBundleTemplate; sourceTree = "<group>"; };
 		2C6447E01E39D37900A414AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		2C6447E21E39D37B00A414AE /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -249,6 +265,7 @@
 				080E96DDFE201D6D7F000001 /* Scripts */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				2C600D7B24960CBB00D6016E /* LibraryScripts */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 				2CFA13F71C6C1C5C0068526B /* DonationReminder.xcodeproj */,
@@ -306,6 +323,37 @@
 				2C2155461D3506BD00281743 /* StringExtra.m */,
 			);
 			path = StringExtra;
+			sourceTree = "<group>";
+		};
+		2C600D7B24960CBB00D6016E /* LibraryScripts */ = {
+			isa = PBXGroup;
+			children = (
+				2C600D7C24960CBB00D6016E /* HTMLElement.scptd */,
+				2C600D7D24960CBB00D6016E /* RGBColor.scptd */,
+				2C600D7E24960CBB00D6016E /* XDict.scptd */,
+				2C600D7F24960CBB00D6016E /* TemplateProcessor.scptd */,
+				2C600D8024960CBB00D6016E /* CSSBuilder.scptd */,
+				2C600D8124960CBB00D6016E /* XCharacterSet.scptd */,
+				2C600D8224960CBB00D6016E /* XRegex.scptd */,
+				2C600D8324960CBB00D6016E /* PathInfo.scptd */,
+				2C600D8424960CBB00D6016E /* XText.scptd */,
+				2C600D8524960CBB00D6016E /* PathConverter.scptd */,
+				2C600D8624960CBB00D6016E /* AppleScriptDocLib.app */,
+				2C600D8724960CBB00D6016E /* XList.scptd */,
+				2C600D8824960CBB00D6016E /* SimpleRD */,
+				2C600D8C24960CBB00D6016E /* XFile.scptd */,
+			);
+			path = LibraryScripts;
+			sourceTree = "<group>";
+		};
+		2C600D8824960CBB00D6016E /* SimpleRD */ = {
+			isa = PBXGroup;
+			children = (
+				2C600D8924960CBB00D6016E /* HTMLFormatter.scptd */,
+				2C600D8A24960CBB00D6016E /* HTMLTreeFormatter.scptd */,
+				2C600D8B24960CBB00D6016E /* SimpleRD.scptd */,
+			);
+			path = SimpleRD;
 			sourceTree = "<group>";
 		};
 		2CFA13F81C6C1C5C0068526B /* Products */ = {
